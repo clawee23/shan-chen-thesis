@@ -1,0 +1,322 @@
+# Chapter 13
+
+## Conclusion and Future Work
+
+Our work has certain limitations:
+
+**System selection:**
+
+We evaluated only agents with publicly programmable APIs. As a result, promising but closed systems such as OpenAI Operator and Google’s Project Mariner were not evaluated. Other systems like Bytedance’s UITars were not tested due to time and computational constraints. However, it is not clear that their inclusion would shift the leaderboard substantially given their performance compared to Claude CUA on other benchmarks.**Human supervision:**
+
+All answers were machine‑judged with a lightly‑audited LLM rubric. However, a subset of answers were human-verified with good agreement compared to the LLM-as-judge as we described in the methods.**Compute and subscription cost:**
+
+Building the benchmark and running baselines is non‑trivial and our experiments cost a total of $3,690: $320 on Perplexity (of which $200 was Deep‑Research API calls), $450 on Gemini 2.5 pro, and about $2,500 on Claude Sonnet 3.7 CUA, $200 for a 1 month ChatGPT Pro subscription, $20 for advanced reasoning, and $200 for GPT‑4.1 mini judging.**Real‑world validation:**
+
+Finally, we did not place answers in front of clinicians, and the questions in MedBrowseComp only cover a small portion of the enormous medical knowledge base used for real-world clinical decision-making. However, expert-curated, verifiable knowledge is not available for the entire medical domain. Our focused benchmark enables deeper study of deep research and computer use capabilities and still reveals important gaps and future directions to inform the field.**Future Work**
+
+- Broader task suite: Expand beyond single‑field extraction to multi‑paragraph justification, guideline concordance, and financial/regulatory trend analysis, all of which require deeper reasoning.
+- Tool‑augmented agents: Test whether lightweight adapters such as PDF parsers, table detectors, ClinicalTrials.gov wrappers boost agent performance.
+- Inclusion of closed systems: Collaborate with companies to benchmark Operator, Mariner, and UITars under identical prompts, closing the current comparability gap.
+- Test system in AI-IDE environment: Place agents in an AI-IDE sandbox (e.g., Claude Code CLI or Cursor or Windsurf) where they must draft, debug, and reuse their own helper scripts over our horizontal tasks.
+- Study agents with a human-in-the-loop and in real-world settings: Compare agentic systems vs human performance on MedBrowseComp, and study top-performing systems in clinical settings.
+- Prevent contamination during test set: Because benchmark artifacts are public, use allow-lists to block the repo/demo and permit only vetted domains; maintain a private hold-out, deduplicate across splits, encode released test sets, and require grounded citations to flag leakage as shown in figure 3.***Figure 3: ****Latest computer use agent showing direct access to the Hugging Face repo containing gold labels, illustrating the risk of contamination. However, this system did not read directly into the labeled dataset.*
+
+![](../figures/image13.png)
+
+**CONCLUSION**
+
+We introduced MedBrowseComp, the largest verifiable benchmark that evaluates deep research and computer use agents in the medical field. The tasks are clinically meaningful rather than contrived for difficulty. Experiments reveal a clear capability gap: retrieval‑augmented text pipelines answer nearly half as many questions as their deep research counterparts, yet no system, including computer use agents, exceeds 40% accuracy among questions that require more than a single hop. GUI‑centric agents can control browsers and desktops end‑to‑end, but they tend to underperform compared to deep researchers driven by APIs on our benchmark, partly due to context bloat from screenshots. MedBrowseComp offers a realistic, challenging test bed for future systems and a focused subset that remains challenging for CUA.**REFERENCES**
+
+1. [Guha, N.](http://paperpile.com/b/Y40emr/HNVqF)[*et al.*](http://paperpile.com/b/Y40emr/HNVqF)[LegalBench: A collaboratively built benchmark for measuring legal reasoning in large language models.](http://paperpile.com/b/Y40emr/HNVqF)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/HNVqF)[(2023).](http://paperpile.com/b/Y40emr/HNVqF)
+
+2. [Wang, Y.](http://paperpile.com/b/Y40emr/hbXRy)[*et al.*](http://paperpile.com/b/Y40emr/hbXRy)[MMLU-Pro: A more robust and challenging multi-task language understanding benchmark.](http://paperpile.com/b/Y40emr/hbXRy)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/hbXRy)[(2024).](http://paperpile.com/b/Y40emr/hbXRy)
+
+3. [Singh, S.](http://paperpile.com/b/Y40emr/ouQfI)[*et al.*](http://paperpile.com/b/Y40emr/ouQfI)[Global MMLU: Understanding and addressing cultural and linguistic biases in multilingual evaluation.](http://paperpile.com/b/Y40emr/ouQfI)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/ouQfI)[(2024).](http://paperpile.com/b/Y40emr/ouQfI)
+
+4. [Hendrycks, D.](http://paperpile.com/b/Y40emr/Caw8P)[*et al.*](http://paperpile.com/b/Y40emr/Caw8P)[Measuring massive multitask language understanding.](http://paperpile.com/b/Y40emr/Caw8P)[*arXiv [cs.CY]*](http://paperpile.com/b/Y40emr/Caw8P)[(2020).](http://paperpile.com/b/Y40emr/Caw8P)
+
+5. [Phan, L. Humanity’s Last Exam.](http://paperpile.com/b/Y40emr/a7HKr)[*Research Square*](http://paperpile.com/b/Y40emr/a7HKr)[(2025) doi:](http://paperpile.com/b/Y40emr/a7HKr)[10.21203/rs.3.rs-6615297/v1](http://dx.doi.org/10.21203/rs.3.rs-6615297/v1)[.](http://paperpile.com/b/Y40emr/a7HKr)
+
+6. [Dupplaw, D. P.](http://paperpile.com/b/Y40emr/uMfMN)[*et al.*](http://paperpile.com/b/Y40emr/uMfMN)[Information extraction from multimedia web documents: an open-source platform and testbed.](http://paperpile.com/b/Y40emr/uMfMN)[*Int. J. Multimed. Inf. Retr.*](http://paperpile.com/b/Y40emr/uMfMN)[http://paperpile.com/b/Y40emr/uMfMN](http://paperpile.com/b/Y40emr/uMfMN)[**3**](http://paperpile.com/b/Y40emr/uMfMN)[, 97–111 (2014).](http://paperpile.com/b/Y40emr/uMfMN)
+
+7. [Vu, T.](http://paperpile.com/b/Y40emr/qMmet)[*et al.*](http://paperpile.com/b/Y40emr/qMmet)[FreshLLMs: Refreshing large language models with search engine augmentation.](http://paperpile.com/b/Y40emr/qMmet)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/qMmet)[(2023).](http://paperpile.com/b/Y40emr/qMmet)
+
+8. [Alzubi, S.](http://paperpile.com/b/Y40emr/S5hSb)[*et al.*](http://paperpile.com/b/Y40emr/S5hSb)[Open Deep Search: Democratizing search with open-source reasoning agents.](http://paperpile.com/b/Y40emr/S5hSb)[*arXiv [cs.LG]*](http://paperpile.com/b/Y40emr/S5hSb)[(2025).](http://paperpile.com/b/Y40emr/S5hSb)
+
+9. [Nakano, R.](http://paperpile.com/b/Y40emr/ix5ju)[*et al.*](http://paperpile.com/b/Y40emr/ix5ju)[WebGPT: Browser-assisted question-answering with human feedback.](http://paperpile.com/b/Y40emr/ix5ju)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/ix5ju)[(2021).](http://paperpile.com/b/Y40emr/ix5ju)
+
+10. [Kasai, J.](http://paperpile.com/b/Y40emr/4FuRc)[*et al.*](http://paperpile.com/b/Y40emr/4FuRc)[RealTime QA: What’s the answer right now?](http://paperpile.com/b/Y40emr/4FuRc)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/4FuRc)[(2022).](http://paperpile.com/b/Y40emr/4FuRc)
+
+11. [Wang, G.](http://paperpile.com/b/Y40emr/LVq9d)[*et al.*](http://paperpile.com/b/Y40emr/LVq9d)[Voyager: An open-ended embodied agent with large language models.](http://paperpile.com/b/Y40emr/LVq9d)[*arXiv [cs.AI]*](http://paperpile.com/b/Y40emr/LVq9d)[(2023).](http://paperpile.com/b/Y40emr/LVq9d)
+
+12. [Deng, X.](http://paperpile.com/b/Y40emr/lHveh)[*et al.*](http://paperpile.com/b/Y40emr/lHveh)[Mind2Web: Towards a generalist agent for the web.](http://paperpile.com/b/Y40emr/lHveh)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/lHveh)[(2023).](http://paperpile.com/b/Y40emr/lHveh)
+
+13. [Xu, Y.](http://paperpile.com/b/Y40emr/HbwVn)[*et al.*](http://paperpile.com/b/Y40emr/HbwVn)[Aguvis: Unified Pure Vision Agents for Autonomous GUI Interaction.](http://paperpile.com/b/Y40emr/HbwVn)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/HbwVn)[(2024).](http://paperpile.com/b/Y40emr/HbwVn)
+
+14. [Pahuja, V.](http://paperpile.com/b/Y40emr/0ttzp)[*et al.*](http://paperpile.com/b/Y40emr/0ttzp)[Explorer: Scaling exploration-driven web trajectory synthesis for multimodal web agents.](http://paperpile.com/b/Y40emr/0ttzp)[*arXiv [cs.AI]*](http://paperpile.com/b/Y40emr/0ttzp)[(2025).](http://paperpile.com/b/Y40emr/0ttzp)
+
+15. [Wornow, M., Thapa, R., Steinberg, E., Fries, J. A. & Shah, N. H. EHRSHOT: An EHR benchmark for few-shot evaluation of foundation models.](http://paperpile.com/b/Y40emr/peTRl)[*arXiv [cs.LG]*](http://paperpile.com/b/Y40emr/peTRl)[(2023).](http://paperpile.com/b/Y40emr/peTRl)
+
+16. [Chen, S.](http://paperpile.com/b/Y40emr/46ikF)[*et al.*](http://paperpile.com/b/Y40emr/46ikF)[Wait, but Tylenol is acetaminophen... Investigating and improving language models’ ability to resist requests for misinformation.](http://paperpile.com/b/Y40emr/46ikF)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/46ikF)[(2024).](http://paperpile.com/b/Y40emr/46ikF)
+
+17. [Chen, S.](http://paperpile.com/b/Y40emr/Z4lyR)[*et al.*](http://paperpile.com/b/Y40emr/Z4lyR)[Use of artificial intelligence chatbots for cancer treatment information.](http://paperpile.com/b/Y40emr/Z4lyR)[*JAMA Oncol.*](http://paperpile.com/b/Y40emr/Z4lyR)[http://paperpile.com/b/Y40emr/Z4lyR](http://paperpile.com/b/Y40emr/Z4lyR)[**9**](http://paperpile.com/b/Y40emr/Z4lyR)[, 1459–1462 (2023).](http://paperpile.com/b/Y40emr/Z4lyR)
+
+18. [Yu, H.](http://paperpile.com/b/Y40emr/tMNnU)[*et al.*](http://paperpile.com/b/Y40emr/tMNnU)[AIPatient: Simulating Patients with EHRs and LLM Powered Agentic Workflow.](http://paperpile.com/b/Y40emr/tMNnU)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/tMNnU)[(2024).](http://paperpile.com/b/Y40emr/tMNnU)
+
+19. [Tu, T.](http://paperpile.com/b/Y40emr/BaqPg)[*et al.*](http://paperpile.com/b/Y40emr/BaqPg)[Towards Conversational Diagnostic AI.](http://paperpile.com/b/Y40emr/BaqPg)[*arXiv [cs.AI]*](http://paperpile.com/b/Y40emr/BaqPg)[(2024).](http://paperpile.com/b/Y40emr/BaqPg)
+
+20. [Li, X.](http://paperpile.com/b/Y40emr/9E9ZT)[*et al.*](http://paperpile.com/b/Y40emr/9E9ZT)[MedGUIDE: Benchmarking clinical decision-making in Large Language Models.](http://paperpile.com/b/Y40emr/9E9ZT)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/9E9ZT)[(2025).](http://paperpile.com/b/Y40emr/9E9ZT)
+
+21. [Kim, Y.](http://paperpile.com/b/Y40emr/hZkYV)[*et al.*](http://paperpile.com/b/Y40emr/hZkYV)[Medical hallucinations in foundation models and their impact on healthcare.](http://paperpile.com/b/Y40emr/hZkYV)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/hZkYV)[(2025).](http://paperpile.com/b/Y40emr/hZkYV)
+
+22. [Holmes, J.](http://paperpile.com/b/Y40emr/FbPDH)[*et al.*](http://paperpile.com/b/Y40emr/FbPDH)[RadOnc-GPT: An autonomous LLM agent for real-time patient outcomes labeling at scale.](http://paperpile.com/b/Y40emr/FbPDH)[*arXiv [cs.AI]*](http://paperpile.com/b/Y40emr/FbPDH)[(2025).](http://paperpile.com/b/Y40emr/FbPDH)
+
+23. [Gallifant, J. & Bitterman, D. S. Humanity’s next medical exam: Preparing to evaluate superhuman systems.](http://paperpile.com/b/Y40emr/ic5ew)[*NEJM AI*](http://paperpile.com/b/Y40emr/ic5ew)[http://paperpile.com/b/Y40emr/ic5ew](http://paperpile.com/b/Y40emr/ic5ew)[**2**](http://paperpile.com/b/Y40emr/ic5ew)[, (2025).](http://paperpile.com/b/Y40emr/ic5ew)
+
+24. [Xiao, Y.](http://paperpile.com/b/Y40emr/uLbbZ)[*et al.*](http://paperpile.com/b/Y40emr/uLbbZ)[KScope: A framework for characterizing the knowledge status of language models.](http://paperpile.com/b/Y40emr/uLbbZ)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/uLbbZ)[(2025) doi:](http://paperpile.com/b/Y40emr/uLbbZ)[10.48550/arXiv.2506.07458](http://dx.doi.org/10.48550/arXiv.2506.07458)[.](http://paperpile.com/b/Y40emr/uLbbZ)
+
+25. [Schmidgall, S.](http://paperpile.com/b/Y40emr/XLtUM)[*et al.*](http://paperpile.com/b/Y40emr/XLtUM)[AgentClinic: a multimodal agent benchmark to evaluate AI in simulated clinical environments.](http://paperpile.com/b/Y40emr/XLtUM)[*arXiv [cs.HC]*](http://paperpile.com/b/Y40emr/XLtUM)[(2024).](http://paperpile.com/b/Y40emr/XLtUM)
+
+26. [Gallifant, J.](http://paperpile.com/b/Y40emr/Ceu4a)[*et al.*](http://paperpile.com/b/Y40emr/Ceu4a)[Language models are surprisingly fragile to drug names in biomedical benchmarks.](http://paperpile.com/b/Y40emr/Ceu4a)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/Ceu4a)[(2024).](http://paperpile.com/b/Y40emr/Ceu4a)
+
+27. [Matos, J.](http://paperpile.com/b/Y40emr/u0LHx)[*et al.*](http://paperpile.com/b/Y40emr/u0LHx)[WorldMedQA-V: a multilingual, multimodal medical examination dataset for multimodal language models evaluation. in](http://paperpile.com/b/Y40emr/u0LHx)[*Findings of the Association for Computational Linguistics: NAACL 2025*](http://paperpile.com/b/Y40emr/u0LHx)[(eds. Chiruzzo, L., Ritter, A. & Wang, L.) 7203–7216 (Association for Computational Linguistics, Stroudsburg, PA, USA, 2025).](http://paperpile.com/b/Y40emr/u0LHx)
+
+28. [Wei, J.](http://paperpile.com/b/Y40emr/aURUp)[*et al.*](http://paperpile.com/b/Y40emr/aURUp)[BrowseComp: A simple yet challenging benchmark for browsing agents.](http://paperpile.com/b/Y40emr/aURUp)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/aURUp)[(2025).](http://paperpile.com/b/Y40emr/aURUp)
+
+29. [Mialon, G.](http://paperpile.com/b/Y40emr/lPSXk)[*et al.*](http://paperpile.com/b/Y40emr/lPSXk)[GAIA: a benchmark for General AI Assistants.](http://paperpile.com/b/Y40emr/lPSXk)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/lPSXk)[(2023).](http://paperpile.com/b/Y40emr/lPSXk)
+
+30. [Wu, J.](http://paperpile.com/b/Y40emr/pCcJ4)[*et al.*](http://paperpile.com/b/Y40emr/pCcJ4)[WebWalker: Benchmarking LLMs in Web Traversal.](http://paperpile.com/b/Y40emr/pCcJ4)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/pCcJ4)[(2025).](http://paperpile.com/b/Y40emr/pCcJ4)
+
+31. [Xie, T.](http://paperpile.com/b/Y40emr/ipOAO)[*et al.*](http://paperpile.com/b/Y40emr/ipOAO)[OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments.](http://paperpile.com/b/Y40emr/ipOAO)[*arXiv [cs.AI]*](http://paperpile.com/b/Y40emr/ipOAO)[(2024).](http://paperpile.com/b/Y40emr/ipOAO)
+
+32. [Akkiraju, R.](http://paperpile.com/b/Y40emr/MmVUd)[*et al.*](http://paperpile.com/b/Y40emr/MmVUd)[FACTS about building retrieval Augmented Generation-based chatbots.](http://paperpile.com/b/Y40emr/MmVUd)[*arXiv [cs.LG]*](http://paperpile.com/b/Y40emr/MmVUd)[(2024).](http://paperpile.com/b/Y40emr/MmVUd)
+
+33. [Wei, J.](http://paperpile.com/b/Y40emr/JKUaV)[*et al.*](http://paperpile.com/b/Y40emr/JKUaV)[Measuring short-form factuality in large language models.](http://paperpile.com/b/Y40emr/JKUaV)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/JKUaV)[(2024).](http://paperpile.com/b/Y40emr/JKUaV)
+
+34. [Zhou, P.](http://paperpile.com/b/Y40emr/p7K9A)[*et al.*](http://paperpile.com/b/Y40emr/p7K9A)[BrowseComp-ZH: Benchmarking web browsing ability of large language models in Chinese.](http://paperpile.com/b/Y40emr/p7K9A)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/p7K9A)[(2025).](http://paperpile.com/b/Y40emr/p7K9A)
+
+35. [Chen, Z.](http://paperpile.com/b/Y40emr/k66Ka)[*et al.*](http://paperpile.com/b/Y40emr/k66Ka)[BrowseComp-Plus: A more fair and transparent evaluation benchmark of deep-research agent.](http://paperpile.com/b/Y40emr/k66Ka)[*arXiv [cs.CL]*](http://paperpile.com/b/Y40emr/k66Ka)[(2025).](http://paperpile.com/b/Y40emr/k66Ka)
+
+36. [Warner, J. L.](http://paperpile.com/b/Y40emr/1CV59)[*et al.*](http://paperpile.com/b/Y40emr/1CV59)[HemOnc: A new standard vocabulary for chemotherapy regimen representation in the OMOP common data model.](http://paperpile.com/b/Y40emr/1CV59)[*J. Biomed. Inform.*](http://paperpile.com/b/Y40emr/1CV59)[http://paperpile.com/b/Y40emr/1CV59](http://paperpile.com/b/Y40emr/1CV59)[**96**](http://paperpile.com/b/Y40emr/1CV59)[, 103239 (2019).](http://paperpile.com/b/Y40emr/1CV59)
+
+![](../figures/image36.png)![](../figures/image63.png)![](../figures/image78.png)![](../figures/image87.png)![](../figures/image17.png)![](../figures/image52.png)
+
+General Discussion and Future Perspectives***General Discussion and Future Perspectives***
+
+Since the public emergence of large language models (LLMs) in 2022, the healthcare community has confronted a dual reality: unprecedented capacity to automate complex cognitive tasks, and equally unprecedented risks of misinformation, bias, and brittle reasoning. The integration of LLMs into clinical workflows, ranging from patient communication to cancer trial safety monitoring, holds the potential to reduce documentation burden, uncover latent patient risks, accelerate evidence synthesis, and extend the reach of limited clinical resources. Yet these opportunities continually collide with a sobering pattern: systems are often evaluated on narrow or artificial benchmarks that obscure clinically relevant failures, trained on corpora that entrench societal inequities, and optimized for surface-level fluency rather than factual correctness.
+
+This chapter synthesizes the insights across the thesis, situating them within ongoing debates about safety, equity, and responsible deployment. Together, the findings outline a pathway toward LLMs that are not merely technically impressive but also reliable, transparent, and suited for use in real-world clinical environments.
+
+#**Part I: Potential Utilities of Language Models in Real Clinical Practice**
+
+##**Patient-Facing Information and Clinical Communication**
+
+The first section of the thesis examines the most immediate interface between LLMs and public health: the generation of medical information for patients and the drafting of clinician messages.**Chapters 2 and 3** address these domains through complementary perspectives.
+
+In**Chapter 2**, we demonstrate that although ChatGPT delivers guideline-concordant cancer treatment recommendations in 98% of cases, one-third of responses contain partially incorrect statements and 12% hallucinate entire treatment modalities. Performance varies markedly with prompt phrasing, highlighting the fragility of general-purpose LLMs when used by patients without expert oversight. These findings reinforce the need for verification layers, guardrails, and clinician involvement in any patient-facing deployment.**Chapter 3** transitions from public use to clinical workflows, evaluating GPT-4-assisted drafting of portal messages. While clinicians report increased efficiency in 77% of cases, unedited drafts introduce a 7.7% risk of severe harm due to misclassification of urgency or inappropriate clinical advice. Across both chapters, a central theme emerges: LLMs provide value primarily as tools that augment expert decision-making. Their safe and effective use depends on human vigilance, not autonomous output.
+
+##**Unlocking Unstructured Clinical Data**
+**Chapters 4 and 5** shift focus from communication to structured extraction of clinically meaningful but routinely underutilized information.
+
+Radiotherapy-induced esophagitis severity, a toxicity with direct survival implications, is recorded only in narrative notes. Our fine-tuned models achieved macro-F1 scores up to 0.92 for CTCAE grade extraction, enabling large-scale real-world evidence generation where none previously existed.
+
+Similarly, social determinants of health (SDoH), powerful and often ignored predictors of outcomes, remain largely invisible in structured data. Fine-tuned Flan-T5 models identified 94% of patients with adverse SDoH compared to only 2% using ICD-10 codes, and did so with less demographic bias than GPT-4 few-shot prompting.
+
+These findings underscore a central message:**task-specific fine-tuning on domain data is not only more accurate but also more equitable**, surfacing disparities that generalist models miss. Future directions include expanding extraction to additional toxicity domains, embedding these pipelines in prospective registries, and evaluating their impact on clinical operations such as care navigation and resource allocation.
+
+##**Autonomous Agents in Trial Safety**
+
+The final arc of Part I culminates in**Chapter 6**, where we introduce**iRAE Agent**, an agentic system piloted at Mass General Brigham for detecting immunotherapy-related adverse events in oncology trials. Unlike static classifiers, iRAE performs multi-step reasoning, structured error checking, and ontology-guided reporting—operations that map directly to real trial workflows and carry substantial regulatory significance.
+
+This represents a true inflection point: moving from isolated extraction tasks to**full-fledged clinical agents** designed for deployment in safety-critical environments. Future work includes scaling iRAE across trial networks, integrating it with regulatory submission pipelines, and designing human-in-the-loop interfaces that preserve clinician oversight while automating routine surveillance. Robustness to linguistic variation and resistance to sycophantic agreement—fully explored in Part II—will be essential for trustworthy deployment.
+
+#**Part II: Potential Failures of Language Models in Medical Settings**
+
+While Part I demonstrates the considerable promise of LLMs for clinical augmentation, Part II examines the structural vulnerabilities that emerge when these systems are used in safety-critical environments. These chapters collectively reveal that the same statistical learning mechanisms enabling LLMs to generalize across vast text corpora also produce brittle, easily perturbed behaviors when models are asked to perform medical reasoning.**Chapter 7** establishes a foundational principle for responsible deployment: generalist LLMs are not necessarily the right tool for most biomedical NLP tasks. Contrary to assumptions that larger models trained on broader corpora inherently perform better, our findings show that task-specific fine-tuned models not only outperform GPT-3.5 and GPT-4 in structured extraction tasks but do so while using dramatically less compute. These domain-tuned models demonstrate greater stability, interpretability, and consistency—qualities that are essential for clinical operations. The presumed “generalist advantage” dissolves under empirical scrutiny, highlighting the need to calibrate model choice to the specific constraints of healthcare settings rather than defaulting to the largest available system.**Chapters 8 through 10** reveal deeper epistemic failures rooted in pre-training data distributions. In**Chapter 8**, the Cross-Care study demonstrates that when LLMs are asked to estimate disease prevalence, their responses track the frequency with which diseases co-occur in The Pile—an English-dominant, internet-derived dataset—rather than actual epidemiological data. This pattern persists across languages and alignment strategies, suggesting that these models internally encode *statistical reflections of their training corpora rather than medically grounded representations of disease burden*. This representational bias carries profound implications for any task requiring epidemiological awareness or population-level reasoning.
+
+The fragility exposed in **Chapter 9** underscores a parallel lexical vulnerability. Although LLMs nominally “know” that brand and generic drug names refer to the same pharmacologic substance, substituting one for the other reduces accuracy by up to 10%. This mismatch reflects a model’s reliance on lexical co-occurrence patterns rather than a robust conceptual representation of drug equivalence. In clinical practice, where generic versus brand names vary across notes, specialties, and institutions, such brittleness introduces unpredictable and potentially dangerous inconsistency.**Chapter 10** adds a behavioral dimension to these representational failures, demonstrating that LLMs frequently acquiesce to false claims about drug equivalence when such claims are embedded in user prompts. This sycophantic tendency—where models prioritize agreement and apparent helpfulness over factual accuracy—can lead to confident propagation of medical misinformation. These behaviors highlight the interface between alignment methods and clinical risk: systems optimized to sound polite, cooperative, or user-friendly can become hazardous when those attributes override epistemic integrity.
+
+Together, the findings of Part II paint a cautionary but constructive picture: current LLMs are not yet reliable arbiters of medical knowledge. Their susceptibility to pre-training biases, lexical perturbations, not robust knowledge representation and misalignment indicates that naïve deployment in healthcare settings could amplify existing inequities and introduce new potential of harm. These vulnerabilities underscore the need for rigorous evaluation frameworks and purpose-built safeguards before clinical integration.
+
+#**Societal Impact and Future Directions**
+
+The broader societal significance of this thesis lies in its insistence that clinical AI must be evaluated not only on technical performance but on its alignment with the practical, ethical, and equity-oriented demands of real-world medicine. By grounding every experiment in live workflows—patient messaging, toxicity surveillance, trial safety monitoring—this work demonstrates that LLMs tested on sanitized benchmarks or synthetic tasks provide less insight into their behavior under true clinical conditions. In contrast, models evaluated within authentic operational settings reveal the constraints, failure modes, and friction points that determine whether AI tools will meaningfully improve care.
+
+A key contribution of this thesis is the demonstration that**last-mile alignment—not scale—is the decisive factor in achieving clinically meaningful AI**. While foundation models provide broad linguistic competence, their raw form is insufficient for safe deployment in real care settings. The most clinically relevant value emerges when models undergo**last-mile alignment**: targeted fine-tuning, calibration, and behavioral optimization using local data, domain-specific ontologies, and institution-defined safety constraints. This final stage transforms general capabilities into reliable, workflow-ready tools that reflect the actual decision environments clinicians navigate.
+
+Crucially, last-mile alignment is inherently**interdisciplinary**. It requires domain experts to define what “correct” looks like, informaticians to validate model behavior across heterogeneous EHR data streams, ethicists to assess potential inequities or normative risks, and regulatory specialists to ensure compliance with evolving standards. Smaller, fine-tuned models enable this collaboration in ways that large generalist models cannot: they are transparent enough to audit, modular enough to modify, and lightweight enough to iterate on quickly and safely. In this sense, the path to trustworthy clinical AI is not dominated by ever-larger pre-trained systems but by**collaboratively aligned models that undergo rigorous, locally grounded last-mile refinement**.
+
+The societal implications of the extraction work presented in Part I are substantial. By automating the identification of radiation toxicities and social determinants of health, this research enables the generation of real-world evidence that had previously remained inaccessible. These capabilities can support more equitable distribution of clinical resources, improve trial design, and uncover disparities hidden within documentation practices. They also create opportunities to inform public health interventions, policy design, and health equity efforts at scale.
+
+In parallel, the failure patterns exposed in Part II offer concrete pathways for developers, regulators, and healthcare organizations to identify, mitigate, and monitor sources of clinical risk. Pre-training bias, drug-name brittleness, and sycophantic behavior are not abstract deficiencies; they are failure modes with direct implications for patient safety and public trust. By systematically characterizing these vulnerabilities, the thesis provides a roadmap for model improvement and governance frameworks that prioritize factual grounding, robustness, and ethical responsibility.
+
+Finally, the release of**WorldMedQA-V** and**MedBrowseComp** contributes durable, publicly accessible infrastructure for assessing multilingual performance and hard yet realistic medical reasoning. These benchmarks allow the community to measure whether future models genuinely progress toward equitable, evidence-grounded clinical intelligence—or merely optimize for English-dominant, shallow tasks that reproduce existing inequities. In a field where three-quarters of published studies still lack reproducibility or diverse validation, such shared infrastructure is essential for elevating scientific standards and enabling meaningful regulatory oversight.
+
+Looking forward, the future of clinical AI will depend not on scale alone but on rigorous scientific methodology, transparent evaluation pipelines, and thoughtful integration with human expertise. LLMs that meaningfully improve healthcare will be those that earn trust—through robustness, fairness, and verifiable correctness—rather than those that simply demonstrate linguistic sophistication. This thesis lays foundational evidence, frameworks, and datasets to guide the development of such systems, and points toward a future in which clinical AI strengthens—not destabilizes—the safety, equity, and integrity of global health.
+
+Summary***Summary***
+
+##**Part I: Potential Utilities of Language Models in Real Clinical Practice**
+
+Part I of this thesis shows how large language models (LLMs) can address concrete, high-impact problems in clinical workflows and health equity.
+
+Chapters 2 and 3 focus on patient–provider communication. We evaluate LLMs for generating patient-facing cancer treatment information and drafting portal messages. The models write with human-level fluency but inconsistent factual accuracy, creating real potential for harm. These studies establish a realistic safety baseline for patient-facing LLMs before any deployment in clinical care.
+
+Chapters 4 and 5 move to unstructured clinical text, where LLMs surface information that existing structured systems largely ignore. We automate the extraction of radiotherapy toxicity severity and social determinants of health (SDoH) from free-text notes, substantially outperforming billing-code–based baselines and enabling large-scale real-world evidence generation at low marginal cost. This SDoH work was later published in *npj Digital Medicine*, became the **most-cited article journal-wide in 2024**, and was selected for the AI and Data Science Year in Review at AMIA, underscoring both scientific and practical impact.
+
+Chapter 6 culminates this trajectory with**iRAE agent (AEGIS)**, an agentic system piloted at Mass General Brigham to detect immunotherapy-related adverse events in clinical trials. Rather than acting as a static classifier, iRAE orchestrates multi-step reasoning, internal error checking, and ontology-guided reporting inside live hospital workflows. This directly reduces the manual burden of adverse event reporting and has implications for trial safety, cost, and patient outcomes.
+
+Together, these chapters trace a clear progression—from question answering to autonomous clinical agents—demonstrating that LLMs can deliver measurable clinical value while also revealing where naïve “drop-in” automation fails.
+
+##**Part II: Potential Fails of Language Models in Medical Settings**
+
+If Part I focuses on what LLMs can do, Part II focuses on how they can fail, and why those failures matter in high-stakes medicine.
+
+Chapter 7 provides a pragmatic baseline: for core biomedical NLP tasks, locally fine-tuned models such as BioBERT consistently outperform few-shot prompting of massive generalist LLMs, while using roughly three orders of magnitude less compute. This underscores that, in many realistic health system settings, small, task-specific models remain the more accurate, affordable, and deployable choice.
+
+Chapters 8–10 expose a common thread of**pre-training bias and fragility**.**Cross-Care** shows that LLMs absorb disease–demographic associations from corpus statistics rather than epidemiologic truth, leading to systematic misalignment between model beliefs and real-world disease prevalence across languages and demographic groups.**RABBITS** reveals the lexical counterpart: simply swapping brand and generic drug names—without changing the underlying pharmacology—reduces accuracy by up to 15%, indicating reliance on memorized strings rather than robust reasoning.
+
+A third line of work demonstrates that even when models “know” the correct answer, sycophantic behavior often dominates: when confronted with illogical or dangerous medical claims, models comply instead of correcting the user. This “helpfulness backfiring” work later became an**AMIA 2025 oral** and was highlighted in outlets such as**Nature** and**The New York Times**, reflecting growing public concern about LLM safety in medicine.
+
+Chapters 11 and 12 translate these observations into a durable evaluation infrastructure.**WorldMedQA-V** provides a multilingual, multimodal medical exam benchmark that tests whether progress in vision–language models genuinely transfers across languages and clinical contexts.**MedBrowseComp** evaluates long-horizon, literature-driven medical agents and shows that even state-of-the-art systems reach only ~10% accuracy on multi-hop evidence synthesis—far below the reliability required for direct clinical use. These benchmarks are designed not just to diagnose failure, but to track and incentivize real progress over time.
+
+Taken together, Part II argues that current LLMs primarily mirror the statistics of their training data, not clinical reality, and that they default to cooperative, fluent responses over careful, truthful reasoning.
+
+##***Societal Impact and Valorization***
+
+This thesis is motivated by a simple goal: to narrow the gap between AI research and clinically meaningful, equitable deployment—**and to do so in a way that is visible, scrutinizable, and reusable by others**.
+
+First, every study is grounded in real clinical workflows and diverse patient cohorts—from cancer treatment information and portal messaging to trial safety monitoring—so that performance is measured against practical constraints and outcomes, not just benchmark scores. This grounding has made the work legible and relevant to clinicians, health systems, and policymakers.
+
+Second, the projects in this thesis have already influenced the broader conversation on AI in healthcare:
+
+- Research from this line of work has been**featured in major media outlets**, including *Bloomberg*, *The New York Times*, NBC, and *New Scientist*, helping translate technical findings into public understanding and debate about safe medical AI.
+- Several studies have been **highlighted by U.S. government agencies**, including the FDA, NCI, and NIH, indicating regulatory interest in both the opportunities and risks of clinical LLMs.
+- The early JAMA Oncology work on cancer treatment chatbots and downstream follow-ups on patient communication were**used in U.S. congressional hearings** and featured by JAMA Oncology and Harvard, placing these results directly into discussions about national policy and oversight for AI in medicine.
+- The SDoH paper in *npj Digital Medicine* became the **most-cited article across the entire journal in 2024** and was highlighted by NCI, reflecting demand for methods that make health inequities more visible and measurable.
+
+Third, the thesis invests heavily in open, reproducible evaluation. Many of the core artifacts—**Cross-Care**,**WorldMedQA-V**,**MedBrowseComp**, the SDoH datasets, and others—are released with**public code, data, and documentation** via dedicated project pages, Hugging Face datasets, and GitHub repositories. These resources are enriched with FAIR-style metadata where possible and are already being adopted and extended by external groups, turning one-off studies into shared infrastructure.
+
+In a landscape where most AI-in-medicine papers are difficult to reproduce and rarely validated across institutions or populations, this thesis deliberately pushes in the opposite direction: all models are evaluated on publicly available or prospectively collected clinical data, adjusted for key confounders, and implemented with open-source tools. This makes the results suitable as a basis for**prospective trials, regulatory conversations, and real deployment decisions.**
+
+The central argument of this thesis is that**safe clinical LLMs require not only stronger models, but stronger science and real-world evidence**: transparent benchmarks that reflect real clinical use, training pipelines that explicitly confront bias and fragility, and evaluation protocols that reward factual correctness and robustness over surface-level fluency.
+
+Ultimately, the work aims to help move the field toward LLMs that are not just powerful, but**trustworthy**—systems that can support clinicians, surface hidden inequities, and remain reliable across the linguistic and demographic diversity that characterizes real-world medicine. That this research has already drawn attention from major media, regulators, and policymakers is itself a form of valorization: it signals that the questions posed here are not only academically interesting, but central to how AI will shape the future of healthcare.
+
+#***Curriculum Vitae and Scientific Publications***
+
+Shan Chen was born in Beijing, China, on April 23rd, 1998, and moved to Minnesota for high school. After graduating, he completed a B.A. in Mathematics and Japanese at St. Olaf College and an M.S. in Computational Linguistics at Brandeis University. As part of his master’s program, he worked with Dr. Tim Miller at Boston Children’s Hospital on a clinical Natural Language Processing(NLP) capstone, developing end-to-end pipelines that linked unstructured clinical text to usable, safety-minded decision support.
+
+Following his master’s, Shan joined the Artificial Intelligence in Medicine (AIM) Program—spanning Harvard Medical School, Brigham and Women’s Hospital, and Mass General Brigham—while enrolling as an external Ph.D. candidate with the School for Oncology and Reproduction (GROW) at Maastricht University jointly. He spent 42 months in Boston supervised by Danielle Bitterman, MD and Hugo Aerts, PhD, embedded with AIM teams and collaborators across the Harvard–MGB ecosystem, working on clinical NLP and actively developing more general NLP methods through collaboration with Harvard-SEAS, Kempner Institute, University of Oxford, TU Darmstadt, University of Gottingen, University of Amsterdam, Johns Hopkins University, Google Deepmind and Massachusetts Institute of Technology. His PhD work was also supported by the 2024 Google PhD Fellowship in NLP.
+
+Shan’s research focuses on AI applied to clinical text and multimodal clinical data—especially methods for safe, transparent natural language processing, retrieval-augmented reasoning, and multilingual “language-following” in medicine. During these years, he developed a strong commitment to open source, open science, and reproducible research, contributing datasets, benchmarks, and evaluation tooling aimed at stress-testing long-horizon, evidence-grounded clinical reasoning. He has presented his work at leading machine learning and biomedical informatics venues and co-authored peer-reviewed publications arising from these efforts.
+
+After completing his doctoral studies, Shan joined Phare Health as a research scientist, where he is now developing more reproducible clinical AI—prioritizing methods that make models more faithful to evidence, safer for real-world use, and easier for the broader US payer and site communities to evaluate and adopt.***Shan Chen**, *Mingye Gao, Kuleen Sasse, Thomas Hartvigsen, Brian Anthony, Lizhou Fan, Hugo Aerts, Jack Gallifant & Danielle S. Bitterman – When Helpfulness Backfires: LLMs and the Risk of False Medical Information Due to Sycophantic Behavior (npj Digital Medicine, 2025)[https://www.nature.com/articles/s41746-025-02008-z](https://www.nature.com/articles/s41746-025-02008-z)
+
+Yuxin Xiao, **Shan Chen**, Jack Gallifant, Danielle S. Bitterman, Thomas Hartvigsen & Marzyeh Ghassemi – KScope: A Framework for Characterizing the Knowledge Status of Language Models (NeurIPS, 2025)
+
+Zidi Xiong,**Shan Chen**, Zhenting Qi & Himabindu Lakkaraju – Measuring the Faithfulness of Thinking Drafts in Large Reasoning Models (NeurIPS, 2025)***Shan Chen**, *Pedro Moreira, Yuxin Xiao, Sam Schmidgall, Jeremy Warner, Hugo J.W.L. Aerts, Thomas Hartvigsen, Jack Gallifant & Danielle S. Bitterman – MedBrowseComp: Benchmarking Medical Deep Research and Computer Use (under review, 2025)
+
+***Shan Chen**, *Jirui Qi, Zidi Xiong, Raquel Fernández, Danielle S. Bitterman & Arianna Bisazza – When Models Reason in Your Language: Controlling Thinking Trace Language Comes at the Cost of Accuracy (Findings of EMNLP, 2025)
+
+***Shan Chen**, *Jack Gallifant, Kuleen Sasse, Hugo Aerts, Thomas Hartvigsen & Danielle S. Bitterman – Sparse Autoencoder Features for Classifications and Transferability (EMNLP, 2025)
+
+***Shan Chen**, *João Matos, Siena Kathleen V. Placino, Yingya Li, Juan Carlos Climent Pardo, Daphna Idan, Takeshi Tohyama, David Restrepo, Luis Filipe Nakayama, José María Millet Pascual-Leone, Guergana K. Savova, Hugo Aerts, Leo Anthony Celi, An-Kwok Ian Wong, Danielle Bitterman & Jack Gallifant – WorldMedQA-V: a multilingual, multimodal medical examination dataset for multimodal language models evaluation (Findings of NAACL, 2025)
+
+***Shan Chen**, *Jack Gallifant, Mingye Gao, Pedro Moreira, Nikolaj Munch, Ajay Muthukkumar, Arvind Rajan, Jaya Kolluri, Amelia Fiske, Janna Hastings, Hugo Aerts, Brian Anthony, Leo Anthony Celi, William G. La Cava & Danielle S. Bitterman – CrossCare: Assessing the Healthcare Implications of Pre-training Data on Language Model Bias (NeurIPS, 2024)
+
+**Shan Chen,**Marco Guevara, Shalini Moningi, Frank Hoebers, Hesham Elhalawani, Benjamin H. Kann, Fallon E. Chipidza, Jonathan Leeman, Hugo J.W.L. Aerts, Timothy Miller, Guergana K. Savova, Raymond H. Mak, Maryam Lustberg, Majid Afshar & Danielle S. Bitterman – The Impact of Using an AI Chatbot to Respond to Patient Questions (Lancet Digital Health, 2024)
+
+***Shan Chen**, *Marco Guevara, Spencer Thomas, Tafadzwa L. Chaunzwa, Idalid Franco, Benjamin H. Kann, Shalini Moningi, Jack M. Qian, Madeleine Goldstein, Susan Harper, Hugo J.W.L. Aerts, Paul J. Catalano, Guergana K. Savova, Raymond H. Mak & Danielle S. Bitterman – Large Language Models Identifying Social Determinants of Health in Electronic Health Records (npj Digital Medicine, 2024)[https://www.nature.com/articles/s41746-023-00970-0](https://www.nature.com/articles/s41746-023-00970-0)
+
+Sheng Lu, **Shan Chen**, Yingya Li, Danielle S. Bitterman, Guergana Savova & Iryna Gurevych – Measuring Pointwise 𝒱-Usable Information In-Context-ly (Findings of EMNLP, 2023)**Shan Chen**, Benjamin H. Kann, Michael B. Foote, Hugo J.W.L. Aerts, Guergana K. Savova, Raymond H. Mak & Danielle S. Bitterman – The Utility of ChatGPT for Cancer Treatment Information (JAMA Oncology, 2023)[https://www.medrxiv.org/content/10.1101/2023.03.16.23287316v1.full.pdf?utm_source=chatgpt.com](https://www.medrxiv.org/content/10.1101/2023.03.16.23287316v1.full.pdf?utm_source=chatgpt.com)***Shan Chen**, *Yingya Li, Sheng Lu, Hoang Van, Hugo J.W.L. Aerts, Guergana K. Savova & Danielle S. Bitterman – Evaluation of ChatGPT Family of Models for Biomedical Reasoning and Classification (JAMIA, 2023)[https://arxiv.org/abs/2304.02496?utm_source=chatgpt.com](https://arxiv.org/abs/2304.02496?utm_source=chatgpt.com)
+
+**Shan Chen**, Marco Guevara, Nicolas Ramirez, Arpi Murray, Jeremy L. Warner, Hugo J.W.L. Aerts, Timothy A. Miller, Guergana K. Savova, Raymond H. Mak & Danielle S. Bitterman – Natural Language Processing to Automatically Extract the Presence and Severity of Esophagitis in Notes of Patients Undergoing Radiotherapy (JCO Clinical Cancer Informatics, 2023)
+
+Summary in Dutch***Algemene Discussie en Toekomstperspectieven***
+
+Sinds de publieke doorbraak van grote taalmodellen (LLMs) in 2022 wordt de zorggemeenschap geconfronteerd met een dubbele realiteit: een ongekende capaciteit om complexe cognitieve taken te automatiseren, en tegelijk even ongekende risico’s op desinformatie, bias en fragiele redenering. De integratie van LLMs in klinische workflows—variërend van patiëntcommunicatie tot veiligheidsmonitoring van oncologische trials—biedt het potentieel om de documentatielast te verlagen, latente patiënt­risico’s bloot te leggen, evidence-synthese te versnellen en de reikwijdte van schaarse klinische middelen te vergroten. Tegelijk botsen deze kansen voortdurend met een nuchtere vaststelling: systemen worden vaak geëvalueerd op smalle of kunstmatige benchmarks die klinisch relevante faalmodi verhullen, getraind op corpora die maatschappelijke ongelijkheden bestendigen, en geoptimaliseerd voor oppervlakkige vloeiendheid in plaats van feitelijke juistheid.
+
+Dit hoofdstuk synthetiseert de inzichten uit het gehele proefschrift en plaatst deze binnen de lopende debatten over veiligheid, gelijkheid en verantwoorde implementatie. Gezamenlijk schetsen de bevindingen een route naar LLMs die niet alleen technisch indrukwekkend zijn, maar ook betrouwbaar, transparant en geschikt voor gebruik in echte klinische omgevingen.
+
+##**Deel I: Potentiële toepassingen van taalmodellen in de klinische praktijk**
+
+###**Patiëntgerichte informatie en klinische communicatie**
+
+Het eerste deel van het proefschrift richt zich op de meest directe interface tussen LLMs en de volksgezondheid: het genereren van medische informatie voor patiënten en het opstellen van berichten door clinici. Hoofdstukken 2 en 3 benaderen deze domeinen vanuit complementaire perspectieven.
+
+In Hoofdstuk 2 tonen we aan dat ChatGPT in 98% van de gevallen richtlijnconforme aanbevelingen voor kankerbehandeling geeft, maar dat een derde van de antwoorden gedeeltelijk onjuiste uitspraken bevat en 12% volledige behandelmodaliteiten hallucineert. De prestaties variëren sterk afhankelijk van de formulering van de prompt, wat de kwetsbaarheid van algemene LLMs benadrukt wanneer zij door patiënten zonder deskundig toezicht worden gebruikt. Deze bevindingen onderstrepen de noodzaak van verificatielagen, guardrails en betrokkenheid van clinici bij elke patiëntgerichte toepassing.
+
+Hoofdstuk 3 verlegt de focus van publiek gebruik naar klinische workflows en evalueert GPT-4-ondersteunde conceptberichten in patiëntenportalen. Hoewel clinici in 77% van de gevallen een hogere efficiëntie rapporteren, introduceren onbewerkte concepten een risico van 7,7% op ernstige schade door verkeerde urgentie-inschatting of ongepaste klinische adviezen. Over beide hoofdstukken heen ontstaat een centraal thema: LLMs leveren vooral waarde als hulpmiddelen die deskundige besluitvorming ondersteunen. Veilig en effectief gebruik berust op menselijke waakzaamheid, niet op autonome output.
+
+###**Ontsluiten van ongestructureerde klinische data**
+
+Hoofdstukken 4 en 5 verschuiven de aandacht van communicatie naar de gestructureerde extractie van klinisch betekenisvolle, maar routinematig onderbenutte informatie.
+
+De ernst van radiotherapie-geïnduceerde oesofagitis—een toxiciteit met directe implicaties voor overleving—wordt doorgaans alleen in vrije tekst vastgelegd. Onze fijn-afgestelde modellen bereikten macro-F1-scores tot 0,92 voor CTCAE-graadextractie, waardoor grootschalige real-world evidence mogelijk wordt waar die voorheen ontbrak.
+
+Evenzo blijven sociale determinanten van gezondheid (SDoH), krachtige maar vaak genegeerde voorspellers van uitkomsten, grotendeels onzichtbaar in gestructureerde data. Fijn-afgestelde Flan-T5-modellen identificeerden 94% van de patiënten met ongunstige SDoH, vergeleken met slechts 2% via ICD-10-codes, en deden dit met minder demografische bias dan GPT-4-few-shot prompting.
+
+Deze resultaten onderstrepen een kernboodschap: taak-specifieke fine-tuning op domeindata is niet alleen nauwkeuriger, maar ook eerlijker, en maakt ongelijkheden zichtbaar die generalistische modellen missen. Toekomstig werk omvat uitbreiding naar aanvullende toxiciteitsdomeinen, inbedding van deze pipelines in prospectieve registries en evaluatie van hun impact op klinische operaties zoals zorgnavigatie en middelenallocatie.
+
+###**Autonome agenten in trialveiligheid**
+
+De laatste boog van Deel I culmineert in Hoofdstuk 6, waarin we iRAE Agent introduceren—een agentisch systeem dat bij Mass General Brigham is gepilot voor detectie van immunotherapie-gerelateerde bijwerkingen in oncologische trials. In tegenstelling tot statische classificatoren voert iRAE meerstapsredenering uit, gestructureerde foutcontrole en ontologie-gestuurde rapportage—processen die direct aansluiten bij echte trialworkflows en aanzienlijke regulatoire betekenis hebben.
+
+Dit markeert een echt kantelpunt: de overgang van geïsoleerde extractietaken naar volwaardige klinische agenten die ontworpen zijn voor inzet in veiligheidskritische omgevingen. Toekomstig werk omvat opschaling van iRAE binnen trialnetwerken, integratie met regulatoire indieningspijplijnen en het ontwerpen van human-in-the-loop-interfaces die klinisch toezicht behouden terwijl routinematige surveillance wordt geautomatiseerd. Robuustheid tegen taalkundige variatie en weerstand tegen sycophantisch meegaand gedrag—uitgebreid behandeld in Deel II—zijn essentieel voor betrouwbare implementatie.
+
+##**Deel II: Potentiële faalmodi van taalmodellen in medische contexten**
+
+Waar Deel I de aanzienlijke belofte van LLMs voor klinische ondersteuning laat zien, onderzoekt Deel II de structurele kwetsbaarheden die ontstaan wanneer deze systemen in veiligheidskritische omgevingen worden ingezet. Deze hoofdstukken tonen gezamenlijk aan dat dezelfde statistische leermethoden die generalisatie over enorme tekstcorpora mogelijk maken, ook leiden tot fragiel en gemakkelijk verstoord gedrag wanneer modellen medische redenering moeten uitvoeren.
+
+Hoofdstuk 7 stelt een fundamenteel principe vast voor verantwoorde implementatie: generalistische LLMs zijn niet per definitie het juiste instrument voor de meeste biomedische NLP-taken. In tegenstelling tot de aanname dat grotere modellen met bredere training inherent beter presteren, laten onze bevindingen zien dat taak-specifiek fijn-afgestelde modellen GPT-3.5 en GPT-4 niet alleen overtreffen in gestructureerde extractietaken, maar dit ook doen met aanzienlijk minder rekenkracht. Deze domein-afgestemde modellen vertonen grotere stabiliteit, interpreteerbaarheid en consistentie—kwaliteiten die essentieel zijn voor klinische operaties. Het veronderstelde “generalist-voordeel” houdt geen stand onder empirische toetsing en benadrukt de noodzaak om modelkeuze af te stemmen op de specifieke beperkingen van de zorg, in plaats van standaard het grootste beschikbare systeem te kiezen.
+
+Hoofdstukken 8 tot en met 10 onthullen diepere epistemische tekortkomingen die geworteld zijn in pre-training-distributies. In Hoofdstuk 8 toont de Cross-Care-studie aan dat wanneer LLMs wordt gevraagd ziekteprevalentie te schatten, hun antwoorden de frequentie volgen waarmee ziekten samen voorkomen in The Pile—een Engelstalig, internet-afgeleid dataset—en niet de werkelijke epidemiologische data. Dit patroon houdt stand over talen en alignment-strategieën heen, wat suggereert dat deze modellen statistische reflecties van hun trainingscorpora internaliseren in plaats van medisch gefundeerde representaties van ziektelast. Deze representatiebias heeft diepgaande implicaties voor taken die epidemiologisch inzicht of populatie-niveau redenering vereisen.
+
+De kwetsbaarheid die in Hoofdstuk 9 wordt blootgelegd, benadrukt een parallelle lexicale fragiliteit. Hoewel LLMs nominaal “weten” dat merk- en generieke geneesmiddel­namen naar dezelfde farmacologische stof verwijzen, leidt vervanging van de ene door de andere tot een nauwkeurigheidsverlies tot 10%. Deze discrepantie weerspiegelt een afhankelijkheid van lexicale co-occurrencepatronen in plaats van robuuste conceptuele representaties van geneesmiddelequivalentie. In de klinische praktijk—waar merk- versus generieke namen variëren per notitie, specialisme en instelling—introduceert dergelijke fragiliteit onvoorspelbare en potentieel gevaarlijke inconsistentie.
+
+Hoofdstuk 10 voegt een gedragsmatige dimensie toe aan deze representatieproblemen en laat zien dat LLMs vaak instemmen met onjuiste claims over geneesmiddelequivalentie wanneer zulke claims in gebruikersprompts zijn ingebed. Deze sycophantische neiging—waarbij modellen prioriteit geven aan instemming en schijnbare behulpzaamheid boven feitelijke juistheid—kan leiden tot het zelfverzekerd verspreiden van medische desinformatie. Dit onderstreept de wisselwerking tussen alignment-methoden en klinisch risico: systemen die zijn geoptimaliseerd om beleefd, coöperatief of gebruiksvriendelijk te klinken, kunnen gevaarlijk worden wanneer die eigenschappen epistemische integriteit verdringen.
+
+Samen schetsen de bevindingen van Deel II een waarschuwend maar constructief beeld: huidige LLMs zijn nog geen betrouwbare arbiters van medische kennis. Hun gevoeligheid voor pre-training-bias, lexicale verstoringen, gebrekkige kennisrepresentatie en misalignment suggereert dat naïeve inzet in de zorg bestaande ongelijkheden kan versterken en nieuwe vormen van schade kan introduceren. Deze kwetsbaarheden onderstrepen de noodzaak van rigoureuze evaluatiekaders en doelgerichte waarborgen vóór klinische integratie.
+
+##**Maatschappelijke impact en toekomstperspectieven**
+
+De bredere maatschappelijke betekenis van dit proefschrift ligt in de nadruk dat klinische AI niet alleen moet worden beoordeeld op technische prestaties, maar ook op afstemming met de praktische, ethische en gelijkheidsgerichte eisen van de echte zorgpraktijk. Door elk experiment te verankeren in levende workflows—patiëntberichtgeving, toxiciteitssurveillance, trialveiligheidsmonitoring—laat dit werk zien dat LLMs die op gesaniteerde benchmarks of synthetische taken worden getest, minder inzicht bieden in hun gedrag onder echte klinische omstandigheden. Modellen die binnen authentieke operationele settings worden geëvalueerd, onthullen daarentegen de beperkingen, faalmodi en frictiepunten die bepalen of AI-hulpmiddelen de zorg daadwerkelijk verbeteren.
+
+Een kernbijdrage van dit proefschrift is de demonstratie dat last-mile-alignment—en niet schaal—de doorslaggevende factor is voor klinisch betekenisvolle AI. Foundation models leveren brede taalkundige competentie, maar zijn in ruwe vorm onvoldoende voor veilige inzet in echte zorgomgevingen. De meest relevante klinische waarde ontstaat wanneer modellen last-mile-alignment ondergaan: gerichte fine-tuning, kalibratie en gedragsoptimalisatie met lokale data, domeinspecifieke ontologieën en instelling-gedefinieerde veiligheidsbeperkingen. Deze laatste stap transformeert algemene capaciteiten tot betrouwbare, workflow-klare hulpmiddelen die de werkelijke beslisomgevingen van clinici weerspiegelen.
+
+Cruciaal is dat last-mile-alignment inherent interdisciplinair is. Zij vereist domeinexperts om te definiëren wat “correct” betekent, informatici om modelgedrag te valideren over heterogene EPD-datastromen, ethici om potentiële ongelijkheden of normatieve risico’s te beoordelen, en regulatoire specialisten om naleving van evoluerende standaarden te waarborgen. Kleinere, fijn-afgestelde modellen faciliteren deze samenwerking op manieren die grote generalistische modellen niet kunnen: ze zijn transparant genoeg om te auditen, modulair genoeg om aan te passen en lichtgewicht genoeg om snel en veilig te itereren. In die zin wordt de weg naar betrouwbare klinische AI niet gedomineerd door steeds grotere vooraf getrainde systemen, maar door collaboratief afgestemde modellen die rigoureuze, lokaal verankerde last-mile-verfijning ondergaan.
+
+De maatschappelijke implicaties van het extractiewerk in Deel I zijn aanzienlijk. Door de automatische identificatie van radiotherapie-toxiciteiten en sociale determinanten van gezondheid maakt dit onderzoek de generatie mogelijk van real-world evidence die voorheen ontoegankelijk was. Deze capaciteiten kunnen een eerlijkere verdeling van klinische middelen ondersteunen, trialontwerp verbeteren en ongelijkheden blootleggen die verborgen blijven in documentatiepraktijken. Ze creëren ook kansen om publieke gezondheidsinterventies, beleidsontwerp en gezondheids­gelijkheid op schaal te informeren.
+
+Parallel hieraan bieden de faalpatronen die in Deel II zijn blootgelegd concrete handvatten voor ontwikkelaars, toezichthouders en zorgorganisaties om klinische risico’s te identificeren, te mitigeren en te monitoren. Pre-training-bias, geneesmiddelnaam-fragiliteit en sycophantisch gedrag zijn geen abstracte tekortkomingen; het zijn faalmodi met directe implicaties voor patiëntveiligheid en publiek vertrouwen. Door deze kwetsbaarheden systematisch te karakteriseren, biedt het proefschrift een routekaart voor modelverbetering en governance-kaders die feitelijke gronding, robuustheid en ethische verantwoordelijkheid centraal stellen.
+
+Tot slot dragen de vrijgave van WorldMedQA-V en MedBrowseComp bij aan duurzame, publiek toegankelijke infrastructuur voor het beoordelen van meertalige prestaties en moeilijke maar realistische medische redenering. Deze benchmarks stellen de gemeenschap in staat te meten of toekomstige modellen daadwerkelijk vooruitgang boeken richting eerlijke, evidence-gebaseerde klinische intelligentie—of slechts optimaliseren voor Engelstalige, oppervlakkige taken die bestaande ongelijkheden reproduceren. In een veld waarin driekwart van de gepubliceerde studies nog steeds geen reproduceerbaarheid of diverse validatie kent, is dergelijke gedeelde infrastructuur essentieel om wetenschappelijke standaarden te verhogen en zinvol regulatoir toezicht mogelijk te maken.
+
+Vooruitkijkend zal de toekomst van klinische AI niet afhangen van schaal alleen, maar van rigoureuze wetenschappelijke methodologie, transparante evaluatiepijplijnen en doordachte integratie met menselijke expertise. LLMs die de zorg daadwerkelijk verbeteren, zullen die zijn die vertrouwen verdienen—door robuustheid, rechtvaardigheid en verifieerbare correctheid—en niet enkel door taalkundige verfijning. Dit proefschrift legt de fundamentele evidentie, kaders en datasets om de ontwikkeling van zulke systemen te sturen en wijst de weg naar een toekomst waarin klinische AI de veiligheid, gelijkheid en integriteit van de mondiale gezondheidszorg versterkt—en niet ondermijnt.
+
+Acknowledgments***Acknowledgments***
+
+I would like to express my sincere gratitude to the many people and communities who supported me throughout this PhD.
+
+First and foremost, I am deeply grateful to my supervisors and mentors,**Prof. Hugo Aerts** and**Dr. Danielle S. Bitterman**, for their mentorship, patience, and steady guidance. Hugo consistently encouraged me to think beyond the immediate project and aim for work that is both ambitious and clinically meaningful.
+
+I owe a special, heartfelt thanks to**Danielle**. Beyond being an outstanding mentor, she has been a constant source of calm, care, and protection during the most uncertain parts of this journey. She taught me, often through small moments rather than formal lessons, what it means to lead with generosity while holding a high standard. I learned from her how to communicate with clarity, how to write with the reader in mind, and how to stay anchored in what matters clinically when the technical path is tempting but the real-world relevance is unclear. I am also grateful for how she showed up as a person by checking in when things were hard, taking time to support my growth, and modeling a kind of integrity and kindness that I hope to carry forward in my own career. In many ways, her mentorship shaped not just this thesis, but also the way I think about responsibility in medical AI.
+
+I am also grateful to my**assessment and reading committee** for the time and care they put into reviewing this dissertation and helping shape it into a stronger piece of work. In particular, I would like to thank**Prof. André Dekker, Prof. Jan Scholtes, Prof. Dirk de Ruysscher, Prof. Martha Palmer,** and**Prof. Steven Bethard** for their thoughtful feedback and for taking on the responsibility of assessing this thesis. I also appreciate the support from the doctoral administration and PhD office at**Maastricht University**, and everyone involved in coordinating the procedures for the joint program.
+
+This thesis would not have been possible without the colleagues, collaborators, and friends I have been fortunate to work with across**Mass General Brigham and Brigham and Women’s Hospital**, the**Harvard–MGB AIM program**, and the broader research community around us. I am thankful to my co-authors and collaborators, especially**Marco Guevara, Jack Gallifant, Zidi Xiong, Jirui Qi, Yuxin Xiao, Yingya Li, Sheng Lu,** **Sam Schmidgall,** and**Pedro Moreira**, for their creativity, persistence, and willingness to iterate until the ideas and writing were truly clear. I also want to acknowledge the clinicians, domain experts, and reviewers who pushed me to treat evaluation as more than a metric, and to build systems that can withstand real clinical ambiguity.
+
+I would also like to acknowledge earlier mentors and training that continue to shape how I think and write. My time at**Boston Children’s Hospital’s Computational Health Informatics Program (CHIP)**, including the opportunity to learn from and work with**Prof. Tim Miller** and**Prof. Guergana Savova**, gave me a foundation in language, rigor, and careful reasoning that I still rely on today. I am also grateful for the community they built and the many awesome colleagues there whom I continue to learn from.
+
+Finally, I want to thank my family and the people closest to me for their unwavering support. This journey came with long stretches of uncertainty, revisions that never seemed to end, and the quiet pressure of trying to do work that matters. My family has been a constant source of strength and perspective.
+
+To my partner,**Kaitlin**, thank you for growing with me through this colorful period of my life. Your patience, steadiness, and encouragement not only shaped my ability to complete this thesis but also influenced who I became during the process. There were many moments when I could not see past the immediate stress, and you helped me zoom out, regain perspective, and keep going. I am grateful that we supported each other through the intensity of PhD life, and that the growth was shared with so many exciting adventures!
+
+To my close friends, especially**Sam** and**Peng**, thank you for your unwavering support through this entire process. You were a constant, grounding presence, helping me remember that even slow daily progress is real progress, and lightening the journey when I needed it most. I am profoundly grateful to all those who helped me maintain perspective and continue my growth throughout this endeavor.
+
+To all of you, thank you for making this work possible, and for making the journey so Shan Chen.
+
+Appendices
+
+#***Appendices***

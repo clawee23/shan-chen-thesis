@@ -1,0 +1,133 @@
+:::{#tbl-coeff-reff-lmer}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th><span data-qmd="**Subject**"></span></th>
+            <th><span data-qmd="**Coefficient**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span data-qmd="`ara_t1`"></span></td>
+            <td>0.281</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`ara_t2`"></span></td>
+            <td>-0.384</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="`ara_t3`"></span></td>
+            <td>-0.103</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`nld_t1`"></span></td>
+            <td>0.001</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`nld_t2`"></span></td>
+            <td>-0.459</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="`nld_t3`"></span></td>
+            <td>0.458</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`ita_t1`"></span></td>
+            <td>0.086</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`ita_t4`"></span></td>
+            <td>0.350</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="`ita_t5`"></span></td>
+            <td>-0.436</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`tur_t1`"></span></td>
+            <td>-0.381</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`tur_t2`"></span></td>
+            <td>0.272</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="`tur_t3`"></span></td>
+            <td>0.109</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`ukr_t1`"></span></td>
+            <td>0.077</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`ukr_t2`"></span></td>
+            <td>0.314</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="`ukr_t3`"></span></td>
+            <td>-0.391</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`vie_t1`"></span></td>
+            <td>0.012</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`vie_t2`"></span></td>
+            <td>0.176</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`vie_t3`"></span></td>
+            <td>-0.188</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \small
+    \centering
+    \begin{tabular}{lr}
+        \toprule
+         \textbf{Subject} & \textbf{Coefficient} \\
+        \midrule
+        \texttt{ara_t1} & 0.281  \\
+        \texttt{ara_t2} & -0.384  \\
+        \texttt{ara_t3} & -0.103  \\
+        \midrule
+        \texttt{nld_t1} & 0.001  \\
+        \texttt{nld_t2} & -0.459  \\
+        \texttt{nld_t3} & 0.458  \\
+        \midrule
+        \texttt{ita_t1} & 0.086  \\
+        \texttt{ita_t4} & 0.350  \\
+        \texttt{ita_t5} & -0.436  \\
+        \midrule
+        \texttt{tur_t1} & -0.381  \\
+        \texttt{tur_t2} & 0.272  \\
+        \texttt{tur_t3} & 0.109  \\
+        \midrule
+        \texttt{ukr_t1} & 0.077  \\
+        \texttt{ukr_t2} & 0.314  \\
+        \texttt{ukr_t3} & -0.391  \\
+        \midrule
+        \texttt{vie_t1} & 0.012  \\
+        \texttt{vie_t2} & 0.176  \\
+        \texttt{vie_t3} & -0.188  \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Coefficients of the random intercept related to the `subject_id` variable, representing the identity of the translator performing the translation.
+:::

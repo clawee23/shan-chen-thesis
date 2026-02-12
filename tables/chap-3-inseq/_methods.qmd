@@ -1,0 +1,167 @@
+:::{#tbl-methods}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th><span data-qmd="**Method**"></span></th>
+            <th><span data-qmd="**Source**"></span></th>
+            <th><span data-qmd="$f(l)$"></span></th>
+        </tr>
+    </thead>
+    <tr>
+        <td rowspan="6"><span data-qmd="**G**"></span></td>
+        <td>(Input ×) Gradient</td>
+        <td><span data-qmd="@simonyan-etal-2014-saliency"></span></td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>DeepLIFT</td>
+        <td><span data-qmd="@shrikumar-etal-2017-deeplift"></span></td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>GradientSHAP</td>
+        <td><span data-qmd="@lundberg-lee-2017-shap"></span></td>
+        <td>❌</td>
+    </tr>
+    <tr>
+        <td>Integrated Gradients</td>
+        <td><span data-qmd="@sundararajan-etal-2017-ig"></span></td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Discretized IG</td>
+        <td><span data-qmd="@sanyal-ren-2021-discretized"></span></td>
+        <td>❌</td>
+    </tr>
+    <tr class="midrule">
+        <td><span data-qmd="**Sequential IG**"></span></td>
+        <td><span data-qmd="@enguehard-2023-sequential"></span></td>
+        <td>❌</td>
+    </tr>
+    <tr class="midrule">
+        <td><span data-qmd="**I**"></span></td>
+        <td>Attention Weights</td>
+        <td><span data-qmd="@bahdanau-etal-2015-neural"></span></td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td rowspan="4"><span data-qmd="**P**"></span></td>
+        <td>Occlusion (Blank-out)</td>
+        <td><span data-qmd="@zeiler-fergus-2014-visualizing"></span></td>
+        <td>❌</td>
+    </tr>
+    <tr>
+        <td>LIME</td>
+        <td><span data-qmd="@ribeiro-etal-2016-lime"></span></td>
+        <td>❌</td>
+    </tr>
+    <tr>
+        <td><span data-qmd="**Value Zeroing**"></span></td>
+        <td><span data-qmd="@mohebbi-etal-2023-quantifying"></span></td>
+        <td>✅</td>
+    </tr>
+    <tr class="midrule">
+        <td><span data-qmd="**ReAGent**"></span></td>
+        <td><span data-qmd="@zhao-shan-2024-reagent"></span></td>
+        <td>❌</td>
+    </tr>
+    <tr>
+        <td rowspan="9"><span data-qmd="**S**"></span></td>
+        <td>(Log) Probability</td>
+        <td>-</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Softmax Entropy</td>
+        <td>-</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Target Cross-entropy</td>
+        <td>-</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Perplexity</td>
+        <td>-</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>KL Divergence</td>
+        <td>-</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><span data-qmd="Contrastive Logits/Prob. $\Delta$"></span></td>
+        <td><span data-qmd="@yin-neubig-2022-interpreting"></span></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><span data-qmd="$\mu$ MC Dropout Prob."></span></td>
+        <td><span data-qmd="@gal-ghahramani-2016-dropout"></span></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><span data-qmd="**PCXMI**"></span></td>
+        <td><span data-qmd="@fernandes-etal-2023-translation"></span></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><span data-qmd="**In-context PVI**"></span></td>
+        <td><span data-qmd="@lu-etal-2023-measuring"></span></td>
+        <td></td>
+    </tr>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\small
+\centering
+\begin{tabular}{p{0.2em}llc}
+\toprule
+& \textbf{Method} & \textbf{Source} & $f(l)$ \\
+\midrule
+\multirow{5}{*}{\textbf{G}} & (Input $\times$) Gradient & Simonyan et al. (2014) & ✅ \\
+& DeepLIFT & Shrikumar et al. (2016) & ✅ \\
+& GradientSHAP & Lundberg and Lee (2017) & ❌ \\
+& Integrated Gradients & Sundararajan et al. 2017 & ✅ \\
+& Discretized IG & Sanyal and Ren (2021) & ❌ \\
+& \textbf{Sequential IG} & Enguehard (2023) & ❌ \\
+\midrule
+\textbf{I} & Attention Weights & Bahdanau et al. (2015) & ✅ \\
+\midrule
+\multirow{3}{*}{\textbf{P}} & Occlusion (Blank-out) &  Zeiler and Fergus (2014) & ❌ \\
+& LIME & Ribeiro et al. (2016) & ❌ \\
+& \textbf{Value Zeroing} & Mohebbi et al. (2023) & ✅ \\
+& \textbf{ReAGent} & Zhao and Shan (2024) & ❌ \\
+\midrule
+\midrule
+\multirow{4}{*}{\textbf{S}} & (Log) Probability & - \\
+& Softmax Entropy & - \\
+& Target Cross-entropy & - \\
+& Perplexity & - \\
+& KL Divergence & - \\
+& Contrastive Logits/Prob. $\Delta$ & Yin and Neubig (2022) \\
+& $\mu$ MC Dropout Prob. & Gal and Ghahramani (2016) \\
+& \textbf{PCXMI} & Fernandes et al. (2023) \\
+& \textbf{In-context PVI} & Lu et al. (2023) \\
+& \textbf{Top-p Tokens} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Overview of gradient-based (**G**), internals-based (**I**) and perturbation-based (**P**) attribution methods and built-in step functions (**S**) available in Inseq. $f(l)$ marks methods allowing for attribution of arbitrary intermediate layers. **Bolded methods** were introduced with [Inseq v0.6](https://github.com/inseq-team/inseq/releases/tag/v0.6.0).
+:::

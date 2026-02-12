@@ -1,0 +1,203 @@
+:::{#tbl-turkish-wordlist}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+    <table class="center-table">
+        <thead>
+            <tr>
+                <th><span data-qmd="**Turkish**"></span></th>
+                <th class="rline"><span data-qmd="**English**"></span></th>
+                <th><span data-qmd="**Turkish**"></span></th>
+                <th class="rline"><span data-qmd="**English**"></span></th>
+                <th><span data-qmd="**Turkish**"></span></th>
+                <th><span data-qmd="**English**"></span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>teknisyen</td>
+                <td class="rline">technician</td>
+                <td>memur</td>
+                <td class="rline">officer</td>
+                <td>muhasebeci</td>
+                <td>accountant</td>
+            </tr>
+            <tr>
+                <td>patolog</td>
+                <td class="rline">pathologist</td>
+                <td>süpervizör</td>
+                <td class="rline">supervisor</td>
+                <td>öğretmen</td>
+                <td>teacher</td>
+            </tr>
+            <tr>
+                <td>mühendis</td>
+                <td class="rline">engineer</td>
+                <td>avukat</td>
+                <td class="rline">lawyer</td>
+                <td>işçi</td>
+                <td>worker</td>
+            </tr>
+            <tr>
+                <td>planlamacı</td>
+                <td class="rline">planner</td>
+                <td>eğitimci</td>
+                <td class="rline">educator</td>
+                <td>yönetici</td>
+                <td>practitioner</td>
+            </tr>
+            <tr>
+                <td>katip</td>
+                <td class="rline">clerk</td>
+                <td>tesisatçı</td>
+                <td class="rline">plumber</td>
+                <td>danışman</td>
+                <td>consultant</td>
+            </tr>
+            <tr>
+                <td>eğitmen</td>
+                <td class="rline">instructor</td>
+                <td>müfettiş</td>
+                <td class="rline">inspector</td>
+                <td>cerrah</td>
+                <td>surgeon</td>
+            </tr>
+            <tr>
+                <td>tamirci</td>
+                <td class="rline">mechanic</td>
+                <td>veteriner</td>
+                <td class="rline">veterinarian</td>
+                <td>müdür</td>
+                <td>manager</td>
+            </tr>
+            <tr>
+                <td>kimyager</td>
+                <td class="rline">chemist</td>
+                <td>terapist</td>
+                <td class="rline">therapist</td>
+                <td>makinist</td>
+                <td>machinist</td>
+            </tr>
+            <tr>
+                <td>resepsiyonist</td>
+                <td class="rline">receptionist</td>
+                <td>mimar</td>
+                <td class="rline">architect</td>
+                <td>kütüphaneci</td>
+                <td>librarian</td>
+            </tr>
+            <tr>
+                <td>kuaför</td>
+                <td class="rline">hairdresser</td>
+                <td>ressam</td>
+                <td class="rline">painter</td>
+                <td>fırıncı</td>
+                <td>baker</td>
+            </tr>
+            <tr>
+                <td>eczacı</td>
+                <td class="rline">pharmacist</td>
+                <td>programlamacı</td>
+                <td class="rline">programmer</td>
+                <td>kapıcı</td>
+                <td>janitor</td>
+            </tr>
+            <tr>
+                <td>itfaiyeci</td>
+                <td class="rline">firefighter</td>
+                <td>psikolog</td>
+                <td class="rline">psychologist</td>
+                <td>bilim insanı</td>
+                <td>scientist</td>
+            </tr>
+            <tr>
+                <td>doktor</td>
+                <td class="rline">physician</td>
+                <td>sevk memuru</td>
+                <td class="rline">dispatcher</td>
+                <td>marangoz</td>
+                <td>carpenter</td>
+            </tr>
+            <tr>
+                <td>kasiyer</td>
+                <td class="rline">cashier</td>
+                <td>hemşire</td>
+                <td class="rline">nurse</td>
+                <td>komisyoncu</td>
+                <td>broker</td>
+            </tr>
+            <tr>
+                <td>araştırmacı</td>
+                <td class="rline">investigator</td>
+                <td>şef</td>
+                <td class="rline">chef</td>
+                <td>barmen</td>
+                <td>bartender</td>
+            </tr>
+            <tr>
+                <td>doktor</td>
+                <td class="rline">doctor</td>
+                <td>uzman</td>
+                <td class="rline">specialist</td>
+                <td>sekreter</td>
+                <td>secretary</td>
+            </tr>
+            <tr>
+                <td>elektrikçi</td>
+                <td class="rline">electrician</td>
+                <td></td>
+                <td class="rline"></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\centering
+\small
+\begin{tabular}{ll|ll}
+\toprule[1.5pt]
+\textbf{Turkish}       & \textbf{English}      & \textbf{Turkish}       & \textbf{English}      \\
+\midrule
+teknisyen     & technician   & memur         & officer      \\
+muhasebeci    & accountant   & patolog       & pathologist  \\
+süpervizör    & supervisor   & öğretmen      & teacher      \\
+mühendis      & engineer     & avukat        & lawyer       \\
+işçi          & worker       & planlamacı    & planner      \\
+eğitimci      & educator     & yönetici      & practitioner \\
+katip         & clerk        & tesisatçı     & plumber      \\
+danışman      & consultant   & eğitmen       & instructor   \\
+müfettiş      & inspector    & cerrah        & surgeon      \\
+tamirci       & mechanic     & veteriner     & veterinarian \\
+müdür         & manager      & kimyager      & chemist      \\
+terapist      & therapist    & makinist      & machinist    \\
+resepsiyonist & receptionist & mimar         & architect    \\
+kütüphaneci   & librarian    & kuaför        & hairdresser  \\
+ressam        & painter      & fırıncı       & baker        \\
+eczacı        & pharmacist   & programlamacı & programmer   \\
+kapıcı        & janitor      & itfaiyeci     & firefighter  \\
+psikolog      & psychologist & bilim insanı  & scientist    \\
+doktor        & physician    & sevk memuru   & dispatcher   \\
+marangoz      & carpenter    & kasiyer       & cashier      \\
+hemşire       & nurse        & komisyoncu    & broker       \\
+araştırmacı   & investigator & şef           & chef         \\
+barmen        & bartender    & doktor        & doctor       \\
+uzman         & specialist   & sekreter      & secretary    \\
+elektrikçi    & electrician  &               & \\
+\bottomrule[1.5pt]
+\end{tabular}
+\end{table}
+```
+
+:::
+
+List of the 49 Turkish occupation terms and their English translations used in the gender bias case study.
+:::

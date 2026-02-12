@@ -1,0 +1,73 @@
+:::{#tbl-case-study-3}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr class="bottomrule">
+            <td><span data-qmd="[Input: Prompt + Retrieved docs (N=5) + Query]{.smallcaps}"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Document [2]** [...]"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Document [3]** [...] What will happen if you accidentally set off your security system? The siren will sound and it will be loud, but you should be able to stop the siren by entering your code into your keypad. [...] You may also receive a call from the response center, checking to see if it is an actual alarm or a false alarm. You simply need to cancel the alarm with the response center by telling them your password (different from your keypad code). [...]"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Document [4]** [...]"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="**Query**: How does a small paper library bar code set off the security alarm when you haven't checked a book out."></span></td>
+        </tr>
+        <tr class="bottomrule">
+            <td><span data-qmd="[Answer attribution results]{.smallcaps}"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Self-citation**: [...] The response center may contact the individual to confirm if it's a false alarm, and the individual can cancel the alarm by providing their password at the keypad. [\[$\varnothing$\]]{color='blue'} [...]"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**[Mirage]{.smallcaps}**: ... The response [center]{bg-color='yellow'}$^{(3)}$ [may]{bg-color='yellow'}$^{(3)}$ contact the individual to confirm if [it]{bg-color='yellow'}$^{(3)}$'s a false alarm, and the [individual]{bg-color='yellow'}$^{(3)}$ can [cancel]{bg-color='yellow'}$^{(3)}$ the alarm by [providing]{bg-color='yellow'}$^{(3)}$ their password at the [keypad]{bg-color='yellow'}$^{(3)}$. [[3]]{color='blue'} ..."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**NLI ([True]{.smallcaps} model)**: [[3]]{color='blue'} entails the answer sentence."></span></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\centering
+\small
+\begin{tabular}{p{0.95\textwidth}}
+\toprule
+\textsc{Input: Prompt + Retrieved docs (N=5) + Query} \\
+\midrule
+\textbf{Document [2]} [...]\\
+\textbf{Document [3]}
+[...] What will happen if you accidentally set off your security system? The siren will sound and it will be loud, but you should be able to stop the siren by entering your code into your keypad. [...] \\
+\textbf{Document [4]} [...]\\
+\midrule
+\textbf{Query}: How does a small paper library bar code set off the security alarm when you haven't checked a book out.\\
+\midrule
+\textsc{Answer attribution results} \\
+\midrule
+\textbf{Self-citation}: [...] The response center may contact the individual to confirm if it's a false alarm, and the individual can cancel the alarm by providing their password at the keypad. \textcolor{blue}{[$\varnothing$]} [...] \\
+\midrule
+\textbf{\textsc{mirage}}: ... The response \colorbox{yellow}{center}$^\textit{(3)}$ \colorbox{yellow}{may}$^\textit{(3)}$ contact the individual to confirm if \colorbox{yellow}{it}$^\textit{(3)}$'s a false alarm, and the \colorbox{yellow}{individual}$^\textit{(3)}$ can \colorbox{yellow}{cancel}$^\textit{(3)}$ the alarm by \colorbox{yellow}{providing}$^\textit{(3)}$ their password at the \colorbox{yellow}{keypad}$^\textit{(3)}$.\textcolor{blue}{[3]} ... \\
+\midrule
+\textbf{NLI (\textsc{true} model)}: \textcolor{blue}{[3] entails the answer sentence.} \\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Example described in [@sec-chap-5-mirage]: [Mirage]{.smallcaps} attributes the generation to Document [3] when *cancel* is used instead of *prevent*.
+:::

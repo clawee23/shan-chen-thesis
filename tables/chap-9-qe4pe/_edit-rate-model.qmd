@@ -1,0 +1,183 @@
+:::{#tbl-qe4pe-edit-rate-model}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table" style="width: 100% !important;">
+    <thead>
+        <tr>
+            <th colspan="3" class="group-header"><span data-qmd="**Target:** % of edited characters in a segment (0-100)."></span></th>
+        </tr>
+        <tr class="subheader">
+            <th><span data-qmd="**Feature**"></span></th>
+            <th><span data-qmd="**Coeff.**"></span></th>
+            <th><span data-qmd="**Sig.**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="longrow">(Intercept)</td>
+            <td>21.0</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td>MT Num. Chars</td>
+            <td>10.3</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td>Highlight Ratio %</td>
+            <td>7.1</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td>Target Lang.: ITA</td>
+            <td>-9.9</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td>Text Domain: Social</td>
+            <td>10.9</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Oracle]{.smallcaps color='brand-color.oracle'} Highlight"></span></td>
+            <td>-5.2</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Sup.]{.smallcaps color='brand-color.supervised'} Highlight"></span></td>
+            <td>-4.7</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Unsup.]{.smallcaps color='brand-color.unsupervised'} Highlight"></span></td>
+            <td>-0.9</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="ITA:[Oracle]{.smallcaps color='brand-color.oracle'}"></span></td>
+            <td>12.2</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="ITA:[Sup.]{.smallcaps color='brand-color.supervised'}"></span></td>
+            <td>15.9</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="ITA:[Unsup.]{.smallcaps color='brand-color.unsupervised'}"></span></td>
+            <td>13.4</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Social:[Oracle]{.smallcaps color='brand-color.oracle'}"></span></td>
+            <td>3.5</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Social:[Sup.]{.smallcaps color='brand-color.supervised'}"></span></td>
+            <td>-0.4</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Social:[Unsup.]{.smallcaps color='brand-color.unsupervised'}"></span></td>
+            <td>2.1</td>
+            <td>**</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Highlight Ratio:[Oracle]{.smallcaps color='brand-color.oracle'}"></span></td>
+            <td>-0.18</td>
+            <td></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="Highlight Ratio:[Sup.]{.smallcaps color='brand-color.supervised'}"></span></td>
+            <td>-1.78</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td>Edit Order</td>
+            <td colspan="2" rowspan="3" class="center rowspan"><span data-qmd="**Random Factors**"></span></td>
+        </tr>
+        <tr>
+            <td>Translator ID</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="midrule">
+            <td>Segment ID</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>MT Num. Chars</td>
+            <td colspan="2" rowspan="4" class="center rowspan"><span data-qmd="**Zero-Inflation Factors**"></span></td>
+        </tr>
+        <tr>
+            <td>Target Lang</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Text Domain</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Translator ID</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \setlength{\tabcolsep}{3pt}
+    \footnotesize
+    \centering
+    \begin{tabular}{lcc}
+    \toprule[1.5pt]
+    \multicolumn{3}{l}{\textbf{Target:} \% edited char. in segment (0-100).} \\
+    \midrule
+    \textbf{Feature} & \textbf{Coeff.} & \textbf{Sig.} \\
+    \midrule
+    (Intercept)                      & 21.0  & *** \\
+    MT Num. Chars                    & 10.3  & *** \\
+    High. Ratio \%               & 7.1   & *** \\
+    Target Lang.: ITA                & -9.9  & *** \\
+    Domain: Social              & 10.9  & *** \\
+    \OracleShort~Highlight           & -5.2  & \\
+    \SupervisedShort Highlight       & -4.7  & \\
+    \UnsupervisedShort~Highlight     & -0.9  & \\
+    ITA:\OracleShort                 & 12.2 & *** \\
+    ITA:\SupervisedShort             & 15.9 & *** \\
+    ITA:\UnsupervisedShort           & 13.4 & *** \\
+    Social:\OracleShort              & 3.5  & *** \\
+    Social:\SupervisedShort          & -0.4 &  \\
+    Social:\UnsupervisedShort        & 2.1  & ** \\
+    High. Ratio:\OracleShort     & -0.18 & \\
+    High. Ratio:\SupervisedShort & -1.78 & *** \\
+    \midrule
+    Edit Order & \multicolumn{2}{c}{\multirow{3}{*}{\textbf{Random Factors}}} \\
+    Translator ID \\
+    Segment ID \\
+    \midrule
+    MT \# Chars & \multicolumn{2}{c}{\multirow{4}{*}{\textbf{Zero-Inflation Factors}}} \\
+    Target Lang \\
+    Text Domain \\
+    Translator ID \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Details for the zero-inflated negative binomial mixed-effect model used for the editing analysis of @sec-qe4pe-highlights-edits. The model achieves an RMSE of 0.11 and an $R^2$ of 0.98.
+:::

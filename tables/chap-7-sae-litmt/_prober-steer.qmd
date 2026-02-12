@@ -1,0 +1,54 @@
+:::{#tbl-chap7-prober-steer}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th><span data-qmd="MT → H*"></span></th>
+            <th><span data-qmd="MT → MT"></span></th>
+            <th><span data-qmd="H* → H*"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td><span data-qmd="**Gemma 2 2B**"></span></td>
+            <td>0.94 <small>±0.01</small></td>
+            <td>0.07 <small>±0.02</small></td>
+            <td>0.72 <small>±0.15</small></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Gemma 2 9B**"></span></td>
+            <td>0.93 <small>±0.02</small></td>
+            <td>0.12 <small>±0.10</small></td>
+            <td>0.68 <small>±0.19</small></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \small
+    \centering
+    \begin{tabular}{lccc}
+    \toprule
+    & MT~$\rightarrow$ H* & MT~$\rightarrow$ MT & H* $\rightarrow$ H* \\
+    \midrule
+    Gemma 2 2B & 0.94 \scalebox{0.8}{$\pm0.01$}  & 0.07 \scalebox{0.8}{$\pm0.02$}  & 0.72 \scalebox{0.8}{$\pm0.15$} \\
+    Gemma 2 9B & 0.93 \scalebox{0.8}{$\pm0.02$}  & 0.12 \scalebox{0.8}{$\pm0.10$}  & 0.68 \scalebox{0.8}{$\pm0.19$} \\ 
+    \bottomrule
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Probing accuracy on Cont<sub>HT</sub>-steered activations averaged across languages and [H$_1$]{color="brand-color.darkgreen"}/[H$_2$]{color="brand-color.lightbluedim"} translators. Probes trained on MS activations reliably detect the impact of SAE Cont. steering over model generations, suggesting similar mechanisms.
+:::

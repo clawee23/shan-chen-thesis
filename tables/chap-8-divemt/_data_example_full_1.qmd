@@ -1,0 +1,231 @@
+:::{#tbl-data_example_full_1}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr>
+            <td colspan="2"><span data-qmd="**[English]{.smallcaps}**"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td colspan="2">Inland waterways can be a good theme to base a holiday around.</td>
+        </tr>
+        <tr>
+            <td colspan="2"><span data-qmd="**[Arabic]{.smallcaps}**"></span></td>
+        </tr>
+        <tr>
+            <td>HT</td>
+            <td style="font-size: 18px">يمكن أن تكون الممرات المائية الداخلية خياراً جيداً لتخطيط عطلة حولها.</td>
+        </tr>
+        <tr>
+            <td>PE1</td>
+            <td style="font-size: 18px"><span data-qmd="**[mt]{.smallcaps}:** يمكن أن تكون الممرات المائية الداخلية [موضوعًا]{bg-color='brand-color.lightyellow'} جيدًا لإقامة عطلة حولها"></span></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="font-size: 18px"><span data-qmd="**[pe]{.smallcaps}:** يمكن** أن تكون الممرات المائية الداخلية [مظهرًا]{bg-color='brand-color.lightyellow'} جيدًا لإقامة عطلة حولها"></span></td>
+        </tr>
+        <tr>
+            <td>PE2</td>
+            <td style="font-size: 18px"><span data-qmd="**[mt]{.smallcaps}:**  [يمكن]{bg-color='brand-color.lightredclear'} [أن]{bg-color='brand-color.lightyellow'} تكون [السكك الحديدية]{bg-color='brand-color.lightyellow'} الداخلية [موضوعًا]{bg-color='brand-color.lightyellow'} جيدًا [لإقامة]{bg-color='brand-color.lightyellow'} عطلة [حول]{bg-color='brand-color.lightyellow'}"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td></td>
+            <td style="font-size: 18px"><span data-qmd="**[pe]{.smallcaps}:** [قد]{bg-color='brand-color.lightyellow'}تكون[الممرات]{bg-color='brand-color.lightyellow'}[المائية]{bg-color='brand-color.lightyellow'}الداخلية[مكانًا]{bg-color='brand-color.lightyellow'}جيدًا[لقضاء]{bg-color='brand-color.lightyellow'}عطلة[حولها]{bg-color='brand-color.lightyellow'}"></span></td>
+        </tr>
+        <tr>
+            <td colspan="2"><span data-qmd="**[Dutch]{.smallcaps}**"></span></td>
+        </tr>
+        <tr>
+            <td>HT</td>
+            <td>Binnenlandse waterwegen kunnen een goed thema zijn voor een vakantie.</td>
+        </tr>
+        <tr>
+            <td>PE1</td>
+            <td><span data-qmd="**MT:** [De]{bg-color='brand-color.lightredclear'} binnenwateren kunnen een [goed thema zijn om een vakantie]{bg-color='brand-color.lightredclear'} [omheen te baseren]{bg-color='brand-color.lightyellow'}."></span></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><span data-qmd="**PE:** Binnenwateren kunnen een [goede vakantiebestemming zijn]{bg-color='brand-color.lightyellow'}."></span></td>
+        </tr>
+        <tr>
+            <td>PE2</td>
+            <td><span data-qmd="**MT:** Binnenwaterwegen kunnen een goed thema zijn om een vakantie rond te [zetten]{bg-color='brand-color.lightyellow'}."></span></td>
+        </tr>
+        <tr class="midrule">
+            <td></td>
+            <td><span data-qmd="**PE:** Binnenwaterwegen kunnen een goed thema zijn om een vakantie rond te [organiseren]{bg-color='brand-color.lightyellow'}."></span></td>
+        </tr>
+        <tr>
+            <td colspan="2"><span data-qmd="**[Italian]{.smallcaps}**"></span></td>
+        </tr>
+        <tr>
+            <td>HT</td>
+            <td>I corsi d'acqua dell'entroterra possono essere un ottimo punto di partenza da cui organizzare una vacanza.</td>
+        </tr>
+        <tr>
+            <td>PE1</td>
+            <td><span data-qmd="**MT:** [Trasporto fluviale può]{bg-color='brand-color.lightyellow'} essere un [buon tema]{bg-color='brand-color.lightyellow'} per [basare]{bg-color='brand-color.lightredclear'} [una]{bg-color='brand-color.lightbluedim'} [vacanza in giro]{bg-color='brand-color.lightyellow'}."></span></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><span data-qmd="**PE:** [I canali di]{bg-color='brand-color.lightgreen'} [navigazione interna possono]{bg-color='brand-color.lightyellow'} essere un [ottimo motivo]{bg-color='brand-color.lightyellow'} per [cui intraprendere]{bg-color='brand-color.lightyellow'} [una]{bg-color='brand-color.lightbluedim'} [vacanza]{bg-color='brand-color.lightyellow'}."></span></td>
+        </tr>
+        <tr>
+            <td>PE2</td>
+            <td><span data-qmd="**MT:** I corsi d'acqua interni possono essere un buon tema [per fondare]{bg-color='brand-color.lightyellow'} una vacanza."></span></td>
+        </tr>
+        <tr class="midrule">
+            <td></td>
+            <td><span data-qmd="**PE:** I corsi d'acqua interni possono essere un buon tema [su]{bg-color='brand-color.lightgreen'} [cui basare]{bg-color='brand-color.lightyellow'} una vacanza."></span></td>
+        </tr>
+        <tr>
+            <td colspan="2"><span data-qmd="**[Turkish]{.smallcaps}**"></span></td>
+        </tr>
+        <tr>
+            <td>HT</td>
+            <td>İç bölgelerdeki su yolları, tatil planı için iyi bir tema olabilir.</td>
+        </tr>
+        <tr>
+            <td>PE1</td>
+            <td><span data-qmd="**MT:** İç su yolları, bir [tatili temel almak]{bg-color='brand-color.lightyellow'} için iyi bir tema olabilir."></span></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><span data-qmd="**PE:** İç su yolları, bir [tatil planı yapmak]{bg-color='brand-color.lightyellow'} için iyi bir tema olabilir."></span></td>
+        </tr>
+        <tr>
+            <td>PE2</td>
+            <td><span data-qmd="**MT:** İç [suyolları,]{bg-color='brand-color.lightyellow'} tatil için uygun bir tema olabilir."></span></td>
+        </tr>
+        <tr class="midrule">
+            <td></td>
+            <td><span data-qmd="**PE:** İç [sular]{bg-color='brand-color.lightyellow'} tatil için uygun bir tema olabilir."></span></td>
+        </tr>
+        <tr>
+            <td colspan="2"><span data-qmd="**[Ukrainian]{.smallcaps}**"></span></td>
+        </tr>
+        <tr>
+            <td>HT</td>
+            <td>Можна спланувати вихідні, взявши за основу подорож внутрішніми водними шляхами.</td>
+        </tr>
+        <tr>
+            <td>PE1</td>
+            <td><span data-qmd="**MT:** Внутрішні водні шляхи можуть стати гарною темою для [відпочинку навколо]{bg-color='brand-color.lightyellow'}."></span></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><span data-qmd="**PE:** Внутрішні водні шляхи можуть стати гарною темою для [проведення вихідних]{bg-color='brand-color.lightyellow'}."></span></td>
+        </tr>
+        <tr>
+            <td>PE2</td>
+            <td><span data-qmd="**MT:** [Водні шляхи можуть]{bg-color='brand-color.lightyellow'} [бути]{bg-color='brand-color.lightbluedim'} [хорошим об 'єктом]{bg-color='brand-color.lightyellow'} [для]{bg-color='brand-color.lightbluedim'} [базування відпочинку навколо]{bg-color='brand-color.lightyellow'}."></span></td>
+        </tr>
+        <tr class="midrule">
+            <td></td>
+            <td><span data-qmd="**PE:** [Місцевість]{bg-color='brand-color.lightgreen'} [навколо внутрішніх водних шляхів може]{bg-color='brand-color.lightyellow'} [бути]{bg-color='brand-color.lightbluedim'} [гарним вибором]{bg-color='brand-color.lightyellow'} [для]{bg-color='brand-color.lightbluedim'} [організації відпочинку.]{bg-color='brand-color.lightyellow'}"></span></td>
+        </tr>
+        <tr>
+            <td colspan="2"><span data-qmd="**[Vietnamese]{.smallcaps}**"></span></td>
+        </tr>
+        <tr>
+            <td>HT</td>
+            <td>Du lịch trên sông có thể là một lựa chọn phù hợp cho kỳ nghỉ.</td>
+        </tr>
+        <tr>
+            <td>PE1</td>
+            <td><span data-qmd="**MT:** Đường thủy nội địa có thể là một [chủ đề]{bg-color='brand-color.lightyellow'} hay để [tạo cơ sở]{bg-color='brand-color.lightyellow'} cho [một]{bg-color='brand-color.lightredclear'} kỳ [nghỉ xung]{bg-color='brand-color.lightredclear'} [quanh]{bg-color='brand-color.lightyellow'}."></span></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><span data-qmd="**PE:** Đường thủy nội địa có thể là một [ý tưởng]{bg-color='brand-color.lightyellow'} hay để [lập kế hoạch]{bg-color='brand-color.lightyellow'} cho kỳ nghỉ."></span></td>
+        </tr>
+        <tr>
+            <td>PE2</td>
+            <td><span data-qmd="**MT:** [Các tuyến nước]{bg-color='brand-color.lightyellow'} [nội địa]{bg-color='brand-color.lightbluedim'} [có thể]{bg-color='brand-color.lightyellow'} là một [chủ đề tốt]{bg-color='brand-color.lightredclear'} [để xây dựng một kì nghỉ.]{bg-color='brand-color.lightyellow'}"></span></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><span data-qmd="**PE:** [Du lịch bằng đường thủy]{bg-color='brand-color.lightyellow'} [nội địa]{bg-color='brand-color.lightbluedim'} là một [ý tưởng nghỉ dưỡng không tồi.]{bg-color='brand-color.lightyellow'}"></span></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \centering
+    \tiny
+    \begin{tabular}{p{0.1in} p{0.1in} p{\textwidth - 0.7in}}
+        \toprule
+        \multicolumn{3}{l}{\textsc{English} \hspace{2mm} Inland waterways can be a good theme to base a holiday around.} \\
+        \midrule
+        \multirow{5}{*}{\rotatebox[origin=c]{90}{\textsc{Arabic}}} & HT & \includegraphics[height=3mm]{figures/chap-8-divemt/HTARA.pdf} \\
+        \cmidrule(lr){3-3}
+        & \multirow{2}{*}{PE$_1$} 
+        & \textbf{MT:} \includegraphics[height=3mm]{figures/chap-8-divemt/MTPE1ARA.pdf} \\
+        & & \textbf{PE:} \includegraphics[height=3mm]{figures/chap-8-divemt/PEPE1ARA.pdf} \\
+        \cmidrule(lr){3-3}
+        & \multirow{2}{*}{PE$_2$}
+        & \textbf{MT:} \includegraphics[height=3mm]{figures/chap-8-divemt/MTPE2ARA.pdf} \\
+        & & \textbf{PE:} \includegraphics[height=3mm]{figures/chap-8-divemt/PEPE2ARA.pdf} \\
+        \midrule
+        \multirow{5}{*}{\rotatebox[origin=c]{90}{\textsc{Dutch}}} & HT & Binnenlandse waterwegen kunnen een goed thema zijn voor een vakantie. \\
+        \cmidrule(lr){3-3}
+        & \multirow{2}{*}{PE$_1$} & \textbf{MT:} \colorbox{lightred}{De} binnenwateren kunnen een \colorbox{lightred}{goed thema zijn om een vakantie} \colorbox{lightyellow}{omheen te baseren}. \\
+        & & \textbf{PE:} Binnenwateren kunnen een \colorbox{lightyellow}{goede vakantiebestemming zijn}. \\
+        \cmidrule(lr){3-3}
+        & \multirow{2}{*}{PE$_2$} & \textbf{MT:} Binnenwaterwegen kunnen een goed thema zijn om een vakantie rond te \colorbox{lightyellow}{zetten}. \\
+        & & \textbf{PE:} Binnenwaterwegen kunnen een goed thema zijn om een vakantie rond te \colorbox{lightyellow}{organiseren}. \\
+        \midrule
+        \multirow{5}{*}{\rotatebox[origin=c]{90}{\textsc{Italian}}} & HT & I corsi d'acqua dell'entroterra possono essere un ottimo punto di partenza da cui organizzare una vacanza. \\
+        \cmidrule(lr){3-3}
+        & \multirow{2}{*}{PE$_1$} & \textbf{MT:} \colorbox{lightyellow}{Trasporto fluviale può} essere un \colorbox{lightyellow}{buon tema} per \colorbox{lightred}{basare} \colorbox{lightbluedim}{una} \colorbox{lightyellow}{vacanza in giro}. \\
+        & & \textbf{PE:} \colorbox{lightgreen}{I canali di} \colorbox{lightyellow}{navigazione interna possono} essere un \colorbox{lightyellow}{ottimo motivo} per \colorbox{lightyellow}{cui intraprendere} \colorbox{lightbluedim}{una} \colorbox{lightyellow}{vacanza}. \\
+        \cmidrule(lr){3-3}
+        & \multirow{2}{*}{PE$_2$} & \textbf{MT:} I corsi d'acqua interni possono essere un buon tema \colorbox{lightyellow}{per fondare} una vacanza. \\
+        & & \textbf{PE:} I corsi d'acqua interni possono essere un buon tema \colorbox{lightgreen}{su} \colorbox{lightyellow}{cui basare} una vacanza. \\
+        \midrule
+        \multirow{5}{*}{\rotatebox[origin=c]{90}{\textsc{Turkish}}} & HT & İç bölgelerdeki su yolları, tatil planı için iyi bir tema olabilir. \\
+        \cmidrule(lr){3-3}
+        & \multirow{2}{*}{PE$_1$} & \textbf{MT:} İç su yolları, bir \colorbox{lightyellow}{tatili temel almak} için iyi bir tema olabilir.\\
+        & & \textbf{PE:} İç su yolları, bir \colorbox{lightyellow}{tatil planı yapmak} için iyi bir tema olabilir.\\
+        \cmidrule(lr){3-3}
+        & \multirow{2}{*}{PE$_2$}
+        & \textbf{MT:} İç \colorbox{lightyellow}{suyolları,} tatil için uygun bir tema olabilir.\\
+        & & \textbf{PE:} İç \colorbox{lightyellow}{sular} tatil için uygun bir tema olabilir.\\
+        \midrule
+        \multirow{6}{*}{\rotatebox[origin=c]{90}{\textsc{Ukrainian}}} & HT & \foreignlanguage{ukrainian}{Можна спланувати вихідні, взявши за основу подорож внутрішніми водними шляхами.} \\
+        \cmidrule(lr){3-3}
+        & \multirow{2}{*}{PE$_1$} 
+        & \textbf{MT:} \foreignlanguage{ukrainian}{Внутрішні водні шляхи можуть стати гарною темою для \colorbox{lightyellow}{відпочинку навколо}.} \\
+        & & \textbf{PE:} \foreignlanguage{ukrainian}{Внутрішні водні шляхи можуть стати гарною темою для \colorbox{lightyellow}{проведення вихідних}.} \\
+        \cmidrule(lr){3-3}
+        & \multirow{2}{*}{PE$_2$}
+        & \textbf{MT:} \foreignlanguage{ukrainian}{\colorbox{lightyellow}{Водні шляхи можуть} \colorbox{lightbluedim}{бути} \colorbox{lightyellow}{хорошим об 'єктом} \colorbox{lightbluedim}{для} \colorbox{lightyellow}{базування відпочинку навколо}.} \\
+        & & \textbf{PE:} \foreignlanguage{ukrainian}{\colorbox{lightgreen}{Місцевість} \colorbox{lightyellow}{навколо внутрішніх водних шляхів може} \colorbox{lightbluedim}{бути} \colorbox{lightyellow}{гарним вибором} \colorbox{lightbluedim}{для} \colorbox{lightyellow}{організації відпочинку.}} \\
+        \midrule
+        \multirow{6}{*}{\rotatebox[origin=c]{90}{\textsc{Vietnamese}}} & HT &
+        \foreignlanguage{vietnamese}{Du lịch trên sông có thể là một lựa chọn phù hợp cho kỳ nghỉ.} \\
+        \cmidrule(lr){3-3}
+        & \multirow{2}{*}{PE$_1$} 
+        & \textbf{MT:} \foreignlanguage{vietnamese}{Đường thủy nội địa có thể là một \colorbox{lightyellow}{chủ đề} hay để \colorbox{lightyellow}{tạo cơ sở} cho \colorbox{lightred}{một} kỳ \colorbox{lightred}{nghỉ xung} \colorbox{lightyellow}{quanh}.} \\
+        & & \textbf{PE:} \foreignlanguage{vietnamese}{Đường thủy nội địa có thể là một \colorbox{lightyellow}{ý tưởng} hay để \colorbox{lightyellow}{lập kế hoạch} cho kỳ nghỉ.} \\
+        \cmidrule(lr){3-3}
+        & \multirow{2}{*}{PE$_2$}
+        & \textbf{MT:} \foreignlanguage{vietnamese}{\colorbox{lightyellow}{Các tuyến nước} \colorbox{lightbluedim}{nội địa} \colorbox{lightyellow}{có thể} là một \colorbox{lightred}{chủ đề tốt} \colorbox{lightyellow}{để xây dựng một kì nghỉ.}} \\
+        & & \textbf{PE:} \foreignlanguage{vietnamese}{\colorbox{lightyellow}{Du lịch bằng đường thủy} \colorbox{lightbluedim}{nội địa} là một \colorbox{lightyellow}{ý tưởng nghỉ dưỡng không tồi.}} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+An example sentence (81.1) from the DivEMT corpus, with the English source and all output modalities for all target languages, including intermediate machine translations (MT) and subsequent post-editings (PE). Colors denote [insertions]{bg-color="brand-color.lightgreen"}, [deletions]{bg-color="brand-color.lightredclear"}, [substitutions]{bg-color="brand-color.lightyellow"} and [shifts]{bg-color="brand-color.lightbluedim"} computed with Tercom [@snover-etal-2006-study].
+:::

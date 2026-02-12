@@ -1,0 +1,76 @@
+:::{#tbl-sources}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>WN</th>
+            <th>WV</th>
+            <th>WB</th>
+            <th># Sent.</th>
+            <th># Words</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>3S</td>
+            <td>11</td>
+            <td>13</td>
+            <td>11</td>
+            <td>105</td>
+            <td>2168</td>
+        </tr>
+        <tr>
+            <td>4S</td>
+            <td>14</td>
+            <td>8</td>
+            <td>13</td>
+            <td>140</td>
+            <td>3214</td>
+        </tr>
+        <tr>
+            <td>5S</td>
+            <td>12</td>
+            <td>13</td>
+            <td>12</td>
+            <td>185</td>
+            <td>3826</td>
+        </tr>
+        <tr>
+            <td class="bold">Tot.</td>
+            <td class="bold">37</td>
+            <td class="bold">34</td>
+            <td class="bold">36</td>
+            <td class="bold">450</td>
+            <td class="bold">9626</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}\centering\small
+  \begin{tabular}{l c c c c c}
+\toprule
+ Type & WN & WV & WB & \# Sent. & \# Words \\
+\midrule
+ 3S   & 11 & 13 & 11 & 105 & 2168 \\
+ 4S   & 14 & 8  & 13 & 140 & 3214 \\
+ 5S   & 12 & 13 & 12 & 185 & 3826 \\
+ Tot. & 37 & 34 & 36 & 450 & 9626 \\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Distribution of the selected DivEMT documents across sizes and Wikipedia categories. A Type value of *N*S stands for documents composed by *N* contiguous sentences, WN, WV and WB stand respectively for WikiNews, WikiVoyage and Wikibooks
+:::

@@ -1,0 +1,468 @@
+:::{#tbl-flores-perf-full}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th><span data-qmd="**System**"></span></th>
+            <th><span data-qmd="**BLEU**"></span></th>
+            <th><span data-qmd="**chrF2**"></span></th>
+            <th><span data-qmd="**TER**"></span></th>
+            <th><span data-qmd="**chrF2++**"></span></th>
+            <th><span data-qmd="**COMET**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="rowspan" rowspan="4"><span data-qmd="**Arabic**"></span></td>
+            <td>M2M100</td>
+            <td>19.2</td>
+            <td>50.9</td>
+            <td>69.2</td>
+            <td>47</td>
+            <td>0.417</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="MarianNMT"></span></td>
+            <td class="underline">22.7</td>
+            <td class="underline">54.2</td>
+            <td class="underline">64.7</td>
+            <td class="underline">50.4</td>
+            <td class="underline">0.483</td>
+        </tr>
+        <tr>
+            <td>mBART-50</td>
+            <td>17</td>
+            <td>48.5</td>
+            <td>69.1</td>
+            <td>44.8</td>
+            <td>0.452</td>
+        </tr>
+        <tr class="midrule">
+            <td>GTrans</td>
+            <td class="bold">34.1</td>
+            <td class="bold">65.6</td>
+            <td class="bold">52.8</td>
+            <td class="bold">61.9</td>
+            <td class="bold">0.737</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="5"><span data-qmd="**Dutch**"></span></td>
+            <td>M2M100</td>
+            <td>21.3</td>
+            <td>52.9</td>
+            <td>66.1</td>
+            <td>49.8</td>
+            <td>0.405</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="MarianNMT"></span></td>
+            <td class="underline">25</td>
+            <td class="underline">56.9</td>
+            <td class="underline">62.5</td>
+            <td class="underline">53.8</td>
+            <td class="underline">0.543</td>
+        </tr>
+        <tr>
+            <td>mBART-50</td>
+            <td>22.6</td>
+            <td>53.9</td>
+            <td>63.7</td>
+            <td>50.9</td>
+            <td>0.532</td>
+        </tr>
+        <tr>
+            <td>DeepL</td>
+            <td>28.7</td>
+            <td>59.5</td>
+            <td>59.5</td>
+            <td>56.6</td>
+            <td class="bold">0.67</td>
+        </tr>
+        <tr class="midrule">
+            <td>GTrans</td>
+            <td class="bold">29.1</td>
+            <td class="bold">60</td>
+            <td class="bold">58.5</td>
+            <td class="bold">57.1</td>
+            <td>0.667</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="4"><span data-qmd="**Indonesian**"></span></td>
+            <td>M2M100</td>
+            <td>35.9</td>
+            <td>63.1</td>
+            <td>47.3</td>
+            <td>60.8</td>
+            <td>0.614</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="MarianNMT"></span></td>
+            <td class="underline">38.5</td>
+            <td class="underline">65.6</td>
+            <td class="underline">46.5</td>
+            <td class="underline">63.3</td>
+            <td>0.671</td>
+        </tr>
+        <tr>
+            <td>mBART-50</td>
+            <td>35.9</td>
+            <td>63.3</td>
+            <td>47.7</td>
+            <td>61.1</td>
+            <td class="underline">0.706</td>
+        </tr>
+        <tr class="midrule">
+            <td>GTrans</td>
+            <td class="bold">51.5</td>
+            <td class="bold">73.6</td>
+            <td class="bold">34.5</td>
+            <td class="bold">71.9</td>
+            <td class="bold">0.894</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="5"><span data-qmd="**Italian**"></span></td>
+            <td>M2M100</td>
+            <td>23.6</td>
+            <td>53.9</td>
+            <td>63.2</td>
+            <td>51</td>
+            <td>0.51</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="MarianNMT"></span></td>
+            <td class="underline">27.5</td>
+            <td class="underline">57.6</td>
+            <td class="underline">58.9</td>
+            <td class="underline">54.8</td>
+            <td>0.642</td>
+        </tr>
+        <tr>
+            <td>mBART-50</td>
+            <td>24.4</td>
+            <td>54.7</td>
+            <td>61.2</td>
+            <td>51.8</td>
+            <td class="underline">0.648</td>
+        </tr>
+        <tr>
+            <td>DeepL</td>
+            <td class="bold">33</td>
+            <td>61</td>
+            <td>54</td>
+            <td>58.5</td>
+            <td class="bold">0.795</td>
+        </tr>
+        <tr class="midrule">
+            <td>GTrans</td>
+            <td>32.8</td>
+            <td class="bold">61.4</td>
+            <td class="bold">53.6</td>
+            <td class="bold">58.8</td>
+            <td>0.781</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="4"><span data-qmd="**Japanese**"></span></td>
+            <td>M2M100</td>
+            <td>24.5</td>
+            <td>32.2</td>
+            <td>123.3</td>
+            <td>26</td>
+            <td>0.389</td>
+        </tr>
+        <tr>
+            <td>mBART</td>
+            <td class="underline">27.1</td>
+            <td class="underline">35.4</td>
+            <td class="underline">123</td>
+            <td class="underline">28.3</td>
+            <td class="underline">0.538</td>
+        </tr>
+        <tr>
+            <td>DeepL</td>
+            <td class="bold">41.3</td>
+            <td class="bold">46.8</td>
+            <td>108</td>
+            <td class="bold">37</td>
+            <td class="bold">0.75</td>
+        </tr>
+        <tr class="midrule">
+            <td>GTrans</td>
+            <td>38.4</td>
+            <td>44.7</td>
+            <td class="bold">101.5</td>
+            <td>33.9</td>
+            <td>0.683</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="5"><span data-qmd="**Polish**"></span></td>
+            <td>M2M100</td>
+            <td>16.1</td>
+            <td>46.5</td>
+            <td>74.2</td>
+            <td>43.1</td>
+            <td>0.486</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="MarianNMT"></span></td>
+            <td class="underline">19.3</td>
+            <td class="underline">49.9</td>
+            <td class="underline">70.5</td>
+            <td class="underline">46.6</td>
+            <td class="underline">0.648</td>
+        </tr>
+        <tr>
+            <td>mBART-50</td>
+            <td>17.4</td>
+            <td>48.2</td>
+            <td>72.4</td>
+            <td>44.9</td>
+            <td>0.603</td>
+        </tr>
+        <tr>
+            <td>DeepL</td>
+            <td>24</td>
+            <td>54.3</td>
+            <td>66.4</td>
+            <td>51.1</td>
+            <td class="bold">0.832</td>
+        </tr>
+        <tr class="midrule">
+            <td>GTrans</td>
+            <td class="bold">24.4</td>
+            <td class="bold">54.6</td>
+            <td class="bold">64.6</td>
+            <td class="bold">51.4</td>
+            <td>0.804</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="5"><span data-qmd="**Russian**"></span></td>
+            <td>M2M100</td>
+            <td>22.5</td>
+            <td>51.1</td>
+            <td>65.6</td>
+            <td>48.1</td>
+            <td>0.427</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="MarianNMT"></span></td>
+            <td class="underline">25.4</td>
+            <td class="underline">53.5</td>
+            <td>64.3</td>
+            <td class="underline">50.7</td>
+            <td>0.537</td>
+        </tr>
+        <tr>
+            <td>mBART</td>
+            <td>24.8</td>
+            <td>52.6</td>
+            <td class="underline">63.7</td>
+            <td>49.7</td>
+            <td class="underline">0.541</td>
+        </tr>
+        <tr>
+            <td>DeepL</td>
+            <td class="bold">35.9</td>
+            <td class="bold">61.8</td>
+            <td class="bold">53.3</td>
+            <td class="bold">59.3</td>
+            <td class="bold">0.79</td>
+        </tr>
+        <tr class="midrule">
+            <td>GTrans</td>
+            <td>33</td>
+            <td>60.5</td>
+            <td>55.2</td>
+            <td>57.7</td>
+            <td>0.731</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="4"><span data-qmd="**Turkish**"></span></td>
+            <td>M2M100</td>
+            <td>20.3</td>
+            <td>53.9</td>
+            <td>65.2</td>
+            <td>50.1</td>
+            <td>0.686</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="MarianNMT"></span></td>
+            <td class="underline">26.3</td>
+            <td class="underline">59.8</td>
+            <td class="underline">58.8</td>
+            <td class="underline">55.8</td>
+            <td class="underline">0.881</td>
+        </tr>
+        <tr>
+            <td>mBART-50</td>
+            <td>18.8</td>
+            <td>52.7</td>
+            <td>67.5</td>
+            <td>48.7</td>
+            <td>0.755</td>
+        </tr>
+        <tr class="midrule">
+            <td>GTrans</td>
+            <td class="bold">35</td>
+            <td class="bold">65.5</td>
+            <td class="bold">50.4</td>
+            <td class="bold">62.2</td>
+            <td class="bold">1</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="4"><span data-qmd="**Ukrainian**"></span></td>
+            <td>M2M100</td>
+            <td>21.9</td>
+            <td>51.4</td>
+            <td>65.8</td>
+            <td>48.3</td>
+            <td>0.463</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="MarianNMT"></span></td>
+            <td>20</td>
+            <td>48.8</td>
+            <td>69.2</td>
+            <td>45.7</td>
+            <td>0.427</td>
+        </tr>
+        <tr>
+            <td>mBART-50</td>
+            <td class="underline">21.9</td>
+            <td class="underline">50.7</td>
+            <td class="underline">67.9</td>
+            <td class="underline">47.7</td>
+            <td class="underline">0.587</td>
+        </tr>
+        <tr class="midrule">
+            <td>GTrans</td>
+            <td class="bold">31.1</td>
+            <td class="bold">59.8</td>
+            <td class="bold">55.9</td>
+            <td class="bold">56.8</td>
+            <td class="bold">0.758</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="4"><span data-qmd="**Vietnamese**"></span></td>
+            <td>M2M100</td>
+            <td>33.3</td>
+            <td>52.3</td>
+            <td>52.4</td>
+            <td>52.1</td>
+            <td>0.43</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="MarianNMT"></span></td>
+            <td>26.7</td>
+            <td>45.7</td>
+            <td>60.2</td>
+            <td>45.6</td>
+            <td>0.117</td>
+        </tr>
+        <tr>
+            <td>mBART-50</td>
+            <td class="underline">34.7</td>
+            <td class="underline">54</td>
+            <td class="underline">50.7</td>
+            <td class="underline">53.8</td>
+            <td class="underline">0.608</td>
+        </tr>
+        <tr>
+            <td>GTrans</td>
+            <td class="bold">45.1</td>
+            <td class="bold">61.9</td>
+            <td class="bold">41.8</td>
+            <td class="bold">61.9</td>
+            <td class="bold">0.724</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}[!ht]
+    \scriptsize
+    \centering
+    \begin{tabular}{lcccccc}
+        \toprule
+         & \textbf{System} & \textbf{BLEU} & \textbf{chrF2} & \textbf{TER} & \textbf{chrF2++} & \textbf{COMET} \\
+        \midrule
+        \multirow{4}{*}{\textbf{Arabic}}
+          & M2M100 & 19.2 & 50.9 & 69.2 & 47 & 0.417 \\ 
+          & MarianNMT & \underline{22.7} & \underline{54.2} & \underline{64.7} & \underline{50.4} & \underline{0.483} \\ 
+          & mBART-50 & 17 & 48.5 & 69.1 & 44.8 & 0.452 \\
+          & GTrans & \textbf{34.1} & \textbf{65.6} & \textbf{52.8} & \textbf{61.9} & \textbf{0.737} \\
+        \midrule
+        \multirow{5}{*}{\textbf{Dutch}} 
+          & M2M100 & 21.3 & 52.9 & 66.1 & 49.8 & 0.405 \\ 
+          & MarianNMT & \underline{25} & \underline{56.9} & \underline{62.5} & \underline{53.8} & \underline{0.543} \\ 
+          & mBART-50 & 22.6 & 53.9 & 63.7 & 50.9 & 0.532 \\ 
+          & DeepL & 28.7 & 59.5 & 59.5 & 56.6 & \textbf{0.67} \\ 
+          & GTrans & \textbf{29.1} & \textbf{60} & \textbf{58.5} & \textbf{57.1} & 0.667 \\ 
+        \midrule
+        \multirow{4}{*}{\textbf{Indonesian}} 
+          & M2M100 & 35.9 & 63.1 & 47.3 & 60.8 & 0.614 \\ 
+          & MarianNMT & \underline{38.5} & \underline{65.6} & \underline{46.5} & \underline{63.3} & 0.671 \\ 
+          & mBART-50 & 35.9 & 63.3 & 47.7 & 61.1 & \underline{0.706} \\ 
+          & GTrans & \textbf{51.5} & \textbf{73.6} & \textbf{34.5} & \textbf{71.9} & \textbf{0.894} \\
+        \midrule
+        \multirow{5}{*}{\textbf{Italian}} 
+          & M2M100 & 23.6 & 53.9 & 63.2 & 51 & 0.51 \\ 
+          & MarianNMT & \underline{27.5} & \underline{57.6} & \underline{58.9} & \underline{54.8} & 0.642 \\ 
+          & mBART-50 & 24.4 & 54.7 & 61.2 & 51.8 & \underline{0.648} \\ 
+          & DeepL & \textbf{33} & 61 & 54 & 58.5 & \textbf{0.795} \\ 
+          & GTrans & 32.8 & \textbf{61.4} & \textbf{53.6} & \textbf{58.8} & 0.781 \\
+        \midrule
+        \multirow{4}{*}{\textbf{Japanese}} 
+          & M2M100 & 24.5 & 32.2 & 123.3 & 26 & 0.389 \\
+          & mBART & \underline{27.1} & \underline{35.4} & \underline{123} & \underline{28.3} & \underline{0.538} \\ 
+          & DeepL & \textbf{41.3} & \textbf{46.8} & 108 & \textbf{37} & \textbf{0.75} \\ 
+          & GTrans & 38.4 & 44.7 & \textbf{101.5} & 33.9 & 0.683 \\
+        \midrule
+        \multirow{5}{*}{\textbf{Polish}} 
+          & M2M100 & 16.1 & 46.5 & 74.2 & 43.1 & 0.486 \\ 
+          & MarianNMT & \underline{19.3} & \underline{49.9} & \underline{70.5} & \underline{46.6} & \underline{0.648} \\ 
+          & mBART-50 & 17.4 & 48.2 & 72.4 & 44.9 & 0.603 \\ 
+          & DeepL & 24 & 54.3 & 66.4 & 51.1 & \textbf{0.832} \\ 
+          & GTrans & \textbf{24.4} & \textbf{54.6} & \textbf{64.6} & \textbf{51.4} & 0.804 \\
+        \midrule
+        \multirow{5}{*}{\textbf{Russian}} 
+          & M2M100 & 22.5 & 51.1 & 65.6 & 48.1 & 0.427 \\ 
+          & MarianNMT & \underline{25.4} & \underline{53.5} & 64.3 & \underline{50.7} & 0.537 \\ 
+          & mBART & 24.8 & 52.6 & \underline{63.7} & 49.7 & \underline{0.541} \\ 
+          & DeepL & \textbf{35.9} & \textbf{61.8} & \textbf{53.3} & \textbf{59.3} & \textbf{0.79} \\ 
+          & GTrans & 33 & 60.5 & 55.2 & 57.7 & 0.731 \\
+        \midrule
+        \multirow{4}{*}{\textbf{Turkish}} 
+          & M2M100 & 20.3 & 53.9 & 65.2 & 50.1 & 0.686 \\ 
+          & MarianNMT & \underline{26.3} & \underline{59.8} & \underline{58.8} & \underline{55.8} & \underline{0.881} \\ 
+          & mBART-50 & 18.8 & 52.7 & 67.5 & 48.7 & 0.755 \\ 
+          & GTrans & \textbf{35} & \textbf{65.5} & \textbf{50.4} & \textbf{62.2} & \textbf{1} \\
+        \midrule
+        \multirow{4}{*}{\textbf{Ukrainian}} 
+          & M2M100 & 21.9 & 51.4 & 65.8 & 48.3 & 0.463 \\ 
+          & MarianNMT & 20 & 48.8 & 69.2 & 45.7 & 0.427 \\ 
+          & mBART-50 & \underline{21.9} & \underline{50.7} & \underline{67.9} & \underline{47.7} & \underline{0.587} \\ 
+          & GTrans & \textbf{31.1} & \textbf{59.8} & \textbf{55.9} & \textbf{56.8} & \textbf{0.758} \\ 
+        \midrule
+        \multirow{4}{*}{\textbf{Vietnamese}} 
+          & M2M100 & 33.3 & 52.3 & 52.4 & 52.1 & 0.43 \\ 
+          & MarianNMT & 26.7 & 45.7 & 60.2 & 45.6 & 0.117 \\ 
+          & mBART-50 & \underline{34.7} & \underline{54} & \underline{50.7} & \underline{53.8} & \underline{0.608} \\ 
+          & GTrans & \textbf{45.1} & \textbf{61.9} & \textbf{41.8} & \textbf{61.9} & \textbf{0.724} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Automatic MT quality of all evaluated NMT systems on all tested languages in the English-to-XX setting, using the FLORES-101 full devtest for evaluation. Besides mBART-50 and Google Translate (GTrans), we also evaluate a set of bilingual Transformer-based NMT models trained with MarianNMT [@tiedemann-thottingal-2020-opus], the DeepL industrial MT system and the multilingual M2M-100 418M model [@fan-etal-2021-beyond]. Best **overall** and [open-source only]{.underline} performances are highlighted.
+:::

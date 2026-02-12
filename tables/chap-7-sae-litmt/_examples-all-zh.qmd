@@ -1,0 +1,148 @@
+:::{#tbl-chap7-examples-all-zh}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable">
+    <thead>
+        <tr>
+            <th>Source/Method</th>
+            <th>Translation</th>
+            <th>📊 Classifier</th>
+            <th>☄️ COMET</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td class="mediumsmallrow"><strong>Source (ZH)</strong></td>
+            <td>遂又往後看時，只見畫著一張弓，弓上掛著香櫞。也有一首歌詞云：「二十年來辨是非，榴花開處照宮闈。三春爭及初春景，虎兕相逢大夢歸。」</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><strong><span data-qmd='[H$_1$]{color="brand-color.darkgreen"}'></span></strong></td>
+            <td><em>Forthwith, therefore, he prosecuted a further perusal of what came next, when he caught sight of a picture of a bow. On this bow hung a citron. There was also this ode: Full twenty years right and wrong to expound will be thy fate! What place pomegranate blossoms come in bloom will face the Palace Gate! The third portion of spring, of the first spring in beauty short will fall! When tiger meets with hare thou wilt return to sleep perennial.</em></td>
+            <td><span data-qmd='[H$_1$]{color="brand-color.darkgreen"}'></span></td>
+            <td>-</td>
+        </tr>
+        <tr class="midrule">
+            <td><strong><span data-qmd='[H$_2$]{color="brand-color.lightbluedim"}'></span></strong></td>
+            <td><em>The picture that followed was of a bow with a citron hanging from it, followed by what looked like the words of a song: You shall, when twenty years in life's hard school are done, In pomegranate-time to palace halls ascend. Though three springs never could with your first spring compare, When hare meets tiger your great dream shall end.</em></td>
+            <td><span data-qmd='[H$_2$]{color="brand-color.lightbluedim"}'></span></td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td><strong>Gemma 2 2B</strong></td>
+            <td><em>When he turned back to look, he saw a bow hanging on it, with a plum blossom. There was also a poem that said: "For twenty years, I have been trying to distinguish right from wrong, and the plum blossoms bloom in the palace. In the spring, the tigers and the rhinoceroses meet, and they dream of returning home."</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.49</td>
+        </tr>
+        <tr>
+            <td><strong>Gemma 2 9B</strong></td>
+            <td><em>Looking back, he saw a painting of a bow with a quiver hanging on it. There was also a line of lyrics that said: "For twenty years, I have distinguished right from wrong, and the blossoming of the pomegranate flowers illuminates the imperial court. Three springs have passed, and now it is the beginning of spring again, like a dream where tigers and rhinoceroses meet.</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.56</td>
+        </tr>
+        <tr class="midrule">
+            <td><strong>Llama 3.1 8B</strong></td>
+            <td><em>As I looked back, I saw a painting of a bow with a censer on it. There was also a poem that said: "Twenty years of distinguishing right from wrong, the lotus flower blooms in the palace. Three springs competing with the scenery of the first spring, the tiger and the rhinoceros meet and return to their dream."</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.53</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**ZS-Exp.$_\text{HT}$**"></span></td>
+            <td><em>And as he turned his gaze back upon the scene once more, there was displayed an archer's bow strung tautly; upon its surface hung a fragrant plum blossom. A poem also recited thus spake: "For twenty years I have sought truth amidst strife, where blooming durian flowers illuminate the palace walls. In spring's embrace, they vie for beauty, tigers clashing in dreams of return."</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.60</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**ZS-Exp.$_\text{PT}$**"></span></td>
+            <td><em>And as he turned his gaze back upon the scene once more, there was displayed an archer's bow strung tautly; upon its surface hung a fragrant plum blossom. A poem also recited thus: "For twenty years I have sought truth amidst strife, where blooming durian flowers illuminate the palace walls. In spring's embrace, they vie for beauty, tigers clashing in dreams of return."</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.61</td>
+        </tr>
+        <tr class="midrule">
+            <td><strong>MS</strong></td>
+            <td><em>Then, turning around, he noticed a picture depicting a bow hanging on its string, adorned with incense sticks. A verse read: "For twenty years I've tried to discern truth from falsehood, and wherever fragrant plum blossoms bloom, the palace gates shine brightly."</em></td>
+            <td><span data-qmd='[H$_1$]{color="brand-color.darkgreen"}'></span></td>
+            <td>0.65</td>
+        </tr>
+        <tr>
+            <td><strong>ActAdd</strong></td>
+            <td><em>When he turned back to look, he saw a bow hanging on it, with a plum blossom. There was also a poem that said: "For twenty years, I have been trying to tell right from wrong, and the plum blossoms bloom in the palace. In spring, the tigers and rhinoceroses meet, and they dream of going back home."</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.53</td>
+        </tr>
+        <tr>
+            <td><strong>ReFT</strong></td>
+            <td><em>When he turned back to look, he saw a bow hanging there, adorned with a plum blossom. There was also a poem that said: "For twenty years, I have tried to distinguish right from wrong, and plum blossoms bloom within the palace. In spring, tiger and rhinoceros meet, dreaming of their return home."</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.58</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**SAE Cont.$_\text{HT}$** ($\alpha=1$)"></span></td>
+            <td><em>When he turned back to look, he saw a bow hung upon it, with a plum blossom. There was also a verse which read: "For twenty years, I have struggled to discern truth from falsehood, and the plums blossomed where the imperial court resided. During the three springs, the tiger and rhinoceros met, dreaming of their return."</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.62</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**SAE Cont.$_\text{HT}$** ($\alpha=5$)"></span></td>
+            <td><em>He looked back and there hung a bow adorned with a plum blossom. A verse read: "Twenty years I've struggled for truth, where fragrant plums bloom near the imperial court. Spring arrives, tiger and rhino clash, dreaming of their return.</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.62</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**SAE Cont.$_\text{HT}$** ($\alpha=50$)"></span></td>
+            <td><em>The when the veryShellTruth lookWarmTheTheTheTigeratPoint [...]</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.11</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**SAE Cont.$_\text{PT}$** ($\alpha=5$)"></span></td>
+            <td><em>He looked back and saw a bow adorned with fragrant citron. A verse declared: "Twenty years I've weighed right and wrong; where pomegranate blossoms bloom, they light the palace gates. Spring's full bloom cannot match early spring's grace. When tiger meets rhino, one returns to the great dream."</em></td>
+            <td><span data-qmd='[H$_1$]{color="brand-color.darkgreen"}'></span></td>
+            <td>0.65</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \tiny
+    \centering
+    \begin{tabular}{p{0.10\textwidth}p{0.66\textwidth}cc}
+    \toprule[1.5pt] 
+    Source (ZH) & \begin{CJK}{UTF8}{gbsn} 遂又往後看時，只見畫著一張弓，弓上掛著香櫞。也有一首歌詞云：「二十年來辨是非，榴花開處照宮闈。三春爭及初春景，虎兕相逢大夢歸。」\end{CJK} & \large 📊 & \large ☄️ \\
+    \midrule
+    \textcolor{darkgreen}{H$_1$} & \textit{Forthwith, therefore, he prosecuted a further perusal of what came next, when he caught sight of a picture of a bow. On this bow hung a citron. There was also this ode: Full twenty years right and wrong to expound will be thy fate! What place pomegranate blossoms come in bloom will face the Palace Gate! The third portion of spring, of the first spring in beauty short will fall! When tiger meets with hare thou wilt return to sleep perennial.} & \textcolor{darkgreen}{H$_1$} & - \\
+    \textcolor{lightblueclear}{H$_2$} & \textit{The picture that followed was of a bow with a citron hanging from it, followed by what looked like the words of a song: You shall, when twenty years in life's hard school are done, In pomegranate-time to palace halls ascend. Though three springs never could with your first spring compare, When hare meets tiger your great dream shall end.} & \textcolor{lightblueclear}{H$_2$} & - \\
+    \midrule
+    \textcolor{darkorange}{Gemma 2 2B} & \textit{When he turned back to look, he saw a bow hanging on it, with a plum blossom. There was also a poem that said: "For twenty years, I have been trying to distinguish right from wrong, and the plum blossoms bloom in the palace. In the spring, the tigers and the rhinoceroses meet, and they dream of returning home."} & \textcolor{darkorange}{MT} & 0.49 \\[4pt]
+    \textcolor{darkorange}{Gemma 2 9B} & \textit{Looking back, he saw a painting of a bow with a quiver hanging on it. There was also a line of lyrics that said: \"For twenty years, I have distinguished right from wrong, and the blossoming of the pomegranate flowers illuminates the imperial court. Three springs have passed, and now it is the beginning of spring again, like a dream where tigers and rhinoceroses meet.} & \textcolor{darkorange}{MT} & 0.56 \\[4pt]
+    \textcolor{darkorange}{Llama 3.1 8B} & \textit{As I looked back, I saw a painting of a bow with a censer on it. There was also a poem that said: \"Twenty years of distinguishing right from wrong, the lotus flower blooms in the palace. Three springs competing with the scenery of the first spring, the tiger and the rhinoceros meet and return to their dream."} & \textcolor{darkorange}{MT} & 0.53 \\[4pt]
+    \midrule
+    ZS-Exp.$_\text{HT}$ & \textit{And as he turned his gaze back upon the scene once more, there was displayed an archer's bow strung tautly; upon its surface hung a fragrant plum blossom.  A poem also recited thus spake: "For twenty years I have sought truth amidst strife, where blooming durian flowers illuminate the palace walls. In spring's embrace, they vie for beauty, tigers clashing in dreams of return."} & \textcolor{darkorange}{MT} & 0.60 \\
+    ZS-Exp.$_\text{PT}$ & \textit{And as he turned his gaze back upon the scene once more, there was displayed an archer's bow strung tautly; upon its surface hung a fragrant plum blossom. A poem also recited thus:
+    "For twenty years I have sought truth amidst strife, where blooming durian flowers illuminate the palace walls. In spring's embrace, they vie for beauty, tigers clashing in dreams of return."} & \textcolor{darkorange}{MT} & 0.61 \\
+    MS & \textit{Then, turning around, he noticed a picture depicting a bow hanging on its string, adorned with incense sticks.  A verse read: "For twenty years I've tried to discern truth from falsehood, and wherever fragrant plum blossoms bloom, the palace gates shine brightly."} & \textcolor{darkgreen}{H$_1$} & 0.65 \\
+    \midrule
+    ActAdd & \textit{When he turned back to look, he saw a bow hanging on it, with a plum blossom. There was also a poem that said: "For twenty years, I have been trying to tell right from wrong, and the plum blossoms bloom in the palace. In spring, the tigers and rhinoceroses meet, and they dream of going back home."} & \textcolor{darkorange}{MT} & 0.53 \\
+    ReFT & \textit{When he turned back to look, he saw a bow hanging there, adorned with a plum blossom. There was also a poem that said: "For twenty years, I have tried to distinguish right from wrong, and plum blossoms bloom within the palace. In spring, tiger and rhinoceros meet, dreaming of their return home."} & \textcolor{darkorange}{MT} & 0.58 \\
+    SAE Cont.$_\text{HT}$ \\ $\alpha = 1$ & \textit{When he turned back to look, he saw a bow hung upon it, with a plum blossom.  There was also a verse which read: "For twenty years, I have struggled to discern truth from falsehood, and the plums blossomed where the imperial court resided. During the three springs, the tiger and rhinoceros met, dreaming of their return."} & \textcolor{darkorange}{MT} & 0.62 \\
+    $\alpha$ = 5 & \textit{He looked back and there hung a bow adorned with a plum blossom. A verse read: "Twenty years I've struggled for truth, where fragrant plums bloom near the imperial court. Spring arrives, tiger and rhino clash, dreaming of their return.} & \textcolor{darkorange}{MT} & 0.62 \\
+    $\alpha$ = 150 & \textit{The when the veryShellTruth lookWarmTheTheTheTigeratPoint [...]} & \textcolor{darkorange}{MT} & 0.11 \\
+    SAE Cont.$_\text{PT}$ \\ ($\alpha$ = 5) & \textit{He looked back and saw a bow adorned with fragrant citron. A verse declared: "Twenty years I've weighed right and wrong; where pomegranate blossoms bloom, they light the palace gates. Spring's full bloom cannot match early spring's grace. When tiger meets rhino, one returns to the great dream."} & \textcolor{darkgreen}{H$_1$} & 0.65 \\
+    \bottomrule[1.5pt]
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Example paragraphs from "Dream of the Red Chamber" (ZH$\to$EN) translated with [H$_1$]{color="brand-color.darkgreen"} personalization. Setup outputs are from Gemma 2 2B; only MS and SAE Cont.$_\text{PT}$ successfully flip the classifier prediction.
+:::

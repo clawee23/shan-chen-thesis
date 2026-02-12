@@ -1,0 +1,63 @@
+:::{#tbl-xor-attriqa-statistics}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th><span data-qmd="**Dataset**"></span></th>
+            <th><span data-qmd="**BN**"></span></th>
+            <th><span data-qmd="**FI**"></span></th>
+            <th><span data-qmd="**JA**"></span></th>
+            <th><span data-qmd="**RU**"></span></th>
+            <th><span data-qmd="**TE**"></span></th>
+            <th><span data-qmd="**Total**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Orig.</td>
+            <td>1407</td>
+            <td>659</td>
+            <td>1066</td>
+            <td>954</td>
+            <td>634</td>
+            <td>4720</td>
+        </tr>
+        <tr>
+            <td>Match</td>
+            <td>274</td>
+            <td>214</td>
+            <td>232</td>
+            <td>254</td>
+            <td>170</td>
+            <td>1144</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}[!ht]
+\centering
+\setlength{\tabcolsep}{4.8 pt}
+\begin{tabular}{c|ccccc|c}
+\toprule
+\textbf{Dataset} & \textbf{BN} & \textbf{FI} & \textbf{JA} & \textbf{RU} & \textbf{TE} & \textbf{Total} \\
+\midrule
+Orig. & 1407 & 659 & 1066 & 954 & 634 & 4720\\
+Match & 274 & 214 & 232 & 254 & 170 & 1144 \\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Statistic for test sets of the original XOR-AttriQA and XOR-AttriQA$_{\text{match}}$.
+:::

@@ -1,0 +1,82 @@
+:::{#tbl-false-negatives-cti}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr class="bottomrule">
+            <td><span data-qmd="**Pronoun Grammatical Formality, SCAT+**"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_x$: [...] That demon that was in you, it wants you. But not like before. I think it loves you."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_y$: [...] Ce démon qui était en [vous]{bg-color='brand-color.lightblueclear'}, il [vous]{bg-color='brand-color.lightblueclear'} veut. Mais pas comme avant. Je pense qu'il [vous]{bg-color='brand-color.lightblueclear'} aime."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$x$: And it's powerless without [you]{bg-color='brand-color.lightgreen'}."></span></td>
+        </tr>
+        <tr class="midrule">
+            <td> <span data-qmd="$y$: Et il est impuissant sans [vous]{bg-color='brand-color.lightgreen'} [(*you*, **2nd p. plur., formal**)]{color='brand-color.lightgray'}."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_x$: You threaten my father again, I'll kill you myself... on this road. You hear me?"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_y$: [Tu]{bg-color='brand-color.lightblueclear'} menaces encore mon père, je [te]{bg-color='brand-color.lightblueclear'} tuerai moi-même... sur cette route. [Tu]{bg-color='brand-color.lightblueclear'} m'entends?"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$x$: Now it is with [you]{bg-color='brand-color.lightgreen'} as well."></span></td>
+        </tr>
+        <tr class="midrule">
+            <td> <span data-qmd="$y$: Maintenant elle est aussi avec [toi]{bg-color='brand-color.lightgreen'} [(*you*, **2nd p. sing., informal**)]{color='brand-color.lightgray'}."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_x$: She went back to Delhi. What do you think? [...] Girls, I tell you."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_y$: Elle est revenue à Delhi. Qu'en penses-[tu]{bg-color='brand-color.lightblueclear'}? [...] Les filles, je [te]{bg-color='brand-color.lightblueclear'} le dis."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$x$: I wish they were all like [you]{bg-color='brand-color.lightgreen'}."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$y$: J'aimerais qu'elles soient toutes comme [toi]{bg-color='brand-color.lightgreen'} [(*you*, **2nd p. sing., informal**)]{color='brand-color.lightgray'}."></span></td>
+        </tr>
+    </tbody>
+</table>
+```
+:::
+
+:::{.content-visible when-format="pdf"}
+```{=latex}
+\begin{table}
+    \centering
+    \scriptsize
+    \begin{tabular}{p{0.95\textwidth}}
+        \toprule[1.5pt]
+        \textbf{Pronoun Grammatical Formality, SCAT+} \\
+        \midrule
+        $C_x:$ [...] That demon that was in you, it wants you. But not like before. I think it loves you. \\
+        $C_y:$ [...] Ce démon qui était en \colorbox{lightblueclear}{vous}, il \colorbox{lightblueclear}{vous} veut. Mais pas comme avant. Je pense qu'il \colorbox{lightblueclear}{vous} aime. \\
+        $x:$ And it's powerless without you. \\
+        $y:$ Et il est impuissant sans \colorbox{lightgreen}{vous} \textcolor{lightgray}{(you, \textsc{2nd p. plur., formal})}. \\
+        \midrule
+        $C_x:$ You threaten my father again, I'll kill you myself... on this road. You hear me? \\
+        $C_y:$ \colorbox{lightblueclear}{Tu} menaces encore mon père, je \colorbox{lightblueclear}{te} tuerai moi-même... sur cette route. \colorbox{lightblueclear}{Tu} m'entends? \\
+        $x:$ Now it is with you as well. \\
+        $y:$ Maintenant elle est aussi avec \colorbox{lightgreen}{toi} \textcolor{lightgray}{(you, \textsc{2nd p. sing., informal})}. \\
+        \midrule
+        $C_x:$ She went back to Delhi. What do you think? [...] Girls, I tell you. \\
+        $C_y:$ Elle est revenue à Delhi. Qu'en penses-\colorbox{lightblueclear}{tu}? [...] Les filles, je \colorbox{lightblueclear}{te} le dis. \\
+        $x:$ I wish they were all like you. \\
+        $y:$ J'aimerais qu'elles soient toutes comme \colorbox{lightgreen}{toi} \textcolor{lightgray}{(you, \textsc{2nd p. sing., informal})}. \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+:::
+
+Examples of SCAT+ sentences with [context-sensitive target tokens]{bg-color="brand-color.lightgreen"} identified by CTI but not originally labeled as context-dependent in the dataset, since they do not match the gendered pronoun rule match used to create SCAT+. Relevant [formality contextual cues]{bg-color="brand-color.lightblueclear"} are highlighted, and [glosses]{color="brand-color.lightgray"} are added for French words of interest to facilitate understanding.
+:::

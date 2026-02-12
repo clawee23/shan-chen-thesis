@@ -1,0 +1,84 @@
+:::{#tbl-chap6-data-preview}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th colspan="2" class="group-header"><span data-qmd="**Formality-Controlled Translation (CoCoA-MT)**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td><span data-qmd="**Neutral Src (EN)**"></span></td>
+            <td>OK, then please follow me to your table.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Formal Ref (JA)**"></span></td>
+            <td>ではテーブルまで私に<u>ついて来てください</u>。</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Informal Ref (JA)**"></span></td>
+            <td>ではテーブルまで私に<u>ついて来て</u>。</td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="center-table" style="margin-top: 20px;">
+    <thead>
+        <tr>
+            <th colspan="2" class="group-header"><span data-qmd="**Gender-Controlled Translation (MT-GenEval)**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td><span data-qmd="**Neutral Src (EN)**"></span></td>
+            <td>After retiring from teaching, Cook became a novelist.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Feminine Ref (NL)**"></span></td>
+            <td>Nadat <u>ze</u> stopte met lesgeven, werd Cook <u>schrijfster</u>.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Masculine Ref (NL)**"></span></td>
+            <td>Nadat <u>hij</u> stopte met lesgeven, werd Cook <u>schrijver</u>.</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\centering
+\footnotesize
+\begin{tabular}{l| l}
+ \toprule
+ \multicolumn{2}{c}{\textbf{Formality-Controlled Translation (CoCoA-MT)}} \\
+\toprule
+ \textbf{Neutral Src (EN)} & OK, then please follow me to your table. \\
+ \midrule
+ \textbf{Formal Ref (JA)}  & \begin{CJK}{UTF8}{maru}ではテーブルまで私に\underline{ついて来てください}。\end{CJK} \\
+ \cmidrule(lr){1-2}
+ \textbf{Informal Ref (JA)} & \begin{CJK}{UTF8}{maru}ではテーブルまで私に\underline{ついて来て}。\end{CJK} \\
+ \toprule
+ \multicolumn{2}{c}{\textbf{Gender-Controlled Translation (MT-GenEval)}} \\
+\toprule
+ \textbf{Neutral Src (EN)} & After retiring from teaching, Cook became a novelist. \\
+ \midrule
+ \textbf{Feminine Ref (NL)} & Nadat \underline{ze} stopte met lesgeven, werd Cook \underline{schrijfster}. \\
+ \cmidrule(lr){1-2}
+\textbf{Masculine Ref (NL)}  & Nadat \underline{hij} stopte met lesgeven, werd Cook \underline{schrijver}. \\
+ \bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Examples of attribute triplets from CoCoA-MT and MT-GenEval. Attribute markers in the attribute-controlled translations are underlined.
+:::

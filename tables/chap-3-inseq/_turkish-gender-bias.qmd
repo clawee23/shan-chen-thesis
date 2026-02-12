@@ -1,0 +1,79 @@
+:::{#tbl-chap3-turkish-gender-bias}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+    <table class="center-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th colspan="2">Base</th>
+                <th colspan="2"><span data-qmd="♀ $\rightarrow$ ♂"></span></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th><span data-qmd="$x_\text{pron}$"></span></th>
+                <th><span data-qmd="$x_\text{occ}$"></span></th>
+                <th><span data-qmd="$x_\text{pron}$"></span></th>
+                <th><span data-qmd="$x_\text{occ}$"></span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="midrule">
+                <td><span data-qmd="$p(y_\text{pron})$"></span></td>
+                <td colspan="2" class="color-fdfebc">0.01</td>
+                <td colspan="2" class="color-fba05b significant">-0.44*</td>
+            </tr>
+            <tr>
+                <td><span data-qmd="$\nabla$"></span></td>
+                <td class="color-fee695">-0.16</td>
+                <td class="color-cbe982 significant">0.25*</td>
+                <td class="color-d1ec86 significant">0.23*</td>
+                <td class="color-fffebe">-0.00</td>
+            </tr>
+            <tr>
+                <td>IG</td>
+                <td class="color-fff2aa">-0.08</td>
+                <td class="color-ecf7a6">0.09</td>
+                <td class="color-ebf7a3">0.11</td>
+                <td class="color-dff293">0.17</td>
+            </tr>
+            <tr class="bottomrule">
+                <td><span data-qmd="I×G"></span></td>
+                <td class="color-feeda1">-0.11</td>
+                <td class="color-d3ec87 significant">0.22*</td>
+                <td class="color-d5ed88 significant">0.22*</td>
+                <td class="color-fffdbc">-0.01</td>
+            </tr>
+        </tbody>
+    </table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\centering
+\small
+\begin{tabular}{crr|rr}
+\toprule
+ & \multicolumn{2}{c}{Base} & \multicolumn{2}{c}{\Female~$\rightarrow$~\Male}\\
+ \cmidrule{2-5}
+  & $x_\text{pron}$ & $x_\text{occ}$ & $x_\text{pron}$ & $x_\text{occ}$ \\
+\midrule
+$p(y_\text{pron})$ & \multicolumn{2}{c}{{\cellcolor[HTML]{FDFEBC}} 0.01$^{\phantom{*}}$} & \multicolumn{2}{c}{{\cellcolor[HTML]{FBA05B}} -0.44$^*$} \\
+\midrule
+$\nabla$ & {\cellcolor[HTML]{FEE695}}  -0.16$^{\phantom{*}}$ & {\cellcolor[HTML]{CBE982}}  0.25$^*$  &{\cellcolor[HTML]{D1EC86}}  0.23$^*$ & {\cellcolor[HTML]{FFFEBE}}  -0.00$^{\phantom{*}}$\\
+IG & {\cellcolor[HTML]{FFF2AA}}  -0.08$^{\phantom{*}}$ & {\cellcolor[HTML]{ECF7A6}}  0.09$^{\phantom{*}}$ & {\cellcolor[HTML]{EBF7A3}}  0.11$^{\phantom{*}}$ & {\cellcolor[HTML]{DFF293}}  0.17$^{\phantom{*}}$\\
+I$\times$G & {\cellcolor[HTML]{FEEDA1}}  -0.11$^{\phantom{*}}$ & {\cellcolor[HTML]{D3EC87}}  0.22$^*$ &{\cellcolor[HTML]{D5ED88}}  0.22$^*$ & {\cellcolor[HTML]{FFFDBC}}  -0.01$^{\phantom{*}}$\\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+**Gender Bias in Turkish-to-English MT:** Kendall's $\tau$ correlation of MT model metrics with U.S. labor statistics. * = Significant correlation ($p<.05$).
+:::

@@ -1,0 +1,290 @@
+# Chapter 4
+
+# **<u>Chapter 4</u>**
+
+Natural Language Processing to Automatically Extract the Presence and Severity of Esophagitis in Notes of Patients Undergoing Radiotherapy
+
+---***Shan Chen***, Marco Guevara, Nicolas Ramirez, Arpi Murray, Jeremy L Warner, Hugo JWL Aerts, Timothy A Miller, Guergana K Savova, Raymond H Mak, Danielle S Bitterman
+
+### JCO Clinical Cancer Informatics
+
+###**Summary**
+
+###**Background**
+
+Radiotherapy (RT) toxicities can impair survival and quality of life, yet remain understudied. Real-world evidence holds potential to improve our understanding of toxicities, but toxicity information is often only in clinical notes. We developed natural language processing (NLP) models to identify the presence and severity of esophagitis from notes of patients treated with thoracic RT.
+
+###**Methods**
+
+Our corpus consisted of a gold-labeled data set of 1,524 clinical notes from 124 patients with lung cancer treated with RT, manually annotated for Common Terminology Criteria for Adverse Events (CTCAE) v5.0 esophagitis grade, and a silver-labeled data set of 2,420 notes from 1,832 patients from whom toxicity grades had been collected as structured data during clinical care. We fine-tuned statistical and pretrained Bidirectional Encoder Representations from Transformers–based models for three esophagitis classification tasks: task 1, no esophagitis versus grade 1-3; task 2, grade ≤1 versus >1; and task 3, no esophagitis versus grade 1 versus grade 2-3. Transferability was tested on 345 notes from patients with esophageal cancer undergoing RT.
+
+###**Findings**
+
+Fine-tuning of PubMedBERT yielded the best performance. The best macro-F1 was 0.92, 0.82, and 0.74 for tasks 1, 2, and 3, respectively. Selecting the most informative note sections during fine-tuning improved macro-F1 by ≥2% for all tasks. Silver-labeled data improved the macro-F1 by ≥3% across all tasks. For the esophageal cancer notes, the best macro-F1 was 0.73, 0.74, and 0.65 for tasks 1, 2, and 3, respectively, without additional fine-tuning.
+
+###**Interpretation**
+
+To our knowledge, this is the first effort to automatically extract esophagitis toxicity severity according to CTCAE guidelines from clinical notes. This provides proof of concept for NLP-based automated detailed toxicity monitoring in expanded domains.**INTRODUCTION**
+
+Cancer treatment-related adverse events (TRAEs) are an under-studied cancer outcome that have important impacts on patients' survival and quality-of-life. As cancer-specific survival improves,[1,2](https://paperpile.com/c/M3S8Zv/3FHCb+AABc) a better understanding of the epidemiology, trajectories, and risk factors for TRAEs is urgently needed to support treatment decision-making and survivorship care. However, the vast majority of our understanding of TRAEs is from clinical trials, which are crucial but inherently limited in their ability to provide information on less common adverse events.[3–7](https://paperpile.com/c/M3S8Zv/UtRQ+1JYj+QNjv+ZDik+TXva)
+
+There is enormous potential for real-world evidence (RWE) from electronic health records (EHR) to supplement adverse event information from clinical trials. Single-institutional RWE datasets have shown TRAE rates up to 10-times those reported in clinical trials.[8–13](https://paperpile.com/c/M3S8Zv/4fJ55+nYTqt+8kpaL+8SGRm+lfADT+va0dM) However, a major limitation to our ability to collect high-quality RWE on adverse events is that many are almost exclusively documented in the free text of clinical notes and are not directly extractable and analyzable through conventional methods.[14–17](https://paperpile.com/c/M3S8Zv/liDM+lfWp+NILV+TCjp) Natural language processing (NLP), a field of computer science that aims to convert free text into computable representations that can be used for downstream tasks, is a promising avenue to automate the extraction for adverse events documented in clinical notes. Some research exists that focuses on binary (yes/no) adverse event extraction,[18–22](https://paperpile.com/c/M3S8Zv/oFTf+dLcR+QACZ+gn2e+pWZy) however a finer-grained extraction related to the *severity* of the adverse event would further our understanding of these events.
+
+Better methods for adverse event reporting are especially needed for radiotherapy (RT).[23](https://paperpile.com/c/M3S8Zv/Knsx) RT-related adverse events are not represented in pharmacovigilance databases, and the impact of new RT technologies and novel combinations of RT and systemic agents is under-explored.[24](https://paperpile.com/c/M3S8Zv/GNUh) In particular, lung cancer is the leading cause of death in the United States and worldwide,[1,25](https://paperpile.com/c/M3S8Zv/3FHCb+V6StL) and RT plays an important role in its treatment.[26–31](https://paperpile.com/c/M3S8Zv/PMfH4+MVrEl+KrRBT+4PRVi+fO9Y+ISDuL) Esophagitis is one of the most crucial acute RT toxicities experienced by patients with lung cancer receiving thoracic RT, which inevitably exposes portions of the esophagus to radiation fields.[32](https://paperpile.com/c/M3S8Zv/xj2E) Severe esophagitis can occur in over 30% of lung cancer patients receiving RT for lung cancer,[30,32,33](https://paperpile.com/c/M3S8Zv/fO9Y+OXyA+xj2E) and can lead to complications including malnutrition, hospitalization, and discontinuation of treatment. Importantly, esophagitis and its severity are almost exclusively documented in clinical notes.
+
+In this study, we aimed to develop NLP methods for automated extraction of esophagitis presence and severity in the clinical notes of patients with lung cancer treated with RT according to National Cancer Institute Common Terminology Criteria for Adverse Events version 5.0 (CTCAE) guidelines.[34](https://paperpile.com/c/M3S8Zv/krSV) Specifically, we developed NLP methods for three classification tasks: 1) none vs. grade 1-3 esophagitis, 2) grade ≤1 vs. grade 2-3 esophagitis, and 3) none vs. grade 1 vs. grade 2-3 esophagitis. No instances of grade 4 or 5 esophagitis existed in our datasets. We explored cross-domain transferability in a cohort of esophageal cancer patients.
+
+**METHODS**
+**Patient population and data curation **
+
+Our study primarily used a gold-labeled lung cancer dataset of 1,524 notes from 124 non-small cell lung cancer patients who received RT at Brigham and Women’s Hospital/Dana-Farber Cancer Institute between 2015-2021. We included notes written from the start of RT up to one month after the last day of RT.
+
+Notes were manually annotated for the presence and maximum inferrable CTCAE v5.0 grade of esophagitis when the document was written. To establish consistent scoring guidelines for esophagitis, we annotated notes for the presence of a documented esophagitis event and its grade. We adhered to CTCAE v5.0 guidelines and based scoring solely on the information present within the free text of the note being annotated. Of note, pain with swallowing was considered esophagitis, but dysphagia alone was not. Thirteen percent of notes were dual-annotated by a radiation oncologist (DSB) and a trained data scientist (NKR), with an inter-rater reliability of 96%. Then the remaining notes were single-annotated by a data scientist (NKR). This dataset was split into a train, development, and test set in a proportion of roughly 80:10:10. Notes from the same patient appeared in only one of the sets.
+
+We also used a silver-labeled dataset of 2,420 notes from 1,832 patients who underwent RT for any cancer diagnosis between 2015-2021, had structured esophagitis grades available in their EHR, and were absent in our gold-labeled dataset. At our institution, patients are seen by their radiation oncologist for a weekly on-treatment visit focused on managing side effects during RT. During these visits, physicians may optionally enter toxicity grade as structured data. No other providers document on treatment toxicity as structured data. Thus, this dataset only consisted of on-treatment visit notes by radiation oncologists. These structured data were taken as-is for silver labels. These were considered silver labels because they are often copy-forwarded and use variable toxicity grading rubrics over time; no additional quality control was applied to these labels. During training, we used this set of silver-labeled data for data augmentation and cross-domain purposes. In this dataset, lung cancer (927/1,832 (50.6%)), esophageal cancer (167/1,832 (9.1%)), and spine metastases (138/1,832 (7.5%)) were the most common diagnoses.
+
+In addition, we curated a cross-domain validation set of 345 notes from 75 patients with esophageal cancer whose notes were not present in the gold or silver-labeled dataset. These notes were single-annotated by a radiation oncologist (DSB) using the same annotation guidelines as above.
+
+Table 1 shows the patient-level characteristics of our datasets. Table 2 shows the note-level distribution of esophagitis grade in the three datasets. Of note, no instances of grade 4 or 5 esophagitis existed in any of the datasets.
+
+![](../figures/image59.png)
+
+This study was approved by the Mass General Brigham institutional review board, and consent was waived as this was deemed exempt from human subjects research.**Classification Task Definition**
+
+Models were trained for three increasingly difficult tasks and here are the three classification tasks that were investigated:
+
+Binary classification task predicting the presence or absence of a patient’s esophagitis event (none vs. CTCAE grade 1-2-3)
+
+Binary classification task predicting whether or not the note describes a patient experiencing a clinically significant esophagitis event (CTCAE grade 1 vs. grade 2-3)
+
+Multi-class classification task predicting three esophagitis grades: none vs. mild vs. significant(none vs. CTCAE grade 1 vs. grade 2-3).
+
+![](../figures/image58.png)**Text pre-processing and classification models**
+
+In addition to standard text pre-processing, we implemented a rules-based system to systematically mask and remove any templated sections, including structured toxicity scores, headers, and footers, before the text was input into the training process. Token and section distributions before and after preprocessing are shown in Supplemental Table 1.
+
+We compared two major approaches for the three classification tasks: a statistical model as a baseline and neural models. For the statistical model, we used a term frequency-inverse document frequency (TF-IDF) [35](https://paperpile.com/c/M3S8Zv/x5PA) weighted Bag-of-Words with stochastic gradient descent (BoW+SGD).[36](https://paperpile.com/c/M3S8Zv/xD6m) For the neural models, we explored Bidirectional Encoder Representations from Transformers (BERT)-based models pre-trained on general domain text (BERT-base[37](https://paperpile.com/c/M3S8Zv/ms4S)) and on biomedical domain text (Bio-BERT v1.1,[38](https://paperpile.com/c/M3S8Zv/FsyM) ClinicalBERT,[39](https://paperpile.com/c/M3S8Zv/G7Sz) PubMedBERT[40](https://paperpile.com/c/M3S8Zv/bxel), and BioLinkBERT[41](https://paperpile.com/c/M3S8Zv/O4eu)) with fine-tuning. Models were fine-tuned with gold-labeled data alone, as well as gold and silver-labeled data.
+
+For the BoW+SGD models, we used scikit-learn’s SGDClassifier with log loss and l2 regularization, and hinge loss and 1000 estimators, respectively. This presents a baseline easily implementable method.
+
+The BERT-based models' sequence lengths are fixed at 512 tokens. A batch size of 22 was used for different BERT-based models. Manual hyperparameter tuning revealed a learning rate of 0.00007 and a 0.2 dropout rate with weight decay for all BERT-based models leading to consistent model performance.
+
+Given token length limitations in neural models, we provided combinations of informative note sections during BERT-based model fine-tuning.[42,43](https://paperpile.com/c/M3S8Zv/PUIK+zect) We refined medspaCy (v0.20.2)[44](https://paperpile.com/c/M3S8Zv/4uBG) to develop a custom rule-based sectionizer. Using gold data only, we carried out ablation studies to determine the optimal combinations of the following sections for model input: Assessment and Plan, Interval History, Physical Exam, RT Technical (a section unique to some RT notes that describes the RT dose, fractionation, technique, modality, and other technical metrics), and Review of Systems. These sections were chosen as the most likely to contain informative information based on oncologist domain expertise. In notes with no Assessment and Plan or Interval History sections, the full note was used to not exclude short data-rich notes, especially non-physician notes that do not standardly have these sections. The best-performing combinations of sections were used during fine-tuning with the gold- and silver-labeled data.**Evaluation**
+
+During training and fine-tuning, we evaluated all models using the development set and assessed their final performance on the held-out test set. For each classification task, we report precision, recall, F1, and, for the binary tasks, area under the receiver operating characteristic and area under the precision-recall curve (Supplemental Methods). Performance is reported at the note level, which directly assesses the tasks the models were trained for. We also report results at the patient level for the best-performing models for each task, in which the maximum predicted esophagitis score in any note for a given patient was compared against the maximum predicted gold score in order to explore performance if the models were implemented to infer this common end-point for clinical trials.
+
+Manual error analysis was conducted on the lung cancer test set.![](../figures/image47.png)**Comparison with structured EHR data**
+
+To assess the completeness of esophagitis documentation in structured versus unstructured EHR data, we collected ICD-10 diagnosis codes entered after the start of RT for a narrow and broad definition of esophagitis in our lung cancer test set (Supplemental Methods). We compared the presence of an ICD-10 esophagitis code entered as structured EHR data with our text-extracted results from Task 1, considering at least 1 note with an NLP-identified esophagitis event as an esophagitis diagnosis.
+
+The code to train the neural models and process text in the pipeline is released at https://github.com/AIM-Harvard/Eso_alpha. The neural models trained on the full dataset cannot be released to protect patient privacy.
+
+![](../figures/image69.png)**RESULTS**
+**Note-level performance**
+
+Table 3 reports the results of the best-performing BERT-based biomedical domain, BERT-based general domain, and statistical models for the lung cancer dataset. Performance was best for Task 1 (macro-F1 0.92), followed by Task 2 (macro-F1 0.82) and Task 3 (macro-F1 0.74). For all tasks, PubmedBERT-based models that were trained using both gold and silver-labeled had the best performance. The best-performing model for Task 1 and 2 included only Assessment and Plan and Interval History for notes with one of these sections; the best performing model for Task 3 included Assessment and Plan, Interval History, RT Technical, and Review of Systems for notes with either an Assessment and Plan or Interval History section.![](../figures/image64.png)
+
+Table 4 reports the results of the best-performing models on the esophageal cancer dataset. For all tasks, models trained using both gold and silver-labeled data had the best performance. Best macro-F1 was lower than on the lung cancer dataset (Task 1: -0.19, Task 2: -0.083, Task 3: -0.097).**Patient-level performance**
+
+Table 5 reports performance at the patient-level in the 13 patients in the lung cancer test set, using the best-performing models at the note level. Macro-F1 was 1.00 for Task 1, 0.92 for Task 2, and 0.49 for Task 3. Of note, for Task 3, the decrease in performance was largely driven by poor performance on the single patient with no esophagitis; all cases of grade 2-3 esophagitis were correctly identified.
+
+Table 6 shows patient-level performance of the 75 patients with esophageal cancer. Macro-F1 was 0.70 for Task 1, 0.69 for Task 2, and 0.58 for Task 3. For task 3, 24/26 cases of grade 2-3 esophagitis were correctly identified.**Error analysis**
+
+Manual review of the best-performing model output revealed discrete error modes. Most commonly, false positives occurred in all models where only evidence of dysphagia was documented, but not esophagitis. Although dysphagia is, formally, a distinct diagnosis from esophagitis, they are frequently used interchangeably in practice and share overlapping signs, symptoms, and treatments. False positives were also found in negated, generic, or past descriptions of esophagitis. One patient had synchronous nausea/vomiting and esophagitis with several notes describing severe dehydration and malnutrition in which it was ambiguous, which was the driving etiology, leading to false positives.
+
+![](../figures/image60.png)**Comparison with structured EHR data**
+
+The best-performing NLP model for Task 1 predicted esophagitis perfectly for all 13 patients in the test set. Of the 12 patients with esophagitis, only four were identified as having esophagitis already present as structured data using both the narrow- and broadly-defined set of esophagitis ICD-10 codes. Similarly, only 25/124 patients in the overall dataset had an esophagitis ICD-10 code documented as structured data.**DISCUSSION**
+
+This study provides proof-of-concept for the ability of NLP methods to automatically extract cancer treatment adverse event severity according to CTCAE grade from clinical notes. Our models for esophagitis extraction from the notes of patients undergoing RT for lung cancer performed well, with macro-F1 of 0.74-0.92. Unsurprisingly, performance dropped when the model was used cross-domain on notes of patients undergoing RT for esophageal cancer. We showed that our NLP methods supplemented the ICD-10 codes entered as structured data in the EHR for identifying patients with an esophagitis diagnosis, underscoring the importance of methods for text-based data extraction for adverse events. To the best of our knowledge, this is the first report of NLP methods for cancer treatment-related adverse event severity scoring, and demonstrates the potential for computational methods to support high-quality RWE generation on adverse events.
+
+Our study builds upon a recent body of work on NLP methods for cancer-treatment related adverse events. Hong et al. (2020) used Apache clinical Text Analysis Knowledge Extraction System to extract CTCAE terms from 100 RT OTV notes, and reported an F1 of 0.25-0.91 for identified present terms, and 0.12-0.92 negated terms.[18](https://paperpile.com/c/M3S8Zv/oFTf) Gupta et al. (2021) developed patient-level classifiers of immune-related adverse events, achieving F1 scores of 0.59-0.71 for identifying the presence of the three most common immune-related adverse events.[19](https://paperpile.com/c/M3S8Zv/dLcR) A recent study of extraction of cancer symptoms—a separate but related task—reported a deep learning model that performed well at identifying 80 symptoms.[20](https://paperpile.com/c/M3S8Zv/QACZ)
+
+Our study adds to the existing literature by providing evidence that NLP methods can extract the presence of adverse events and their severity. The impact of an adverse event on the patients’ ultimate outcomes is driven by how severe it is. Adverse events, including esophagitis, can be very mild and require no intervention or treatment modifications or may progress to severe, potentially deadly symptoms requiring hospitalization.[32](https://paperpile.com/c/M3S8Zv/xj2E) While methods that extract the presence or absence of an adverse event are valuable for high-level monitoring, understanding the severity of the event is necessary for clinical decision-making and risk-stratification. In addition, severity extraction is necessary for monitoring and understanding expected trajectories of adverse events, which can guide intervention and surveillance strategies. Further, severity extraction according to a standardized grading system such as CTCAE is needed to compare trial-reported adverse event profiles to those in the real-world setting and to compare the adverse event burden across therapeutic strategies.
+
+Our methods achieved the best results for the simplest task of identifying the presence or absence of esophagitis, not severity. The second task, which aimed to identify the presence or absence of esophagitis requiring medical intervention, required a more nuanced distinction between grade 1 and 2 esophagitis, but still performed very well for both classes. The third task aimed to identify whether a note documented no esophagitis, mild esophagitis, or esophagitis requiring medical intervention. While performance was excellent for classifying the absence of esophagitis, performance dropped for classifying grade 1 and grade 2-3 esophagitis. These findings likely relate to the subtle and somewhat subjective distinction between grade 1 and grade 2 esophagitis which may vary across providers, carry-forward errors due to documentation of previous esophagitis severity, and class imbalance. Nevertheless, our results are still solid, especially for the most clinically relevant task of identifying patients who require medical intervention for their esophagitis. Although the patient-level results are only exploratory given the small numbers, they motivate future efforts in automatically identifying maximum experienced CTCAE grades.
+
+The cross-domain performance of our models on the notes of patients with esophageal cancer underlines the importance of domain adaptation methods. Out-of-domain performance loss is widely documented in clinical NLP [45–47](https://paperpile.com/c/M3S8Zv/vqsE+xAjY+botZ) and is an active area of research.[48](https://paperpile.com/c/M3S8Zv/rY53) While it serves as a warning when applying adverse event methods across cancer diagnoses while also suggesting the future extensibility of such methods. Simply applying the models trained on the lung cancer dataset yielded marked performance decrements, which based on manual review was largely due to tumor-induced symptoms overlapping with esophagitis symptoms in esophageal cancer patients. We also note that while no gold-labeled data esophageal cancer patient data were used to train the model, the silver-labeled dataset included 167 notes from esophageal cancer patients, so this is not a completely out-of-domain evaluation.
+
+We took advantage of silver-labeled data to improve the performance of our models. The structured adverse event data that we used to augment our fine-tuning dataset was from a broader cancer population and were only present for a specialized note type—RT on-treatment visits—but still improved performance in the dataset including a wide variety of note and author types. The types and completeness of structured data collected during clinical encounters vary by provider, visit type, and department. Our approach may be useful for other researchers dealing with small gold-labeled datasets, who may have access to structured data for a subset of note types and wish to extract similar data from more diverse clinical encounters.
+
+Our study has limitations that should be considered when interpreting the results. Most importantly, our datasets presented a skewed distribution with under-represented Grade 3 toxicities, and no instances of grade 4 or 5. In addition, they come from a single institution, impacting generalizability. However, the lung cancer dataset reflected notes written by various provider types from various specialties, somewhat offsetting the generalizability concern. Our patient population was primarily white, potentially limiting the generalizability of our models to patients from different population groups. We had no CTCAE grade 4-5 esophagitis events in our dataset and so we could not develop models to classify these most severe esophagitis grades. Yet, severe adverse events are more readily available as structured data, which could supplement our methods if comprehensive, structured data are available.[49](https://paperpile.com/c/M3S8Zv/ZpZn) Our methods do not automatically identify what treatment is the cause of the adverse events; rather, we aimed only to extract an esophagitis event during a time window in which patients are known to be at risk for RT-related esophagitis, but most patients evaluated received concurrent chemotherapy. Accurate attribution is a focus of future work.
+
+In conclusion, our methods provide proof-of-concept that NLP methods can extract the severity of cancer treatment-related adverse events. Such technologies may play an important role in RWE generation for risk-prediction, comparative studies, and survivorship care; Phase IV studies; and clinical trial reporting. In the future, NLP methods for adverse event extraction could support clinical care and yield improved patient quality-of-life by rapidly identifying patients who may benefit from early intervention to prevent progression.**REFERENCE**
+
+1. [Siegel, R. L., Miller, K. D., Wagle, N. S. & Jemal, A. Cancer statistics, 2023.](http://paperpile.com/b/M3S8Zv/3FHCb)[*CA Cancer J. Clin.*](http://paperpile.com/b/M3S8Zv/3FHCb)[http://paperpile.com/b/M3S8Zv/3FHCb](http://paperpile.com/b/M3S8Zv/3FHCb)[**73**](http://paperpile.com/b/M3S8Zv/3FHCb)[, 17–48 (2023).](http://paperpile.com/b/M3S8Zv/3FHCb)
+
+2. [Survival.](http://paperpile.com/b/M3S8Zv/AABc)[https://progressreport.cancer.gov/after/survival](https://progressreport.cancer.gov/after/survival)[.](http://paperpile.com/b/M3S8Zv/AABc)
+
+3. [Amery, W. K. & ISPE. Why there is a need for pharmacovigilance.](http://paperpile.com/b/M3S8Zv/UtRQ)[*Pharmacoepidemiol. Drug Saf.*](http://paperpile.com/b/M3S8Zv/UtRQ)[http://paperpile.com/b/M3S8Zv/UtRQ](http://paperpile.com/b/M3S8Zv/UtRQ)[**8**](http://paperpile.com/b/M3S8Zv/UtRQ)[, 61–64 (1999).](http://paperpile.com/b/M3S8Zv/UtRQ)
+
+4. [Phillips, R., Hazell, L., Sauzet, O. & Cornelius, V. Analysis and reporting of adverse events in randomised controlled trials: a review.](http://paperpile.com/b/M3S8Zv/1JYj)[*BMJ Open*](http://paperpile.com/b/M3S8Zv/1JYj)[http://paperpile.com/b/M3S8Zv/1JYj](http://paperpile.com/b/M3S8Zv/1JYj)[**9**](http://paperpile.com/b/M3S8Zv/1JYj)[, e024537 (2019).](http://paperpile.com/b/M3S8Zv/1JYj)
+
+5. [Pitrou, I., Boutron, I., Ahmad, N. & Ravaud, P. Reporting of safety results in published reports of randomized controlled trials.](http://paperpile.com/b/M3S8Zv/QNjv)[*Arch. Intern. Med.*](http://paperpile.com/b/M3S8Zv/QNjv)[http://paperpile.com/b/M3S8Zv/QNjv](http://paperpile.com/b/M3S8Zv/QNjv)[**169**](http://paperpile.com/b/M3S8Zv/QNjv)[, 1756–1761 (2009).](http://paperpile.com/b/M3S8Zv/QNjv)
+
+6. [Ioannidis, J. P. & Lau, J. Completeness of safety reporting in randomized trials: an evaluation of 7 medical areas.](http://paperpile.com/b/M3S8Zv/ZDik)[*JAMA*](http://paperpile.com/b/M3S8Zv/ZDik)[http://paperpile.com/b/M3S8Zv/ZDik](http://paperpile.com/b/M3S8Zv/ZDik)[**285**](http://paperpile.com/b/M3S8Zv/ZDik)[, 437–443 (2001).](http://paperpile.com/b/M3S8Zv/ZDik)
+
+7. [Ioannidis, J. P. A. & Lau, J. Improving safety reporting from randomised trials.](http://paperpile.com/b/M3S8Zv/TXva)[*Drug Saf.*](http://paperpile.com/b/M3S8Zv/TXva)[http://paperpile.com/b/M3S8Zv/TXva](http://paperpile.com/b/M3S8Zv/TXva)[**25**](http://paperpile.com/b/M3S8Zv/TXva)[, 77–84 (2002).](http://paperpile.com/b/M3S8Zv/TXva)
+
+8. [Suresh, K.](http://paperpile.com/b/M3S8Zv/4fJ55)[*et al.*](http://paperpile.com/b/M3S8Zv/4fJ55)[Pneumonitis in Non-Small Cell Lung Cancer Patients Receiving Immune Checkpoint Immunotherapy: Incidence and Risk Factors.](http://paperpile.com/b/M3S8Zv/4fJ55)[*J. Thorac. Oncol.*](http://paperpile.com/b/M3S8Zv/4fJ55)[http://paperpile.com/b/M3S8Zv/4fJ55](http://paperpile.com/b/M3S8Zv/4fJ55)[**13**](http://paperpile.com/b/M3S8Zv/4fJ55)[, 1930–1939 (2018).](http://paperpile.com/b/M3S8Zv/4fJ55)
+
+9. [So, A. C. & Board, R. E. Real-world experience with pembrolizumab toxicities in advanced melanoma patients: a single-center experience in the UK.](http://paperpile.com/b/M3S8Zv/nYTqt)[*Melanoma Manag*](http://paperpile.com/b/M3S8Zv/nYTqt)[http://paperpile.com/b/M3S8Zv/nYTqt](http://paperpile.com/b/M3S8Zv/nYTqt)[**5**](http://paperpile.com/b/M3S8Zv/nYTqt)[, MMT05 (2018).](http://paperpile.com/b/M3S8Zv/nYTqt)
+
+10. [Cho, J. Y.](http://paperpile.com/b/M3S8Zv/8kpaL)[*et al.*](http://paperpile.com/b/M3S8Zv/8kpaL)[Characteristics, incidence, and risk factors of immune checkpoint inhibitor-related pneumonitis in patients with non-small cell lung cancer.](http://paperpile.com/b/M3S8Zv/8kpaL)[*Lung Cancer*](http://paperpile.com/b/M3S8Zv/8kpaL)[http://paperpile.com/b/M3S8Zv/8kpaL](http://paperpile.com/b/M3S8Zv/8kpaL)[**125**](http://paperpile.com/b/M3S8Zv/8kpaL)[, 150–156 (2018).](http://paperpile.com/b/M3S8Zv/8kpaL)
+
+11. [Argnani, L.](http://paperpile.com/b/M3S8Zv/8SGRm)[*et al.*](http://paperpile.com/b/M3S8Zv/8SGRm)[Immune-related adverse events in the treatment of non-Hodgkin lymphoma with immune checkpoint inhibitors.](http://paperpile.com/b/M3S8Zv/8SGRm)[*Sci. Rep.*](http://paperpile.com/b/M3S8Zv/8SGRm)[http://paperpile.com/b/M3S8Zv/8SGRm](http://paperpile.com/b/M3S8Zv/8SGRm)[**12**](http://paperpile.com/b/M3S8Zv/8SGRm)[, 1753 (2022).](http://paperpile.com/b/M3S8Zv/8SGRm)
+
+12. [Jamieson, L.](http://paperpile.com/b/M3S8Zv/lfADT)[*et al.*](http://paperpile.com/b/M3S8Zv/lfADT)[Immunotherapy and associated immune-related adverse events at a large UK centre: a mixed methods study.](http://paperpile.com/b/M3S8Zv/lfADT)[*BMC Cancer*](http://paperpile.com/b/M3S8Zv/lfADT)[http://paperpile.com/b/M3S8Zv/lfADT](http://paperpile.com/b/M3S8Zv/lfADT)[**20**](http://paperpile.com/b/M3S8Zv/lfADT)[, 743 (2020).](http://paperpile.com/b/M3S8Zv/lfADT)
+
+13. [Sun, M.](http://paperpile.com/b/M3S8Zv/va0dM)[*et al.*](http://paperpile.com/b/M3S8Zv/va0dM)[Real-world data analysis of immune checkpoint inhibitors in stage III-IV adenocarcinoma and squamous cell carcinoma.](http://paperpile.com/b/M3S8Zv/va0dM)[*BMC Cancer*](http://paperpile.com/b/M3S8Zv/va0dM)[http://paperpile.com/b/M3S8Zv/va0dM](http://paperpile.com/b/M3S8Zv/va0dM)[**22**](http://paperpile.com/b/M3S8Zv/va0dM)[, 762 (2022).](http://paperpile.com/b/M3S8Zv/va0dM)
+
+14. [Savova, G. K.](http://paperpile.com/b/M3S8Zv/liDM)[*et al.*](http://paperpile.com/b/M3S8Zv/liDM)[Use of Natural Language Processing to Extract Clinical Cancer Phenotypes from Electronic Medical Records.](http://paperpile.com/b/M3S8Zv/liDM)[*Cancer Res.*](http://paperpile.com/b/M3S8Zv/liDM)[http://paperpile.com/b/M3S8Zv/liDM](http://paperpile.com/b/M3S8Zv/liDM)[**79**](http://paperpile.com/b/M3S8Zv/liDM)[, 5463–5470 (2019).](http://paperpile.com/b/M3S8Zv/liDM)
+
+15. [Murphy, R. M.](http://paperpile.com/b/M3S8Zv/lfWp)[*et al.*](http://paperpile.com/b/M3S8Zv/lfWp)[Adverse drug event detection using natural language processing: A scoping review of supervised learning methods.](http://paperpile.com/b/M3S8Zv/lfWp)[*PLoS One*](http://paperpile.com/b/M3S8Zv/lfWp)[http://paperpile.com/b/M3S8Zv/lfWp](http://paperpile.com/b/M3S8Zv/lfWp)[**18**](http://paperpile.com/b/M3S8Zv/lfWp)[, e0279842 (2023).](http://paperpile.com/b/M3S8Zv/lfWp)
+
+16. [Luo, Y.](http://paperpile.com/b/M3S8Zv/NILV)[*et al.*](http://paperpile.com/b/M3S8Zv/NILV)[Natural Language Processing for EHR-Based Pharmacovigilance: A Structured Review.](http://paperpile.com/b/M3S8Zv/NILV)[*Drug Saf.*](http://paperpile.com/b/M3S8Zv/NILV)[http://paperpile.com/b/M3S8Zv/NILV](http://paperpile.com/b/M3S8Zv/NILV)[**40**](http://paperpile.com/b/M3S8Zv/NILV)[, 1075–1089 (2017).](http://paperpile.com/b/M3S8Zv/NILV)
+
+17. [Bitterman, D. S., Miller, T. A., Mak, R. H. & Savova, G. K. Clinical natural language processing for radiation oncology: A review and practical primer.](http://paperpile.com/b/M3S8Zv/TCjp)[*Int. J. Radiat. Oncol. Biol. Phys.*](http://paperpile.com/b/M3S8Zv/TCjp)[http://paperpile.com/b/M3S8Zv/TCjp](http://paperpile.com/b/M3S8Zv/TCjp)[**110**](http://paperpile.com/b/M3S8Zv/TCjp)[, 641–655 (2021).](http://paperpile.com/b/M3S8Zv/TCjp)
+
+18. [Hong, J. C., Fairchild, A. T., Tanksley, J. P., Palta, M. & Tenenbaum, J. D. Natural language processing for abstraction of cancer treatment toxicities: accuracy versus human experts.](http://paperpile.com/b/M3S8Zv/oFTf)[*JAMIA Open*](http://paperpile.com/b/M3S8Zv/oFTf)[http://paperpile.com/b/M3S8Zv/oFTf](http://paperpile.com/b/M3S8Zv/oFTf)[**3**](http://paperpile.com/b/M3S8Zv/oFTf)[, 513–517 (2020).](http://paperpile.com/b/M3S8Zv/oFTf)
+
+19. [Gupta, S., Belouali, A., Shah, N. J., Atkins, M. B. & Madhavan, S. Automated Identification of Patients With Immune-Related Adverse Events From Clinical Notes Using Word Embedding and Machine Learning.](http://paperpile.com/b/M3S8Zv/dLcR)[*JCO Clin Cancer Inform*](http://paperpile.com/b/M3S8Zv/dLcR)[http://paperpile.com/b/M3S8Zv/dLcR](http://paperpile.com/b/M3S8Zv/dLcR)[**5**](http://paperpile.com/b/M3S8Zv/dLcR)[, 541–549 (2021).](http://paperpile.com/b/M3S8Zv/dLcR)
+
+20. [Lindvall, C.](http://paperpile.com/b/M3S8Zv/QACZ)[*et al.*](http://paperpile.com/b/M3S8Zv/QACZ)[Deep Learning for Cancer Symptoms Monitoring on the Basis of Electronic Health Record Unstructured Clinical Notes.](http://paperpile.com/b/M3S8Zv/QACZ)[*JCO Clin Cancer Inform*](http://paperpile.com/b/M3S8Zv/QACZ)[http://paperpile.com/b/M3S8Zv/QACZ](http://paperpile.com/b/M3S8Zv/QACZ)[**6**](http://paperpile.com/b/M3S8Zv/QACZ)[, e2100136 (2022).](http://paperpile.com/b/M3S8Zv/QACZ)
+
+21. [Henry, S., Buchan, K., Filannino, M., Stubbs, A. & Uzuner, O. 2018 n2c2 shared task on adverse drug events and medication extraction in electronic health records.](http://paperpile.com/b/M3S8Zv/gn2e)[*J. Am. Med. Inform. Assoc.*](http://paperpile.com/b/M3S8Zv/gn2e)[http://paperpile.com/b/M3S8Zv/gn2e](http://paperpile.com/b/M3S8Zv/gn2e)[**27**](http://paperpile.com/b/M3S8Zv/gn2e)[, 3–12 (2020).](http://paperpile.com/b/M3S8Zv/gn2e)
+
+22. [Jagannatha, A., Liu, F., Liu, W. & Yu, H. Overview of the First Natural Language Processing Challenge for Extracting Medication, Indication, and Adverse Drug Events from Electronic Health Record Notes (MADE 1.0).](http://paperpile.com/b/M3S8Zv/pWZy)[*Drug Saf.*](http://paperpile.com/b/M3S8Zv/pWZy)[http://paperpile.com/b/M3S8Zv/pWZy](http://paperpile.com/b/M3S8Zv/pWZy)[**42**](http://paperpile.com/b/M3S8Zv/pWZy)[, 99–111 (2019).](http://paperpile.com/b/M3S8Zv/pWZy)
+
+23. [Smith, G. L.](http://paperpile.com/b/M3S8Zv/Knsx)[*et al.*](http://paperpile.com/b/M3S8Zv/Knsx)[Promoting the Appropriate Use of Advanced Radiation Technologies in Oncology: Summary of a National Cancer Policy Forum Workshop.](http://paperpile.com/b/M3S8Zv/Knsx)[*Int. J. Radiat. Oncol. Biol. Phys.*](http://paperpile.com/b/M3S8Zv/Knsx)[http://paperpile.com/b/M3S8Zv/Knsx](http://paperpile.com/b/M3S8Zv/Knsx)[**97**](http://paperpile.com/b/M3S8Zv/Knsx)[, 450–461 (2017).](http://paperpile.com/b/M3S8Zv/Knsx)
+
+24. [Bitterman, D. S.](http://paperpile.com/b/M3S8Zv/GNUh)[*et al.*](http://paperpile.com/b/M3S8Zv/GNUh)[Master Protocol Trial Design for Efficient and Rational Evaluation of Novel Therapeutic Oncology Devices.](http://paperpile.com/b/M3S8Zv/GNUh)[*J. Natl. Cancer Inst.*](http://paperpile.com/b/M3S8Zv/GNUh)[http://paperpile.com/b/M3S8Zv/GNUh](http://paperpile.com/b/M3S8Zv/GNUh)[**112**](http://paperpile.com/b/M3S8Zv/GNUh)[, 229–237 (2020).](http://paperpile.com/b/M3S8Zv/GNUh)
+
+25. [Sung, H.](http://paperpile.com/b/M3S8Zv/V6StL)[*et al.*](http://paperpile.com/b/M3S8Zv/V6StL)[Global Cancer Statistics 2020: GLOBOCAN Estimates of Incidence and Mortality Worldwide for 36 Cancers in 185 Countries.](http://paperpile.com/b/M3S8Zv/V6StL)[*CA Cancer J. Clin.*](http://paperpile.com/b/M3S8Zv/V6StL)[http://paperpile.com/b/M3S8Zv/V6StL](http://paperpile.com/b/M3S8Zv/V6StL)[**71**](http://paperpile.com/b/M3S8Zv/V6StL)[, 209–249 (2021).](http://paperpile.com/b/M3S8Zv/V6StL)
+
+26. [Pignon, J. P.](http://paperpile.com/b/M3S8Zv/PMfH4)[*et al.*](http://paperpile.com/b/M3S8Zv/PMfH4)[Lung Adjuvant Cisplatin Evaluation (LACE): A pooled analysis of five randomized clinical trials including 4,584 patients.](http://paperpile.com/b/M3S8Zv/PMfH4)[*J. Clin. Orthod.*](http://paperpile.com/b/M3S8Zv/PMfH4)[http://paperpile.com/b/M3S8Zv/PMfH4](http://paperpile.com/b/M3S8Zv/PMfH4)[**24**](http://paperpile.com/b/M3S8Zv/PMfH4)[, 7008–7008 (2006).](http://paperpile.com/b/M3S8Zv/PMfH4)
+
+27. [Chang, J. Y.](http://paperpile.com/b/M3S8Zv/MVrEl)[*et al.*](http://paperpile.com/b/M3S8Zv/MVrEl)[Stereotactic ablative radiotherapy versus lobectomy for operable stage I non-small-cell lung cancer: a pooled analysis of two randomised trials.](http://paperpile.com/b/M3S8Zv/MVrEl)[*Lancet Oncol.*](http://paperpile.com/b/M3S8Zv/MVrEl)[http://paperpile.com/b/M3S8Zv/MVrEl](http://paperpile.com/b/M3S8Zv/MVrEl)[**16**](http://paperpile.com/b/M3S8Zv/MVrEl)[, 630–637 (2015).](http://paperpile.com/b/M3S8Zv/MVrEl)
+
+28. [Albain, K. S.](http://paperpile.com/b/M3S8Zv/KrRBT)[*et al.*](http://paperpile.com/b/M3S8Zv/KrRBT)[Radiotherapy plus chemotherapy with or without surgical resection for stage III non-small-cell lung cancer: a phase III randomised controlled trial.](http://paperpile.com/b/M3S8Zv/KrRBT)[*Lancet*](http://paperpile.com/b/M3S8Zv/KrRBT)[http://paperpile.com/b/M3S8Zv/KrRBT](http://paperpile.com/b/M3S8Zv/KrRBT)[**374**](http://paperpile.com/b/M3S8Zv/KrRBT)[, 379–386 (2009).](http://paperpile.com/b/M3S8Zv/KrRBT)
+
+29. [Sundstrøm, S.](http://paperpile.com/b/M3S8Zv/4PRVi)[*et al.*](http://paperpile.com/b/M3S8Zv/4PRVi)[Hypofractionated palliative radiotherapy (17 Gy per two fractions) in advanced non-small-cell lung carcinoma is comparable to standard fractionation for symptom control and survival: a national phase III trial.](http://paperpile.com/b/M3S8Zv/4PRVi)[*J. Clin. Oncol.*](http://paperpile.com/b/M3S8Zv/4PRVi)[http://paperpile.com/b/M3S8Zv/4PRVi](http://paperpile.com/b/M3S8Zv/4PRVi)[**22**](http://paperpile.com/b/M3S8Zv/4PRVi)[, 801–810 (2004).](http://paperpile.com/b/M3S8Zv/4PRVi)
+
+30. [Curran, W. J., Jr](http://paperpile.com/b/M3S8Zv/fO9Y)[*et al.*](http://paperpile.com/b/M3S8Zv/fO9Y)[Sequential vs. concurrent chemoradiation for stage III non-small cell lung cancer: randomized phase III trial RTOG 9410.](http://paperpile.com/b/M3S8Zv/fO9Y)[*J. Natl. Cancer Inst.*](http://paperpile.com/b/M3S8Zv/fO9Y)[http://paperpile.com/b/M3S8Zv/fO9Y](http://paperpile.com/b/M3S8Zv/fO9Y)[**103**](http://paperpile.com/b/M3S8Zv/fO9Y)[, 1452–1460 (2011).](http://paperpile.com/b/M3S8Zv/fO9Y)
+
+31. [Antonia, S. J.](http://paperpile.com/b/M3S8Zv/ISDuL)[*et al.*](http://paperpile.com/b/M3S8Zv/ISDuL)[Overall survival with durvalumab after chemoradiotherapy in stage III NSCLC.](http://paperpile.com/b/M3S8Zv/ISDuL)[*N. Engl. J. Med.*](http://paperpile.com/b/M3S8Zv/ISDuL)[http://paperpile.com/b/M3S8Zv/ISDuL](http://paperpile.com/b/M3S8Zv/ISDuL)[**379**](http://paperpile.com/b/M3S8Zv/ISDuL)[, 2342–2350 (2018).](http://paperpile.com/b/M3S8Zv/ISDuL)
+
+32. [Baker, S. & Fairchild, A. Radiation-induced esophagitis in lung cancer.](http://paperpile.com/b/M3S8Zv/xj2E)[*Lung Cancer*](http://paperpile.com/b/M3S8Zv/xj2E)[http://paperpile.com/b/M3S8Zv/xj2E](http://paperpile.com/b/M3S8Zv/xj2E)[**7**](http://paperpile.com/b/M3S8Zv/xj2E)[, 119–127 (2016).](http://paperpile.com/b/M3S8Zv/xj2E)
+
+33. [Diao, K.](http://paperpile.com/b/M3S8Zv/OXyA)[*et al.*](http://paperpile.com/b/M3S8Zv/OXyA)[Radiation toxicity in patients with collagen vascular disease and intrathoracic malignancy treated with modern radiation techniques.](http://paperpile.com/b/M3S8Zv/OXyA)[*Radiother. Oncol.*](http://paperpile.com/b/M3S8Zv/OXyA)[http://paperpile.com/b/M3S8Zv/OXyA](http://paperpile.com/b/M3S8Zv/OXyA)[**125**](http://paperpile.com/b/M3S8Zv/OXyA)[, 301–309 (2017).](http://paperpile.com/b/M3S8Zv/OXyA)
+
+34. [*Common Terminology Criteria for Adverse Events (CTCAE)*](http://paperpile.com/b/M3S8Zv/krSV)[.](http://paperpile.com/b/M3S8Zv/krSV)[https://ctep.cancer.gov/protocoldevelopment/electronic_applications/docs/ctcae_v5_quick_reference_5x7.pdf](https://ctep.cancer.gov/protocoldevelopment/electronic_applications/docs/ctcae_v5_quick_reference_5x7.pdf)[(2017).](http://paperpile.com/b/M3S8Zv/krSV)
+
+35. [Rajaraman, A. & Ullman, J. D. Data Mining. in](http://paperpile.com/b/M3S8Zv/x5PA)[*Mining of Massive Datasets*](http://paperpile.com/b/M3S8Zv/x5PA)[1–17 (Cambridge University Press, 2011).](http://paperpile.com/b/M3S8Zv/x5PA)
+
+36. [Kowsari](http://paperpile.com/b/M3S8Zv/xD6m)[*et al.*](http://paperpile.com/b/M3S8Zv/xD6m)[Text Classification Algorithms: A Survey.](http://paperpile.com/b/M3S8Zv/xD6m)[*Information*](http://paperpile.com/b/M3S8Zv/xD6m)[vol. 10 150 Preprint at https://doi.org/](http://paperpile.com/b/M3S8Zv/xD6m)[10.3390/info10040150](http://dx.doi.org/10.3390/info10040150)[(2019).](http://paperpile.com/b/M3S8Zv/xD6m)
+
+37. [Devlin, J., Chang, M.-W., Lee, K. & Toutanova, K. BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding.](http://paperpile.com/b/M3S8Zv/ms4S)[*arXiv [cs.CL]*](http://paperpile.com/b/M3S8Zv/ms4S)[(2018).](http://paperpile.com/b/M3S8Zv/ms4S)
+
+38. [Lee, J.](http://paperpile.com/b/M3S8Zv/FsyM)[*et al.*](http://paperpile.com/b/M3S8Zv/FsyM)[BioBERT: a pre-trained biomedical language representation model for biomedical text mining.](http://paperpile.com/b/M3S8Zv/FsyM)[*Bioinformatics*](http://paperpile.com/b/M3S8Zv/FsyM)[http://paperpile.com/b/M3S8Zv/FsyM](http://paperpile.com/b/M3S8Zv/FsyM)[**36**](http://paperpile.com/b/M3S8Zv/FsyM)[, 1234–1240 (2020).](http://paperpile.com/b/M3S8Zv/FsyM)
+
+39. [Alsentzer, E.](http://paperpile.com/b/M3S8Zv/G7Sz)[*et al.*](http://paperpile.com/b/M3S8Zv/G7Sz)[Publicly Available Clinical BERT Embeddings. in](http://paperpile.com/b/M3S8Zv/G7Sz)[*Proceedings of the 2nd Clinical Natural Language Processing Workshop*](http://paperpile.com/b/M3S8Zv/G7Sz)[72–78 (Association for Computational Linguistics, 2019).](http://paperpile.com/b/M3S8Zv/G7Sz)
+
+40. [Gu, Y.](http://paperpile.com/b/M3S8Zv/bxel)[*et al.*](http://paperpile.com/b/M3S8Zv/bxel)[Domain-Specific Language Model Pretraining for Biomedical Natural Language Processing.](http://paperpile.com/b/M3S8Zv/bxel)[*arXiv [cs.CL]*](http://paperpile.com/b/M3S8Zv/bxel)[(2020).](http://paperpile.com/b/M3S8Zv/bxel)
+
+41. [Yasunaga, M., Leskovec, J. & Liang, P. LinkBERT: Pretraining Language Models with Document Links. in](http://paperpile.com/b/M3S8Zv/O4eu)[*Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)*](http://paperpile.com/b/M3S8Zv/O4eu)[8003–8016 (Association for Computational Linguistics, 2022).](http://paperpile.com/b/M3S8Zv/O4eu)
+
+42. [Pomares-Quimbaya, A., Kreuzthaler, M. & Schulz, S. Current approaches to identify sections within clinical narratives from electronic health records: a systematic review.](http://paperpile.com/b/M3S8Zv/PUIK)[*BMC Med. Res. Methodol.*](http://paperpile.com/b/M3S8Zv/PUIK)[http://paperpile.com/b/M3S8Zv/PUIK](http://paperpile.com/b/M3S8Zv/PUIK)[**19**](http://paperpile.com/b/M3S8Zv/PUIK)[, 155 (2019).](http://paperpile.com/b/M3S8Zv/PUIK)
+
+43. [Rosenthal, S., Barker, K. & Liang, Z. Leveraging Medical Literature for Section Prediction in Electronic Health Records. in](http://paperpile.com/b/M3S8Zv/zect)[*Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)*](http://paperpile.com/b/M3S8Zv/zect)[4864–4873 (Association for Computational Linguistics, 2019).](http://paperpile.com/b/M3S8Zv/zect)
+
+44. [Eyre, H.](http://paperpile.com/b/M3S8Zv/4uBG)[*et al.*](http://paperpile.com/b/M3S8Zv/4uBG)[Launching into clinical space with medspaCy: a new clinical text processing toolkit in Python.](http://paperpile.com/b/M3S8Zv/4uBG)[*AMIA Annu. Symp. Proc.*](http://paperpile.com/b/M3S8Zv/4uBG)[http://paperpile.com/b/M3S8Zv/4uBG](http://paperpile.com/b/M3S8Zv/4uBG)[**2021**](http://paperpile.com/b/M3S8Zv/4uBG)[, 438–447 (2021).](http://paperpile.com/b/M3S8Zv/4uBG)
+
+45. [Wu, S.](http://paperpile.com/b/M3S8Zv/vqsE)[*et al.*](http://paperpile.com/b/M3S8Zv/vqsE)[Negation’s not solved: generalizability versus optimizability in clinical natural language processing.](http://paperpile.com/b/M3S8Zv/vqsE)[*PLoS One*](http://paperpile.com/b/M3S8Zv/vqsE)[http://paperpile.com/b/M3S8Zv/vqsE](http://paperpile.com/b/M3S8Zv/vqsE)[**9**](http://paperpile.com/b/M3S8Zv/vqsE)[, e112774 (2014).](http://paperpile.com/b/M3S8Zv/vqsE)
+
+46. [Kim, Y., Garvin, J., Heavirland, J. & Meystre, S. M. Improving heart failure information extraction by domain adaptation.](http://paperpile.com/b/M3S8Zv/xAjY)[*Stud. Health Technol. Inform.*](http://paperpile.com/b/M3S8Zv/xAjY)[http://paperpile.com/b/M3S8Zv/xAjY](http://paperpile.com/b/M3S8Zv/xAjY)[**192**](http://paperpile.com/b/M3S8Zv/xAjY)[, 185–189 (2013).](http://paperpile.com/b/M3S8Zv/xAjY)
+
+47. [Tepper, M., Capurro, D., Xia, F., Vanderwende, L. & Yetisgen-Yildiz, M. Statistical Section Segmentation in Free-Text Clinical Records. in](http://paperpile.com/b/M3S8Zv/botZ)[*Lrec*](http://paperpile.com/b/M3S8Zv/botZ)[2001–2008 (2012).](http://paperpile.com/b/M3S8Zv/botZ)
+
+48. [Laparra, E., Mascio, A., Velupillai, S. & Miller, T. A Review of Recent Work in Transfer Learning and Domain Adaptation for Natural Language Processing of Electronic Health Records.](http://paperpile.com/b/M3S8Zv/rY53)[*Yearb. Med. Inform.*](http://paperpile.com/b/M3S8Zv/rY53)[http://paperpile.com/b/M3S8Zv/rY53](http://paperpile.com/b/M3S8Zv/rY53)[**30**](http://paperpile.com/b/M3S8Zv/rY53)[, 239–244 (2021).](http://paperpile.com/b/M3S8Zv/rY53)
+
+49. [Kalinich, M.](http://paperpile.com/b/M3S8Zv/ZpZn)[*et al.*](http://paperpile.com/b/M3S8Zv/ZpZn)[Prediction of severe immune-related adverse events requiring hospital admission in patients on immune checkpoint inhibitors: study of a population level insurance claims database from the USA.](http://paperpile.com/b/M3S8Zv/ZpZn)[*J Immunother Cancer*](http://paperpile.com/b/M3S8Zv/ZpZn)[http://paperpile.com/b/M3S8Zv/ZpZn](http://paperpile.com/b/M3S8Zv/ZpZn)[**9**](http://paperpile.com/b/M3S8Zv/ZpZn)[, (2021).](http://paperpile.com/b/M3S8Zv/ZpZn)**Appendix A: Supplemental Methods**
+**Evaluation Metrics Equations**
+
+The evaluation metrics were calculated using the following equations:
+
+Precision = (True Positives/Predictions)
+
+Recall = (True Positives/Gold Positives)
+
+F1 score = ((2PrecisionRecall)/(precision+recall))
+
+Macro-F1 score = ((F1 score for each class / number of classes))
+
+Area under the receiver operating characteristic (AUCROC) = (∑ [True Positives / (True Positives + False Positives)] * Δthreshold)
+
+Area under the precision-recall curve (AUPRC) = (∑[Precision(i+1) - Precision(i)] * Recall(i+1))
+
+**Esophagitis ICD-10 Codes**
+
+The narrow and broad ICD-10 codes for esophagitis were selected by a board-certified oncologist based on domain expertise and clinical experience.
+
+*ICD-10 codes included in narrow definition:*
+
+K20: Esophagitis
+
+K20.9: Esophagitis, unspecified
+
+K20.90: Esophagitis, unspecified without bleeding
+
+K20.91: Esophagitis, unspecified with bleeding
+
+K20.8: Other esophagitis
+
+K20.80: Other esophagitis without bleeding
+
+K20.81: Other esophagitis with bleeding
+
+*ICD-10 codes included in broad definition:*
+
+K20: Esophagitis
+
+K20.9: Esophagitis, unspecified
+
+K20.90: Esophagitis, unspecified without bleeding
+
+K20.91: Esophagitis, unspecified with bleeding
+
+K20.8: Other esophagitis
+
+K20.80: Other esophagitis without bleeding
+
+K20.81: Other esophagitis with bleeding
+
+K21.0: Esophagitis with gastro-esophageal reflux disease
+
+K21.0: Reflux esophagitis
+
+K21.00: Gastro-esophageal reflux disease without bleeding
+
+K21.01: Gastro-esophageal reflux disease with bleeding
+
+K22.1: Ulcerative esophagitis
+
+K22.10: Ulcer of esophagus without bleeding
+
+K22.11: Ulcer of esophagus with bleeding
+
+---
+
+**Appendix B: Supplemental Tables**
+
+Supplemental Table 1. Token count statistics on the gold-labeled lung cancer and silver-labeled datasets using the PubMedBERT tokenizer.
+
+<table class="c27"><tr class="c53"><td class="c619" colspan="1" rowspan="1"><p class="c54"><span class="c25 c44">Token count statistic</span></p></td><td class="c767" colspan="1" rowspan="1"><p class="c29"><span class="c25 c44">Raw notes</span><span class="c25 c44 c30">a</span></p></td><td class="c127" colspan="1" rowspan="1"><p class="c29"><span class="c25 c44">Pre-processed notes</span><span class="c25 c44 c30">b</span></p></td><td class="c891" colspan="1" rowspan="1"><p class="c29"><span class="c25 c44">IH section</span><span class="c25 c44 c30">c</span></p></td><td class="c767" colspan="1" rowspan="1"><p class="c29"><span class="c25 c44">AP section</span><span class="c25 c44 c30">c</span></p></td><td class="c782" colspan="1" rowspan="1"><p class="c29"><span class="c25 c44">IH+AP+ROT+ROS sections</span><span class="c25 c44 c30">c</span></p></td></tr><tr class="c53"><td class="c972" colspan="1" rowspan="1"><p class="c54"><span class="c34 c2">   mean</span></p></td><td class="c386" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">477.9</span></p></td><td class="c165" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">422.3</span></p></td><td class="c659" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">151.5</span></p></td><td class="c386" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">99.4</span></p></td><td class="c752" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">446.6</span></p></td></tr><tr class="c53"><td class="c116" colspan="1" rowspan="1"><p class="c54"><span class="c34 c2">   standard deviation</span></p></td><td class="c151" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">99.4</span></p></td><td class="c361" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">121.9</span></p></td><td class="c590" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">138.2</span></p></td><td class="c151" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">102.6</span></p></td><td class="c343" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">124.1</span></p></td></tr><tr class="c53"><td class="c116" colspan="1" rowspan="1"><p class="c54"><span class="c34 c2">    minimum</span></p></td><td class="c151" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">38</span></p></td><td class="c361" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">38</span></p></td><td class="c590" colspan="1" rowspan="1"><p class="c29"><span class="c2 c44">3</span><span class="c25 c44 c30">d</span></p></td><td class="c151" colspan="1" rowspan="1"><p class="c29"><span class="c2 c44">3</span><span class="c25 c44 c30">d</span></p></td><td class="c343" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">38</span></p></td></tr><tr class="c53"><td class="c116" colspan="1" rowspan="1"><p class="c54"><span class="c34 c2">    25%ile</span></p></td><td class="c151" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">512</span></p></td><td class="c361" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">339.5</span></p></td><td class="c590" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">54</span></p></td><td class="c151" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">29</span></p></td><td class="c343" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">446</span></p></td></tr><tr class="c53"><td class="c116" colspan="1" rowspan="1"><p class="c54"><span class="c34 c2">    50%ile</span></p></td><td class="c151" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">512</span></p></td><td class="c361" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">512</span></p></td><td class="c590" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">109</span></p></td><td class="c151" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">64</span></p></td><td class="c343" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">512</span></p></td></tr><tr class="c53"><td class="c116" colspan="1" rowspan="1"><p class="c54"><span class="c34 c2">    75%ile</span></p></td><td class="c151" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">512</span></p></td><td class="c361" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">512</span></p></td><td class="c590" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">205</span></p></td><td class="c151" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">141</span></p></td><td class="c343" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">512</span></p></td></tr><tr class="c53"><td class="c116" colspan="1" rowspan="1"><p class="c54"><span class="c34 c2">    maximum</span></p></td><td class="c151" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">512</span></p></td><td class="c361" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">512</span></p></td><td class="c590" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">512</span></p></td><td class="c151" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">512</span></p></td><td class="c343" colspan="1" rowspan="1"><p class="c29"><span class="c34 c2">512</span></p></td></tr></table>
+
+Abbreviations: IH = Interval History; AP = Assessment and Plan; ROT = Radiotherapy Technical; ROS = Review of Systems
+
+aRaw note is the entire note with no pre-processing other than tokenization.
+
+bPre-processed note is the note** **after removal of any templated sections that include structured toxicity scores, headers, and footers.**c**Only stated section was included if the note had an IH or AP section; otherwise, the full pre-processed note was included.**d**Because of such a section not found in the given note.** **

@@ -1,0 +1,156 @@
+:::{#tbl-qe4pe-qa-example}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable small-text">
+    <thead>
+        <tr>
+            <th><span data-qmd="**ID**"></span></th>
+            <th><span data-qmd="**Source text**"></span></th>
+            <th><span data-qmd="**Target text**"></span></th>
+            <th><span data-qmd="**Proposed correction**"></span></th>
+            <th><span data-qmd="**Error Cat.**"></span></th>
+            <th><span data-qmd="**Severity**"></span></th>
+            <th><span data-qmd="**Score**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>9-1</td>
+            <td>Specifying peri- and postnatal factors in children born very preterm (VPT) that affect later outcome helps to improve long-term treatment.</td>
+            <td><span data-qmd='Specificare i fattori peri- e postnatali nei bambini nati molto pretermine ([VPT]{color="red"}) che influenzano il risultato successivo aiuta a migliorare il trattamento a lungo termine.'></span></td>
+            <td><span data-qmd='Specificare i fattori peri- e postnatali nei bambini nati molto pretermine ([VPT, Very Preterm]{color="red"}) che influenzano il risultato successivo aiuta a migliorare il trattamento a lungo termine.'></span></td>
+            <td>Readability</td>
+            <td>Minor</td>
+            <td>90</td>
+        </tr>
+        <tr class="midrule">
+            <td>9-2</td>
+            <td>To enhance the predictability of 5-year cognitive outcome by perinatal, 2-year developmental and socio-economic data.</td>
+            <td>Migliorare la prevedibilità del risultato cognitivo a 5 anni mediante dati perinatali, di sviluppo e socioeconomici a 2 anni.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>100</td>
+        </tr>
+        <tr class="midrule">
+            <td>9-3</td>
+            <td>5-year infants born VPT were compared to 34 term controls.</td>
+            <td><span data-qmd='I neonati di 5 anni nati VPT sono stati confrontati con 34 [nati a termine come controllo]{color="red"}.'></span></td>
+            <td><span data-qmd='I neonati di 5 anni nati VPT sono stati confrontati con 34 [controlli a termine]{color="red"}.'></span></td>
+            <td>Mistranslation</td>
+            <td>Minor</td>
+            <td>70</td>
+        </tr>
+        <tr>
+            <td rowspan="2">9-4</td>
+            <td rowspan="2">The IQ of 5-year infants born VPT was 10 points lower than that of term controls and influenced independently by preterm birth and SES.</td>
+            <td><span data-qmd='Il QI dei bambini di 5 anni nati VPT era di 10 punti inferiore a quello dei nati a termine [di controllo,]{color="red"} e influenzato indipendentemente dalla nascita pretermine e dai dati SES.'></span></td>
+            <td><span data-qmd='Il QI dei bambini di 5 anni nati VPT era di 10 punti inferiore a quello dei nati a termine e influenzato indipendentemente dalla nascita pretermine e dallo stato socioeconomico (SES).'></span></td>
+            <td>Mistranslation</td>
+            <td>Minor</td>
+            <td>70</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd='Il QI dei bambini di 5 anni nati VPT era di 10 punti inferiore a quello dei nati a termine di controllo, e influenzato indipendentemente dalla nascita pretermine e [dai dati SES]{color="red"}.'></span></td>
+            <td><span data-qmd='Il QI dei bambini di 5 anni nati VPT era di 10 punti inferiore a quello dei nati a termine e influenzato indipendentemente dalla nascita pretermine e [dallo stato socioeconomico (SES)]{color="red"}.'></span></td>
+            <td>Untranslated</td>
+            <td>Minor</td>
+            <td></td>
+        </tr>
+        <tr class="midrule">
+            <td>52-1</td>
+            <td>But with less than 3 months to go for that, I feel I'm not ready yet, but having never taken it, I have nothing to compare it to besides colleagues' advice.</td>
+            <td><span data-qmd="Ma con meno di 3 mesi per farlo, sento di non essere ancora pronto, [ma non l'ho mai preso]{color='red'}, non ho nulla con cui confrontarlo oltre ai consigli dei colleghi."></span></td>
+            <td><span data-qmd='Ma con meno di 3 mesi per farlo, sento di non essere ancora pronto, [e non avendolo mai fatto]{color="red"}, non ho nulla con cui confrontarlo oltre ai consigli dei colleghi.'></span></td>
+            <td></td>
+            <td>Mistranslation</td>
+            <td>Major</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td rowspan="2">52-2</td>
+            <td rowspan="2">Without knowing what I know, they can't know if I'm actually ready yet, but many of them are pushing me to sign up for it.</td>
+            <td><span data-qmd='[Senza sapere quello che so]{color="red"}, non possono sapere se sono ancora pronta, ma molti di loro mi stanno spingendo a iscrivermi.'></span></td>
+            <td><span data-qmd='[Se non hanno idea di quanto sappia]{color="red"}, non possono sapere se sono davvero pronta, ma molti di loro mi stanno spingendo a iscrivermi.'></span></td>
+            <td>Readability</td>
+            <td>Minor</td>
+            <td>60</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd='Senza sapere quello che so, non possono sapere se sono [ancora]{color="red"} pronta, ma molti di loro mi stanno spingendo a iscrivermi.'></span></td>
+            <td><span data-qmd='Se non hanno idea di quanto sappia, non possono sapere se sono [davvero]{color="red"} pronta, ma molti di loro mi stanno spingendo a iscrivermi.'></span></td>
+            <td>Mistranslation</td>
+            <td>Minor</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>52-3</td>
+            <td>I'm close... I just don't know if I'm 2 months study close.</td>
+            <td><span data-qmd='Ci sono quasi... solo che non so se ce la farò in soli 2 mesi[, ma penso di potercela fare]{color="red"}.'></span></td>
+            <td>Ci sono quasi... solo che non so se ce la farò in soli 2 mesi.</td>
+            <td>Addition</td>
+            <td>Major</td>
+            <td>20</td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+.small-text {
+    font-size: 0.70em;
+}
+</style>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \tiny
+    \setlength{\tabcolsep}{3pt}
+    \begin{tabularx}{\linewidth}{cp{2.4cm}p{2.5cm}p{2.7cm}|cc|c}
+        \toprule[1.5pt]
+                \multirow{2}{*}{\textbf{ID}} & \multirow{2}{*}{\textbf{Source text}} & \multirow{2}{*}{\textbf{Target text}} & \multirow{2}{*}{\textbf{Proposed correction}} & \multicolumn{2}{c}{\textbf{Error Annotation}} & \multirow{2}{*}{\textbf{Score}} \\
+                \cmidrule(lr){5-6}
+                & & & & \textbf{Category} & \textbf{Severity} & \\
+        \midrule
+        9-1 & Specifying peri- and postnatal factors in children born very preterm (VPT) that affect later outcome helps to improve long-term treatment. & Specificare i fattori peri- e postnatali nei bambini nati molto pretermine (\textcolor{red}{VPT}) che influenzano il risultato successivo aiuta a migliorare il trattamento a lungo termine. & Specificare i fattori peri- e postnatali nei bambini nati molto pretermine (\textcolor{red}{VPT, Very Preterm}) che influenzano il risultato successivo aiuta a migliorare il trattamento a lungo termine. & Readability & Minor & 90 \\
+        \midrule
+        9-2 & To enhance the predictability of 5-year cognitive outcome by perinatal, 2-year developmental and socio-economic data. & Migliorare la prevedibilità del risultato cognitivo a 5 anni mediante dati perinatali, di sviluppo e socioeconomici a 2 anni. & & & & 100 \\
+        \midrule
+        9-3 & 5-year infants born VPT were compared to 34 term controls.
+        & 
+        I neonati di 5 anni nati VPT sono stati confrontati con 34 \textcolor{red}{nati a termine come controllo}.
+        & 
+        I neonati di 5 anni nati VPT sono stati confrontati con 34 \textcolor{red}{controlli a termine}. & Mistranslation & Minor & 70 \\
+        \midrule
+        \multirow{2}{*}{9-4} & \multirow{2}{2.45cm}{The IQ of 5-year infants born VPT was 10 points lower than that of term controls and influenced independently by preterm birth and SES.} & Il QI dei bambini di 5 anni nati VPT era di 10 punti inferiore a quello dei nati a termine \textcolor{red}{di controllo,} e influenzato indipendentemente dalla nascita pretermine e dai dati SES. & Il QI dei bambini di 5 anni nati VPT era di 10 punti inferiore a quello dei nati a termine e influenzato indipendentemente dalla nascita pretermine e dallo stato socioeconomico (SES). & Mistranslation & Minor & 70 \\
+        \cmidrule(lr){3-7}
+         & & Il QI dei bambini di 5 anni nati VPT era di 10 punti inferiore a quello dei nati a termine di controllo, e influenzato indipendentemente dalla nascita pretermine e \textcolor{red}{dai dati SES}. & Il QI dei bambini di 5 anni nati VPT era di 10 punti inferiore a quello dei nati a termine e influenzato indipendentemente dalla nascita pretermine e \textcolor{red}{dallo stato socioeconomico (SES)}. & Untranslated & Minor &  \\
+        \midrule
+        \midrule
+        52-1 & But with less than 3 months to go for that, I feel I'm not ready yet, but having never taken it, I have nothing to compare it to besides colleagues' advice. 
+        & Ma con meno di 3 mesi per farlo, sento di non essere ancora pronto, \textcolor{red}{ma non l'ho mai preso}, non ho nulla con cui confrontarlo oltre ai consigli dei colleghi. 
+        & Ma con meno di 3 mesi per farlo, sento di non essere ancora pronto, \textcolor{red}{e non avendolo mai fatto}, non ho nulla con cui confrontarlo oltre ai consigli dei colleghi.& Mistranslation & Major & 30 \\
+        \midrule
+        \multirow{2}{*}{52-2} & \multirow{2}{2.45cm}{Without knowing what I know, they can't know if I'm actually ready yet, but many of them are pushing me to sign up for it.}
+        & \textcolor{red}{Senza sapere quello che so}, non possono sapere se sono ancora pronta, ma molti di loro mi stanno spingendo a iscrivermi.
+        & \textcolor{red}{Se non hanno idea di quanto sappia}, non possono sapere se sono davvero pronta, ma molti di loro mi stanno spingendo a iscrivermi. & Readability & Minor & 60 \\
+        \cmidrule(lr){3-7}
+        & & Senza sapere quello che so, non possono sapere se sono \textcolor{red}{ancora} pronta, ma molti di loro mi stanno spingendo a iscrivermi.
+        & Se non hanno idea di quanto sappia, non possono sapere se sono \textcolor{red}{davvero} pronta, ma molti di loro mi stanno spingendo a iscrivermi. & Mistranslation & Minor & \\
+        \midrule
+        52-3 & I'm close... I just don't know if I'm 2 months study close. & Ci sono quasi... solo che non so se ce la farò in soli 2 mesi\textcolor{red}{, ma penso di potercela fare}. & Ci sono quasi... solo che non so se ce la farò in soli 2 mesi. & Addition & Major & 20 \\
+        \bottomrule[1.5pt]
+    \end{tabularx}
+\end{table}
+```
+
+:::
+
+QA interface with cropped examples of biomedical and social media texts with error annotations (Biomedical: post-edited segments with [No Highlight]{.smallcaps}; Social media: MT outputs).
+:::

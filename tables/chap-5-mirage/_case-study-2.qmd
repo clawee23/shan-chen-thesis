@@ -1,0 +1,69 @@
+:::{#tbl-chap5-case-study-2}
+
+:::{.content-visible when-format="html"}
+```{=html}
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr class="bottomrule">
+            <td><span data-qmd="Input: Prompt + Retrieved docs (N=5) + Query"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Document [2]** [...]"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Document [3]** [...] What will happen if you accidentally set off your security system? The siren will sound and it will be loud, but you should be able to stop the siren by entering your code into your keypad. [...]"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Document [4]** [...]"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="**Query**: How does a small paper library bar code set off the security alarm when you haven't checked a book out?"></span></td>
+        </tr>
+        <tr class="bottomrule">
+            <td><span data-qmd="Answer attribution results"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Self-citation**: [...] False alarms can be prevented by entering the code on the keypad, as documented in [[3]]{color='blue'}. [...]"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="**[Mirage]{.smallcaps}**: [...] False alarms can be prevented by entering the code on the keypad [\[$\varnothing$\]]{color='blue'} [...]"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**NLI ([True]{.smallcaps} model)**: [[3] entails the answer sentence.]{color='blue'}"></span></td>
+        </tr>
+    </tbody>
+</table>
+```
+:::
+
+:::{.content-visible when-format="pdf"}
+```{=latex}
+\begin{table}
+\centering
+\footnotesize
+\begin{tabular}{p{0.95\textwidth}}
+\toprule
+\textsc{Input: Prompt + Retrieved docs (N=5) + Query} \\
+\midrule
+\textbf{Document [2]} [...]\\
+\textbf{Document [3]}
+[...] What will happen if you accidentally set off your security system? The siren will sound and it will be loud, but you should be able to stop the siren by entering your code into your keypad. [...] \\
+\textbf{Document [4]} [...]\\
+\midrule
+\textbf{Query}: How does a small paper library bar code set off the security alarm when you haven't checked a book out?\\
+\midrule
+\textsc{Answer attribution results} \\
+\midrule
+\textbf{Self-citation}: [...] False alarms can be prevented by entering the code on the keypad, as documented in \textcolor{blue}{[3]}. [...] \\
+\midrule
+\textbf{\text{Mirage}}: [...] False alarms can be prevented by entering the code on the keypad \textcolor{blue}{[$\varnothing$]} [...] \\
+\midrule
+\textbf{NLI (\text{True} model)}: \textcolor{blue}{[3] entails the answer sentence.} \\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+:::
+
+Example showcasing the brittleness of entailment-based AA. [Mirage]{.smallcaps} correctly finds that the answer cannot be attributed ([[$\varnothing$]{color='brand-color.blue'}]), while NLI and self-citation attribute the lexically similar [Document [3]]{color='brand-color.blue'}.
+:::

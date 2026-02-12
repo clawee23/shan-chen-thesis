@@ -1,0 +1,400 @@
+:::{#tbl-qe4pe-ita-all-results}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th rowspan="2"><strong>Method</strong></th>
+            <th colspan="2"><strong>QE4PE<span data-qmd="$_{\mathbf{t1}}$"></span></strong></th>
+            <th colspan="2"><strong>QE4PE<span data-qmd="$_{\mathbf{t2}}$"></span></strong></th>
+            <th colspan="2"><strong>QE4PE<span data-qmd="$_{\mathbf{t3}}$"></span></strong></th>
+            <th colspan="2"><strong>QE4PE<span data-qmd="$_{\mathbf{t4}}$"></span></strong></th>
+            <th colspan="2"><strong>QE4PE<span data-qmd="$_{\mathbf{t5}}$"></span></strong></th>
+            <th colspan="2"><strong>QE4PE<span data-qmd="$_{\mathbf{t6}}$"></span></strong></th>
+            <th colspan="2"><strong>QE4PE<span data-qmd="$_{\mathbf{avg}}$"></span></strong></th>
+        </tr>
+        <tr>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td class="mediumlongrow">Random Baseline</td>
+            <td>.08</td>
+            <td>.14</td>
+            <td>.15</td>
+            <td>.26</td>
+            <td>.06</td>
+            <td>.12</td>
+            <td>.11</td>
+            <td>.19</td>
+            <td>.22</td>
+            <td>.36</td>
+            <td>.18</td>
+            <td>.30</td>
+            <td>.13</td>
+            <td>.23</td>
+        </tr>
+        <tr>
+            <td>Surprisal</td>
+            <td>.11</td>
+            <td>.20</td>
+            <td>.21</td>
+            <td>.31</td>
+            <td>.11</td>
+            <td>.17</td>
+            <td>.16</td>
+            <td>.25</td>
+            <td>.30</td>
+            <td>.40</td>
+            <td>.25</td>
+            <td>.35</td>
+            <td>.19</td>
+            <td>.28</td>
+        </tr>
+        <tr>
+            <td>Out. Entropy</td>
+            <td>.12</td>
+            <td>.18</td>
+            <td>.22</td>
+            <td>.30</td>
+            <td>.10</td>
+            <td>.16</td>
+            <td>.17</td>
+            <td>.24</td>
+            <td>.30</td>
+            <td>.39</td>
+            <td>.26</td>
+            <td>.34</td>
+            <td>.19</td>
+            <td>.27</td>
+        </tr>
+        <tr>
+            <td>Surprisal MCD<span data-qmd="$_{\text{avg}}$"></span></td>
+            <td>.12</td>
+            <td>.20</td>
+            <td>.22</td>
+            <td>.32</td>
+            <td>.11</td>
+            <td>.17</td>
+            <td>.16</td>
+            <td>.26</td>
+            <td>.30</td>
+            <td><strong><u>.41</u></strong></td>
+            <td>.26</td>
+            <td><u>.36</u></td>
+            <td>.19</td>
+            <td>.29</td>
+        </tr>
+        <tr>
+            <td>Surprisal MCD<span data-qmd="$_{\text{var}}$"></span></td>
+            <td><u>.13</u></td>
+            <td><u>.21</u></td>
+            <td><u>.26</u></td>
+            <td><u>.33</u></td>
+            <td><u>.12</u></td>
+            <td><u>.20</u></td>
+            <td><u>.19</u></td>
+            <td><u>.27</u></td>
+            <td><u>.31</u></td>
+            <td>.40</td>
+            <td><u>.29</u></td>
+            <td><u>.36</u></td>
+            <td><u>.22</u></td>
+            <td><u>.30</u></td>
+        </tr>
+        <tr>
+            <td>LL Surprisal<span data-qmd="$_{\text{best}}$"></span></td>
+            <td>.11</td>
+            <td>.19</td>
+            <td>.21</td>
+            <td>.32</td>
+            <td>.11</td>
+            <td>.16</td>
+            <td>.16</td>
+            <td>.25</td>
+            <td>.29</td>
+            <td>.40</td>
+            <td>.26</td>
+            <td>.35</td>
+            <td>.19</td>
+            <td>.28</td>
+        </tr>
+        <tr>
+            <td>LL KL-Div<span data-qmd="$_{\text{best}}$"></span></td>
+            <td>.09</td>
+            <td>.16</td>
+            <td>.19</td>
+            <td>.28</td>
+            <td>.08</td>
+            <td>.14</td>
+            <td>.13</td>
+            <td>.21</td>
+            <td>.25</td>
+            <td>.37</td>
+            <td>.22</td>
+            <td>.31</td>
+            <td>.16</td>
+            <td>.25</td>
+        </tr>
+        <tr>
+            <td>LL Pred. Depth</td>
+            <td>.09</td>
+            <td>.16</td>
+            <td>.18</td>
+            <td>.28</td>
+            <td>.07</td>
+            <td>.13</td>
+            <td>.14</td>
+            <td>.21</td>
+            <td>.25</td>
+            <td>.37</td>
+            <td>.21</td>
+            <td>.31</td>
+            <td>.16</td>
+            <td>.24</td>
+        </tr>
+        <tr>
+            <td>Attn. Entropy<span data-qmd="$_{\text{avg}}$"></span></td>
+            <td>.11</td>
+            <td>.16</td>
+            <td>.17</td>
+            <td>.27</td>
+            <td><u>.12</u></td>
+            <td>.17</td>
+            <td>.11</td>
+            <td>.19</td>
+            <td>.23</td>
+            <td>.36</td>
+            <td>.19</td>
+            <td>.31</td>
+            <td>.15</td>
+            <td>.24</td>
+        </tr>
+        <tr>
+            <td>Attn. Entropy<span data-qmd="$_{\text{max}}$"></span></td>
+            <td>.09</td>
+            <td>.14</td>
+            <td>.15</td>
+            <td>.26</td>
+            <td>.10</td>
+            <td>.18</td>
+            <td>.09</td>
+            <td>.19</td>
+            <td>.20</td>
+            <td>.36</td>
+            <td>.16</td>
+            <td>.30</td>
+            <td>.13</td>
+            <td>.24</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[Blood]{.smallcaps}$_{\text{best}}$"></span></td>
+            <td>.08</td>
+            <td>.14</td>
+            <td>.16</td>
+            <td>.26</td>
+            <td>.06</td>
+            <td>.12</td>
+            <td>.11</td>
+            <td>.19</td>
+            <td>.23</td>
+            <td>.36</td>
+            <td>.18</td>
+            <td>.30</td>
+            <td>.14</td>
+            <td>.23</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xl]{.smallcaps}"></span></td>
+            <td>.11</td>
+            <td>.24</td>
+            <td>.22</td>
+            <td>.35</td>
+            <td>.10</td>
+            <td>.20</td>
+            <td>.16</td>
+            <td>.30</td>
+            <td>.27</td>
+            <td>.35</td>
+            <td>.23</td>
+            <td>.34</td>
+            <td>.18</td>
+            <td>.30</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xl]{.smallcaps}$_{\text{confw}}$"></span></td>
+            <td><strong>.20</strong></td>
+            <td>.25</td>
+            <td>.30</td>
+            <td><strong>.36</strong></td>
+            <td>.14</td>
+            <td>.21</td>
+            <td>.25</td>
+            <td>.31</td>
+            <td><strong>.37</strong></td>
+            <td>.40</td>
+            <td>.31</td>
+            <td>.36</td>
+            <td>.26</td>
+            <td>.32</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xxl]{.smallcaps}"></span></td>
+            <td>.13</td>
+            <td><strong>.27</strong></td>
+            <td>.22</td>
+            <td>.32</td>
+            <td>.10</td>
+            <td><strong>.24</strong></td>
+            <td>.17</td>
+            <td>.31</td>
+            <td>.28</td>
+            <td>.32</td>
+            <td>.23</td>
+            <td>.31</td>
+            <td>.19</td>
+            <td>.30</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[xcomet-xxl]{.smallcaps}$_{\text{confw}}$"></span></td>
+            <td>.19</td>
+            <td><strong>.27</strong></td>
+            <td><strong>.31</strong></td>
+            <td><strong>.36</strong></td>
+            <td><strong>.17</strong></td>
+            <td><strong>.24</strong></td>
+            <td><strong>.26</strong></td>
+            <td><strong>.32</strong></td>
+            <td><strong>.37</strong></td>
+            <td><strong>.41</strong></td>
+            <td><strong>.33</strong></td>
+            <td><strong>.39</strong></td>
+            <td><strong>.27</strong></td>
+            <td><strong>.33</strong></td>
+        </tr>
+        <tr>
+            <td>Human Editors<span data-qmd="$_{\text{min}}$"></span></td>
+            <td>.17</td>
+            <td>.33</td>
+            <td>.26</td>
+            <td>.38</td>
+            <td>.10</td>
+            <td>.21</td>
+            <td>.16</td>
+            <td>.26</td>
+            <td>.25</td>
+            <td>.36</td>
+            <td>.23</td>
+            <td>.30</td>
+            <td>.19</td>
+            <td>.31</td>
+        </tr>
+        <tr>
+            <td>Human Editors<span data-qmd="$_{\text{avg}}$"></span></td>
+            <td>.20</td>
+            <td>.38</td>
+            <td>.29</td>
+            <td>.43</td>
+            <td>.14</td>
+            <td>.30</td>
+            <td>.22</td>
+            <td>.39</td>
+            <td>.32</td>
+            <td>.38</td>
+            <td>.30</td>
+            <td>.40</td>
+            <td>.25</td>
+            <td>.39</td>
+        </tr>
+        <tr>
+            <td>Human Editors<span data-qmd="$_{\text{max}}$"></span></td>
+            <td>.24</td>
+            <td>.43</td>
+            <td>.31</td>
+            <td>.47</td>
+            <td>.20</td>
+            <td>.41</td>
+            <td>.24</td>
+            <td>.43</td>
+            <td>.37</td>
+            <td>.50</td>
+            <td>.33</td>
+            <td>.50</td>
+            <td>.28</td>
+            <td>.46</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \setlength{\tabcolsep}{3pt}
+    \scriptsize
+    \centering
+    \begin{tabular}{l|cc|cc|cc|cc|cc|cc||cc}
+        \toprule[1.5pt]
+        \multirow{2}{*}{\textbf{Method}} & \multicolumn{2}{c}{\textbf{QE4PE}$_{\mathbf{t1}}$} & \multicolumn{2}{c}{\textbf{QE4PE}$_{\mathbf{t2}}$} & \multicolumn{2}{c}{\textbf{QE4PE}$_{\mathbf{t3}}$} & \multicolumn{2}{c}{\textbf{QE4PE}$_{\mathbf{t4}}$} & \multicolumn{2}{c}{\textbf{QE4PE}$_{\mathbf{t5}}$} & \multicolumn{2}{c}{\textbf{QE4PE}$_{\mathbf{t6}}$} & \multicolumn{2}{c}{\textbf{QE4PE}$_{\mathbf{avg}}$}\\
+
+        \cmidrule(lr){2-3}
+        \cmidrule(lr){4-5}
+        \cmidrule(lr){6-7}
+        \cmidrule(lr){8-9}
+        \cmidrule(lr){10-11}
+        \cmidrule(lr){12-13}
+        \cmidrule(lr){14-15}
+
+                                  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$} \\
+
+        \midrule
+        Random Baseline           & .08     & .14     & .15     & .26     & .06     & .12     & .11     & .19     & .22     & .36     & .18     & .30     & .13     & .23     \\
+        \midrule
+        Surprisal                 & .11     & .20     & .21     & .31     & .11     & .17     & .16     & .25     & .30     & .40     & .25     & .35     & .19     & .28     \\
+        Out. Entropy              & .12     & .18     & .22     & .30     & .10     & .16     & .17     & .24     & .30     & .39     & .26     & .34     & .19     & .27     \\
+        Surprisal MCD\avg         & .12     & .20     & .22     & .32     & .11     & .17     & .16     & .26     & .30     & \b{\u{.41}} & .26     & \u{.36} & .19     & .29     \\
+        Surprisal MCD\var         & \u{.13} & \u{.21} & \u{.26} & \u{.33} & \u{.12} & \u{.20} & \u{.19} & \u{.27} & \u{.31} & .40     & \u{.29} & \u{.36} & \u{.22} & \u{.30} \\
+        LL Surprisal\best         & .11     & .19     & .21     & .32     & .11     & .16     & .16     & .25     & .29     & .40     & .26     & .35     & .19     & .28     \\
+        LL KL-Div\best            & .09     & .16     & .19     & .28     & .08     & .14     & .13     & .21     & .25     & .37     & .22     & .31     & .16     & .25     \\
+        LL Pred. Depth            & .09     & .16     & .18     & .28     & .07     & .13     & .14     & .21     & .25     & .37     & .21     & .31     & .16     & .24     \\
+        Attn. Entropy\avg         & .11     & .16     & .17     & .27     & \u{.12} & .17     & .11     & .19     & .23     & .36     & .19     & .31     & .15     & .24     \\
+        Attn. Entropy\maxim       & .09     & .14     & .15     & .26     & .10     & .18     & .09     & .19     & .20     & .36     & .16     & .30     & .13     & .24     \\
+        \textsc{Blood}\best       & .08     & .14     & .16     & .26     & .06     & .12     & .11     & .19     & .23     & .36     & .18     & .30     & .14     & .23     \\
+        \midrule
+        \textsc{xcomet-xl}        & .11     & .24     & .22     & .35     & .10     & .20     & .16     & .30     & .27     & .35     & .23     & .34     & .18     & .30     \\
+        \textsc{xcomet-xl}\confw  & \b{.20} & .25     & .30     & \b{.36} & .14     & .21     & .25     & .31     & \b{.37} & .40     & .31     & .36     & .26     & .32     \\
+        \textsc{xcomet-xxl}       & .13     & \b{.27} & .22     & .32     & .10     & \b{.24} & .17     & .31     & .28     & .32     & .23     & .31     & .19     & .30     \\
+        \textsc{xcomet-xxl}\confw & .19     & \b{.27} & \b{.31} & \b{.36} & \b{.17} & \b{.24} & \b{.26} & \b{.32} & \b{.37} & \b{.41} & \b{.33} & \b{.39} & \b{.27} & \b{.33} \\
+        \midrule
+        Human Editors\minim       & .17     & .33     & .26     & .38     & .10     & .21     & .16     & .26     & .25     & .36     & .23     & .30     & .19     & .31     \\
+        Human Editors\avg         & .20     & .38     & .29     & .43     & .14     & .30     & .22     & .39     & .32     & .38     & .30     & .40     & .25     & .39     \\
+        Human Editors\maxim       & .24     & .43     & .31     & .47     & .20     & .41     & .24     & .43     & .37     & .50     & .33     & .50     & .28     & .46     \\ 
+        \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+WQE metrics' performance for predicting error spans from the six edit sets over NLLB 3.3B translations in the En$\rightarrow$It QE4PE dataset. <u>Best unsupervised</u> and **overall best** metric results are highlighted.
+
+:::

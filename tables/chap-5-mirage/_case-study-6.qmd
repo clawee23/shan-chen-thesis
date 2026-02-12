@@ -1,0 +1,80 @@
+:::{#tbl-case-study-6}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr class="bottomrule">
+            <td><span data-qmd="[Input: Prompt + Retrieved docs (N=5) + Query]{.smallcaps}"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Document [1]** (Title: Why Do Airlines Sell More Tickets Than The Aircraft's Capacity? » Science ABC): board the aircraft. They know that some people simply won't show up for their appointments (just like at hospitals, hotels, restaurants etc.). To account for this discrepancy, where the flight would have to fly with some very expensive seats empty, they decide to opt for a more profitable strategy. Assuming that out of the maximum capacity of 200 seats only 185 show up for the flight, this leaves 15 seats available. The airline could try to sell these seats quickly to avoid losses, but this rarely happens. What the airline does instead is try to sell 220 seats in advance."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Document [2]** [...]"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Document [3]** [...]"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Document [4]** (Title: Why Do Airlines Sell More Tickets Than The Aircraft's Capacity? » Science ABC): your own interests, as the airlines have clearly looked after theirs. First of all, if the airline is offering you a seat on a different flight, check if that seat is definitely available. If it is also full and it looks like you might be bumped yet again, you might as well be stranded! If the airline is offering compensation, such as free meals, hotel costs, and transportation between the airport and the hotel, look for the most profitable outcome. The airline might offer you vouchers for future flights, but since airline employees are given guidelines for negotiation, you might"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Document [5]** [...]"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="**Query**: Why are airlines able to sell more seats than are available on a flight?"></span></td>
+        </tr>
+        <tr class="bottomrule">
+            <td><span data-qmd="[Answer attribution results]{.smallcaps}"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Self-citation**: [...] According to a source in Document [[1]]{color='blue'}, airlines assume that not all passengers will show up for their flights, leaving some seats empty. [...]"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**[Mirage]{.smallcaps}**: [...] According to a source in [Document]{bg-color='yellow'}$^{(4)}$, airlines [assume that not]{bg-color='yellow'}$^{(1)}$ all passengers will show up for their flights, leaving some seats empty. [[1][4]]{color='blue'} [...]"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**NLI ([True]{.smallcaps} model)**: Only [[1]]{color='blue'} entails the answer sentence."></span></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}[t!]
+\centering
+\small
+\begin{tabular}{p{0.95\textwidth}}
+\toprule
+\textsc{Input: Prompt + Retrieved docs (N=5) + Query} \\
+\midrule
+\textbf{Document [1]}(Title: Why Do Airlines Sell More Tickets Than The Aircraft's Capacity? » Science ABC): board the aircraft. They know that some people simply won't show up for their appointments (just like at hospitals, hotels, restaurants etc.). To account for this discrepancy, where the flight would have to fly with some very expensive seats empty, they decide to opt for a more profitable strategy. Assuming that out of the maximum capacity of 200 seats only 185 show up for the flight, this leaves 15 seats available. The airline could try to sell these seats quickly to avoid losses, but this rarely happens. What the airline does instead is try to sell 220 seats in advance.\\
+\textbf{Document [2]} [...]\\
+\textbf{Document [3]} [...]\\
+\textbf{Document [4]}(Title: Why Do Airlines Sell More Tickets Than The Aircraft's Capacity? » Science ABC): your own interests, as the airlines have clearly looked after theirs. First of all, if the airline is offering you a seat on a different flight, check if that seat is definitely available. If it is also full and it looks like you might be bumped yet again, you might as well be stranded! If the airline is offering compensation, such as free meals, hotel costs, and transportation between the airport and the hotel, look for the most profitable outcome. The airline might offer you vouchers for future flights, but since airline employees are given guidelines for negotiation, you might\\
+\textbf{Document [5]} [...]\\
+\midrule
+\textbf{Query}: Why are airlines able to sell more seats than are available on a flight?\\
+\midrule
+\textsc{Answer attribution results} \\
+\midrule
+\textbf{Self-citation}: [...] According to a source in Document \textcolor{blue}{[1]}, airlines assume that not all passengers will show up for their flights, leaving some seats empty. [...]\\
+\midrule
+\textbf{\textsc{mirage}}: [...] According to a source in \colorbox{yellow}{Document}$^\textit{(4)}$, airlines \colorbox{yellow}{assume that not}$^\textit{(1)}$ all passengers will show up for their flights, leaving some seats empty. \textcolor{blue}{[1][4]} [...] \\
+\midrule
+\textbf{NLI (\textsc{true} model)}: \textcolor{blue}{Only [1] entails the answer sentence.} \\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Example of counterintuitive [Mirage]{.smallcaps} attribution: Document [4] is attributed by [Mirage]{.smallcaps} due to the repetition of the keyword `Document'.
+:::

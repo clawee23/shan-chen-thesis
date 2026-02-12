@@ -1,0 +1,166 @@
+# Chapter 9
+
+# **<u>Chapter 9</u>**
+
+Language Models are Surprisingly Fragile to Drug Names in Biomedical Benchmarks
+
+---***Shan Chen****, Jack Gallifant*, Pedro Moreira, Nikolaj Munch, Mingye Gao, Jackson Pond,
+
+Leo Anthony Celi, Hugo Aerts, Thomas Hartvigsen, Danielle Bitterman
+
+Findings of the Association for Computational Linguistics: EMNLP 2024
+
+**Summary**
+**Background** Medical knowledge is highly context-dependent and includes many semantically equivalent expressions—especially for drug names, where patients often use brand names (e.g., “Advil,” “Tylenol”) instead of generics. For large language models (LLMs) applied to biomedical tasks, this variation presents a hidden fragility.**Methods** We introduce a new robustness dataset,**RABBITS**, in which brand-name and generic drug names are swapped in biomedical benchmark datasets (MedQA and MedMCQA), using physician expert annotations. We evaluate both open-source and API-based LLMs on these modified datasets to measure performance drops and investigate whether pre-training data leaks/contamination contribute to the fragility.**Findings** When drug names are swapped, LLMs consistently show performance drops in the 1% – 10% range, indicating surprising sensitivity to synonymous drug-name substitutions. We further show that one possible reason is contamination of benchmark test data within widely used LLM pre-training corpora, so models may rely on memorized pairs rather than true reasoning.**Interpretation** Even state-of-the-art LLMs used in biomedical NLP are**fragile** to superficial lexical changes—such as switching brand and generic drug names—undermining their reliability and robustness. Our work highlights the need for more rigorous and robust testing of datasets in biomedical AI, particularly when such systems are used in clinical research or healthcare settings.
+
+#**INTRODUCTION**
+
+Large Language Models (LLMs) are poised to transform medicine by providing data processing and decision support capabilities[1,2](https://paperpile.com/c/coPcdt/51Gy+e3VB). However, the medical deployment of LLMs demands high accuracy and reliability, as errors can result in severe health consequences[3–5](https://paperpile.com/c/coPcdt/uPo4+mWz4+7nb9). A key challenge is the synonymy and context-specific nature of medical language; for instance, patients might use brand names like Advil or Tylenol instead of pharmaceutically equivalent generic terms such as ibuprofen or acetaminophen. LLMs must, therefore, be able to provide consistent and accurate advice in the face of this variability. Fluctuations could lead to risks like medical misinformation, medication errors due to incorrect medication advice, and biases toward or against proprietary products. Our study investigates the effects of substituting drug names—from brand to generic and vice versa—on LLM performance.
+
+Building on the need for robustness in medical LLM applications, numerous efforts have developed knowledge benchmarks[6–9](https://paperpile.com/c/coPcdt/LZ8I+ejcu+v2iZ+V1vd). Yet, these initiatives primarily tackle general language tasks and often neglect the unique challenges of medical terminology in real-world settings. There is an unmet need to overcome this research gap, as the variability in medical language implies that conventional robustness evaluations might not sufficiently cater to specialized healthcare demands.
+
+A key reason for this gap is the lack of publicly available, expert-annotated datasets specific to the healthcare domain. To address this issue, our work leverages existing medical benchmarks and employs physician expert annotators to substitute brand names with their generic counterparts and vice versa.
+
+Our findings reveal a surprising drop in the performance of LLMs on common medical benchmarks when the drug names are swapped from generic to brand names:**4% drop in accuracy on average**. This is concerning given that patients commonly use brand names and are less likely to spot errors, especially given existing misconceptions that brand drugs are superior to equivalent generics[10,11](https://paperpile.com/c/coPcdt/CouF+DWJc). Furthermore, we identify a potential source for this fragility: Open pretraining datasets contain substantial amounts of benchmark test data.
+
+Our research introduces a novel category of robustness evaluation centered on drug name interchangeability. We present**RABBITS** (**R**obust**A**ssessment of**B**iomedical**B**enchmarks**I**nvolving drug**T**erm**S**ubstitutions for Language Models) a specialized dataset and leaderboard to aid in evaluating LLM performance in healthcare. Specifically, our study combines and modifies select questions from the MedMCQA and MedQA benchmarks to:
+
+- Assess model robustness in understanding clinical knowledge across drug synonyms.
+- Detect potential dataset contamination in biomedical benchmarks.
+- Highlight the importance of robustness to nomenclature variations in the healthcare domain.
+
+#**Related Work**
+
+##**Lexical Substitution**
+
+Lexical substitution plays a crucial role in natural language processing, especially in tasks like word sense disambiguation and synonym generation. Early work by Mcarthy[12](https://paperpile.com/c/coPcdt/muKP) laid the groundwork for substitution-based methods in word sense disambiguation, paving the way for subsequent advancements in the field. Recent studies by Arefyev[13](https://paperpile.com/c/coPcdt/k7P8) and Zhou[14](https://paperpile.com/c/coPcdt/WqC4) have further explored the capabilities of neural models such as BERT, RoBERTa, and XLNet in lexical substitution, showcasing significant improvements in generating contextually appropriate synonyms. In the medical domain, works by Riedl[15](https://paperpile.com/c/coPcdt/NiSK) and Wen[16](https://paperpile.com/c/coPcdt/GzNg) have developed medical abbreviation and acronym disambiguation datasets, highlighting the unique challenges in this area. Our work, RABBITS, is the first, to our knowledge, to demonstrate the use of this direct method in stress-testing the knowledge robustness of large language models.
+
+##**Dataset Contamination**
+
+Dataset contamination in training data is a well-documented issue and can affect the performance and generalizability of LLMs. Many studies have aimed to detect benchmark questions within LLM training data[17–19](https://paperpile.com/c/coPcdt/VetX+eorr+ic2s). For instance, research by Recht illustrated that models trained on contaminated datasets often exhibit inflated performance metrics that do not generalize well to new, unseen data. This problem is particularly concerning for medical LLMs, where inaccurate information can harm patients[3,5](https://paperpile.com/c/coPcdt/uPo4+7nb9).
+
+Various strategies have been employed to mitigate dataset contamination. These include removing data with high n-gram overlap with benchmark datasets[20](https://paperpile.com/c/coPcdt/o7lT) and employing embedding similarity to filter out similar data[17](https://paperpile.com/c/coPcdt/VetX). More advanced approaches involve functional evaluations, such as generating new, unique problem instances for each evaluation[21](https://paperpile.com/c/coPcdt/i7v8). Addressing contamination is crucial for ensuring that LLMs provide reliable outputs, especially in sensitive domains like healthcare.
+
+##**Evaluating Model Robustness**
+
+LLMs gain broad capabilities from large-scale data ingestion, but this also introduces significant challenges[22](https://paperpile.com/c/coPcdt/7Z0s). While larger models often perform better, these improvements are not always consistent across domains[23](https://paperpile.com/c/coPcdt/UVGC). Moreover, recent research has questioned the actual reasoning abilities of LLMs, suggesting that their performance may be inflated by dataset contamination rather than genuine problem-solving skills[24](https://paperpile.com/c/coPcdt/Z1jA).
+
+Some works have looked into LLMs' robustness in terms of faithfulness and fairness under clinical settings[25–27](https://paperpile.com/c/coPcdt/SrkJ+X0L4+RImu). Medfuzz introduced a method to test LLMs' robustness in medical question answering by revealing vulnerabilities through modified benchmark questions[28](https://paperpile.com/c/coPcdt/TVaD). However, these studies do not specifically address the unique challenges associated with clinical drug terminology and the relationship between robustness and contamination. Hence, there is a significant gap in evaluating LLM robustness for medical applications, particularly in the context of brand and generic drug name interchangeability. This gap underscores the need for focused robustness evaluations tailored to the healthcare sector.**METHOD**![](../figures/image24.png)
+
+< *Figure 1: RABBITS dataset generation workflow.*
+
+**Brand-Generic Pairs**
+
+Figure 1 demonstrates the overall workflow of the study. Appendix A details the full data quality assurance and dataset curation process. To create the dataset of brand and generic drug name pairs, we used the RxNorm ontology, which links normalized drug names with many pharmaceutical vocabularies. We extracted combinations of brand and generic drug names using the "ingredient of" and "tradename of" relations, resulting in 2,271 generic drugs mapped to 6,961 brands. For each generic drug, there are often multiple associated brand names. Multiple rounds of expert annotation were performed to derive a final list of 1:1 mapped brand-generic pairs for use in the transformed datasets described below.
+
+##**Dataset Transformation**
+
+We used regular expressions to identify and replace brand and generic drug names in the questions and answers of MedQA, MedMCQA, MMLU, PubMedQA, and USMLE. MMLU and PubMedQA had fewer than 100 instances of identified drug names in the test split and were excluded from further analysis. USMLE was excluded due to its overlap with MedQA. Thus, the two datasets included in the final RABBITS benchmark are**MedQA** and**MedMCQA**.
+
+The quality of the transformed datasets were iteratively reviewed by 2 physician authors (JG, DB), removing instances where replacements introduced inaccuracies, ambiguities, and/or logical inconsistencies in context. This process is described in detail in Appendix A. For the rest of the paper, we will refer to the generic-to-brand swapped benchmark as**g2b** and the brand-to-generic swapped benchmark as**b2g**.
+
+To prevent further data contamination, we will not release the full dataset directly. The HuggingFace leaderboard will be the best way to assess new models' robustness in terms of performance. We evaluated the models using the EleutherAI lm-evaluation harness with zero-shot setting. We forked this repository, added our transformed datasets as new tasks, and made no other modifications. For API models, we used the same prompt format as the lm-evaluation harness with the default hyperparameters.
+
+Our evaluation focuses on comparing the performance of base models (full list in Appendix Table) across the original and transformed datasets to assess the impact of synonym substitution on accuracy. We report results for g2b due to the limited number of b2g swaps observed. By doing so, we aim to determine whether models can maintain performance despite semantically equivalent pharmaceutical terminology.
+
+All datasets and models used in accordance with owners' licenses.
+
+#**RESULTS & DISSCUSSION**
+
+##**Drug Swapping Results**
+
+Figure 2 presents the performance of each model on the original (no-swap) and transformed (g2b) datasets, alongside the average performance and the difference between the two. The line of robustness, with a gradient of 1, represents the ideal scenario where synonym swaps do not affect the selection of answers. The plot reveals that all open-source models from 7B and above fall below this line, indicating decreased performance when drug names are swapped. We also observe a larger drop among MedMCQA over MedQA across models. Refer to Appendix C for a detailed breakdown of individual results in Table 5 and Figure 4.
+
+![](../figures/image1.png) *Figure 2: Average performance of models on the filtered original datasets compared to the generic-to-brand versions of MedQA and MedMCA. The dashed diagonal line represents the ideal scenario where synonym swaps do not affect model performance.*
+
+Table 5 shows that most models experience a decrease in accuracy when generic names are swapped with brand names across different datasets and model sizes. Among large open-source models, the Llama-3-70B model, despite being one of the larger and more accurate models on the original dataset (no-swap accuracy of 76.6%), decreases to 69.7% accuracy with generic-to-brand swaps. Overall, API models perform better than their open-source counterparts with higher accuracy and lower performance drop. While larger open-source series like Qwen2, Llama, and Mixtral are more accurate on original datasets, they exhibit greater sensitivity to g2b swaps. Furthermore, the performance of Medical LLMs was not robust to these swaps compared to their respective base model comparisons (Appendix E). These gaps persisted after providing brand name hints, which showed only marginal improvements in model performance (see Appendix F). This suggests limitations in true comprehension and reasoning abilities.
+
+## **Model Knowledge of Drug Pairs via Multi-Choice Questions**
+
+We evaluate whether models are able to directly map brand-to-generic drug pairs and vice versa using multiple-choice questions for all drugs that were swapped in our final benchmark dataset. Overall, a clear "scaling law" is observed in Appendix B Figure 3, where larger models (active parameter size over 13B) consistently outperform smaller models on this task, with larger open-source and API models achieving accuracy over 97%.
+
+##**Generic and Brand Mentions in Benchmarks and Pre-training Datasets**
+
+Table 1 shows our overall dataset swapping statistics where we observe benchmark questions overwhelmingly use generic terms. We also use Infini-gram[29](https://paperpile.com/c/coPcdt/x6hn) to screen the common open-sourced pre-training data, including Redpajama, C4 train, Pile train, and Dolma 1.6 for drugs identified in RxNorm, filtered for terms that overlap with common terms (Appendix A, Step 1). Generic names are more common than brand names in these pre-training datasets, as Appendix D table 6 shows.
+
+![](../figures/image18.png)
+
+*Table 1 Dataset Statistics for RABBITS - 'Orig.' is the total questions in the original dataset. 'RABBITS' indicates the subset of questions with validated drug mentions. 'Drugs' shows the total unique drugs in RABBITS.*
+
+## **Contamination Source from Pre-training Dataset**
+
+To investigate why we see larger performance drops in MedMCQA than MedQA, we use Infini-gram API to identify overlaps with the Dolma 1.6 dataset (3.1T tokens) using size 8 n-grams. Each question's n-grams are generated and queried through the Infini-gram API.
+
+Dataset contamination are 99.21% and 34.13% in the MedQA and MedMCQA test datasets, respectively, as Table 2 shows. We also benchmark OLMo-1.7-7B-hf, trained only on Dolma, which shows no drop in MedQA (31.22) scores compared to a 3% drop in MedMCQA (40.90 to 37.93). This likely explains the greater drop in performance in MedMCQA rather than MedQA across models (Appendix C Figure 4).
+
+![](../figures/image16.png)
+
+*Table 2 Percentage of contamination of MedQA and MedMCQA benchmarks in Dolma dataset*
+
+# **CONCLUSION**
+
+We find decreased performance on common medical benchmarks when using different names for the same drug, despite LLMs' ability to match these names, and that these trends scale with LLM size. This suggests that LLM performance may be driven by memorization and not reasoning ability. RABBITS underscores the importance of dataset contamination and model robustness evaluations, particularly in the medical domain. Future research should refine strategies and explore new methods for robustness and fairness evaluation.
+
+#**Limitations**
+
+Our evaluation is limited to biomedical datasets and focuses only on pharmaceuticals. Future work will extend this approach to other medical synonyms and the impact of these variations in the retrieval and in-context setting. Although the dataset is smaller, trained physicians have curated it multiple times, ensuring its validity and the accuracy of questions after replacement. Among the pre-training dataset contamination section, we acknowledge none of these models are trained specifically among the pile, C4, RedPajama, or Dolma. However, we use this as a reasonable proxy for estimating the internet distribution.**REFERENCES**
+
+1. [Jiang, L. Y.](http://paperpile.com/b/coPcdt/51Gy)[*et al.*](http://paperpile.com/b/coPcdt/51Gy)[Health system-scale language models are all-purpose prediction engines.](http://paperpile.com/b/coPcdt/51Gy)[*Nature*](http://paperpile.com/b/coPcdt/51Gy)[http://paperpile.com/b/coPcdt/51Gy](http://paperpile.com/b/coPcdt/51Gy)[**619**](http://paperpile.com/b/coPcdt/51Gy)[, 357–362 (2023).](http://paperpile.com/b/coPcdt/51Gy)
+
+2. [Clusmann, J.](http://paperpile.com/b/coPcdt/e3VB)[*et al.*](http://paperpile.com/b/coPcdt/e3VB)[The future landscape of large language models in medicine.](http://paperpile.com/b/coPcdt/e3VB)[*Commun. Med. (Lond.)*](http://paperpile.com/b/coPcdt/e3VB)[http://paperpile.com/b/coPcdt/e3VB](http://paperpile.com/b/coPcdt/e3VB)[**3**](http://paperpile.com/b/coPcdt/e3VB)[, 141 (2023).](http://paperpile.com/b/coPcdt/e3VB)
+
+3. [Chen, S.](http://paperpile.com/b/coPcdt/uPo4)[*et al.*](http://paperpile.com/b/coPcdt/uPo4)[The effect of using a large language model to respond to patient messages.](http://paperpile.com/b/coPcdt/uPo4)[*Lancet Digit. Health*](http://paperpile.com/b/coPcdt/uPo4)[http://paperpile.com/b/coPcdt/uPo4](http://paperpile.com/b/coPcdt/uPo4)[**6**](http://paperpile.com/b/coPcdt/uPo4)[, e379–e381 (2024).](http://paperpile.com/b/coPcdt/uPo4)
+
+4. [Goodman, K. E., Yi, P. H. & Morgan, D. J. AI-generated clinical summaries require more than accuracy.](http://paperpile.com/b/coPcdt/mWz4)[*JAMA*](http://paperpile.com/b/coPcdt/mWz4)[http://paperpile.com/b/coPcdt/mWz4](http://paperpile.com/b/coPcdt/mWz4)[**331**](http://paperpile.com/b/coPcdt/mWz4)[, 637–638 (2024).](http://paperpile.com/b/coPcdt/mWz4)
+
+5. [Yan, Q., He, X., Yue, X. & Wang, X. E. Worse than random? An embarrassingly simple probing evaluation of large multimodal models in medical VQA. in](http://paperpile.com/b/coPcdt/7nb9)[*Findings of the Association for Computational Linguistics: ACL 2025*](http://paperpile.com/b/coPcdt/7nb9)[19188–19205 (Association for Computational Linguistics, Stroudsburg, PA, USA, 2025).](http://paperpile.com/b/coPcdt/7nb9)
+
+6. [Jin, Q., Dhingra, B., Liu, Z., Cohen, W. & Lu, X. PubMedQA: A Dataset for Biomedical Research Question Answering. in](http://paperpile.com/b/coPcdt/LZ8I)[*Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)*](http://paperpile.com/b/coPcdt/LZ8I)[(Association for Computational Linguistics, Stroudsburg, PA, USA, 2019). doi:](http://paperpile.com/b/coPcdt/LZ8I)[10.18653/v1/d19-1259](http://dx.doi.org/10.18653/v1/d19-1259)[.](http://paperpile.com/b/coPcdt/LZ8I)
+
+7. [Hendrycks, D.](http://paperpile.com/b/coPcdt/ejcu)[*et al.*](http://paperpile.com/b/coPcdt/ejcu)[Measuring massive multitask language understanding.](http://paperpile.com/b/coPcdt/ejcu)[*arXiv [cs.CY]*](http://paperpile.com/b/coPcdt/ejcu)[(2020).](http://paperpile.com/b/coPcdt/ejcu)
+
+8. [Jin, D.](http://paperpile.com/b/coPcdt/v2iZ)[*et al.*](http://paperpile.com/b/coPcdt/v2iZ)[What disease does this patient have? A large-scale open domain question answering dataset from medical exams.](http://paperpile.com/b/coPcdt/v2iZ)[*Appl. Sci. (Basel)*](http://paperpile.com/b/coPcdt/v2iZ)[http://paperpile.com/b/coPcdt/v2iZ](http://paperpile.com/b/coPcdt/v2iZ)[**11**](http://paperpile.com/b/coPcdt/v2iZ)[, 6421 (2021).](http://paperpile.com/b/coPcdt/v2iZ)
+
+9. [Liu, J.](http://paperpile.com/b/coPcdt/V1vd)[*et al.*](http://paperpile.com/b/coPcdt/V1vd)[Benchmarking large language models on CMExam -- A comprehensive Chinese medical exam dataset.](http://paperpile.com/b/coPcdt/V1vd)[*arXiv [cs.CL]*](http://paperpile.com/b/coPcdt/V1vd)[(2023).](http://paperpile.com/b/coPcdt/V1vd)
+
+10. [Colgan, S.](http://paperpile.com/b/coPcdt/CouF)[*et al.*](http://paperpile.com/b/coPcdt/CouF)[Perceptions of generic medication in the general population, doctors and pharmacists: a systematic review.](http://paperpile.com/b/coPcdt/CouF)[*BMJ Open*](http://paperpile.com/b/coPcdt/CouF)[http://paperpile.com/b/coPcdt/CouF](http://paperpile.com/b/coPcdt/CouF)[**5**](http://paperpile.com/b/coPcdt/CouF)[, e008915 (2015).](http://paperpile.com/b/coPcdt/CouF)
+
+11. [Sewell, K., Andreae, S., Luke, E. & Safford, M. M. Perceptions of and barriers to use of generic medications in a rural African American population, Alabama, 2011.](http://paperpile.com/b/coPcdt/DWJc)[*Prev. Chronic Dis.*](http://paperpile.com/b/coPcdt/DWJc)[http://paperpile.com/b/coPcdt/DWJc](http://paperpile.com/b/coPcdt/DWJc)[**9**](http://paperpile.com/b/coPcdt/DWJc)[, E142 (2012).](http://paperpile.com/b/coPcdt/DWJc)
+
+12. [McCarthy, D. Lexical substitution as a task for WSD evaluation. in](http://paperpile.com/b/coPcdt/muKP)[*Proceedings of the ACL-02 workshop on Word sense disambiguation recent successes and future directions -*](http://paperpile.com/b/coPcdt/muKP)[(Association for Computational Linguistics, Morristown, NJ, USA, 2002). doi:](http://paperpile.com/b/coPcdt/muKP)[10.3115/1118675.1118691](http://dx.doi.org/10.3115/1118675.1118691)[.](http://paperpile.com/b/coPcdt/muKP)
+
+13. [Arefyev, N., Sheludko, B., Podolskiy, A. & Panchenko, A. Always keep your target in mind: Studying semantics and improving performance of neural lexical substitution. in](http://paperpile.com/b/coPcdt/k7P8)[*Proceedings of the 28th International Conference on Computational Linguistics*](http://paperpile.com/b/coPcdt/k7P8)[(International Committee on Computational Linguistics, Stroudsburg, PA, USA, 2020). doi:](http://paperpile.com/b/coPcdt/k7P8)[10.18653/v1/2020.coling-main.107](http://dx.doi.org/10.18653/v1/2020.coling-main.107)[.](http://paperpile.com/b/coPcdt/k7P8)
+
+14. [Zhou, W., Ge, T., Xu, K., Wei, F. & Zhou, M. BERT-based Lexical Substitution. in](http://paperpile.com/b/coPcdt/WqC4)[*Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics*](http://paperpile.com/b/coPcdt/WqC4)[(eds Korhonen, A., Traum, D. & Màrquez, L.) 3368–3373 (Association for Computational Linguistics, Stroudsburg, PA, USA, 2019).](http://paperpile.com/b/coPcdt/WqC4)
+
+15. [Riedl, M., Glass, M. & Gliozzo, A. Lexical substitution for the medical domain. in](http://paperpile.com/b/coPcdt/NiSK)[*Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP)*](http://paperpile.com/b/coPcdt/NiSK)[(Association for Computational Linguistics, Stroudsburg, PA, USA, 2014). doi:](http://paperpile.com/b/coPcdt/NiSK)[10.3115/v1/d14-1066](http://dx.doi.org/10.3115/v1/d14-1066)[.](http://paperpile.com/b/coPcdt/NiSK)
+
+16. [Wen, Z., Lu, X. H. & Reddy, S. MeDAL: Medical abbreviation disambiguation dataset for natural language understanding pretraining. in](http://paperpile.com/b/coPcdt/GzNg)[*Proceedings of the 3rd Clinical Natural Language Processing Workshop*](http://paperpile.com/b/coPcdt/GzNg)[(Association for Computational Linguistics, Stroudsburg, PA, USA, 2020). doi:](http://paperpile.com/b/coPcdt/GzNg)[10.18653/v1/2020.clinicalnlp-1.15](http://dx.doi.org/10.18653/v1/2020.clinicalnlp-1.15)[.](http://paperpile.com/b/coPcdt/GzNg)
+
+17. [Shi, W.](http://paperpile.com/b/coPcdt/VetX)[*et al.*](http://paperpile.com/b/coPcdt/VetX)[Detecting pretraining data from large language models.](http://paperpile.com/b/coPcdt/VetX)[*arXiv [cs.CL]*](http://paperpile.com/b/coPcdt/VetX)[(2023).](http://paperpile.com/b/coPcdt/VetX)
+
+18. [Xu, R., Wang, Z., Fan, R.-Z. & Liu, P. Benchmarking benchmark leakage in Large Language Models.](http://paperpile.com/b/coPcdt/eorr)[*arXiv [cs.CL]*](http://paperpile.com/b/coPcdt/eorr)[(2024).](http://paperpile.com/b/coPcdt/eorr)
+
+19. [Zhou, K.](http://paperpile.com/b/coPcdt/ic2s)[*et al.*](http://paperpile.com/b/coPcdt/ic2s)[Don’t make your LLM an evaluation benchmark cheater.](http://paperpile.com/b/coPcdt/ic2s)[*arXiv [cs.CL]*](http://paperpile.com/b/coPcdt/ic2s)[(2023).](http://paperpile.com/b/coPcdt/ic2s)
+
+20. [Kojima, T., Gu, S. S., Reid, M., Matsuo, Y. & Iwasawa, Y. Large Language Models are Zero-Shot Reasoners.](http://paperpile.com/b/coPcdt/o7lT)[*arXiv [cs.CL]*](http://paperpile.com/b/coPcdt/o7lT)[(2022).](http://paperpile.com/b/coPcdt/o7lT)
+
+21. [Srivastava, S.](http://paperpile.com/b/coPcdt/i7v8)[*et al.*](http://paperpile.com/b/coPcdt/i7v8)[Functional benchmarks for robust evaluation of reasoning performance, and the reasoning gap.](http://paperpile.com/b/coPcdt/i7v8)[*arXiv [cs.AI]*](http://paperpile.com/b/coPcdt/i7v8)[(2024).](http://paperpile.com/b/coPcdt/i7v8)
+
+22. [Lu, S., Bigoulaeva, I., Sachdeva, R., Tayyar Madabushi, H. & Gurevych, I. Are emergent abilities in large language models just in-context learning? in](http://paperpile.com/b/coPcdt/7Z0s)[*Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)*](http://paperpile.com/b/coPcdt/7Z0s)[5098–5139 (Association for Computational Linguistics, Stroudsburg, PA, USA, 2024).](http://paperpile.com/b/coPcdt/7Z0s)
+
+23. [Magnusson, I.](http://paperpile.com/b/coPcdt/UVGC)[*et al.*](http://paperpile.com/b/coPcdt/UVGC)[Paloma: A benchmark for evaluating language model fit.](http://paperpile.com/b/coPcdt/UVGC)[*arXiv [cs.CL]*](http://paperpile.com/b/coPcdt/UVGC)[(2023).](http://paperpile.com/b/coPcdt/UVGC)
+
+24. [Zhang, H.](http://paperpile.com/b/coPcdt/Z1jA)[*et al.*](http://paperpile.com/b/coPcdt/Z1jA)[A careful examination of large language model performance on grade school arithmetic.](http://paperpile.com/b/coPcdt/Z1jA)[*arXiv [cs.CL]*](http://paperpile.com/b/coPcdt/Z1jA)[(2024).](http://paperpile.com/b/coPcdt/Z1jA)
+
+25. [Zack, T.](http://paperpile.com/b/coPcdt/SrkJ)[*et al.*](http://paperpile.com/b/coPcdt/SrkJ)[Assessing the potential of GPT-4 to perpetuate racial and gender biases in health care: a model evaluation study.](http://paperpile.com/b/coPcdt/SrkJ)[*Lancet Digit. Health*](http://paperpile.com/b/coPcdt/SrkJ)[http://paperpile.com/b/coPcdt/SrkJ](http://paperpile.com/b/coPcdt/SrkJ)[**6**](http://paperpile.com/b/coPcdt/SrkJ)[, e12–e22 (2024).](http://paperpile.com/b/coPcdt/SrkJ)
+
+26. [Chen, S.](http://paperpile.com/b/coPcdt/X0L4)[*et al.*](http://paperpile.com/b/coPcdt/X0L4)[Cross-Care: Assessing the healthcare implications of pre-training data on language model bias.](http://paperpile.com/b/coPcdt/X0L4)[*Neural Inf Process Syst*](http://paperpile.com/b/coPcdt/X0L4)[http://paperpile.com/b/coPcdt/X0L4](http://paperpile.com/b/coPcdt/X0L4)[**abs/2405.05506**](http://paperpile.com/b/coPcdt/X0L4)[, 23756–23795 (2024).](http://paperpile.com/b/coPcdt/X0L4)
+
+27. [Guevara, M.](http://paperpile.com/b/coPcdt/RImu)[*et al.*](http://paperpile.com/b/coPcdt/RImu)[Large language models to identify social determinants of health in electronic health records.](http://paperpile.com/b/coPcdt/RImu)[*NPJ Digit. Med.*](http://paperpile.com/b/coPcdt/RImu)[http://paperpile.com/b/coPcdt/RImu](http://paperpile.com/b/coPcdt/RImu)[**7**](http://paperpile.com/b/coPcdt/RImu)[, 6 (2024).](http://paperpile.com/b/coPcdt/RImu)
+
+28. [Ness, R. O.](http://paperpile.com/b/coPcdt/TVaD)[*et al.*](http://paperpile.com/b/coPcdt/TVaD)[MedFuzz: Exploring the robustness of large language models in medical question answering.](http://paperpile.com/b/coPcdt/TVaD)[*arXiv [cs.CL]*](http://paperpile.com/b/coPcdt/TVaD)[(2024).](http://paperpile.com/b/coPcdt/TVaD)
+
+29. [Liu, J., Min, S., Zettlemoyer, L., Choi, Y. & Hajishirzi, H. Infini-gram: Scaling unbounded n-gram language models to a trillion tokens.](http://paperpile.com/b/coPcdt/x6hn)[*arXiv [cs.CL]*](http://paperpile.com/b/coPcdt/x6hn)[(2024).](http://paperpile.com/b/coPcdt/x6hn)
+
+![](../figures/image76.png)![](../figures/image66.png)![](../figures/image75.png)![](../figures/image22.png)![](../figures/image31.png)![](../figures/image40.png)![](../figures/image73.png)![](../figures/image77.png)![](../figures/image27.png)![](../figures/image14.png)

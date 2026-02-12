@@ -1,0 +1,289 @@
+:::{#tbl-wmt24esa-all-results}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th rowspan="2"><strong>Method</strong></th>
+            <th colspan="2"><strong>En<span data-qmd="$\rightarrow$"></span> Ja</strong></th>
+            <th colspan="2"><strong>En<span data-qmd="$\rightarrow$"></span> Zh</strong></th>
+            <th colspan="2"><strong>En<span data-qmd="$\rightarrow$"></span> Hi</strong></th>
+            <th colspan="2"><strong>Cs<span data-qmd="$\rightarrow$"></span> Uk</strong></th>
+            <th colspan="2"><strong>En<span data-qmd="$\rightarrow$"></span> Cs</strong></th>
+            <th colspan="2"><strong>En<span data-qmd="$\rightarrow$"></span> Ru</strong></th>
+            <th colspan="2"><strong>Average</strong></th>
+        </tr>
+        <tr>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td class="mediumlongrow">Random Baseline</td>
+            <td>.02</td>
+            <td>.03</td>
+            <td>.03</td>
+            <td>.07</td>
+            <td>.03</td>
+            <td>.07</td>
+            <td>.05</td>
+            <td>.09</td>
+            <td>.06</td>
+            <td>.11</td>
+            <td>.08</td>
+            <td>.16</td>
+            <td>.05</td>
+            <td>.09</td>
+        </tr>
+        <tr>
+            <td>Surprisal</td>
+            <td><u>.03</u></td>
+            <td>.07</td>
+            <td>.05</td>
+            <td>.09</td>
+            <td>.05</td>
+            <td>.09</td>
+            <td>.14</td>
+            <td>.20</td>
+            <td>.10</td>
+            <td>.16</td>
+            <td>.13</td>
+            <td>.19</td>
+            <td>.08</td>
+            <td>.13</td>
+        </tr>
+        <tr>
+            <td>Out. Entropy</td>
+            <td><u>.03</u></td>
+            <td><u>.08</u></td>
+            <td><u>.06</u></td>
+            <td><u>.11</u></td>
+            <td><u>.06</u></td>
+            <td><u>.10</u></td>
+            <td><strong><u>.20</u></strong></td>
+            <td><u>.27</u></td>
+            <td><u>.12</u></td>
+            <td><u>.18</u></td>
+            <td><u>.14</u></td>
+            <td><u>.20</u></td>
+            <td><u>.10</u></td>
+            <td><u>.16</u></td>
+        </tr>
+        <tr>
+            <td>LL Surprisal<span data-qmd="$_{\text{best}}$"></span></td>
+            <td><u>.03</u></td>
+            <td>.07</td>
+            <td>.05</td>
+            <td>.09</td>
+            <td>.05</td>
+            <td>.09</td>
+            <td>.14</td>
+            <td>.20</td>
+            <td>.10</td>
+            <td>.16</td>
+            <td>.13</td>
+            <td>.19</td>
+            <td>.08</td>
+            <td>.13</td>
+        </tr>
+        <tr>
+            <td>LL KL-Div<span data-qmd="$_{\text{best}}$"></span></td>
+            <td>.02</td>
+            <td>.05</td>
+            <td>.04</td>
+            <td>.07</td>
+            <td>.04</td>
+            <td>.08</td>
+            <td>.10</td>
+            <td>.17</td>
+            <td>.09</td>
+            <td>.15</td>
+            <td>.12</td>
+            <td>.19</td>
+            <td>.07</td>
+            <td>.12</td>
+        </tr>
+        <tr>
+            <td>LL Pred. Depth</td>
+            <td>.02</td>
+            <td>.05</td>
+            <td>.04</td>
+            <td>.08</td>
+            <td>.04</td>
+            <td>.09</td>
+            <td>.09</td>
+            <td>.18</td>
+            <td>.08</td>
+            <td>.14</td>
+            <td>.11</td>
+            <td>.18</td>
+            <td>.06</td>
+            <td>.12</td>
+        </tr>
+        <tr>
+            <td>Attn. Entropy<span data-qmd="$_{\text{avg}}$"></span></td>
+            <td>.02</td>
+            <td>.03</td>
+            <td>.03</td>
+            <td>.07</td>
+            <td>.03</td>
+            <td>.07</td>
+            <td>.03</td>
+            <td>.09</td>
+            <td>.05</td>
+            <td>.11</td>
+            <td>.07</td>
+            <td>.16</td>
+            <td>.04</td>
+            <td>.09</td>
+        </tr>
+        <tr class="midrule">
+            <td>Attn. Entropy<span data-qmd="$_{\text{max}}$"></span></td>
+            <td>.01</td>
+            <td>.03</td>
+            <td>.03</td>
+            <td>.07</td>
+            <td>.03</td>
+            <td>.07</td>
+            <td>.03</td>
+            <td>.09</td>
+            <td>.05</td>
+            <td>.11</td>
+            <td>.08</td>
+            <td>.16</td>
+            <td>.04</td>
+            <td>.09</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xl]{.smallcaps}"></span></td>
+            <td>.04</td>
+            <td>.09</td>
+            <td>.05</td>
+            <td>.11</td>
+            <td>.06</td>
+            <td>.12</td>
+            <td>.13</td>
+            <td>.28</td>
+            <td>.11</td>
+            <td>.24</td>
+            <td>.16</td>
+            <td>.32</td>
+            <td>.09</td>
+            <td>.19</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xl]{.smallcaps}$_{\text{confw}}$"></span></td>
+            <td><strong>.08</strong></td>
+            <td>.14</td>
+            <td><strong>.10</strong></td>
+            <td>.16</td>
+            <td><strong>.10</strong></td>
+            <td><strong>.19</strong></td>
+            <td>.18</td>
+            <td><strong>.30</strong></td>
+            <td>.19</td>
+            <td>.29</td>
+            <td>.24</td>
+            <td>.32</td>
+            <td>.15</td>
+            <td>.23</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xxl]{.smallcaps}"></span></td>
+            <td>.04</td>
+            <td>.11</td>
+            <td>.06</td>
+            <td>.13</td>
+            <td>.05</td>
+            <td>.11</td>
+            <td>.13</td>
+            <td>.28</td>
+            <td>.11</td>
+            <td>.24</td>
+            <td>.16</td>
+            <td><strong>.33</strong></td>
+            <td>.09</td>
+            <td>.20</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xxl]{.smallcaps}$_{\text{confw}}$"></span></td>
+            <td>.07</td>
+            <td><strong>.15</strong></td>
+            <td>.09</td>
+            <td><strong>.19</strong></td>
+            <td>.09</td>
+            <td>.17</td>
+            <td>.19</td>
+            <td>.29</td>
+            <td><strong>.22</strong></td>
+            <td><strong>.30</strong></td>
+            <td><strong>.28</strong></td>
+            <td><strong>.33</strong></td>
+            <td><strong>.16</strong></td>
+            <td><strong>.24</strong></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\setlength{\tabcolsep}{3pt}
+\footnotesize
+\centering
+\begin{tabular}{l|cc|cc|cc|cc|cc|cc||cc}
+\toprule[1.5pt]
+\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Method}}} & \multicolumn{2}{c}{\textbf{En$\rightarrow$ Ja}} & \multicolumn{2}{c}{\textbf{En$\rightarrow$ Zh}} & \multicolumn{2}{c}{\textbf{En$\rightarrow$ Hi}} & \multicolumn{2}{c}{\textbf{Cs$\rightarrow$ Uk}} & \multicolumn{2}{c}{\textbf{En$\rightarrow$ Cs}} & \multicolumn{2}{c}{\textbf{En$\rightarrow$ Ru}} & \multicolumn{2}{c}{\textbf{Average}}\\
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+\cmidrule(lr){6-7}
+\cmidrule(lr){8-9}
+\cmidrule(lr){10-11}
+\cmidrule(lr){12-13}
+\cmidrule(lr){14-15}
+
+                                     & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$} \\
+\midrule
+Random Baseline              & .02     & .03     & .03     & .07     & .03     & .07     & .05     & .09     & .06     & .11     & .08     & .16     & .05     & .09     \\
+\midrule
+Surprisal                    & \u{.03} & .07     & .05     & .09     & .05     & .09     & .14     & .20     & .10     & .16     & .13     & .19     & .08     & .13     \\
+Out. Entropy                 & \u{.03} & \u{.08} & \u{.06} & \u{.11} & \u{.06} & \u{.10} & \b{\u{.20}} & \u{.27} & \u{.12} & \u{.18} & \u{.14} & \u{.20} & \u{.10} & \u{.16} \\
+LL Surprisal\best            & \u{.03} & .07     & .05     & .09     & .05     & .09     & .14     & .20     & .10     & .16     & .13     & .19     & .08     & .13     \\
+LL KL-Div\best               & .02     & .05     & .04     & .07     & .04     & .08     & .10     & .17     & .09     & .15     & .12     & .19     & .07     & .12     \\
+LL Pred. Depth               & .02     & .05     & .04     & .08     & .04     & .09     & .09     & .18     & .08     & .14     & .11     & .18     & .06     & .12     \\
+Attn. Entropy\avg            & .02     & .03     & .03     & .07     & .03     & .07     & .03     & .09     & .05     & .11     & .07     & .16     & .04     & .09     \\
+Attn. Entropy\maxim          & .01     & .03     & .03     & .07     & .03     & .07     & .03     & .09     & .05     & .11     & .08     & .16     & .04     & .09     \\
+\midrule
+\textsc{xcomet-xl}           & .04     & .09     & .05     & .11     & .06     & .12     & .13     & .28     & .11     & .24     & .16     & .32     & .09     & .19     \\
+\textsc{xcomet-xl}\confw     & \b{.08} & .14     & \b{.10} & .16     & \b{.10} & \b{.19} & .18     & \b{.30} & .19     & .29     & .24     & .32     & .15     & .23     \\
+\textsc{xcomet-xxl}          & .04     & .11     & .06     & .13     & .05     & .11     & .13     & .28     & .11     & .24     & .16     & \b{.33} & .09     & .20     \\
+\textsc{xcomet-xxl}\confw    & .07     & \b{.15} & .09     & \b{.19} & .09     & .17     & .19     & .29     & \b{.22} & \b{.30} & \b{.28} & \b{.33} & \b{.16} & \b{.24} \\
+\bottomrule[1.5pt]
+\end{tabular}
+\end{table}
+```
+
+:::
+
+WQE metrics' performance for predicting error spans from the ESA annotations (one set per language) over Aya23-35B outputs for the WMT24 dataset.
+
+:::

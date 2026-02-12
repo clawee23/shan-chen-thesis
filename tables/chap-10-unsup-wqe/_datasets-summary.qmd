@@ -1,0 +1,87 @@
+:::{#tbl-datasets-summary}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th><span data-qmd="**DivEMT**"></span></th>
+            <th><span data-qmd="**WMT24**"></span></th>
+            <th><span data-qmd="**QE4PE**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="bold">Languages</td>
+            <td><span data-qmd="[en]{.smallcaps}→[ar,it, nl,tr,uk,vi]{.smallcaps}"></span></td>
+            <td><span data-qmd="[en]{.smallcaps}→[ja,zh,hi,cs,ru]{.smallcaps} [cs]{.smallcaps}→[uk]{.smallcaps}"></span></td>
+            <td><span data-qmd="[en]{.smallcaps}→[it,nl]{.smallcaps}"></span></td>
+        </tr>
+        <tr>
+            <td class="bold">Errors type</td>
+            <td>Post-edit</td>
+            <td>Annotation</td>
+            <td>Post-edit</td>
+        </tr>
+        <tr>
+            <td class="bold">Label sets</td>
+            <td>1</td>
+            <td>1</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td class="bold">Domains</td>
+            <td>Wiki</td>
+            <td>Multiple</td>
+            <td>Social, Biomed</td>
+        </tr>
+        <tr>
+            <td class="bold">MT Model</td>
+            <td>mBART-50</td>
+            <td>Aya23</td>
+            <td>NLLB</td>
+        </tr>
+        <tr>
+            <td class="bold"># Segments</td>
+            <td>2580</td>
+            <td>5124</td>
+            <td>3888</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \footnotesize
+    \centering
+    \begin{tabular}{lccc}
+    \toprule[1.5pt]
+     &  \textbf{DivEMT} & \textbf{WMT24} & \textbf{QE4PE} \\
+    \midrule
+    \textbf{Languages} & \textsc{en}$\rightarrow$\textsc{ar,it, nl,tr,uk,vi} & \textsc{en}$\rightarrow$\textsc{ja,zh,hi,cs,ru} \textsc{cs}$\rightarrow$\textsc{uk} & \textsc{en}$\rightarrow$\textsc{it,nl} \\
+    \midrule
+    \textbf{Errors type} & Post-edit & Annotation & Post-edit \\
+    \midrule
+    \textbf{Label sets} & 1 & 1 & 6 \\
+    \midrule
+    \textbf{Domains} & Wiki & Multiple & Social, Biomed \\
+    \midrule
+    \textbf{MT Model} & mBART-50 & Aya23 & NLLB \\
+    \midrule
+    \textbf{\# Segments} & 2580 & 5124 & 3888 \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Summary of tested datasets. Error spans are obtained from explicit error annotations or post-edited spans.
+:::

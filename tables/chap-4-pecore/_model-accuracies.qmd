@@ -1,0 +1,134 @@
+:::{#tbl-model-accuracies}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th class="rowspan" rowspan="2"><span data-qmd="**Model**"></span></th>
+            <th colspan="3" class="group-header"><span data-qmd="**SCAT+**"></span></th>
+            <th colspan="3" class="group-header"><span data-qmd="**[DiscEval-MT (ana)]{.smallcaps}**"></span></th>
+            <th colspan="3" class="group-header"><span data-qmd="**[DiscEval-MT (lex)]{.smallcaps}**"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th><span data-qmd="**[bleu]{.smallcaps}**"></span></th>
+            <th><span data-qmd="**[ok]{.smallcaps}**"></span></th>
+            <th><span data-qmd="**[ok-cs]{.smallcaps}**"></span></th>
+            <th><span data-qmd="**[bleu]{.smallcaps}**"></span></th>
+            <th><span data-qmd="**[ok]{.smallcaps}**"></span></th>
+            <th><span data-qmd="**[ok-cs]{.smallcaps}**"></span></th>
+            <th><span data-qmd="**[bleu]{.smallcaps}**"></span></th>
+            <th><span data-qmd="**[ok]{.smallcaps}**"></span></th>
+            <th><span data-qmd="**[ok-cs]{.smallcaps}**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="namerow">Opus Small <span class="italic">(def.)</span></td>
+            <td>29.1</td>
+            <td>0.14</td>
+            <td class="smallrow">-</td>
+            <td>43.9</td>
+            <td>0.40</td>
+            <td class="smallrow">-</td>
+            <td>30.5</td>
+            <td>0.29</td>
+            <td class="smallrow">-</td>
+        </tr>
+        <tr class="midrule">
+            <td class="namerow"><span data-qmd="Opus Small S+T$_{\text{ctx}}$"></span></td>
+            <td class="underline">39.1</td>
+            <td class="underline">0.81</td>
+            <td class="smallrow">0.59</td>
+            <td class="underline">48.1</td>
+            <td class="underline">0.60</td>
+            <td class="smallrow">0.24</td>
+            <td class="underline">33.5</td>
+            <td class="underline">0.36</td>
+            <td class="smallrow">0.07</td>
+        </tr>
+        <tr>
+            <td class="namerow">Opus Large <span class="italic">(def.)</span></td>
+            <td>29.0</td>
+            <td>0.16</td>
+            <td class="smallrow">-</td>
+            <td>39.2</td>
+            <td>0.41</td>
+            <td class="smallrow">-</td>
+            <td>31.2</td>
+            <td>0.31</td>
+            <td class="smallrow">-</td>
+        </tr>
+        <tr class="midrule">
+            <td class="namerow"><span data-qmd="Opus Large S+T$_{\text{ctx}}$"></span></td>
+            <td class="bold-underline">40.3</td>
+            <td class="bold-underline">0.83</td>
+            <td class="smallrow">0.58</td>
+            <td class="underline">48.9</td>
+            <td class="bold-underline">0.68</td>
+            <td class="smallrow">0.31</td>
+            <td class="bold-underline">34.8</td>
+            <td class="bold-underline">0.38</td>
+            <td class="smallrow">0.10</td>
+        </tr>
+        <tr>
+            <td class="namerow">mBART-50 <span class="italic">(def.)</span></td>
+            <td>23.8</td>
+            <td>0.26</td>
+            <td class="smallrow">-</td>
+            <td>33.4</td>
+            <td>0.42</td>
+            <td class="smallrow">-</td>
+            <td>24.5</td>
+            <td>0.25</td>
+            <td class="smallrow">-</td>
+        </tr>
+        <tr>
+            <td class="namerow"><span data-qmd="mBART-50 S+T$_{\text{ctx}}$"></span></td>
+            <td class="underline">37.6</td>
+            <td class="underline">0.82</td>
+            <td class="smallrow">0.55</td>
+            <td class="bold-underline">49.0</td>
+            <td class="underline">0.62</td>
+            <td class="smallrow">0.32</td>
+            <td class="underline">29.3</td>
+            <td class="underline">0.30</td>
+            <td class="smallrow">0.07</td>
+        </tr>
+    </tbody>
+</table>
+```
+:::
+
+:::{.content-visible when-format="pdf"}
+```{=latex}
+\begin{table}
+\setlength{\tabcolsep}{3pt}
+\centering
+\small
+\begin{tabular}{lccccccccc}
+\toprule[1.5pt]
+& \multicolumn{3}{c}{\textbf{SCAT+}} & \multicolumn{3}{c}{\textbf{\textsc{DiscEval-MT} \textsc{(ana)}}} & \multicolumn{3}{c}{\textbf{\textsc{DiscEval-MT} \textsc{(lex)}}} \\
+\cmidrule(lr){2-4}
+\cmidrule(lr){5-7}
+\cmidrule(lr){8-10}
+\textbf{Model} &
+\textbf{\textsc{Bleu}} & \textbf{\textsc{ok}} & \textbf{\textsc{ok-cs}} & \textbf{\textsc{Bleu}} & \textbf{\textsc{ok}} & \textbf{\textsc{ok-cs}} & \textbf{\textsc{Bleu}} & \textbf{\textsc{ok}} & \textbf{\textsc{ok-cs}} \\
+\midrule[1pt]
+Opus Small \textit{(def.)}       & 29.1 & 0.14 & - & 43.9 & 0.40 & - & 30.5 & 0.29 & - \\
+Opus Small S+T$_{\text{ctx}}$       & \underline{39.1} & \underline{0.81} & 0.59 & \underline{48.1} & \underline{0.60} & 0.24 & \underline{33.5} &  \underline{0.36} & 0.07 \\
+\midrule 
+Opus Large \textit{(def.)}       & 29.0 & 0.16 & - & 39.2 & 0.41 & - & 31.2 & 0.31 & - \\
+Opus Large S+T$_{\text{ctx}}$ & \underline{\textbf{40.3}} & \underline{\textbf{0.83}} & 0.58 & \underline{48.9} & \underline{\textbf{0.68}} & 0.31 & \underline{\textbf{34.8}} & \underline{\textbf{0.38}} & 0.10 \\
+\midrule
+mBART-50 \textit{(def.)}           & 23.8 & 0.26 & - & 33.4 & 0.42 & - & 24.5 & 0.25 & - \\
+mBART-50 S+T$_{\text{ctx}}$     & \underline{37.6} & \underline{0.82} & 0.55 & \underline{\textbf{49.0}} & \underline{0.62} & 0.32 & \underline{29.3} & \underline{0.30} & 0.07 \\
+\bottomrule[1.5pt]
+\end{tabular}
+\end{table}
+```
+:::
+
+Translation quality of English$\rightarrow$French MT models before *(def.)* and after *(S+T*$_\text{ctx}$*)* context-aware MT fine-tuning. **[ok]{.smallcaps}**: % of translations with correct disambiguation for discourse phenomena. **[ok-cs]{.smallcaps}**: % of translations where the correct disambiguation is achieved only when context is provided.
+:::

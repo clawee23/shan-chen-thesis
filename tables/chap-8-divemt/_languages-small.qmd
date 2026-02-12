@@ -1,0 +1,112 @@
+:::{#tbl-languages-small}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th><span data-qmd="**Genus:Family**"></span></th>
+            <th><span data-qmd="***d*$_{syn}$**"></span></th>
+            <th><span data-qmd="**Morphology**"></span></th>
+            <th><span data-qmd="**MSP**"></span></th>
+            <th><span data-qmd="**TTR**"></span></th>
+            <th><span data-qmd="**Script**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td><span data-qmd="[Eng]{.smallcaps}"></span></td>
+            <td class="longrow">Indo-European:Germanic</td>
+            <td>--</td>
+            <td>Fusional</td>
+            <td class="bg-red-b">1.17</td>
+            <td class="bg-red-c">0.28</td>
+            <td>latin</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Ara]{.smallcaps}"></span></td>
+            <td>Afro-Asiatic:Semitic</td>
+            <td class="bg-blue-b smallrow">0.57</td>
+            <td>Introflexive</td>
+            <td class="bg-red-d">1.67</td>
+            <td class="bg-red-e">0.46</td>
+            <td>arabic</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Nld]{.smallcaps}"></span></td>
+            <td>Indo-European:Germanic</td>
+            <td class="bg-blue-aa">0.49</td>
+            <td>Fusional</td>
+            <td class="bg-red-b">1.16</td>
+            <td class="bg-red-c">0.28</td>
+            <td>latin</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Ita]{.smallcaps}"></span></td>
+            <td>Indo-European:Romance</td>
+            <td class="bg-blue-a">0.51</td>
+            <td>Fusional</td>
+            <td class="bg-red-c">1.30</td>
+            <td class="bg-red-c">0.30</td>
+            <td>latin</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Tur]{.smallcaps}"></span></td>
+            <td>Altaic:Turkic</td>
+            <td class="bg-blue-c">0.70</td>
+            <td>Agglutinative</td>
+            <td class="bg-red-f">2.28</td>
+            <td class="bg-red-e">0.50</td>
+            <td>latin</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Ukr]{.smallcaps}"></span></td>
+            <td>Indo-European:Slavic</td>
+            <td class="bg-blue-a">0.51</td>
+            <td>Fusional</td>
+            <td class="bg-red-c">1.42</td>
+            <td class="bg-red-e">0.47</td>
+            <td>cyrillic</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Vie]{.smallcaps}"></span></td>
+            <td>Austro-Asiatic:VietMuong</td>
+            <td class="bg-blue-b">0.57</td>
+            <td>Isolating</td>
+            <td class="bg-red-a">1.00</td>
+            <td class="bg-red-a">0.12</td>
+            <td>latin</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}\centering\small
+\begin{tabular}{@{} l @{\ \ \ } l @{\ \ \ } c @{\ \ } c @{\ \ \ } c @{\ \ \ } c @{\ \ \ } c @{}}
+\toprule 
+& \textbf{Genus:Family} & \textbf{\textit{d}}$_{syn}$ & \textbf{Morphology} & \textbf{MSP} &  \textbf{TTR} & \textbf{Script}\\
+\midrule
+\textsc{Eng} & Indo-European:Germanic & -- & Fusional & \cellcolor{red2}1.17 & \cellcolor{red3} 0.28 & latin \\ 
+\midrule
+\textsc{Ara} & Afro-Asiatic:Semitic & \cellcolor{blue2} 0.57  & Introflexive & \cellcolor{red4}1.67 & \cellcolor{red5} 0.46  &  arabic \\ 
+\textsc{Nld} & Indo-European:Germanic & \cellcolor{blue1} 0.49 & Fusional & \cellcolor{red2}1.16 & \cellcolor{red3} 0.28 & latin \\ 
+\textsc{Ita} & Indo-European:Romance & \cellcolor{blue1} 0.51 & Fusional & \cellcolor{red3}1.30 & \cellcolor{red3}  0.30 & latin \\ 
+\textsc{Tur} & Altaic:Turkic & \cellcolor{blue3} 0.70 & Agglutinative & \cellcolor{red6}2.28 & \cellcolor{red5} 0.50 & latin  \\ 
+\textsc{Ukr} & Indo-European:Slavic & \cellcolor{blue1} 0.51 & Fusional & \cellcolor{red3}1.42  & \cellcolor{red5} 0.47 & cyrillic \\ 
+\textsc{Vie} & Austro-Asiatic:VietMuong & \cellcolor{blue2} 0.57 & Isolating & \cellcolor{red1}1.00 & \cellcolor{red1} 0.12 & latin \\ 
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Typological diversity of our language sample. ***d*$_{syn}$**: Syntactic distance w.r.t. English @lin-etal-2019-choosing. **MSP**: Mean size of paradigm, from @coltekin-rama-2023-complexity. **TTR**: Type-token ratio measured on FLORES-101. Shading indicates [genetic/syntactic relatedness to English]{bg-color="brand-color.pastelblueclear"} and [morphological complexity/lexical richness]{bg-color="brand-color.pastelredclear"}.
+:::

@@ -1,0 +1,210 @@
+:::{#tbl-chap6-preliminary-cocoa-results}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th rowspan="2"></th>
+            <th rowspan="2"></th>
+            <th colspan="5" class="group-header" class="rline"><span data-qmd="**BLEU**"></span></th>
+            <th colspan="5" class="group-header" class="rline"><span data-qmd="**COMET**"></span></th>
+            <th colspan="5" class="group-header"><span data-qmd="**Sentential Accuracy**"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th><span data-qmd="**0**"></span></th>
+            <th><span data-qmd="**4**"></span></th>
+            <th><span data-qmd="**8**"></span></th>
+            <th><span data-qmd="**16**"></span></th>
+            <th class="rline"><span data-qmd="**32**"></span></th>
+            <th><span data-qmd="**0**"></span></th>
+            <th><span data-qmd="**4**"></span></th>
+            <th><span data-qmd="**8**"></span></th>
+            <th><span data-qmd="**16**"></span></th>
+            <th class="rline"><span data-qmd="**32**"></span></th>
+            <th><span data-qmd="**0**"></span></th>
+            <th><span data-qmd="**4**"></span></th>
+            <th><span data-qmd="**8**"></span></th>
+            <th><span data-qmd="**16**"></span></th>
+            <th><span data-qmd="**32**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2" class="rowspan">BLOOM 7.1B</td>
+            <td>base</td>
+            <td rowspan="2" class="rowspan">22</td>
+            <td>29</td>
+            <td>30</td>
+            <td>31</td>
+            <td class="rline">21</td>
+            <td rowspan="2" class="rowspan">.16</td>
+            <td>.58</td>
+            <td>.59</td>
+            <td>.60</td>
+            <td class="rline">-.09</td>
+            <td rowspan="2" class="rowspan">.56</td>
+            <td>.76</td>
+            <td>.84</td>
+            <td>.88</td>
+            <td>.73</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[Ramp]{.smallcaps}"></span></td>
+            <td>31</td>
+            <td>32</td>
+            <td>33</td>
+            <td class="rline">25</td>
+            <td>.60</td>
+            <td>.61</td>
+            <td>.62</td>
+            <td class="rline">.15</td>
+            <td>.84</td>
+            <td>.89</td>
+            <td>.91</td>
+            <td>.84</td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="rowspan">XGLM 7.5B</td>
+            <td>base</td>
+            <td rowspan="2" class="rowspan">12</td>
+            <td>25</td>
+            <td>27</td>
+            <td>28</td>
+            <td class="rline">29</td>
+            <td rowspan="2" class="rowspan">-.53</td>
+            <td>.44</td>
+            <td>.45</td>
+            <td>.50</td>
+            <td class="rline">.52</td>
+            <td rowspan="2" class="rowspan">.52</td>
+            <td>.76</td>
+            <td>.84</td>
+            <td>.85</td>
+            <td>.89</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[Ramp]{.smallcaps}"></span></td>
+            <td>27</td>
+            <td>28</td>
+            <td>28</td>
+            <td class="rline">30</td>
+            <td>.45</td>
+            <td>.48</td>
+            <td>.47</td>
+            <td class="rline">.48</td>
+            <td>.86</td>
+            <td>.90</td>
+            <td>.91</td>
+            <td>.92</td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="rowspan">GPT-NeoX 20B</td>
+            <td>base</td>
+            <td rowspan="2" class="rowspan">23</td>
+            <td>28</td>
+            <td>29</td>
+            <td>29</td>
+            <td class="rline">29</td>
+            <td rowspan="2" class="rowspan">.11</td>
+            <td>.27</td>
+            <td>.27</td>
+            <td>.27</td>
+            <td class="rline">.28</td>
+            <td rowspan="2" class="rowspan">.56</td>
+            <td>.80</td>
+            <td>.85</td>
+            <td>.85</td>
+            <td>.95</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[Ramp]{.smallcaps}"></span></td>
+            <td>29.</td>
+            <td>30</td>
+            <td>30</td>
+            <td class="rline">29</td>
+            <td>.28</td>
+            <td>.31</td>
+            <td>.31</td>
+            <td class="rline">.28</td>
+            <td>.85</td>
+            <td>.89</td>
+            <td>.89</td>
+            <td>.87</td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="rowspan">BLOOM 175B</td>
+            <td>base</td>
+            <td rowspan="2" class="rowspan">30</td>
+            <td>38</td>
+            <td>39</td>
+            <td>39</td>
+            <td class="rline">--</td>
+            <td rowspan="2" class="rowspan">.48</td>
+            <td>.73</td>
+            <td>.74</td>
+            <td>.75</td>
+            <td class="rline">--</td>
+            <td rowspan="2" class="rowspan">.61</td>
+            <td>.90</td>
+            <td>.95</td>
+            <td>.95</td>
+            <td>--</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[Ramp]{.smallcaps}"></span></td>
+            <td>39</td>
+            <td>40</td>
+            <td>40</td>
+            <td class="rline">--</td>
+            <td>.74</td>
+            <td>.74</td>
+            <td>.76</td>
+            <td class="rline">--</td>
+            <td>.95</td>
+            <td>.97</td>
+            <td>.97</td>
+            <td>--</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\setlength{\tabcolsep}{3pt}
+\centering
+\footnotesize
+\begin{tabular}{ll|ccccc|ccccc|ccccc}
+  & &
+ \multicolumn{5}{c|}{\textbf{BLEU}} &
+ \multicolumn{5}{c|}{\textbf{COMET}} &
+ \multicolumn{5}{c}{\textbf{Sentential Accuracy}} \\
+ & & \textbf{0} & \textbf{4} & \textbf{8} & \textbf{16} & \textbf{32}
+ & \textbf{0} & \textbf{4} & \textbf{8} & \textbf{16} & \textbf{32}
+ & \textbf{0} & \textbf{4} & \textbf{8} & \textbf{16} & \textbf{32}\\
+\hline
+\multirow{2}{4em}{BLOOM 7.1B} & base & \multirow{2}{*}{22} & 29 & 30 & 31 & 21 & \multirow{2}{*}{.16} & .58 & .59 & .60 & -.09 & \multirow{2}{*}{.56} & .76 & .84 & .88 & .73 \\
+& \textsc{Ramp} & & 31 & 32 & 33 & 25 & & .60 & .61 & .62 & .15 & & .84 & .89 & .91 & .84 \\
+\hline
+\multirow{2}{4em}{XGLM 7.5B} & base & \multirow{2}{*}{12} & 25 & 27 & 28 & 29 & \multirow{2}{*}{-.53} & .44 & .45 & .50 & .52 & \multirow{2}{*}{.52} & .76 & .84 & .85 & .89 \\
+& \textsc{Ramp} & & 27 & 28 & 28 & 30 & & .45 & .48 & .47 & .48 & & .86 & .90 & .91 & .92 \\
+\hline
+\multirow{2}{4.5em}{GPT-NeoX 20B} & base & \multirow{2}{*}{23} & 28 & 29 & 29 & 29 & \multirow{2}{*}{.11} & .27 & .27 & .27 & .28 & \multirow{2}{*}{.56} & .80 & .85 & .85 & .95 \\
+& \textsc{Ramp} & & 29 & 30 & 30 & 29 & & .28 & .31 & .31 & .28 &  & .85 & .89 & .89 & .87 \\
+\hline
+\multirow{2}{4em}{BLOOM 175B} & base & \multirow{2}{*}{30} & 38 & 39 & 39 & -- & \multirow{2}{*}{.48} & .73 & .74 & .75 & -- & \multirow{2}{*}{.61} & .90 & .95 & .95 & -- \\
+& \textsc{Ramp} & & 39 & 40 & 40 & -- & & .74 & .74 & .76 & -- & & .95 & .97 & .97 & --  \\
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Detailed scores of same-language prompting on CoCoA-MT (preliminary evaluation). Numbers in the header represent the number of in-context examples used for prompting, including zero-shot prompting (0). Scores are averaged across two available formality values (formal, informal) and languages (ES, FR, HI, PT).
+:::

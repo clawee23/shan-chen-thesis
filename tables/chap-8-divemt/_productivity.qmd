@@ -1,0 +1,101 @@
+:::{#tbl-productivity}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th rowspan="2"></th>
+            <th colspan="3" class="group-header"><span data-qmd="**[Prod]{.smallcaps} $\uparrow$**"></span></th>
+            <th colspan="2" class="group-header"><span data-qmd="**$\Delta$HT $\uparrow$**"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th>HT</th>
+            <th><span data-qmd="PE$_1$"></span></th>
+            <th><span data-qmd="PE$_2$"></span></th>
+            <th><span data-qmd="PE$_1$"></span></th>
+            <th><span data-qmd="PE$_2$"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span data-qmd="[Ara]{.smallcaps}"></span></td>
+            <td>13.1</td>
+            <td>21.7</td>
+            <td>16.3</td>
+            <td>+84%</td>
+            <td>+10%</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Nld]{.smallcaps}"></span></td>
+            <td>13.6</td>
+            <td>28.7</td>
+            <td>21.7</td>
+            <td>+119%</td>
+            <td>+61%</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Ita]{.smallcaps}"></span></td>
+            <td>8.8</td>
+            <td>18.6</td>
+            <td>15.6</td>
+            <td>+96%</td>
+            <td>+95%</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Tur]{.smallcaps}"></span></td>
+            <td>17.9</td>
+            <td>25.5</td>
+            <td>21.0</td>
+            <td>+34%</td>
+            <td>+12%</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Ukr]{.smallcaps}"></span></td>
+            <td>8.0</td>
+            <td>12.3</td>
+            <td>9.8</td>
+            <td>+71%</td>
+            <td>+14%</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Vie]{.smallcaps}"></span></td>
+            <td>10.2</td>
+            <td>13.0</td>
+            <td>11.1</td>
+            <td>+32%</td>
+            <td>+23%</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}\centering\small
+\begin{tabular}{c c c c | r r }
+\toprule
+     & \multicolumn{3}{c}{\textbf{\textsc{Prod} $\uparrow$}} & \multicolumn{2}{c}{\textbf{$\Delta$HT $\uparrow$}} \\
+     \cmidrule(lr){2-4}
+     \cmidrule(lr){5-6}
+     & HT & PE$_1$ & PE$_2$ & PE$_1$ & PE$_2$ \\
+\midrule
+\textsc{Ara} & 13.1 & 21.7 & 16.3 & +84\%  & +10\%  \\
+\textsc{Nld} & 13.6 & 28.7 & 21.7 & +119\% & +61\%  \\
+\textsc{Ita} & 8.8  & 18.6 & 15.6 & +96\%  & +95\%  \\
+\textsc{Tur} & 17.9 & 25.5 & 21.0 & +34\%  & +12\%  \\
+\textsc{Ukr} & 8.0  & 12.3 & 9.8  & +71\%  & +14\%  \\
+\textsc{Vie} & 10.2 & 13.0 & 11.1 & +32\%  & +23\%  \\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Median productivity ([Prod]{.smallcaps}, # processed source words per minute) and median % post-editing speedup ($\Delta$HT) for all analyzed languages and modalities. Arrows denote the direction of improvement.
+:::

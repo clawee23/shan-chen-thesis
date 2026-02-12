@@ -1,0 +1,147 @@
+:::{#tbl-chap7-examples-all-it}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable">
+    <thead>
+        <tr>
+            <th>Source/Method</th>
+            <th>Translation</th>
+            <th>📊 Classifier</th>
+            <th>☄️ COMET</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td class="mediumsmallrow"><strong>Source (IT)</strong></td>
+            <td>Intanto la stalla fu chiusa e Pinocchio rimase solo: e perché erano molte ore che non aveva mangiato, cominciò a sbadigliare dal grande appetito. E, sbadigliando, spalancava una bocca che pareva un forno.</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><strong><span data-qmd="[H$_1$]{color='brand-color.darkgreen'}"></span></strong></td>
+            <td><em>When the stable door was closed, Pinocchio was left alone. And since he hadn't eaten in many hours, he began to yawn from hunger. And when he yawned, his mouth opened as wide as an oven.</em></td>
+            <td><span data-qmd="[H$_1$]{color='brand-color.darkgreen'}"></span></td>
+            <td>-</td>
+        </tr>
+        <tr class="midrule">
+            <td><strong><span data-qmd="[H$_2$]{color='brand-color.lightbluedim'}"></span></strong></td>
+            <td><em>The stable was then shut and Pinocchio was left alone. He had not eaten for many hours, and he began to yawn from hunger. And when he yawned he opened a mouth that seemed as wide as an oven.</em></td>
+            <td><span data-qmd="[H$_2$]{color='brand-color.lightbluedim'}"></span></td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td><strong>Gemma 2 2B</strong></td>
+            <td><em>At that moment the stable was closed and Pinocchio was left alone, and because it had been many hours since he had eaten, he began to yawn from a great hunger. And, yawning, he opened a mouth that seemed like a furnace.</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.79</td>
+        </tr>
+        <tr>
+            <td><strong>Gemma 2 9B</strong></td>
+            <td><em>Meanwhile, the stable was closed and Pinocchio was left alone: and because it had been many hours since he had eaten, he began to yawn from his great hunger. And, yawning, he opened a mouth that looked like an oven.</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.80</td>
+        </tr>
+        <tr class="midrule">
+            <td><strong>Llama 3.1 8B</strong></td>
+            <td><em>Meanwhile the stable was closed and Pinocchio was left alone: and because it was many hours since he hadn't eaten, he began to yawn from great hunger. And, yawning, he opened a mouth that seemed like an oven.</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.80</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**ZS-Exp.$_\text{HT}$**"></span></td>
+            <td><em>Meanwhile, the stable door was shut, leaving Pinocchio alone. His tummy rumbled because it had been hours since his last meal, and he started yawning widely from his hunger. With each yawn, his mouth opened like an oven.</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.78</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**ZS-Exp.$_\text{PT}$**"></span></td>
+            <td><em>Meanwhile, the stable door was shut, leaving Pinocchio all alone. His tummy rumbled because it had been hours since his last meal, and he started yawning widely from sheer hunger. With each yawn, his mouth gaped open like an oven.</em></td>
+            <td><span data-qmd="[H$_2$]{color='brand-color.lightbluedim'}"></span></td>
+            <td>0.80</td>
+        </tr>
+        <tr class="midrule">
+            <td><strong>MS</strong></td>
+            <td><em>Meanwhile, the stable door was shut and Pinocchio was left alone. Since it had been hours since he last ate, he began yawning from hunger. Each yawn opened his mouth wide enough to look like an oven.</em></td>
+            <td><span data-qmd="[H$_2$]{color='brand-color.lightbluedim'}"></span></td>
+            <td>0.81</td>
+        </tr>
+        <tr>
+            <td><strong>ActAdd</strong></td>
+            <td><em>Meanwhile, the stable was closed and Pinocchio remained alone. Because many hours passed without eating, he started yawning from very big hunger. And while yawning, he opened his mouth wide like an oven.</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.75</td>
+        </tr>
+        <tr>
+            <td><strong>ReFT</strong></td>
+            <td><em>Meanwhile, the stable was closed and Pinocchio stayed alone. Because many hours had passed since he last ate, he began to yawn from big hunger. And, yawning, he opened a mouth that looked like an oven.</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.77</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**SAE Cont.$_\text{HT}$** ($\alpha=1$)"></span></td>
+            <td><em>Meanwhile, the stable door was shut and Pinocchio was left alone. Because it had been many hours since he had eaten, he started to yawn with intense hunger. And, as he yawned, his mouth gaped open like an oven.</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.79</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**SAE Cont.$_\text{HT}$** ($\alpha=5$)"></span></td>
+            <td><em>Meanwhile, the stable door shut, leaving Pinocchio all alone. Because it had been many hours since he'd eaten, he started to yawn with intense hunger. As he yawned, his mouth gaped open, looking like an oven.</em></td>
+            <td><span data-qmd="[H$_2$]{color='brand-color.lightbluedim'}"></span></td>
+            <td>0.82</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**SAE Cont.$_\text{HT}$** ($\alpha=50$)"></span></td>
+            <td><em>He He "It The ... You It "[They They) THE...I I HE IT [There There THEYRE WE "A A FOR "[...]</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.14</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**SAE Cont.$_\text{PT}$** ($\alpha=5$)"></span></td>
+            <td><em>The stable was then shut, leaving Pinocchio all alone. He had not eaten for many hours and began to yawn from great hunger. As he yawned, he opened his mouth wide, like an oven.</em></td>
+            <td><span data-qmd="[H$_2$]{color='brand-color.lightbluedim'}"></span></td>
+            <td>0.84</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \tiny
+    \centering
+    \begin{tabular}{p{0.10\textwidth}p{0.66\textwidth}cc}
+    \toprule[1.5pt] 
+    Source (IT) & Intanto la stalla fu chiusa e Pinocchio rimase solo: e perch\'e erano molte ore che non aveva mangiato, cominci\'o a sbadigliare dal grande appetito. E, sbadigliando, spalancava una bocca che pareva un forno. & \large 📊 & \large ☄️ \\
+    \midrule
+    \textcolor{darkgreen}{H$_1$} & \textit{When the stable door was closed, Pinocchio was left alone. And since he hadn't eaten in many hours, he began to yawn from hunger. And when he yawned, his mouth opened as wide as an oven.} & \textcolor{darkgreen}{H$_1$} & - \\
+    \textcolor{lightblueclear}{H$_2$} & \textit{The stable was then shut and Pinocchio was left alone. He had not eaten for many hours, and he began to yawn from hunger. And when he yawned he opened a mouth that seemed as wide as an oven.} & \textcolor{lightblueclear}{H$_2$} & - \\
+    \midrule
+    \textcolor{darkorange}{Gemma 2 2B} & \textit{At that moment the stable was closed and Pinocchio was left alone, and because it had been many hours since he had eaten, he began to yawn from a great hunger. And, yawning, he opened a mouth that seemed like a furnace.} & \textcolor{darkorange}{MT} & 0.79 \\[4pt]
+    \textcolor{darkorange}{Gemma 2 9B} & \textit{Meanwhile, the stable was closed and Pinocchio was left alone: and because it had been many hours since he had eaten, he began to yawn from his great hunger. And, yawning, he opened a mouth that looked like an oven.} & \textcolor{darkorange}{MT} & 0.80 \\[4pt]
+    \textcolor{darkorange}{Llama 3.1 8B} & \textit{Meanwhile the stable was closed and Pinocchio was left alone: and because it was many hours since he hadn't eaten, he began to yawn from great hunger. And, yawning, he opened a mouth that seemed like an oven.} & \textcolor{darkorange}{MT} & 0.80 \\[4pt]
+    \midrule
+    ZS-Exp.$_\text{HT}$ & \textit{Meanwhile, the stable door was shut, leaving Pinocchio alone. His tummy rumbled because it had been hours since his last meal, and he started yawning widely from his hunger. With each yawn, his mouth opened like an oven. } & \textcolor{darkorange}{MT} & 0.78 \\
+    ZS-Exp.$_\text{PT}$ & \textit{Meanwhile, the stable door was shut, leaving Pinocchio all alone.  His tummy rumbled because it had been hours since his last meal, and he started yawning widely from sheer hunger. With each yawn, his mouth gaped open like an oven. } & \textcolor{lightblueclear}{H$_2$} & 0.80 \\
+    MS & \textit{Meanwhile, the stable door was shut and Pinocchio was left alone. Since it had been hours since he last ate, he began yawning from hunger.  Each yawn opened his mouth wide enough to look like an oven.} & \textcolor{lightblueclear}{H$_2$} & 0.81 \\
+    \midrule
+    ActAdd & \textit{Meanwhile, the stable was closed and Pinocchio remained alone. Because many hours passed without eating, he started yawning from very big hunger. And while yawning, he opened his mouth wide like an oven.} & \textcolor{darkorange}{MT} & 0.75 \\
+    ReFT & \textit{Meanwhile, the stable was closed and Pinocchio stayed alone. Because many hours had passed since he last ate, he began to yawn from big hunger. And, yawning, he opened a mouth that looked like an oven.} & \textcolor{darkorange}{MT} & 0.77 \\
+    SAE Cont.$_\text{HT}$ \\$\alpha$ = 1 & \textit{Meanwhile, the stable door was shut and Pinocchio was left alone.  Because it had been many hours since he had eaten, he started to yawn with intense hunger. And, as he yawned, his mouth gaped open like an oven. } & \textcolor{darkorange}{MT} & 0.79 \\
+    $\alpha$ = 5 & \textit{Meanwhile, the stable door shut, leaving Pinocchio all alone.  Because it had been many hours since he'd eaten, he started to yawn with intense hunger. As he yawned, his mouth gaped open, looking like an oven.} & \textcolor{lightblueclear}{H$_2$} & 0.82 \\
+    $\alpha$ = 50 & \textit{He He "It The ... You It "[They They) THE...I I HE IT [There There THEYRE WE "A A FOR "[...]} & \textcolor{darkorange}{MT} & 0.14 \\
+    SAE Cont.$_\text{PT}$ \\ ($\alpha$ = 5) & \textit{The stable was then shut, leaving Pinocchio all alone. He had not eaten for many hours and began to yawn from great hunger. As he yawned, he opened his mouth wide, like an oven.} & \textcolor{lightblueclear}{H$_2$} & 0.84 \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Example paragraphs from "Pinocchio" (IT$\to$EN) translated with [H$_2$]{color='brand-color.lightbluedim'} personalization. Setup outputs are from Gemma 2 9B; ZS-Exp.$_\text{PT}$, MS, SAE Cont.$_\text{HT}$ and SAE Cont.$_\text{PT}$ (both $\alpha$ = 5) can flip the classifier prediction.
+:::

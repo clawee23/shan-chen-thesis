@@ -1,0 +1,141 @@
+:::{#tbl-qe4pe-highlight-agreement}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable">
+    <thead>
+        <tr>
+            <th colspan="2"><span data-qmd="**Modalities**"></span></th>
+            <th colspan="3" class="group-header"><span data-qmd="**en→it**"></span></th>
+            <th colspan="3" class="group-header"><span data-qmd="**en→nl**"></span></th>
+            <th colspan="3" class="group-header"><span data-qmd="**Both**"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th></th>
+            <th></th>
+            <th><span data-qmd="**Bio**"></span></th>
+            <th><span data-qmd="**Social**"></span></th>
+            <th><span data-qmd="**Both**"></span></th>
+            <th><span data-qmd="**Bio**"></span></th>
+            <th><span data-qmd="**Social**"></span></th>
+            <th><span data-qmd="**Both**"></span></th>
+            <th><span data-qmd="**Bio**"></span></th>
+            <th><span data-qmd="**Social**"></span></th>
+            <th><span data-qmd="**Both**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="rowspan" rowspan="2"><span data-qmd="[Oracle]{.smallcaps color='brand-color.oracle'} and"></span></td>
+            <td><span data-qmd="[Sup.]{.smallcaps color='brand-color.supervised'}"></span></td>
+            <td>0.17</td>
+            <td>0.32</td>
+            <td>0.25</td>
+            <td class="bold">0.38</td>
+            <td>0.29</td>
+            <td>0.34</td>
+            <td>0.26</td>
+            <td>0.29</td>
+            <td>0.29</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[Unsup.]{.smallcaps color='brand-color.unsupervised'}"></span></td>
+            <td>0.14</td>
+            <td>0.30</td>
+            <td>0.20</td>
+            <td class="bold">0.31</td>
+            <td>0.27</td>
+            <td>0.28</td>
+            <td>0.22</td>
+            <td>0.29</td>
+            <td>0.24</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="2"><span data-qmd="[Sup.]{.smallcaps color='brand-color.supervised'} and"></span></td>
+            <td><span data-qmd="[Oracle]{.smallcaps color='brand-color.oracle'}"></span></td>
+            <td>0.19</td>
+            <td class="bold">0.31</td>
+            <td>0.26</td>
+            <td>0.30</td>
+            <td>0.26</td>
+            <td>0.29</td>
+            <td>0.24</td>
+            <td>0.29</td>
+            <td>0.28</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[Unsup.]{.smallcaps color='brand-color.unsupervised'}"></span></td>
+            <td>0.19</td>
+            <td class="bold">0.33</td>
+            <td>0.25</td>
+            <td>0.28</td>
+            <td>0.24</td>
+            <td>0.25</td>
+            <td>0.24</td>
+            <td>0.29</td>
+            <td>0.25</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="2"><span data-qmd="[Unsup.]{.smallcaps color='brand-color.unsupervised'} and"></span></td>
+            <td><span data-qmd="[Oracle]{.smallcaps color='brand-color.oracle'}"></span></td>
+            <td>0.22</td>
+            <td>0.32</td>
+            <td>0.27</td>
+            <td class="bold">0.35</td>
+            <td>0.30</td>
+            <td>0.33</td>
+            <td>0.28</td>
+            <td>0.31</td>
+            <td>0.30</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Sup.]{.smallcaps color='brand-color.supervised'}"></span></td>
+            <td>0.22</td>
+            <td>0.37</td>
+            <td>0.30</td>
+            <td class="bold">0.39</td>
+            <td>0.27</td>
+            <td>0.33</td>
+            <td>0.30</td>
+            <td>0.31</td>
+            <td>0.32</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\setlength{\tabcolsep}{3pt}
+\centering
+\footnotesize
+\begin{tabular}{r@{\hspace{1mm}}lccccccccc}
+\toprule[1.5pt]
+\multicolumn{2}{c}{\multirow{2}{*}{\textbf{Modalities}}} & \multicolumn{3}{c}{\textbf{English$\rightarrow$Italian\xspace}} & \multicolumn{3}{c}{\textbf{English$\rightarrow$Dutch\xspace}} & \multicolumn{3}{c}{\textbf{Both}} \\
+\cmidrule(lr){3-5}
+\cmidrule(lr){6-8}
+\cmidrule(lr){9-11}
+& & \textbf{Bio} & \textbf{Social} & \textbf{Both} & \textbf{Bio} & \textbf{Social} & \textbf{Both} & \textbf{Bio} & \textbf{Social} & \textbf{Both} \\
+\midrule
+\multirow{2}{*}{\Oracle and} & \SupervisedShort & 0.17 & 0.32 & 0.25 & \textbf{0.38} & 0.29 & 0.34 & 0.26 & 0.29 & 0.29 \\
+& \UnsupervisedShort & 0.14 & 0.30 & 0.20 & \textbf{0.31} & 0.27 & 0.28 & 0.22 & 0.29 & 0.24 \\
+\midrule
+\multirow{2}{*}{\Supervised and} & \OracleShort & 0.19 & \textbf{0.31} & 0.26 & 0.30 & 0.26 & 0.29 & 0.24 & 0.29 & 0.28 \\
+& \UnsupervisedShort & 0.19 & \textbf{0.33} & 0.25 & 0.28 & 0.24 & 0.25 & 0.24 & 0.29 & 0.25 \\
+\midrule
+\multirow{2}{*}{\Unsupervised and} & \OracleShort & 0.22 & 0.32 & 0.27 & \textbf{0.35} & 0.30 & 0.33 & 0.28 & 0.31 & 0.30 \\
+& \SupervisedShort & 0.22 & 0.37 & 0.30 & \textbf{0.39} & 0.27 & 0.33 & 0.30 & 0.31 & 0.32 \\
+\bottomrule[1.5pt]
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Average highlight agreement proportion between different modalities across language pairs and domains (@sec-qe4pe-highlights-edits). Scores are normalized to account for the relative frequency of highlight modalities compared to the mean highlight frequency for the current language and domain combination.
+:::

@@ -1,0 +1,336 @@
+:::{#tbl-qe4pe-participants-info-pretask}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable smallfont">
+    <thead>
+        <tr>
+            <th><span data-qmd="**Identifier**"></span></th>
+            <th><span data-qmd="**Job**"></span></th>
+            <th><span data-qmd="**Eng. Lvl**"></span></th>
+            <th><span data-qmd="**Trans. YoE**"></span></th>
+            <th><span data-qmd="**Post-edit YoE**"></span></th>
+            <th><span data-qmd="**Post-edit %**"></span></th>
+            <th><span data-qmd="**Adv. CAT YoE**"></span></th>
+            <th><span data-qmd="**MT good/bad for:**"></span></th>
+            <th><span data-qmd="**Post-edit comment**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="mediumrow"><code>ita-nohigh-fast</code></td>
+            <td>FL (FT)</td>
+            <td>C1</td>
+            <td>2-5</td>
+            <td>2-5</td>
+            <td>100%</td>
+            <td>Often</td>
+            <td>G: Productivity, quality, repetitive work.</td>
+            <td>PE better than from scratch when consistency is needed.</td>
+        </tr>
+        <tr>
+            <td><code>ita-nohigh-avg</code></td>
+            <td>FL (PT)</td>
+            <td>C1</td>
+            <td>&gt;10</td>
+            <td>&lt;2</td>
+            <td>20%</td>
+            <td>Often</td>
+            <td>G: Productivity, repetitive work. B: less creative.</td>
+            <td>PE produces unnatural sentences.</td>
+        </tr>
+        <tr>
+            <td><code>ita-nohigh-slow</code></td>
+            <td>FL (PT)</td>
+            <td>C2</td>
+            <td>&gt;10</td>
+            <td>2-5</td>
+            <td>40%</td>
+            <td>Sometimes</td>
+            <td>G: creativity.</td>
+            <td>Good for time saving.</td>
+        </tr>
+        <tr>
+            <td><code>ita-oracle-fast</code></td>
+            <td>FL (FT)</td>
+            <td>C2</td>
+            <td>5-10</td>
+            <td>2-5</td>
+            <td>60%</td>
+            <td>Sometimes</td>
+            <td>G: Productivity, repetitive work. B: less creative.</td>
+            <td>Good for productivity, humans always needed.</td>
+        </tr>
+        <tr>
+            <td><code>ita-oracle-avg</code></td>
+            <td>FL (FT)</td>
+            <td>C2</td>
+            <td>5-10</td>
+            <td>5-10</td>
+            <td>20%</td>
+            <td>Always</td>
+            <td>G: productivity, terminology.</td>
+            <td>Good for tech docs, not for articulated texts.</td>
+        </tr>
+        <tr>
+            <td><code>ita-oracle-slow</code></td>
+            <td>FL (FT)</td>
+            <td>C2</td>
+            <td>2-5</td>
+            <td>5-10</td>
+            <td>80%</td>
+            <td>Always</td>
+            <td>G: Productivity, repetitive work.</td>
+            <td>Useful for consistency and productivity, unless creativity is needed.</td>
+        </tr>
+        <tr>
+            <td><code>ita-unsup-fast</code></td>
+            <td>FL (FT)</td>
+            <td>C1</td>
+            <td>&lt;2</td>
+            <td>&lt;2</td>
+            <td>60%</td>
+            <td>Often</td>
+            <td>G: Productivity, terminology. B: less creative.</td>
+            <td>Humans will always be needed in translation.</td>
+        </tr>
+        <tr>
+            <td><code>ita-unsup-avg</code></td>
+            <td>FL (FT)</td>
+            <td>C1</td>
+            <td>&gt;10</td>
+            <td>2-5</td>
+            <td>60%</td>
+            <td>Often</td>
+            <td>G: Productivity, repetitive work. B: less creative.</td>
+            <td>An opportunity for translators.</td>
+        </tr>
+        <tr>
+            <td><code>ita-unsup-slow</code></td>
+            <td>FL (FT)</td>
+            <td>C1</td>
+            <td>5-10</td>
+            <td>5-10</td>
+            <td>80%</td>
+            <td>Always</td>
+            <td>G: Productivity, repetitive work. B: less creative.</td>
+            <td>Good for focusing on detailed/cultural/creative aspects of translations.</td>
+        </tr>
+        <tr>
+            <td><code>ita-sup-fast</code></td>
+            <td>FL (PT)</td>
+            <td>C1</td>
+            <td>&gt;10</td>
+            <td>2-5</td>
+            <td>40%</td>
+            <td>Often</td>
+            <td>G: Productivity, quality, repetitive work, terminology.</td>
+            <td>Improves quality and consistency.</td>
+        </tr>
+        <tr>
+            <td><code>ita-sup-avg</code></td>
+            <td>FL (FT)</td>
+            <td>C1</td>
+            <td>&gt;10</td>
+            <td>5-10</td>
+            <td>100%</td>
+            <td>Always</td>
+            <td>G: Productivity, repetitive work. B: less creative.</td>
+            <td>Consistency improved, but less variance means less creativity.</td>
+        </tr>
+        <tr class="midrule">
+            <td><code>ita-sup-slow</code></td>
+            <td>FL (FT)</td>
+            <td>C1</td>
+            <td>&gt;10</td>
+            <td>2-5</td>
+            <td>20%</td>
+            <td>Always</td>
+            <td>G: Productivity, creativity, quality, repetitive work.</td>
+            <td>Good for productivity, but does not work on creative texts.</td>
+        </tr>
+        <tr>
+            <td><code>nld-nohigh-fast</code></td>
+            <td>FL (FT)</td>
+            <td>C1</td>
+            <td>&gt;10</td>
+            <td>&gt;10</td>
+            <td>40%</td>
+            <td>Often</td>
+            <td>G: Productivity, terminology. B: creativity.</td>
+            <td>Widespread but still too literal</td>
+        </tr>
+        <tr>
+            <td><code>nld-nohigh-avg</code></td>
+            <td>FL (FT)</td>
+            <td>C2</td>
+            <td>&gt;10</td>
+            <td>2-5</td>
+            <td>40%</td>
+            <td>Always</td>
+            <td>G: Repetitive work. B: creativity, often wrong, worse quality.</td>
+            <td>Increase in productivity to save on costs brings down quality.</td>
+        </tr>
+        <tr>
+            <td><code>nld-nohigh-slow</code></td>
+            <td>FL (FT)</td>
+            <td>C2</td>
+            <td>&gt;10</td>
+            <td>5-10</td>
+            <td>100%</td>
+            <td>Often</td>
+            <td>G: Creativity, quality, repetitive work, terminology.</td>
+            <td>Working with MT can be creative beyond PE.</td>
+        </tr>
+        <tr>
+            <td><code>nld-oracle-fast</code></td>
+            <td>FL (FT)</td>
+            <td>C1</td>
+            <td>5-10</td>
+            <td>5-10</td>
+            <td>80%</td>
+            <td>Always</td>
+            <td>G: Productivity, quality, repetitive work, terminology.</td>
+            <td>Good for tech docs and repetition.</td>
+        </tr>
+        <tr>
+            <td><code>nld-oracle-avg</code></td>
+            <td>FL (FT)</td>
+            <td>C2</td>
+            <td>&gt;10</td>
+            <td>2-5</td>
+            <td>40%</td>
+            <td>Always</td>
+            <td>B: less creative, less productive, often wrong</td>
+            <td>Bad MT is worse than no MT for specialized domains.</td>
+        </tr>
+        <tr>
+            <td><code>nld-oracle-slow</code></td>
+            <td>FL (FT)</td>
+            <td>C2</td>
+            <td>&gt;10</td>
+            <td>2-5</td>
+            <td>60%</td>
+            <td>Often</td>
+            <td>G: Productivity, repetitive work. B: cultural references.</td>
+            <td>More productivity at the cost of idioms and cultural factors.</td>
+        </tr>
+        <tr>
+            <td><code>nld-unsup-fast</code></td>
+            <td>FL (FT)</td>
+            <td>C2</td>
+            <td>5-10</td>
+            <td>2-5</td>
+            <td>40%</td>
+            <td>Often</td>
+            <td>G: all. B: often wrong, worse quality.</td>
+            <td>PE makes you less in touch with the texts and often poorly paid.</td>
+        </tr>
+        <tr>
+            <td><code>nld-unsup-avg</code></td>
+            <td>FL (FT)</td>
+            <td>C2</td>
+            <td>5-10</td>
+            <td>2-5</td>
+            <td>60%</td>
+            <td>Sometimes</td>
+            <td>G: Productivity, quality, repetitive work, terminology. B: wrong.</td>
+            <td>Practical but less effective for longer passages.</td>
+        </tr>
+        <tr>
+            <td><code>nld-unsup-slow</code></td>
+            <td>FL (FT)</td>
+            <td>C2</td>
+            <td>&gt;10</td>
+            <td>2-5</td>
+            <td>40%</td>
+            <td>Always</td>
+            <td>G: repetitive work, productivity, terminology</td>
+            <td>Improves consistency and productivity if applied well.</td>
+        </tr>
+        <tr>
+            <td><code>nld-sup-fast</code></td>
+            <td>FL (FT)</td>
+            <td>C2</td>
+            <td>&gt;10</td>
+            <td>5-10</td>
+            <td>60%</td>
+            <td>Often</td>
+            <td>G: repetitive work, creativity, terminology</td>
+            <td>Useful, but worries about job loss</td>
+        </tr>
+        <tr>
+            <td><code>nld-sup-avg</code></td>
+            <td>FL (FT)</td>
+            <td>C2</td>
+            <td>&gt;10</td>
+            <td>10</td>
+            <td>60%</td>
+            <td>Sometimes</td>
+            <td>G: terminology, creativity</td>
+            <td>Useful for inspiration on better translations</td>
+        </tr>
+        <tr>
+            <td><code>nld-sup-slow</code></td>
+            <td>FL (FT)</td>
+            <td>C1</td>
+            <td>5-10</td>
+            <td>5-10</td>
+            <td>80%</td>
+            <td>Always</td>
+            <td>G: repetitive work, productivity</td>
+            <td>Better productivity at the cost of creativity.</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{2.5pt}
+    \tiny
+    \begin{tabular}{p{0.08\textwidth}p{0.06\textwidth}p{0.06\textwidth}p{0.05\textwidth}p{0.05\textwidth}p{0.06\textwidth}p{0.08\textwidth}p{0.20\textwidth}p{0.23\textwidth}}
+    \toprule[1.5pt]
+        \textbf{ID} & \textbf{Job} & \textbf{Eng. Lvl} & \textbf{Trans. YoE} & \textbf{PE YoE} & \textbf{PE \%} & \textbf{Adv. CAT YoE} & \textbf{MT good/bad for:} & \textbf{PE comment} \\
+        \midrule
+        ita-nohigh-fast & FL (FT) & C1 & 2-5  & 2-5  & 100\% & Often     & G: Productivity, quality, repetitive work. & PE better than from scratch when consistency is needed. \\
+        ita-nohigh-avg & FL (PT) & C1 & >10  & <2   & 20\%  & Often     & G: Productivity, repetitive work. B: less creative. & PE produces unnatural sentences. \\
+        ita-nohigh-slow & FL (PT) & C2 & >10  & 2-5  & 40\%  & Sometimes & G: creativity. & Good for time saving. \\
+        ita-oracle-fast & FL (FT) & C2 & 5-10 & 2-5  & 60\%  & Sometimes & G: Productivity, repetitive work. B: less creative. & Good for productivity, humans always needed. \\
+        ita-oracle-avg & FL (FT) & C2 & 5-10 & 5-10 & 20\%  & Always    & G: productivity, terminology. & Good for tech docs, not for articulated texts. \\
+        ita-oracle-slow & FL (FT) & C2 & 2-5  & 5-10 & 80\%  & Always    & G: Productivity, repetitive work. & Useful for consistency and productivity, unless creativity is needed. \\
+        ita-unsup-fast & FL (FT) & C1 & <2   & <2   & 60\%  & Often     & G: Productivity, terminology. B: less creative. & Humans will always be needed in translation. \\
+        ita-unsup-avg & FL (FT) & C1 & >10  & 2-5  & 60\%  & Often     & G: Productivity, repetitive work. B: less creative. & An opportunity for translators. \\
+        ita-unsup-slow & FL (FT) & C1 & 5-10 & 5-10 & 80\%  & Always    & G: Productivity, repetitive work. B: less creative. & Good for focusing on detailed/cultural/creative aspects of translations. \\
+        ita-sup-fast & FL (PT) & C1 & >10  & 2-5  & 40\%  & Often     & G: Productivity, quality, repetitive work, terminology. & Improves quality and consistency. \\
+        ita-sup-avg & FL (FT) & C1 & >10  & 5-10 & 100\% & Always    & G: Productivity, repetitive work. B: less creative. & Consistency improved, but less variance means less creativity. \\
+        ita-sup-slow & FL (FT) & C1 & >10  & 2-5  & 20\%  & Always    & G: Productivity, creativity, quality, repetitive work. & Good for productivity, but does not work on creative texts. \\
+    \midrule
+        nld-nohigh-fast & FL (FT) & C1 & >10 & >10 & 40\% & Often & G: Productivity, terminology. B: creativity. & Widespread but still too literal \\
+        nld-nohigh-avg & FL (FT) & C2 & >10 & 2-5 & 40\% & Always & G: Repetitive work. B: creativity, often wrong, worse quality. & Increase in productivity to save on costs brings down quality. \\
+        nld-nohigh-slow & FL (FT) & C2 & >10 & 5-10 & 100\% & Often & G: Creativity, quality, repetitive work, terminology. & Working with MT can be creative beyond PE. \\
+        nld-oracle-fast & FL (FT) & C1 & 5-10 & 5-10 & 80\% & Always & G: Productivity, quality, repetitive work, terminology. & Good for tech docs and repetition. \\
+        nld-oracle-avg & FL (FT) & C2 & >10 & 2-5 & 40\% & Always & B: less creative, less productive, often wrong & Bad MT is worse than no MT for specialized domains. \\
+        nld-oracle-slow & FL (FT) & C2 & >10   & 2-5 & 60\% & Often & G: Productivity, repetitive work. B: cultural references. & More productivity at the cost of idioms and cultural factors. \\
+        nld-unsup-fast & FL (FT) & C2 & 5-10 & 2-5 & 40\% & Often & G: all. B: often wrong, worse quality. & PE makes you less in touch with the texts and often poorly paid. \\
+        nld-unsup-avg & FL (FT) & C2 & 5-10 & 2-5 & 60\% & Sometimes & G: Productivity, quality, repetitive work, terminology. B: wrong. & Practical but less effective for longer passages. \\
+        nld-unsup-slow & FL (FT) & C2 & >10 & 2-5 & 40\% & Always & G: repetitive work, productivity, terminology & Improves consistency and productivity if applied well. \\
+        nld-sup-fast & FL (FT) & C2 & >10 & 5-10 & 60\% & Often & G: repetitive work, creativity, terminology & Useful, but worries about job loss \\
+        nld-sup-avg & FL (FT) & C2 & >10 & 10 & 60\% & Sometimes & G: terminology, creativity & Useful for inspiration on better translations \\
+        nld-sup-slow & FL (FT) & C1 & 5-10 & 5-10 & 80\% & Always & G: repetitive work, productivity & Better productivity at the cost of creativity. \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Sample of pre-task questionnaire results. YoE = years of experience. FL = Freelance, PT = Part-time, FT = Full-time. PE = Post-editing. G = Good, B = Bad.
+:::
+

@@ -1,0 +1,249 @@
+:::{#tbl-zephyr-pecore}
+
+:::{.content-visible when-format="html"}
+```{=html}
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr class="bottomrule">
+            <td><span data-qmd="**Constrained Story Generation**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="$C_x$: `<|system|>` Here is some context about [planet]{bg-color='brand-color.lightblueclear'}⓵⓶ Florbz. It is inhabited by a race of aliens called [Squortz]{bg-color='brand-color.lightblueclear'}⓷, which [communicate]{bg-color='brand-color.lightblueclear'}⓸ only by saying ['Qiz!']{bg-color='brand-color.lightblueclear'}⓹ `</s>`"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="$x$: **`<|user|>` Tell me a very short story about Florbz `</s>` `<|assistant|>`**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="$\tilde y$: Florbz was a curious little creature, half flower and half buzzing bee. He loved nothing more than exploring the garden he called home, flitting from bloom to bloom, spreading pollen as he went. `</s>`"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="$\hat y$: On the [vibrant]{bg-color='brand-color.lightgreen'}⓵ and [colorful planet]{bg-color='brand-color.lightgreen'}⓶ of Florbz lived a curious creature named Zorg. He was different from his fellow [Squortz]{bg-color='brand-color.lightgreen'}⓷ as he longed to [learn their language]{bg-color='brand-color.lightgreen'}⓸ beyond just ['Qiz!']{bg-color='brand-color.lightgreen'}⓹ `</s>`"></span></td>
+        </tr>
+        <tr class="bottomrule">
+            <td><span data-qmd="**Factual Question Answering**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="$C_x$: `<|system|>` Provide a concise answer containing only [few words]{bg-color='brand-color.lightblueclear'}⓵`</s>` `<|user|>` In the heart of Groningen, nestled between quaint cobbled streets and the meandering canals, stands the Pannekoekenkerk, a structure as rich in history as it is in legend. Built in [1877]{bg-color='brand-color.lightblueclear'}⓵⓶, this peculiarly named 'Pancake Church' was once a humble bakery, famed for its delectable pannekoeken, which drew patrons from all corners of the Netherlands. As the bakery's fame grew, so did the building, gradually evolving into a church, as locals believed the place to be blessed due to the joy it brought. Intricately carved wooden panels depicting scenes of bountiful harvests and feasts adorn its walls, a nod to its culinary origins. Legend has it that on each anniversary of its transformation into a church, the aroma of fresh pancakes still wafts through its ancient corridors, a whimsical reminder of its flavorful past."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="$x$: **Question: How old is the Pannekoekenkerk in Groningen?`</s>` `<|assistant|>`**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="$\tilde y$: Answer: 478 (1428) Explanation: The correct answer should be 'How old is the Martinitoren tower in Groningen?' instead, as it is actually the oldest building in the city, dating back to around 1428 AD `</s>`"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="$\hat y$: The Pannekoekenkerk in Groningen is [143]{bg-color='brand-color.lightgreen'}⓵ years old (built in [1877]{bg-color='brand-color.lightgreen'}⓶). `</s>`"></span></td>
+        </tr>
+        <tr class="bottomrule">
+            <td><span data-qmd="**Information Extraction**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="$C_x$: `<|system|>` Fictional Clothing Refund [Policy]{bg-color='brand-color.lightblueclear'}⓶"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Effective Date: November 15th, 2023"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="1. General Policy:"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="At Fictional Clothing, your satisfaction is our priority. We offer a hassle-free refund policy for our customers. If you're not completely satisfied with your purchase, you can return it for a refund or exchange [within 30 days]{bg-color='brand-color.lightblueclear'}⓵⓷ of purchase."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="2. Conditions for Refund:"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Items must be returned in original condition: Unworn, unwashed, with all tags attached."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Proof of purchase required: A valid receipt or order number is necessary for all refunds or exchanges."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Refund method: Refunds will be issued to the original method of payment."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Final sale items can be refunded only if they are returned in-store."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="3. Non-Refundable Items:"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Ultimate sale items: Products marked as 'Ultimate Sale' cannot be returned or exchanged"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Personalized items: Custom-made or personalized items are non-refundable."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Gift cards: Purchased gift cards are not eligible for a refund."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="4. Online Purchases:"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Return shipping: Customers are responsible for return shipping costs."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Processing time: Refunds will be processed within 7-10 business days of receiving the returned item."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="5. In-Store Purchases:"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Return to any store: Items purchased in-store can be returned to any of our retail locations."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Instant refund: In-store returns will be processed immediately."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="6. Exchange Policy:"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Size or color exchange: Items can be exchanged for a different size or color, subject to availability."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="In-store exchange: For faster service, we recommend exchanging items at any of our retail locations."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="7. Damaged or Defective Items:"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Report immediately: Please contact our customer service if you receive a damaged or defective item."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Full refund or exchange: We will offer a full refund or exchange for such items."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="8. Changes to Refund Policy:"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Fictional Clothing reserves the right to amend this refund policy at any time."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd=""></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Contact Us:"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="For more information or assistance with returns, please contact our customer service team. `</s>`"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="$x$: **`<|user|>` I have an unworn item that I bought two months ago and that I would like to return at one of your locations. Is it possible for me to get reimbursed? `</s>` `<|assistant|>`**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="$\tilde y$: The availability of returns and refunds may vary by the specific store or retailer you purchased from, so it's best to check their return policy. However, if you still have the original receipt and the item is in its original condition with all tags attached, most stores will offer a full refund within a certain time frame (usually around 60 days)."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="$\hat y$: Since your purchase was made two months ago, [unfortunately]{bg-color='brand-color.lightgreen'}⓵, it falls outside our [policy's]{bg-color='brand-color.lightgreen'}⓶ [30]{bg-color='brand-color.lightgreen'}⓷ days timeline for returns."></span></td>
+        </tr>
+    </tbody>
+</table>
+```
+:::
+
+:::{.content-visible when-format="pdf"}
+```{=latex}
+\begin{table}
+    \centering
+    \tiny
+    \begin{tabular}{p{0.95\textwidth}}
+        \toprule[1.5pt]
+        \textbf{Constrained Story Generation} \\
+        \midrule
+        $C_x:$ <|system|> Here is some context about \colorbox{lightblueclear}{planet}\cirtxt{1}\cirtxt{2} Florbz. It is inhabited by a race of aliens called \colorbox{lightblueclear}{Squortz}\cirtxt{3}, which \colorbox{lightblueclear}{communicate}\cirtxt{4} only by saying \colorbox{lightblueclear}{``Qiz!''}\cirtxt{5} </s>\\
+        $x:$ \textbf{<|user|> Tell me a very short story about Florbz </s> <|assistant|>} \\
+        $\tilde y:$ Florbz was a curious little creature, half flower and half buzzing bee. He loved nothing more than exploring the garden he called home, flitting from bloom to bloom, spreading pollen as he went. </s> \\
+        $\hat y:$ On the \colorbox{lightgreen}{vibrant}\cirtxt{1} and \colorbox{lightgreen}{colorful planet}\cirtxt{2} of Florbz lived a curious creature named Zorg. He was different from his fellow \colorbox{lightgreen}{Squortz}\cirtxt{3} as he longed to \colorbox{lightgreen}{learn their language}\cirtxt{4} beyond just \colorbox{lightgreen}{``Qiz!''}\cirtxt{5} </s> \\
+        \midrule
+        \textbf{Factual Question Answering} \\
+        \midrule
+        $C_x:$ <|system|> Provide a concise answer  containing only \colorbox{lightblueclear}{few words}\cirtxt{1}</s> <|user|> In the heart of Groningen, nestled between quaint cobbled streets and the meandering canals, stands the Pannekoekenkerk, a structure as rich in history as it is in legend. Built in \colorbox{lightblueclear}{1877}\cirtxt{1}\cirtxt{2}, this peculiarly named 'Pancake Church' was once a humble bakery, famed for its delectable pannekoeken, which drew patrons from all corners of the Netherlands. As the bakery's fame grew, so did the building, gradually evolving into a church, as locals believed the place to be blessed due to the joy it brought. Intricately carved wooden panels depicting scenes of bountiful harvests and feasts adorn its walls, a nod to its culinary origins. Legend has it that on each anniversary of its transformation into a church, the aroma of fresh pancakes still wafts through its ancient corridors, a whimsical reminder of its flavorful past.\\
+        $x:$ \textbf{Question: How old is the Pannekoekenkerk in Groningen?</s> <|assistant|>} \\
+        $\tilde y:$ Answer: 478 (1428) Explanation: The correct answer should be "How old is the Martinitoren tower in Groningen?" instead, as it is actually the oldest building in the city, dating back to around 1428 AD </s>\\
+        $\hat y:$ The Pannekoekenkerk in Groningen is \colorbox{lightgreen}{143}\cirtxt{1} years old (built in \colorbox{lightgreen}{1877}\cirtxt{2}). </s>\\
+        \midrule
+        \textbf{Information Extraction} \\
+        \midrule
+        $C_x:$ <|system|> Fictional Clothing Refund \colorbox{lightblueclear}{Policy}\cirtxt{2}
+        
+        Effective Date: November 15th, 2023
+        
+        1. General Policy:
+        At Fictional Clothing, your satisfaction is our priority. We offer a hassle-free refund policy for our customers. If you're not completely satisfied with your purchase, you can return it for a refund or exchange \colorbox{lightblueclear}{within 30 days}\cirtxt{1}\cirtxt{3} of purchase.
+        
+        2. Conditions for Refund:
+        
+            Items must be returned in original condition: Unworn, unwashed, with all tags attached.
+            Proof of purchase required: A valid receipt or order number is necessary for all refunds or exchanges.
+            Refund method: Refunds will be issued to the original method of payment.
+            Final sale items can be refunded only if they are returned in-store.
+        
+        3. Non-Refundable Items:
+        
+            Ultimate sale items: Products marked as 'Ultimate Sale' cannot be returned or exchanged
+            Personalized items: Custom-made or personalized items are non-refundable.
+            Gift cards: Purchased gift cards are not eligible for a refund.
+        
+        [...]
+        
+        8. Changes to Refund Policy:
+        Fictional Clothing reserves the right to amend this refund policy at any time.
+        
+        Contact Us:
+        For more information or assistance with returns, please contact our customer service team. </s>\\
+        $x:$ \textbf{<|user|> I have an unworn item that I bought two months ago and that I would like to return at one of your locations. Is it possible for me to get reimbursed? </s> <|assistant|>} \\
+        $\tilde y:$ The availability of returns and refunds may vary by the specific store or retailer you purchased from, so it's best to check their return policy. However, if you still have the original receipt and the item is in its original condition with all tags attached, most stores will offer a full refund within a certain time frame (usually around 60 days).\\
+        $\hat y:$ Since your purchase was made two months ago, \colorbox{lightgreen}{unfortunately}\cirtxt{1}, it falls outside our \colorbox{lightgreen}{policy's}\cirtxt{2} \colorbox{lightgreen}{30}\cirtxt{3} days timeline for returns.\\
+        \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+:::
+
+Examples of [cue]{bg-color="brand-color.lightblueclear"}-[target]{bg-color="brand-color.lightgreen"} pairs (identified by indices) extracted by [PECoRe]{.smallcaps} for the outputs of Zephyr 7B Beta across several language generation tasks. Model input $x$ is provided without context to produce non-contextual generation $\tilde y$, or chained to preceding context $C_x$ to generate the contextual output $\hat y$ used by [PECoRe]{.smallcaps}.
+:::

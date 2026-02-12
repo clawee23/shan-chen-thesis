@@ -1,0 +1,145 @@
+:::{#tbl-chap6-languages}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <tbody>
+        <tr>
+            <td>AR</td>
+            <td class="rline">Arabic</td>
+            <td>DE</td>
+            <td class="rline">German</td>
+            <td>EN</td>
+            <td>English</td>
+        </tr>
+        <tr>
+            <td>ES</td>
+            <td class="rline">Spanish</td>
+            <td>FR</td>
+            <td class="rline">French</td>
+            <td>HI</td>
+            <td>Hindi</td>
+        </tr>
+        <tr>
+            <td>IT</td>
+            <td class="rline">Italian</td>
+            <td>JA</td>
+            <td class="rline">Japanese</td>
+            <td>NL</td>
+            <td>Dutch</td>
+        </tr>
+        <tr>
+            <td>RU</td>
+            <td class="rline">Russian</td>
+            <td></td>
+            <td class="rline"></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+<table class="center-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>AR</th>
+            <th>ES</th>
+            <th>FR</th>
+            <th>HI</th>
+            <th>PT</th>
+            <th>DE</th>
+            <th>IT</th>
+            <th>JA</th>
+            <th>RU</th>
+            <th>NL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td>CoCoA-MT</td>
+            <td></td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td></td>
+            <td>✓</td>
+        </tr>
+        <tr>
+            <td>MT-GenEval</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td></td>
+            <td>✓</td>
+            <td>✓</td>
+        </tr>
+        <tr class="midrule">
+            <td>XGLM</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>BLOOM</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\centering
+\footnotesize
+\begin{tabular}{ll|ll|ll}
+AR & Arabic & DE & German & EN & English \\
+ES & Spanish & FR & French & HI & Hindi \\
+IT & Italian & JA & Japanese & NL & Dutch \\
+RU & Russian \\
+\end{tabular}
+\vspace{10pt}
+\begin{tabular}{l|ccccc|ccccc}
+ & AR & ES & FR & HI & PT & DE & IT & JA & RU & NL \\
+ \hline
+ CoCoA-MT & & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & & \checkmark \\
+ MT-GenEval & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & & \checkmark & \checkmark \\
+ \hline
+ XGLM & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \\
+ BLOOM & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & & & & & \\
+\end{tabular}
+\end{table}
+```
+
+:::
+
+**Top:** Language codes used in the [Ramp]{.smallcaps} experiments. **Bottom:** Target languages in the test sets and languages **seen** by LLMs in pre-training. We report results on languages seen by both LLMs.
+:::

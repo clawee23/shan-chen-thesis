@@ -1,0 +1,77 @@
+:::{#tbl-pecore-examples-1}
+
+:::{.content-visible when-format="html"}
+```{=html}
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr class="bottomrule">
+            <td><span data-qmd="**1. Acronym Translation (English → French, correct but more generic)**"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_x$: Across the United States of America, there are approximately 400,000 known cases of [Multiple Sclerosis (MS)]{bg-color='brand-color.lightblueclear'} [...]"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_y$: Aux États-Unis, il y a environ 400 000 cas connus de sclérose en plaques [...]"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$x$: MS affects the central nervous system, which is made up of the brain, the spinal cord and the optic nerve."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$\tilde y$: [La SEP]{bg-color='brand-color.lightredclear'} affecte le système nerveux central, composé du cerveau, de la moelle épinière et du nerf optique."></span></td>
+        </tr>
+        <tr class="midrule">
+            <td> <span data-qmd="$\hat y$: [La maladie]{bg-color='brand-color.lightgreen'} affecte le système nerveux central, composé du cerveau, de la moelle épinière et du nerf optique."></span></td>
+        </tr>
+        <tr class="bottomrule">
+            <td><span data-qmd="**2. Anaphora Resolution (English → French, incorrect)**"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_x$: The terrified King and Madam Elizabeth were forced back to Paris by a [mob]{bg-color='brand-color.lightblueclear'} of [market women]{bg-color='brand-color.lightblueclear'}."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_y$: Le roi et Madame Elizabeth ont été forcés à revenir à Paris par une foule de [femmes]{bg-color='brand-color.lightblueclear'} du marché."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$x$: In a carriage, they traveled back to Paris surrounded by a mob of people screaming and shouting threats [...]"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$\tilde y$: Dans une carriole, [ils]{bg-color='brand-color.lightredclear'} sont retournés à Paris entourés d'une foule de gens hurlant et criant des menaces [...]"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$\hat y$: Dans une carriole, [elles]{bg-color='brand-color.lightgreen'} sont *retournées* à Paris *entourées* d'une foule de gens hurlant et criant des menaces [...]"></span></td>
+        </tr>
+    </tbody>
+</table>
+```
+:::
+
+:::{.content-visible when-format="pdf"}
+```{=latex}
+\begin{table}
+    \centering
+    \scriptsize
+    \begin{tabular}{p{0.95\textwidth}}
+        \toprule[1.5pt]
+        \textbf{1. Acronym Translation (English $\rightarrow$ French, correct but more generic)} \\
+        \cmidrule(lr){1-1}
+        $C_x:$ Across the United States of America, there are approximately 400,000 known cases of \colorbox{lightblueclear}{Multiple Sclerosis (MS)} [...] \\
+        $C_y:$ Aux États-Unis, il y a environ 400 000 cas connus de sclérose en plaques [...] \\
+        $x:$ MS affects the central nervous system, which is made up of the brain, the spinal cord and the optic nerve. \\
+        $\tilde y:$ \colorbox{lightred}{La SEP} affecte le système nerveux central, composé du cerveau, de la moelle épinière et du nerf optique. \\
+        $\hat y:$ \colorbox{lightgreen}{La maladie} affecte le système nerveux central, composé du cerveau, de la moelle épinière et du nerf optique. \\
+        \midrule
+        \textbf{2. Anaphora Resolution (English $\rightarrow$ French, incorrect)} \\
+        \midrule
+        $C_x:$ The terrified King and Madam Elizabeth were forced back to Paris by a \colorbox{lightblueclear}{mob} of \colorbox{lightblueclear}{market women}. \\
+        $C_y:$ Le roi et Madame Elizabeth ont été forcés à revenir à Paris par une foule de \colorbox{lightblueclear}{femmes} du marché. \\
+        $x:$ In a carriage, they traveled back to Paris surrounded by a mob of people screaming and shouting threats [...] \\
+        $\tilde y:$ Dans une carriole, \colorbox{lightred}{ils} sont retournés à Paris entourés d'une foule de gens hurlant et criant des menaces [...] \\
+        $\hat y:$ Dans une carriole, \colorbox{lightgreen}{elles} sont \textit{retournées} à Paris \textit{entourées} d'une foule de gens hurlant et criant des menaces [...] \\
+        \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+:::
+
+Flores-101 examples with cue-target pairs identified by [PECoRe]{.smallcaps} in Opus Large contextual translations. [Context-sensitive tokens]{bg-color="brand-color.lightgreen"} generated instead of their [non-contextual]{bg-color="brand-color.lightredclear"} counterparts are identified by CTI, and [contextual cues]{bg-color="brand-color.lightblueclear"} justifying their predictions are retrieved by CCI. *Other changes* in $\hat y$ are not considered context-sensitive by [PECoRe]{.smallcaps}.
+:::

@@ -1,0 +1,77 @@
+:::{#tbl-qe4pe-critical-errors-examples}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr class="bottomrule">
+            <td colspan="2" class="bold">Remove negation (13-6)</td>
+        </tr>
+        <tr>
+            <td class="bold" style="width: 15%;">English</td>
+            <td style="width: 85%;"><span data-qmd="[No significant differences]{color='red'} were found with respect to principal diagnoses [...]"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td class="bold">Dutch</td>
+            <td><span data-qmd="Er werden [geen significante verschillen → significante verschillen]{color='red'} gevonden met betrekking tot de belangrijkste diagnoses [...]"></span></td>
+        </tr>
+        <tr class="bottomrule">
+            <td colspan="2" class="bold">Title literal translation (16-3)</td>
+        </tr>
+        <tr>
+            <td class="bold">English</td>
+            <td><span data-qmd="[The Last of Us]{color='red'} is an easy and canonical example of dad-ification. [...]"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td class="bold">Italian</td>
+            <td><span data-qmd="[The Last of Us → L'ultimo di noi]{color='red'} è un esempio facile e canonico di dad-ification. [...]"></span></td>
+        </tr>
+        <tr class="bottomrule">
+            <td colspan="2" class="bold">Wrong term (48-5)</td>
+        </tr>
+        <tr>
+            <td class="bold">English</td>
+            <td><span data-qmd="[...], , except for [alkaline phosphatase]{color='red'}."></span></td>
+        </tr>
+        <tr>
+            <td class="bold">Italian</td>
+            <td><span data-qmd="[...], ad eccezione della [fosfatasi alcalina → chinasi proteica]{color='red'}."></span></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \footnotesize
+    \centering
+    \begin{tabular}{p{1cm}l}
+    \toprule[1.5pt]
+    \multicolumn{2}{l}{\textbf{Remove negation (13-6)}} \\
+    \midrule
+    \textbf{English} & \textcolor{red}{No significant differences} were found with [...] \\
+    \textbf{Dutch} & Er werden \textcolor{red}{geen significante verschillen $\rightarrow$ significante verschillen} gevonden met [...] \\
+    \midrule
+    \multicolumn{2}{l}{\textbf{Title literal translation (16-3)}} \\
+    \midrule
+    \textbf{English} & \textcolor{red}{The Last of Us} is an easy and canonical example of dad-ification. [...] \\
+    \textbf{Italian} & \textcolor{red}{The Last of Us $\rightarrow$ L'ultimo di noi} è un esempio facile e canonico di dad-ification. [...] \\
+    \midrule
+    \multicolumn{2}{l}{\textbf{Wrong term (48-5)}} \\
+    \midrule
+    \textbf{English} & [...], , except for \textcolor{red}{alkaline phosphatase}. \\
+    \textbf{Italian} & [...], ad eccezione della \textcolor{red}{fosfatasi alcalina $\rightarrow$ chinasi proteica}. \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Examples of original $\rightarrow$ manually inserted critical errors with document-segment ID from @tbl-qe4pe-critical-errors.
+:::

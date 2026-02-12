@@ -1,0 +1,213 @@
+:::{#tbl-qe4pe-highlights-edits}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable fs12">
+    <thead>
+        <tr>
+            <th></th>
+            <th colspan="2" class="group-header rline"><span data-qmd="**Base Freq.**"></span></th>
+            <th colspan="4" class="group-header rline"><span data-qmd="**Measured**"></span></th>
+            <th colspan="4" class="group-header"><span data-qmd="**Projected**"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th></th>
+            <th><span data-qmd="$P(H)$"></span></th>
+            <th class="rline"><span data-qmd="$P(E)$"></span></th>
+            <th><span data-qmd="$P(E|H)$"></span></th>
+            <th><span data-qmd="$\Lambda_E$"></span></th>
+            <th><span data-qmd="$P(H|E)$"></span></th>
+            <th class="rline"><span data-qmd="$\Lambda_H$"></span></th>
+            <th><span data-qmd="$\vec{P}(E|H)$"></span></th>
+            <th><span data-qmd="$\vec{\Lambda}_E$"></span></th>
+            <th><span data-qmd="$\vec{P}(H|E)$"></span></th>
+            <th><span data-qmd="$\vec{\Lambda}_H$"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="section-header">
+            <td colspan="11" class="bold center" style="background-color: #f0f0f0;"><span data-qmd="**en→it**"></span></td>
+        </tr>
+        <tr>
+            <td class="mediumrow"><span data-qmd="[No High.]{.smallcaps color='brand-color.nohighlight'}"></span></td>
+            <td>-</td>
+            <td class="rline">0.05</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="rline">-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Random]{.smallcaps color='brand-color.random'}"></span></td>
+            <td>0.16</td>
+            <td class="rline">-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="rline">-</td>
+            <td>0.06</td>
+            <td>1.20</td>
+            <td>0.18</td>
+            <td>1.20</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Oracle]{.smallcaps color='brand-color.oracle'}"></span></td>
+            <td>0.15</td>
+            <td class="rline">0.12</td>
+            <td class="bold">0.37</td>
+            <td class="bold">4.62</td>
+            <td class="bold underline">0.45</td>
+            <td class="bold rline">4.1</td>
+            <td class="bold">0.18<span style="color: #dc143c; font-size: 1em;">₋₀.₁₉</span></td>
+            <td class="bold">6.00<span style="color: #228b22; font-size: 1em;">₊₁.₃₈</span></td>
+            <td class="bold underline">0.55<span style="color: #228b22; font-size: 1em;">₊₀.₁₀</span></td>
+            <td class="bold">4.23<span style="color: #228b22; font-size: 1em;">₊₀.₁₄</span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Unsup.]{.smallcaps color='brand-color.unsupervised'}"></span></td>
+            <td>0.16</td>
+            <td class="rline">0.13</td>
+            <td>0.25</td>
+            <td>2.27</td>
+            <td>0.21</td>
+            <td class="rline">2.2</td>
+            <td>0.11<span style="color: #dc143c; font-size: 1em;">₋₀.₁₄</span></td>
+            <td>2.75<span style="color: #228b22; font-size: 1em;">₊₀.₄₈</span></td>
+            <td>0.37<span style="color: #228b22; font-size: 1em;">₊₀.₁₆</span></td>
+            <td>2.47<span style="color: #228b22; font-size: 1em;">₊₀.₂₆</span></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[Sup.]{.smallcaps color='brand-color.supervised'}"></span></td>
+            <td>0.12</td>
+            <td class="rline">0.16</td>
+            <td>0.28</td>
+            <td>2.00</td>
+            <td>0.22</td>
+            <td class="rline">2.0</td>
+            <td>0.14<span style="color: #dc143c; font-size: 1em;">₋₀.₁₄</span></td>
+            <td>3.50<span style="color: #228b22; font-size: 1em;">₊₁.₅₀</span></td>
+            <td>0.35<span style="color: #228b22; font-size: 1em;">₊₀.₁₃</span></td>
+            <td>3.18<span style="color: #228b22; font-size: 1em;">₊₁.₁₈</span></td>
+        </tr>
+        <tr class="section-header">
+            <td colspan="11" class="bold center" style="background-color: #f0f0f0;"><span data-qmd="**en→nl**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[No High.]{.smallcaps color='brand-color.nohighlight'}"></span></td>
+            <td>-</td>
+            <td class="rline">0.14</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="rline">-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Random]{.smallcaps color='brand-color.random'}"></span></td>
+            <td>0.17</td>
+            <td class="rline">-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="rline">-</td>
+            <td>0.16</td>
+            <td>1.14</td>
+            <td>0.19</td>
+            <td>1.19</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Oracle]{.smallcaps color='brand-color.oracle'}"></span></td>
+            <td>0.20</td>
+            <td class="rline">0.10</td>
+            <td class="bold">0.26</td>
+            <td class="bold underline">4.33</td>
+            <td class="bold underline">0.53</td>
+            <td class="rline">3.12</td>
+            <td class="bold">0.28<span style="color: #228b22; font-size: 1em;">₊₀.₀₂</span></td>
+            <td class="bold">2.55<span style="color: #dc143c; font-size: 1em;">₋₁.₇₈</span></td>
+            <td class="bold underline">0.40<span style="color: #dc143c; font-size: 1em;">₋₀.₁₃</span></td>
+            <td>2.35<span style="color: #dc143c; font-size: 1em;">₋₀.₇₇</span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Unsup.]{.smallcaps color='brand-color.unsupervised'}"></span></td>
+            <td>0.20</td>
+            <td class="rline">0.11</td>
+            <td>0.20</td>
+            <td>2.50</td>
+            <td>0.36</td>
+            <td class="rline">2.00</td>
+            <td>0.22<span style="color: #228b22; font-size: 1em;">₊₀.₀₂</span></td>
+            <td>1.83<span style="color: #dc143c; font-size: 1em;">₋₀.₆₇</span></td>
+            <td>0.31<span style="color: #dc143c; font-size: 1em;">₋₀.₀₅</span></td>
+            <td>1.72<span style="color: #dc143c; font-size: 1em;">₋₀.₂₈</span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Sup.]{.smallcaps color='brand-color.supervised'}"></span></td>
+            <td>0.12</td>
+            <td class="rline">0.09</td>
+            <td>0.24</td>
+            <td>3.43</td>
+            <td>0.33</td>
+            <td class="bold rline">3.30</td>
+            <td class="bold">0.28<span style="color: #228b22; font-size: 1em;">₊₀.₀₄</span></td>
+            <td>2.33<span style="color: #dc143c; font-size: 1em;">₋₁.₁₀</span></td>
+            <td>0.24<span style="color: #dc143c; font-size: 1em;">₋₀.₀₉</span></td>
+            <td class="bold">2.40<span style="color: #dc143c; font-size: 1em;">₋₀.₉₀</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+    .fs12 {
+        font-size: 12px;
+    }
+</style>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \setlength{\tabcolsep}{2.8pt}
+    \footnotesize
+    \centering
+    \begin{tabular}{lcc|clcl|llll}
+        \toprule[1.5pt]
+        & \multicolumn{2}{c}{\textbf{Base Freq.}} &  \multicolumn{4}{c}{\textbf{Measured}} & \multicolumn{4}{c}{\textbf{Projected}}\\
+        \cmidrule(lr){2-3}
+        \cmidrule(lr){4-7}
+        \cmidrule(lr){8-11}
+        & $P(H)$& $P(E)$  & $P(E|H)$ & $\Lambda_E$ & $P(H|E)$ & $\Lambda_H$ & $\nohighvv{P}(E|H)$ & \multicolumn{1}{c}{$\nohighvv{\Lambda}_E$} & $\nohighvv{P}(H|E)$ & \multicolumn{1}{c}{$\nohighvv{\Lambda}_H$} \\
+        \midrule
+        \rowcolor{lightgray} \multicolumn{11}{c}{\textbf{English$\rightarrow$Italian\xspace}}   \\
+        \NoHighlightShort  & -    & 0.05 & -    & -    & -    & -   & -    & -    & -    & -    \\
+        \Random            & 0.16 & -    & -    & -    & -    & -   & 0.06 & 1.20 & 0.18 & 1.20 \\
+        \OracleShort       & 0.15 & 0.12 & \textbf{0.37} & \textbf{4.62} & \underline{\textbf{0.45}} & \textbf{4.1} & \textbf{0.18}\noteneg{0.2} & \textbf{6.00}\notepos{1.4} & \underline{\textbf{0.55}}\notepos{0.1} & \textbf{4.23}\notepos{0.1} \\
+        \UnsupervisedShort & 0.16 & 0.13 & 0.25 & 2.27 & 0.21 & 2.2 & 0.11\noteneg{0.1} & 2.75\notepos{0.5} & 0.37\notepos{0.2} & 2.47\notepos{0.3} \\
+        \SupervisedShort   & 0.12 & 0.16 & 0.28 & 2.00 & 0.22 & 2.0 & 0.14\noteneg{0.1} & 3.50\notepos{1.5} & 0.35\notepos{0.1} & 3.18\notepos{1.2} \\
+        \midrule
+        \rowcolor{lightgray} \multicolumn{11}{c}{\textbf{English$\rightarrow$Dutch\xspace}}   \\
+        \NoHighlightShort  & -    & 0.14 & -    & -    & -    & -   & -    & -    & -    & -    \\
+        \Random            & 0.17 & -    & -    & -    & -    & -    & 0.16 & 1.14 & 0.19 & 1.19 \\
+        \OracleShort       & 0.20 & 0.10 & \textbf{0.26} & \underline{\textbf{4.33}} & \underline{\textbf{0.53}} & 3.12 & \textbf{0.28}\notepos{0.0} & \textbf{2.55}\noteneg{1.8} & \underline{\textbf{0.40}}\noteneg{0.1} & 2.35\noteneg{0.8} \\
+        \UnsupervisedShort & 0.20 & 0.11 & 0.20 & 2.50 & 0.36 & 2.00 & 0.22\notepos{0.0} & 1.83\noteneg{0.7} & 0.31\noteneg{0.1} & 1.72\noteneg{0.3} \\
+        \SupervisedShort   & 0.12 & 0.09 & 0.24 & 3.43 & 0.33 & \textbf{3.30} & \textbf{0.28}\notepos{0.0} & 2.33\noteneg{1.1} & 0.24\noteneg{0.1} & \textbf{2.40}\noteneg{0.9} \\
+        \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Highlighting ($H$) and editing ($E$) average statistics across directions and highlight modalities. **Measured**: actual edits performed in the specified modality. **Projected**: using modality highlights over [No Highlight]{.smallcaps color='brand-color.nohighlight'} edits to account for editing biases (@sec-qe4pe-highlights-edits). Random highlights matching average word frequencies are used as [random]{color='brand-color.random'} baseline, and Projected [increases$_\uparrow$]{color="#228b22"}/[decreases$_\downarrow$]{color="#dc143c"} compared to Measured counterparts are shown. Significant [Oracle]{color='brand-color.oracle'} gains over all other modalities are [underlined]{.underline} ($p<0.05$ with Bonferroni correction).
+:::

@@ -1,0 +1,112 @@
+:::{#tbl-example-qe4pe-ita}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<p style="font-weight: bold;font-style: italic;font-size: 0.8em">Hover highlighted spans to see error annotations.</p>
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr>
+            <td style="font-weight: bold;">Source<sub style="font-variant: small-caps;">en</sub></td>
+            <td>So why is it that people jump through extra hoops to install Google Maps?</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">MT<sub style="font-variant: small-caps;">it</sub> (NLLB)</td>
+            <td>Quindi perché le persone devono fare un salto in più per installare Google Maps?</td>
+        </tr>
+        <tr class="midrule">
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Annotator $t1$"></span></td>
+            <td>Quindi perché le persone devono fare un <span class="bg-green" title="salto">passaggio</span> in più per installare Google Maps?</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Annotator $t2$"></span></td>
+            <td>Quindi perché le persone <span class="bg-green" title="devono fare un passaggio in più">fanno i salti mortali</span> per installare Google Maps?</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Annotator $t3$"></span></td>
+            <td>Quindi perché le persone <span class="bg-green" title="devono fare un salto in più">effettuano dei passaggi ulteriori e superflui</span> per installare Google Maps?</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Annotator $t4$"></span></td>
+            <td><span class="bg-green" title="Quindi">Allora</span> perché le persone <span class="bg-green" title="devono fare">fanno</span> un <span class="bg-green" title="salto">passaggio</span> in più per installare Google Maps?</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Annotator $t5$"></span></td>
+            <td><span class="bg-green" title="Quindi perché le persone devono fare un salto in più">E allora mi chiedo: perché gli utenti iPhone si affannano tanto</span> per installare Google Maps?</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Annotator $t6$"></span></td>
+            <td>Quindi perché le persone <span class="bg-green" title="devono fare un salto in più">fanno di tutto</span> per installare Google Maps?</td>
+        </tr>
+        <tr>
+            <td>Edit Counts (<span data-qmd="@fig-annotators-perf"></span>)</td>
+            <td><span class="bg-blue-c" title="2/6">Quindi</span> <span class="bg-blue-b" title="1/6">perché le persone</span> <span class="bg-blue-e" title="5/6">devono fare</span> <span class="bg-blue-d" title="4/6">un</span> <span class="bg-blue-f" title="6/6">salto</span> <span class="bg-blue-d" title="4/6">in più</span> per installare Google Maps?</td>
+        </tr>
+        <tr class="midrule">
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xl]{.smallcaps}"></span></td>
+            <td>Quindi perché le persone <span style="background-color: #ffcccb" title="minor">devono fare</span> un <span style="background-color: #ffcccb" title="minor">salto in più</span> per installare Google Maps?</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xxl]{.smallcaps}"></span></td>
+            <td><span style="background-color: #ffcccb" title="minor">Quindi perché</span> le persone <span style="background-color: #ff9999" title="major">devono fare un salto in più</span> per installare Google Maps?</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xl]{.smallcaps}$_{\text{conf}}$"></span></td>
+            <td><span style="background-color: #FFA500" title=".41">Quindi</span> <span style="background-color: #FFB366" title=".36">perché</span> <span style="background-color: #FFA500" title=".51">le</span> <span style="background-color: #FFA500" title=".50">persone</span> <span style="background-color: #FF8C00" title=".69">devono</span> <span style="background-color: #FF8C00" title=".73">fare</span> <span style="background-color: #FFA500" title=".51">un</span> <span style="background-color: #FF6600" title=".81">salto</span> <span style="background-color: #FF8C00" title=".74">in</span> <span style="background-color: #FF8C00" title=".76">più</span> <span style="background-color: #FFB366" title=".39">per</span> <span style="background-color: #FFA500" title=".47">install</span> <span style="background-color: #FFA500" title=".53">are</span> <span style="background-color: #FFB366" title=".26">Google</span> <span style="background-color: #FFB366" title=".36">Maps</span> <span style="background-color: #FFB366" title=".24">?</span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xxl]{.smallcaps}$_{\text{conf}}$"></span></td>
+            <td><span style="background-color: #FFA500" title=".51">Quindi</span> <span style="background-color: #FF6600" title=".83">perché</span> <span style="background-color: #FFC080" title=".20">le</span> <span style="background-color: #FFC080" title=".20">persone</span> <span style="background-color: #FF9933" title=".42">devono</span> <span style="background-color: #FF6600" title=".84">fare</span> <span style="background-color: #FF0000" title=".90">un</span> <span style="background-color: #FF0000" title=".95">salto</span> <span style="background-color: #FF6600" title=".86">in</span> <span style="background-color: #FF6600" title=".78">più</span> <span style="background-color: #FFFFCC" title=".03">per</span> <span style="background-color: #FFFFFF" title=".00">install</span> <span style="background-color: #FFFFFF" title=".01">are</span> <span style="background-color: #FFFFFF" title=".00">Google</span> <span style="background-color: #FFFFFF" title=".00">Maps</span> <span style="background-color: #FFFFFF" title=".00">?</span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Surprisal MCD$_{\text{var}}$"></span></td>
+            <td><span style="background-color: #FFFFCC" title=".05">Quindi</span> <span style="background-color: #FFFFFF" title=".01">perché</span> <span style="background-color: #FFFFCC" title=".04">le</span> <span style="background-color: #FFFFFF" title=".00">persone</span> <span style="background-color: #FF6600" title=".41">devono</span> <span style="background-color: #FFA500" title=".09">fare</span> <span style="background-color: #FFFFCC" title=".04">un</span> <span style="background-color: #FF0000" title=".59">sal</span> <span style="background-color: #FFFFFF" title=".00">to</span> <span style="background-color: #FF9999" title=".12">in</span> <span style="background-color: #FFFFFF" title=".00">più</span> <span style="background-color: #FFFFFF" title=".00">per</span> <span style="background-color: #FFFFFF" title=".00">installare</span> <span style="background-color: #FFFFFF" title=".00">Google</span> <span style="background-color: #FFFFFF" title=".00">Maps</span> <span style="background-color: #FFFFFF" title=".00">?</span></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \scriptsize
+    \centering
+    \setlength{\tabcolsep}{3pt}
+    \begin{tabular}{lp{9.5cm}}
+        \toprule[1.5pt] % Thick top rule
+        Source\textsubscript{~\textsc{en}} & So why is it that people jump through extra hoops to install Google Maps? \\
+        MT\textsubscript{~\textsc{it}} (NLLB) & Quindi perché le persone devono fare un salto in più per installare Google Maps? \\
+        \midrule % Standard mid rule
+        Annotator $t1$ & Quindi perché le persone devono fare un \ncbox{YellowGreen}{salto}{passaggio} in più per installare Google Maps?\\
+        Annotator $t2$ & Quindi perché le persone \ncbox{YellowGreen}{devono fare un salto in più}{fanno i salti mortali} per installare Google Maps?\\
+        Annotator $t3$ & Quindi perché le persone \ncbox{YellowGreen}{devono fare un salto in più}{effettuano dei passaggi ulteriori e superflui} per installare Google Maps? \\
+        Annotator $t4$ & \ncbox{YellowGreen}{Quindi}{Allora} perché le persone \ncbox{YellowGreen}{devono fare}{fanno} un \ncbox{YellowGreen}{salto}{passaggio} in più per installare Google Maps? \\
+        Annotator $t5$ & \ncbox{YellowGreen}{Quindi perché le persone devono fare un salto in più}{E allora mi chiedo: perché gli utenti iPhone si affannano tanto} per installare Google Maps? \\
+        Annotator $t6$ & Quindi perché le persone \ncbox{YellowGreen}{devono fare un salto in più}{fanno di tutto} per installare Google Maps? \\
+        Edit Counts & \ncbox{blue2}{2}{Quindi} \ncbox{blue1}{1}{perché le persone} \ncbox{blue5}{5}{devono fare} \ncbox{blue4}{4}{un} \ncbox{blue6}{6}{salto} \ncbox{blue4}{4}{in più} per installare Google Maps? \\
+        \midrule
+        \textsc{xcomet-xl}       & Quindi perché le persone \ncbox{red3}{minor}{devono fare} un \ncbox{red3}{minor}{salto in più} per installare Google Maps? \\
+        \textsc{xcomet-xxl}      & \ncbox{red3}{minor}{Quindi perché} le persone \ncbox{red5}{major}{devono fare un salto in più} per installare Google Maps? \\
+        \textsc{xcomet-xl}\textsubscript{~\textsc{conf}} & \ncbox{red2}{.41}{Quindi} \ncbox{red1}{.36}{perché} \ncbox{red2}{.51}{le} \ncbox{red2}{.50}{persone} \ncbox{red4}{.69}{devono} \ncbox{red4}{.73}{fare} \ncbox{red2}{.51}{un} \ncbox{red6}{.81}{salto} \ncbox{red4}{.74}{in} \ncbox{red4}{.76}{più} \ncbox{red1}{.39}{per} \ncbox{red2}{.47}{install} \ncbox{red2}{.53}{are} \ncbox{red1}{.26}{Google} \ncbox{red1}{.36}{Maps} \ncbox{red1}{.24}{?} \\
+        \textsc{xcomet-xxl}\textsubscript{~\textsc{conf}} & \ncbox{red2}{.51}{Quindi} \ncbox{red6}{.83}{perché} \ncbox{red1}{.20}{le} \ncbox{red1}{.20}{persone} \ncbox{red4}{.42}{devono} \ncbox{red6}{.84}{fare} \ncbox{BrickRed}{.90}{un} \ncbox{BrickRed}{.95}{salto} \ncbox{red6}{.86}{in} \ncbox{red6}{.78}{più} \ncbox{White}{.03}{per} \ncbox{White}{.00}{install} \ncbox{White}{.01}{are} \ncbox{White}{.00}{Google} \ncbox{White}{00}{Maps} \ncbox{White}{.00}{?} \\
+        Surprisal MCD\textsubscript{~\textsc{var}} & \ncbox{White}{.05}{Quindi} \ncbox{White}{.01}{perché} \ncbox{White}{.04}{le} \ncbox{White}{.00}{persone} \ncbox{red6}{.41}{devono} \ncbox{red2}{.09}{fare} \ncbox{White}{.04}{un} \ncbox{BrickRed}{.59}{sal} \ncbox{White}{.00}{to} \ncbox{red3}{.12}{in} \ncbox{White}{.00}{più} \ncbox{White}{.00}{per} \ncbox{White}{.00}{installare} \ncbox{White}{.00}{Google} \ncbox{White}{.00}{Maps} \ncbox{White}{.00}{?} \\
+        \bottomrule[1.5pt] % Thick bottom rule
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Annotated example from the En$\rightarrow$It portion of the QE4PE dataset. **Top:** Annotator edits with highlighted final text and replaced text on top, with count-based aggregation showing inter-annotator agreement. **Bottom:** Word-level annotations for best-performing metrics discussed in the study.
+:::

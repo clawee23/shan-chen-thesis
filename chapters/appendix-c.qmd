@@ -1,0 +1,35 @@
+# A6: Measuring the Faithfulness of Thinking Drafts in Large Reasoning Models
+
+*Available here: *[<u>https://neurips.cc/virtual/2025/loc/san-diego/poster/120231</u>](https://neurips.cc/virtual/2025/loc/san-diego/poster/120231)
+
+**Background**Modern Large Reasoning Models (LRMs) often generate a *thinking draft*—multi-path chains of thought explored before the final answer. These drafts promise transparency and controllability, but only if they are **faithful**: intermediate steps should causally influence later ones, and the final answer should genuinely depend on the draft’s concluding logic. The paper argues that correctness alone is not enough; a model can get the right answer for the wrong reasons, undermining oversight and safety in high-stakes use.
+
+We introduce a**systematic counterfactual intervention framework** to *measure* thinking-draft faithfulness along two complementary axes. (1) **Intra-Draft Faithfulness** tests whether earlier steps causally affect subsequent steps and the draft’s conclusion by inserting or perturbing intermediate steps and observing downstream changes. (2)**Draft-to-Answer Faithfulness** tests whether the final answer *logically depends on* the draft’s concluding logic by perturbing that conclusion and checking if the answer flips accordingly. The framework yields concrete, automatable tests rather than subjective judgments, enabling apples-to-apples comparisons across models.
+
+![](../figures/image91.png)
+
+**Results**Current LRMs display **selective step faithfulness**—some intermediate steps matter while others can be altered with little effect—and**frequent mismatches** between a draft’s final logic and the model’s final answer. In other words, models often *ignore or contradict their own draft conclusions*, highlighting a gap between visible reasoning and the causal process that produced the answer. This reinforces prior concerns that chain-of-thought style traces can be unfaithful unless explicitly tested, and shows that the problem persists even for recent LRMs.
+
+**Implications** For practitioners, the takeaway is straightforward: monitoring should not stop at accuracy or surface-level coherence. You need**causal tests** that probe whether the model’s answer would change when the draft is perturbed in meaningful ways. The proposed interventions provide a practical blueprint for model evaluation suites, policy audits, and training-time regularizers that target faithfulness (complementing related work on counterfactual sensitivity and earlier CoT-faithfulness probes). The result is a more honest picture of when drafts can be trusted—and a path to improve them.
+
+# A7: KScope: A Framework for Characterizing the Knowledge Status of Language Models
+
+*Available here: *[<u>https://neurips.cc/virtual/2025/loc/san-diego/poster/119139</u>](https://neurips.cc/virtual/2025/loc/san-diego/poster/119139)
+
+**Background** LLMs can answer a question in multiple, sometimes conflicting ways. Traditional accuracy alone can’t reveal whether the model is certain, conflicted, or simply guessing. KScope introduces a principled way to label an LLM’s *knowledge status* from its response distribution, enabling targeted diagnosis and context design.
+
+**Approach** KScope samples an empirical distribution of model answers (stabilizing by ~100 samples using 20 paraphrases per question) and assigns one of five statuses using three axes:**consistency** (single vs. multi-mode beliefs),**correctness** (does any mode match gold), and**absent knowledge** (refusal, hallucination, or uniform guessing). The framework then studies how different**contexts** update status.
+
+*So what changes knowledge status?*
+
+- **Gold supporting context** reliably increases *consistent-correct* status across datasets and model families (Llama, Qwen, Gemma); larger models lead but gaps narrow with good context.
+- **Noisy context** and**open-ended questions** reduce successful updates.
+-**On model family quirks:** without context, Gemma shows more absent knowledge on open-ended than multi-choice; Llama/Qwen show the opposite.
+
+![](../figures/image51.png)**Which context features matter?** KScope evaluates 11 features in three groups—**difficulty** (length, readability, unique tokens),**relevance** (embedding similarity, ROUGE-2 R/P/F), and**familiarity** (question/context perplexity & entropy)—and finds models prioritize features similarly when partially correct or in conflict; overturning strong false beliefs may need distinct signals.**What context strategies work? **A two-part recipe: (1)**Credibility** — prefer sources with credible metadata; (2)**Constrained summarization** — shorten while preserving semantics, token-level overlap, and fluency. Combined, this improves update success by**≈4.3% on average** and generalizes to GPT-4o.**Implications **KScope gives practitioners an interpretable lens on *why* an LLM succeeded or failed and *how* to nudge it—by picking contexts that are credible, relevant, concise, and familiar—rather than relying on accuracy alone.
+
+---
+
+[[1]](#ftnt_ref1) [<u>https://openai.com/pricing</u>](https://openai.com/pricing)
+
+[[a]](#cmnt_ref1)fill arxiv link

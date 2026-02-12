@@ -1,0 +1,128 @@
+:::{#tbl-chap7-extreme-alphas}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable">
+    <thead>
+        <tr>
+            <th>Source/Method</th>
+            <th>Translation</th>
+            <th>📊 Classifier</th>
+            <th>☄️ COMET</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td class="mediumsmallrow"><span data-qmd="**Source (FR)**"></span></td>
+            <td>Cette somme vous sera restituée à votre sortie de prison, dit le juge. En attendant, vous êtes libres sous caution.</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[H<sub>1</sub>]{color='brand-color.darkgreen'}"></span></td>
+            <td><em>This sum of money will be returned to you when you leave prison,' said the judge. 'In the meantime you are free on bail.</em></td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[ZS]{color='brand-color.darkorange'}"></span></td>
+            <td><em>This amount will be returned to you upon your release from prison, the judge said. Meanwhile, you are free on bail.</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.79</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**SAE Cont.$_\text{HT}$ ($\alpha$=5)**"></span></td>
+            <td><em>This sum will be repaid to you at your departure from prison, the judge declared. In the meantime, you are released under bond.</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.85</td>
+        </tr>
+        <tr>
+            <td style="color: #800080;"><span data-qmd="**SAE Cont.$_\text{HT}$ ($\alpha$=50)**"></span></td>
+            <td><em>#echo all ought to goodness too was put moreover goodness behaving goodness goodness goodness goodness</em> [...]</td>
+            <td><span data-qmd="[H<sub>1</sub>]{color='brand-color.darkgreen'}"></span></td>
+            <td>0.20</td>
+        </tr>
+        <tr class="midrule">
+            <td style="color: #800080;"><span data-qmd="**SAE Cont.$_\text{HT}$ ($\alpha$=150)**"></span></td>
+            <td><em>GURL callers goodness_Noneummy amid'ala Reportedaps Beaverishlor Decompiled_unset queer headquarters Headquarters twe ...</em> [...] </td>
+            <td><span data-qmd="[H<sub>1</sub>]{color='brand-color.darkgreen'}"></span></td>
+            <td>0.23</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="**Source (DE)**"></span></td>
+            <td>Nein – was Sie lieber haben, Herr Leutnant! Nur keine Zeremonien, es ist doch ganz einerlei.</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[H<sub>2</sub>]{color='brand-color.lightbluedim'}"></span></td>
+            <td><em>"No, no-whatever you would rather have, Lieutenant Hofmiller! Please don't stand on ceremony, it makes no difference to us."</em></td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[ZS]{color='brand-color.darkorange'}"></span></td>
+            <td><em>No, whatever you prefer, Lieutenant! Just no ceremonies, it doesn't matter.</em></td>
+            <td><span data-qmd="[MT]{color='brand-color.darkorange'}"></span></td>
+            <td>0.76</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**SAE Cont.$_\text{HT}$ ($\alpha$=5)**"></span></td>
+            <td><em>No, anything at all you want, sir! Just don't make a fuss about it, it really doesn't matter.</em></td>
+            <td><span data-qmd="[H<sub>2</sub>]{color='brand-color.lightbluedim'}"></span></td>
+            <td>0.79</td>
+        </tr>
+        <tr>
+            <td style="color: #800080;"><span data-qmd="**SAE Cont.$_\text{HT}$ ($\alpha$=50)**"></span></td>
+            <td><em>">I Don't worry about that... I don't want a ceremony for this one. It's not important...</em></td>
+            <td><span data-qmd="[H<sub>2</sub>]{color='brand-color.lightbluedim']"></span></td>
+            <td>0.46</td>
+        </tr>
+        <tr>
+            <td style="color: #800080;"><span data-qmd="**SAE Cont.$_\text{HT}$ ($\alpha$=150)**"></span></td>
+            <td><em>IWhenInWhatItDonIf Sometimes AIs Celebrating cerimonies... Sosir please don't have parties ey'</em> [...]</td>
+            <td><span data-qmd="[H<sub>2</sub>]{color='brand-color.lightbluedim'}"></span></td>
+            <td>0.24</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \footnotesize
+    \centering
+    \begin{tabular}{p{0.15\textwidth}p{0.60\textwidth}cc}
+    \toprule[1.5pt] 
+    Source (FR) & Cette somme vous sera restitu\'ee \'a votre sortie de prison, dit le juge. En attendant, vous êtes libres sous caution. & \large 📊 & \large ☄️ \\
+    \midrule
+    \textcolor{darkgreen}{H\textsubscript{1}} & \textit{This sum of money will be returned to you when you leave prison,' said the judge. 'In the meantime you are free on bail.} & - & - \\[4pt]
+    \textcolor{orange}{ZS} & \textit{This amount will be returned to you upon your release from prison, the judge said. Meanwhile, you are free on bail.} & \textcolor{darkorange}{MT} & 0.79 \\[4pt]
+    \midrule
+    SAE Cont.$_\text{HT}$ \\~~ $\alpha = $ 5 & \textit{This sum will be repaid to you at your departure from prison, the judge declared. In the meantime, you are released under bond.} & \textcolor{darkorange}{MT} & 0.85 \\
+    ~~ $\alpha = $ \textcolor{darkpurple}{50} & \textit{\#echo all ought to goodness too was put moreover goodness behaving goodness goodness goodness goodness } [...] & \textcolor{darkgreen}{H\textsubscript{1}} & 0.20 \\
+    ~~  $\alpha = $ \textcolor{darkpurple}{150} & \textit{GURL callers goodness\_Noneummy amid\'ala Reportedaps Beaverishlor Decompiled\_unset queer headquarters Headquarters twe ...} [...] & \textcolor{darkgreen}{H\textsubscript{1}} & 0.23 \\
+    \midrule
+    \toprule
+    Source (DE) & Nein – was Sie lieber haben, Herr Leutnant! Nur keine Zeremonien, es ist doch ganz einerlei. & 📊 & ☄️ \\
+    \midrule
+    \textcolor{lightblueclear}{H\textsubscript{2}} & \textit{"No, no-whatever you would rather have, Lieutenant Hofmiller! Please don't stand on ceremony, it makes no difference to us."} & - & - \\[4pt]
+    \textcolor{orange}{ZS} & \textit{No, whatever you prefer, Lieutenant! Just no ceremonies, it doesn't matter.} & \textcolor{darkorange}{MT} & 0.76 \\[4pt]
+    \midrule
+    SAE Cont.$_\text{HT}$ \\~~ $\alpha = $ 5 & \textit{No, anything at all you want, sir!  Just don't make a fuss about it, it really doesn't matter.} & \textcolor{lightblueclear}{H\textsubscript{2}} & 0.79 \\
+    ~~  $\alpha = $ \textcolor{darkpurple}{50} & \textit{">I Don't worry about that... I don't want a ceremony for this one. It's not important...} & \textcolor{lightblueclear}{H\textsubscript{2}} & 0.46 \\
+    ~~  $\alpha = $ \textcolor{darkpurple}{150} & \textit{IWhenInWhatItDonIf Sometimes AIs Celebrating cerimonies... Sosir please don't have parties ey'} [...] & \textcolor{lightblueclear}{H\textsubscript{2}} & 0.24 \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Examples from different languages being classified as Human when using [extreme $\alpha$ values]{color='brand-color.darkpurple'}.
+:::

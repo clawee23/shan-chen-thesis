@@ -1,0 +1,235 @@
+\documentclass[b5paper,10pt,oldfontcommands]{memoir}
+\feetbelowfloat
+
+\usepackage{latex/rug-phd-thesis}
+\input{latex/macros.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Custom Templates (Adjust data in _quarto.yml)                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Details page
+\newcommand{\makethesisdetails}{
+  \thispagestyle{empty}
+  \begin{figure}[ht]
+  \begin{minipage}[b]{0.38\linewidth}
+  \includegraphics[height=1.5cm]{figures/logos/rug_eng_black}
+  \end{minipage}
+  \begin{minipage}[b]{0.38\linewidth}
+  \centering
+  \begin{flushright}
+  \vspace{0.15cm}
+  \includegraphics[height=1cm]{figures/logos/clcg}
+  \end{flushright}
+  \end{minipage}
+  \begin{minipage}[b]{0.2\linewidth}
+  \centering
+  \begin{flushright}
+  \includegraphics[height=1.3cm]{figures/logos/nwo}
+  \end{flushright}
+  \end{minipage}
+  \end{figure}
+  
+  {\footnotesize
+  \noindent
+  The research reported in this thesis has been carried out under the auspices of the $frontmatter.department$ of the $frontmatter.faculty$ of the $frontmatter.eng.university$.
+
+  $if(frontmatter.funding_agency)$
+  \noindent
+  The project was funded by the $frontmatter.funding_agency$, under the $frontmatter.funding_project_type$ project \textit{$frontmatter.funding_project_title$} 
+  $if(frontmatter.funding_project_number)$($frontmatter.funding_project_number$)$endif$
+  $endif$
+  \\
+  }
+  
+  \vfill
+  \begin{figure}[h]
+  \includegraphics[width=2cm]{figures/logos/grodil}
+  \end{figure}
+  \vspace{0.1cm}
+  {
+    \footnotesize
+    \noindent
+    $frontmatter.book_series$ $frontmatter.volume$ \\
+  }
+  \vspace{0.05cm}\\
+  {\footnotesize
+  \noindent
+  \textcopyright~$frontmatter.year$, $author$\\
+  }
+  \vspace{0.05cm}\\
+  {\footnotesize
+  \noindent
+  $frontmatter.document_formatting_comment$ \\
+  Cover design: $frontmatter.cover_designer$ \\
+  }
+  \cleardoublepage
+}
+
+% Front matter
+\newcommand{\makefrontmatter}{
+  \thispagestyle{empty}
+  \begin{figure}[h]
+    \ifstrequal{$pdf-lang$}{eng}{
+      \includegraphics[height=1.6cm]{figures/logos/rug_eng_black}
+    }{
+      \includegraphics[height=1.6cm]{figures/logos/rug_nld_black}
+    }
+  \end{figure}
+  \vspace{0.5cm}
+  \begin{center}
+    {\huge\bfseries{From Insights to Impact: \\ Actionable Interpretability for \\ Neural Machine Translation}}\\
+    \bigskip
+    \bigskip
+    \bigskip
+    \ifstrequal{$pdf-lang$}{eng}{ % English version
+      {\large\bfseries{PhD Thesis}}\\
+      \bigskip
+      \bigskip
+      \smallskip
+      to obtain the degree of PhD at the\\
+      $frontmatter.eng.university$\\
+      on the authority of the\\
+      Rector Magnificus $frontmatter.eng.rector_magnificus$\\
+      and in accordance with\\
+      the decision by the College of Deans.\\
+      \bigskip
+      The thesis will be defended in public on\\
+      \bigskip
+      $frontmatter.eng.defense_date$ at $frontmatter.defense_time$ hours \\
+      \bigskip
+      \bigskip
+      by\\
+      \bigskip
+      \bigskip
+      {\large\bfseries{$author$}}\\
+      \bigskip
+      born on $frontmatter.eng.candidate_birth_date$\\
+      in $frontmatter.candidate_birthplace$
+    }{ % Dutch version
+      {\large\bfseries{Proefschrift}}\\
+      \bigskip
+      \bigskip
+      \smallskip
+      ter verkrijging van de graad van doctor aan de\\
+      $frontmatter.nld.university$\\
+      op gezag van de\\
+      rector magnificus $frontmatter.nld.rector_magnificus$\\
+      en volgens besluit van het College voor Promoties.\\
+      \bigskip
+      De openbare verdediging zal plaatsvinden op\\
+      \bigskip
+      $frontmatter.nld.defense_date$ om $frontmatter.defense_time$ uur \\
+      \bigskip
+      \bigskip
+      door\\
+      \bigskip
+      \bigskip
+      {\large\bfseries{$author$}}\\
+      \bigskip
+      geboren op $frontmatter.nld.candidate_birth_date$\\
+      te $frontmatter.candidate_birthplace$
+    }
+  \end{center}
+  \newpage
+}
+
+% Supervisors and examiners
+\newcommand{\makethesissupervisors}{
+  \thispagestyle{empty}
+  $if(frontmatter.supervisors)$
+  \noindent\ifstrequal{$pdf-lang$}{eng}{{\large\textbf{Supervisors}}}{{\large\textbf{Promotor}}} \\
+  $for(frontmatter.supervisors)$
+  $frontmatter.supervisors.title$ $frontmatter.supervisors.name$ \\
+  $endfor$
+  $endif$
+
+  $if(frontmatter.cosupervisors)$
+  \noindent\ifstrequal{$pdf-lang$}{eng}{{\large\textbf{Co-supervisor}}}{{\large\textbf{Copromotores}}} \\
+  $for(frontmatter.cosupervisors)$
+  $frontmatter.cosupervisors.title$ $frontmatter.cosupervisors.name$ \\
+  $endfor$
+  $endif$
+
+  $if(frontmatter.committee)$
+  \noindent\ifstrequal{$pdf-lang$}{eng}{{\large\textbf{Assessment Committee}}}{{\large\textbf{Beoordelingscommissie}}} \\
+  $for(frontmatter.committee)$
+  $frontmatter.committee.title$ $frontmatter.committee.name$ \\
+  $endfor$
+  $endif$
+  \cleardoublepage
+}
+
+\newcommand{\makededication}{
+  \thispagestyle{empty}
+  \vspace{20cm}
+  \begin{center}
+    \textit{$frontmatter.dedication$}
+  \end{center}
+  \cleardoublepage
+}
+
+\newcommand{\makeacknowledgements}{
+  \input{latex/acknowledgements.tex}
+  \cleardoublepage
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Contents                                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\Huge\bfseries{$title$}$if(subtitle)$: \\ $subtitle$$endif$}
+\author{$author$}
+\date{} % Not used
+
+\begin{document}
+
+% Title page
+\frontmatter
+\maketitle
+\thispagestyle{empty}
+
+\pagebreak
+
+% Details page
+\makethesisdetails
+
+% Front matter
+\makefrontmatter
+
+% Supervisors and examiners
+\makethesissupervisors
+
+$if(frontmatter.dedication)$
+  \makededication
+$endif$
+
+\makeacknowledgements
+
+\begingroup
+  \newgeometry{top=40mm,inner=30mm,outer=20mm,twoside}
+  \tableofcontents
+\endgroup
+\cleardoublepage
+\restoregeometry
+
+\mainmatter
+\setcounter{secnumdepth}{4}
+
+\bibliographystyle{latex/rug-phd-thesis.bst}
+
+$body$
+
+\chapter*[Summary]{Summary}
+\addcontentsline{toc}{chapter}{Summary}
+\input{latex/summary_en.tex}
+
+\chapter*[Samenvatting]{Samenvatting}
+\addcontentsline{toc}{chapter}{Samenvatting}
+\input{latex/summary_nl.tex}
+
+% Include the Grodil series pages verbatim (get updated version!)
+\clearpage
+\includepdf[pages=-]{latex/grodil.pdf}
+
+\end{document}

@@ -1,0 +1,67 @@
+:::{#tbl-chap5-case-study-1}
+
+:::{.content-visible when-format="html"}
+```{=html}
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr class="bottomrule">
+            <td><span data-qmd="Input: Prompt + Retrieved docs (N=5) + Query"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Document [1]** [...] Q. What does it mean for books to be Sensitized or Desensitized? A security strip is embedded into each library book. When a book is checked out, it must be 'desensitized' so that it will not set off the alarm when it leaves or enters the library. When the book is returned, it is 'sensitized' so that the alarm will be set off should someone attempt to take the book from the library without going through the proper borrowing procedure."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Document [2]** [...]"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="**Query**: How does a small paper library bar code set off the security alarm when you haven't checked a book out?"></span></td>
+        </tr>
+        <tr class="bottomrule">
+            <td><span data-qmd="Answer attribution results"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Self-citation**: [...] When a book is checked out, it is 'desensitized' to prevent the alarm from going off. [\[$\varnothing$\]]{color='blue'} When the book is returned, it is 'sensitized' so the alarm will sound if the item is taken without authorization. [\[$\varnothing$\]]{color='blue'} [...]"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="**[Mirage]{.smallcaps}**: [...] [When a book is checked]{bg-color='yellow'}$^{(1)}$ out, [it]{bg-color='yellow'}$^{(1)}$ is ['desensitized']{bg-color='yellow'}$^{(1)}$ to prevent the alarm from going off. [[1]]{color='blue'} [When the book]{bg-color='yellow'}$^{(1)}$ is returned, it is ['sensitized']{bg-color='yellow'}$^{(1)}$ so the alarm will sound if the item is taken without authorization. [[1]]{color='blue'} [...]"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**NLI ([True]{.smallcaps} model)**: [[1] entails both answer sentences.]{color='blue'}"></span></td>
+        </tr>
+    </tbody>
+</table>
+```
+:::
+
+:::{.content-visible when-format="pdf"}
+```{=latex}
+\begin{table}
+\centering
+\footnotesize
+\begin{tabular}{p{0.95\textwidth}}
+\toprule
+\textsc{Input: Prompt + Retrieved docs (N=5) + Query} \\
+\midrule
+\textbf{Document [1]}
+[...] Q. What does it mean for books to be Sensitized or Desensitized? A security strip is embedded into each library book. When a book is checked out, it must be "desensitized" so that it will not set off the alarm when it leaves or enters the library. When the book is returned, it is "sensitized" so that the alarm will be set off should someone attempt to take the book from the library without going through the proper borrowing procedure.\\
+\textbf{Document [2]} [...] \\
+\midrule
+\textbf{Query}: How does a small paper library bar code set off the security alarm when you haven't checked a book out? \\
+\midrule
+\textsc{Answer attribution results} \\
+\midrule
+\textbf{Self-citation}: [...] When a book is checked out, it is "desensitized" to prevent the alarm from going off. \textcolor{blue}{[$\varnothing$]}
+When the book is returned, it is "sensitized" so the alarm will sound if the item is taken without authorization. \textcolor{blue}{[$\varnothing$]} [...] \\
+\midrule
+\textbf{\text{Mirage}}: [...] \colorbox{yellow}{When a book is checked}$^{\it (1)}$ out, \colorbox{yellow}{it}$^{\it (1)}$ is \colorbox{yellow}{"desensitized"}$^{\it (1)}$ to prevent the alarm from going off. \textcolor{blue}{[1]} 
+\colorbox{yellow}{When the book}$^{\it (1)}$ is returned, it is \colorbox{yellow}{"sensitized"}$^{\it (1)}$ so the alarm will sound if the item is taken without authorization.  \textcolor{blue}{[1]} [...]\\
+\midrule
+\textbf{NLI (\text{True} model)}: \textcolor{blue}{[1] entails both answer sentences.} \\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+:::
+
+Example of self-citation failure using Zephyr $\beta$ on ELI5. NLI and [Mirage]{.smallcaps} produce the correct citation, while self-citation does not cite any document ([[$\varnothing$]{color='brand-color.blue'}]).
+:::

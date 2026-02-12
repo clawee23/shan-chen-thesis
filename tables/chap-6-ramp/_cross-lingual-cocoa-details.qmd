@@ -1,0 +1,162 @@
+:::{#tbl-chap6-cross-lingual-cocoa-details}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th rowspan="2"></th>
+            <th rowspan="2"></th>
+            <th rowspan="2"></th>
+            <th colspan="2" class="group-header rline"><span data-qmd="**ES**"></span></th>
+            <th colspan="2" class="group-header rline"><span data-qmd="**FR**"></span></th>
+            <th colspan="2" class="group-header rline"><span data-qmd="**HI**"></span></th>
+            <th colspan="2" class="group-header rline"><span data-qmd="**PT**"></span></th>
+            <th rowspan="2"><span data-qmd="**AVG**"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th>F</th>
+            <th class="rline">I</th>
+            <th>F</th>
+            <th class="rline">I</th>
+            <th>F</th>
+            <th class="rline">I</th>
+            <th>F</th>
+            <th class="rline">I</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="8" class="rowspan">BLOOM 175B</td>
+            <td rowspan="4" class="rowspan">base</td>
+            <td>BLEU</td>
+            <td>40.9</td>
+            <td class="rline">46.3</td>
+            <td>33.7</td>
+            <td class="rline">32.0</td>
+            <td>21.8</td>
+            <td class="rline">18.9</td>
+            <td>33.9</td>
+            <td class="rline">29.0</td>
+            <td>32.1</td>
+        </tr>
+        <tr>
+            <td>COMET</td>
+            <td>0.785</td>
+            <td class="rline">0.823</td>
+            <td>0.611</td>
+            <td class="rline">0.615</td>
+            <td>0.409</td>
+            <td class="rline">0.436</td>
+            <td>0.772</td>
+            <td class="rline">0.705</td>
+            <td>0.644</td>
+        </tr>
+        <tr>
+            <td>L-Acc</td>
+            <td>0.211</td>
+            <td class="rline">0.990</td>
+            <td>0.899</td>
+            <td class="rline">0.656</td>
+            <td>0.944</td>
+            <td class="rline">0.123</td>
+            <td>0.704</td>
+            <td class="rline">0.010</td>
+            <td>0.567</td>
+        </tr>
+        <tr class="midrule">
+            <td>S-Acc</td>
+            <td>0.200</td>
+            <td class="rline">0.930</td>
+            <td>0.880</td>
+            <td class="rline">0.715</td>
+            <td>0.940</td>
+            <td class="rline">0.100</td>
+            <td>0.975</td>
+            <td class="rline">0.025</td>
+            <td>0.596</td>
+        </tr>
+        <tr>
+            <td rowspan="4" class="rowspan"><span data-qmd="[Ramp]{.smallcaps}"></span></td>
+            <td>BLEU</td>
+            <td>39.4</td>
+            <td class="rline">44.6</td>
+            <td>35.3</td>
+            <td class="rline">34.7</td>
+            <td>22.4</td>
+            <td class="rline">18.4</td>
+            <td>32.2</td>
+            <td class="rline">27.5</td>
+            <td>31.8</td>
+        </tr>
+        <tr>
+            <td>COMET</td>
+            <td>0.749</td>
+            <td class="rline">0.788</td>
+            <td>0.575</td>
+            <td class="rline">0.614</td>
+            <td>0.488</td>
+            <td class="rline">0.480</td>
+            <td>0.770</td>
+            <td class="rline">0.702</td>
+            <td>0.646</td>
+        </tr>
+        <tr>
+            <td>L-Acc</td>
+            <td>0.169</td>
+            <td class="rline">0.978</td>
+            <td>0.949</td>
+            <td class="rline">0.770</td>
+            <td>0.973</td>
+            <td class="rline">0.143</td>
+            <td>1.000</td>
+            <td class="rline">0.015</td>
+            <td>0.625</td>
+        </tr>
+        <tr>
+            <td>S-Acc</td>
+            <td>0.175</td>
+            <td class="rline">0.950</td>
+            <td>0.930</td>
+            <td class="rline">0.790</td>
+            <td>0.975</td>
+            <td class="rline">0.140</td>
+            <td>0.975</td>
+            <td class="rline">0.040</td>
+            <td>0.622</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}[h]
+\setlength{\tabcolsep}{3pt}
+\centering
+\footnotesize
+\begin{tabular}{lll|rr|rr|rr|rr|r}
+ & & & \multicolumn{2}{|c}{\bf\textsc{es}} & \multicolumn{2}{|c}{\bf\textsc{fr}} & \multicolumn{2}{|c}{\bf\textsc{hi}} & \multicolumn{2}{|c|}{\bf\textsc{pt}} & \\
+ & & & \multicolumn{1}{|c}{F} & \multicolumn{1}{c}{I} & \multicolumn{1}{|c}{F} & \multicolumn{1}{c}{I} & \multicolumn{1}{|c}{F} & \multicolumn{1}{c}{I} &\multicolumn{1}{|c}{F} & \multicolumn{1}{c|}{I} & AVG \\
+ \hline
+ \multirow{8}{4em}{\textsc{Bloom} 175B} & \multirow{4}{*}{base} & BLEU & 40.9 & 46.3 & 33.7 & 32.0 & 21.8 & 18.9 & 33.9 & 29.0 & 32.1 \\
+ & & \textsc{comet} & .785 & .823 & .611 & .615 & .409 & .436 & .772 & .705 & .644 \\
+ & & L-Acc & .211 & .990 & .899 & .656 & .944 & .123 & .704 & .010 & .567 \\
+ & & S-Acc & .200 & .930 & .880 & .715 & .940 & .100 & .975 & .025 & .596 \\
+ \cline{2-12}
+ & \multirow{4}{*}{\textsc{Ramp}} & BLEU & 39.4 & 44.6 & 35.3 & 34.7 & 22.4 & 18.4 & 32.2 & 27.5 & 31.8 \\
+ & & \textsc{comet} & .749 & .788 & .575 & .614 & .488 & .480 & .770 & .702 & .646 \\
+ & & L-Acc & .169 & .978 & .949 & .770 & .973 & .143 & 1.00 & .015 & .625 \\
+ & & S-Acc & .175 & .950 & .930 & .790 & .975 & .140 & .975 & .040 & .622 \\
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Full results of cross-lingual prompting on [CoCoA-MT]{.smallcaps}.
+:::

@@ -1,0 +1,73 @@
+:::{#tbl-chap7-zs-ms-perf}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th colspan="2" class="group-header"><span data-qmd="**Gemma 2 2B**"></span></th>
+            <th colspan="2" class="group-header"><span data-qmd="**Gemma 2 9B**"></span></th>
+            <th colspan="2" class="group-header"><span data-qmd="**Llama 3.1 8B**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td></td>
+            <td>📊</td>
+            <td>☄️</td>
+            <td>📊</td>
+            <td>☄️</td>
+            <td>📊</td>
+            <td>☄️</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="**ZS**"></span></td>
+            <td>0.10</td>
+            <td>0.69</td>
+            <td>0.08</td>
+            <td>0.71</td>
+            <td>0.08</td>
+            <td>0.70</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**MS**"></span></td>
+            <td><span data-qmd="**0.24**"></span></td>
+            <td>0.69</td>
+            <td><span data-qmd="**0.31**"></span></td>
+            <td>0.73</td>
+            <td><span data-qmd="**0.32**"></span></td>
+            <td>0.73</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \small
+    \centering
+    \begin{tabular}{l|cccccc}
+    \toprule[1.5pt]
+     & \multicolumn{2}{c}{\textbf{Gemma 2 2B}} & \multicolumn{2}{c}{\textbf{Gemma 2 9B}} & \multicolumn{2}{c}{\textbf{Llama 3.1 8B}} \\
+    \cmidrule(lr){2-3}
+    \cmidrule(lr){4-5}
+    \cmidrule(lr){6-7}
+    & \large 📊 & \large ☄️ & \large 📊 & \large ☄️ & \large 📊 & \large ☄️ \\
+    \midrule
+    ZS & 0.10 & 0.69 & 0.08 & 0.71 & 0.08 & 0.70 \\
+    MS & \textbf{0.24} & 0.69 & \textbf{0.31} & 0.73 & \textbf{0.32} & 0.73 \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Classifier-based personalization accuracy (📊) and Comet-based translation quality (☄️) for zero-shot (ZS) and multi-shot (MS) prompting with 20 in-context examples averaged across all translators and languages.
+:::

@@ -1,0 +1,189 @@
+:::{#tbl-chap7-results-averaged}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th colspan="4" class="group-header"><span data-qmd="**Gemma 2 2B**"></span></th>
+            <th colspan="4" class="group-header"><span data-qmd="**Gemma 2 9B**"></span></th>
+            <th colspan="4" class="group-header"><span data-qmd="**Llama 3.1 8B**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td></td>
+            <td><span data-qmd="**H**"></span></td>
+            <td><span data-qmd="**P**"></span></td>
+            <td><span data-qmd="**P<sub>flip</sub>**"></span></td>
+            <td>☄️</td>
+            <td><span data-qmd="**H**"></span></td>
+            <td><span data-qmd="**P**"></span></td>
+            <td><span data-qmd="**P<sub>flip</sub>**"></span></td>
+            <td>☄️</td>
+            <td><span data-qmd="**H**"></span></td>
+            <td><span data-qmd="**P**"></span></td>
+            <td><span data-qmd="**P<sub>flip</sub>**"></span></td>
+            <td>☄️</td>
+        </tr>
+        <tr class="midrule">
+            <td class="mediumrow"><span data-qmd="**ZS**"></span></td>
+            <td>0.21</td>
+            <td>0.10</td>
+            <td>0.05</td>
+            <td>0.69</td>
+            <td>0.15</td>
+            <td>0.08</td>
+            <td>0.04</td>
+            <td>0.71</td>
+            <td>0.24</td>
+            <td>0.08</td>
+            <td>0.05</td>
+            <td>0.70</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**ZS-Exp.<sub>HT</sub>**"></span></td>
+            <td>0.30</td>
+            <td>0.22</td>
+            <td>0.16</td>
+            <td>0.68</td>
+            <td>0.41</td>
+            <td>0.22</td>
+            <td>0.18</td>
+            <td>0.72</td>
+            <td>0.56</td>
+            <td>0.23</td>
+            <td>0.21</td>
+            <td>0.69</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**ZS-Exp.<sub>PT</sub>**"></span></td>
+            <td>--</td>
+            <td>0.20</td>
+            <td>0.14</td>
+            <td>0.69</td>
+            <td>--</td>
+            <td>0.23</td>
+            <td>0.19</td>
+            <td><span data-qmd="**0.73**"></span></td>
+            <td>--</td>
+            <td>0.30</td>
+            <td>0.26</td>
+            <td>0.70</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**MS**"></span></td>
+            <td>0.37</td>
+            <td>0.24</td>
+            <td>0.16</td>
+            <td>0.69</td>
+            <td><span data-qmd="**0.48**"></span></td>
+            <td>0.31</td>
+            <td>0.27</td>
+            <td><span data-qmd="**0.73**"></span></td>
+            <td>0.58</td>
+            <td>0.32</td>
+            <td><span data-qmd="**0.28**"></span></td>
+            <td><span data-qmd="**0.73**"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="**ActAdd**"></span></td>
+            <td>0.27</td>
+            <td>0.22</td>
+            <td>0.12</td>
+            <td>0.67</td>
+            <td>0.32</td>
+            <td>0.24</td>
+            <td>0.20</td>
+            <td>0.70</td>
+            <td>0.55</td>
+            <td>0.36</td>
+            <td><span data-qmd="**0.28**"></span></td>
+            <td>0.70</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**ReFT**"></span></td>
+            <td>0.31</td>
+            <td>0.22</td>
+            <td>0.18</td>
+            <td><span data-qmd="**0.70**"></span></td>
+            <td>0.46</td>
+            <td>0.34</td>
+            <td>0.27</td>
+            <td>0.67</td>
+            <td>0.53</td>
+            <td><span data-qmd="**0.38**"></span></td>
+            <td>0.26</td>
+            <td>0.70</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**SAE Cont.<sub>HT</sub>**"></span></td>
+            <td><span data-qmd="**0.39**"></span></td>
+            <td><span data-qmd="**0.27**"></span></td>
+            <td><span data-qmd="**0.19**"></span></td>
+            <td><span data-qmd="**0.70**"></span></td>
+            <td>0.46</td>
+            <td>0.33</td>
+            <td><span data-qmd="**0.29**"></span></td>
+            <td>0.72</td>
+            <td><span data-qmd="**0.59**"></span></td>
+            <td>0.31</td>
+            <td>0.27</td>
+            <td>0.72</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**SAE Cont.<sub>PT</sub>**"></span></td>
+            <td>--</td>
+            <td><span data-qmd="**0.27**"></span></td>
+            <td>0.18</td>
+            <td>0.69</td>
+            <td>--</td>
+            <td><span data-qmd="**0.35**"></span></td>
+            <td><span data-qmd="**0.29**"></span></td>
+            <td><span data-qmd="**0.73**"></span></td>
+            <td>--</td>
+            <td>0.33</td>
+            <td><span data-qmd="**0.28**"></span></td>
+            <td>0.72</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}[t]
+    \small
+    \centering
+    \setlength{\tabcolsep}{3pt}
+    \begin{tabular}{lcccc|cccc|cccc}
+    \toprule[1.5pt]
+        & \multicolumn{4}{c}{\textbf{Gemma 2 2B}} & \multicolumn{4}{c}{\textbf{Gemma 2 9B}} & \multicolumn{4}{c}{\textbf{LLaMA 3.1 8B}} \\ 
+        \cmidrule(lr){2-5}
+        \cmidrule(lr){6-9}
+        \cmidrule(lr){10-13}
+        & \textbf{H} & \textbf{P} & \textbf{P\textsubscript{flip}} & \large ☄️ & \textbf{H} & \textbf{P} & \textbf{P\textsubscript{flip}} & \large ☄️ & \textbf{H} & \textbf{P} & \textbf{P\textsubscript{flip}} & \large ☄️ \\
+        \midrule
+        ZS      & 0.21 & 0.10 & 0.05 & 0.69 & 0.15 & 0.08 & 0.04 & 0.71 & 0.24 & 0.08 & 0.05 & 0.70 \\
+        ZS-Exp.\textsubscript{HT}   & 0.30 & 0.22 & 0.16 & 0.68 & 0.41 & 0.22 & 0.18 & 0.72 & 0.56 & 0.23 & 0.21 & 0.69 \\
+        ZS-Exp.\textsubscript{PT}   &   --   & 0.20 & 0.14 & 0.69 &   --   & 0.23 & 0.19 & \textbf{0.73} & -- & 0.30 & 0.26 & 0.70 \\
+        MS      & 0.37 & 0.24 & 0.16 & 0.69 & \textbf{0.48} & 0.31 & 0.27 & \textbf{0.73} & 0.58 & 0.32 & \textbf{0.28} & \textbf{0.73} \\
+        \midrule
+        ActAdd  & 0.27 & 0.22 & 0.12 & 0.67  & 0.32 & 0.24 & 0.20 & 0.70 & 0.55 & 0.36 & \textbf{0.28} & 0.70 \\
+        ReFT    & 0.31 & 0.22 & 0.18 & \textbf{0.70}  & 0.46 & 0.34 & 0.27 & 0.67 & 0.53 & \textbf{0.38} & 0.26 & 0.70 \\
+        SAE Cont.\textsubscript{HT} & \textbf{0.39} & \textbf{0.27} & \textbf{0.19} & \textbf{0.70} & 0.46 & 0.33 & \textbf{0.29} & 0.72 & \textbf{0.59} & 0.31 & 0.27 & 0.72 \\
+        SAE Cont.\textsubscript{PT} &   --   & \textbf{0.27} & 0.18 & 0.69 &-- & \textbf{0.35} & \textbf{0.29} & \textbf{0.73} &   --& 0.33 & \textbf{0.28} & 0.72  \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Averaged metric scores across all tested languages (per-language breakdown in appendix). **H**: human style accuracy, i.e. $p($[H$_1$]{color="brand-color.darkgreen"}$) + p($[H$_2$]{color="brand-color.lightbluedim"}$)$. **P**: personalization accuracy p(H$_x$) for the target style. **P$_\text{flip}$**: Proportion of segments for which steering has a causal impact on personalization. $\alpha$ = 5 is used for SAE Cont. results.
+:::

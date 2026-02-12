@@ -1,0 +1,55 @@
+:::{#tbl-chap5-self-citation-error}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th rowspan="2"><span data-qmd="**Model**"></span></th>
+            <th colspan="2" class="group-header"><span data-qmd="**Missing citation (%)**"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th>Sentence</th>
+            <th>Answer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="namerow"><span data-qmd="Zephyr 7B $\beta$"></span></td>
+            <td>54.5</td>
+            <td>95.7</td>
+        </tr>
+        <tr>
+            <td class="namerow">LLaMA 2 7B Chat</td>
+            <td>62.4</td>
+            <td>99.3</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\footnotesize
+\centering
+\begin{tabular}{crr}
+\toprule
+\multirow{2}{*}{\textbf{Model}} & \multicolumn{2}{c}{\textbf{Missing cit. (\%)}} \\
+& Sent. & Ans. \\
+\midrule
+Zephyr 7B $\beta$ & 54.5 & 95.7 \\
+LLaMA 2 7B        & 62.4 & 99.3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Percentage of unattributed sentences and answers with $\geq 1$ unattributed sentences on ELI5.
+:::

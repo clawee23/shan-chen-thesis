@@ -1,0 +1,74 @@
+# Chapter 2
+
+# **<u>Chapter 2</u>**
+
+Use of Artificial Intelligence Chatbots for Cancer Treatment Information
+
+---***Shan Chen,**** *Benjamin H. Kann, Michael B. Foote, Hugo JWL Aerts,
+
+Guergana K. Savova, Raymond H. Mak, Danielle S. Bitterman,
+
+JAMA Oncology
+
+**Summary**
+**Background** Large language models (LLMs) such as ChatGPT are increasingly being used for medical question-answering. However, their tendency to generate plausible but inaccurate text raises concerns about medical misinformation. Cancer patients, who frequently seek information online, may use ChatGPT for treatment advice. This study assessed the accuracy and robustness of ChatGPT’s cancer treatment recommendations for breast, prostate, and lung cancers compared to National Comprehensive Cancer Network (NCCN) guidelines.**Methods** We developed four zero-shot prompt templates to test ChatGPT’s responses across 26 distinct cancer diagnosis descriptions (e.g., cancer type and disease extent), resulting in 104 total prompts. Responses were generated using OpenAI’s *gpt-3.5-turbo-0301* model. Outputs were evaluated against NCCN 2021 guidelines by three board-certified oncologists, with a fourth adjudicating disagreements. Responses were scored for guideline concordance and categorized by accuracy, completeness, and hallucination frequency.
+
+**Findings** ChatGPT generated treatment recommendations for 102 of 104 prompts (98%), and every response contained at least one NCCN-concordant recommendation. However, 35 of these (34.3%) also included at least one partially or fully non-concordant treatment. Twelve and a half percent (13/104) of outputs hallucinated treatment modalities—most often recommending localized therapies for advanced disease or suggesting inappropriate targeted/immunotherapies. The correctness and completeness of responses varied depending on the phrasing of the prompt. Annotator agreement was 61.9%, underscoring interpretive ambiguity even among experts.**Interpretation** ChatGPT’s performance in providing cancer treatment advice was unreliable and inconsistent. Although it frequently listed correct options, its inclusion of incorrect recommendations poses substantial risk for misinformation—especially given that such errors may be difficult for non-experts to detect. The findings highlight the need for caution when using LLMs in medical contexts and underscore the importance of clinician and patient awareness of AI limitations. Developers of such systems share responsibility to minimize harm and ensure the safe distribution of these technologies.**INTRODUCTION**
+
+Large language models (LLMs) underlying chatbots such as ChatGPT[1](https://paperpile.com/c/lIPKkH/45SS) have demonstrated an unprecedented ability to generate human-like language, producing detailed, contextually relevant, and coherent-seeming responses across a wide range of topics. These qualities make LLMs appear knowledgeable and authoritative, yet their outputs may obscure underlying inaccuracies or hallucinations, especially in specialized domains like medicine. As patients increasingly turn to the internet for self-education[2](https://paperpile.com/c/lIPKkH/hRL0) about their diagnoses and treatment options, it is inevitable that many will consult ChatGPT and similar conversational agents for cancer-related medical information. While this represents a potential opportunity to democratize access to health knowledge, it also poses significant risks: ChatGPT may generate or amplify misinformation about cancer treatments, potentially influencing patient expectations and decisions in harmful ways. There is therefore an urgent need to rigorously evaluate the reliability and robustness of ChatGPT’s medical outputs. In this study, we systematically assessed ChatGPT’s ability to provide breast, prostate, and lung cancer treatment recommendations consistent with evidence-based standards as defined by the National Comprehensive Cancer Network (NCCN) guidelines[3](https://paperpile.com/c/lIPKkH/1J7j).**METHODS**
+
+We developed 4 prompt templates to query treatment recommendations (see Figure 1 below). Templates were used to create 4 prompts for each of 26 unique diagnosis descriptions (cancer types ± extent of disease) for a total of 104 prompts. Prompts were input to the gpt-3.5-turbo-0301 model via the ChatGPT API using zero-shot approach, meaning no example output was provided.
+
+We benchmarked against NCCN 2021 because ChatGPT was trained on data up to September 2021. Five scoring criteria were developed to assess guideline concordance (see Table 1 for details). The output did not have to recommend all possible regimens to be considered concordant; instead, the recommended treatment approach needed to be an NCCN option. Four board-certified oncologists scored the output. Prompts were scored by 3 oncologists and majority rule was taken as the final score. In cases of complete disagreement, the oncologist who had not previously seen the output adjudicated.
+
+![](../figures/image88.png)
+
+*Figure 1: Experimental design. Underlined text indicates where each diagnosis description was input into the prompt template. Diagnosis descriptions consisted of cancer type (breast cancer, non-small cell lung cancer, small-cell lung cancer, and prostate cancer) with and without extents of disease relevant for each cancer type. A total of 26 disease descriptions were input into the prompt templates, for a total of 104 unique prompts. *
+
+**RESULTS**
+
+Outputs of 104 unique prompts were scored on five criteria for a total of 520 individual scores. All three annotators agreed for 322 of 520 (61.9%) scores, with disagreements most commonly arising when the chatbot’s output was ambiguous or incomplete—for example, when it listed multiple treatment modalities without specifying whether they should be used in combination or as alternatives. Table 1 presents the agreement between the four prompt templates and the distribution of scores across cancer type and extent of disease. For nine of twenty-six (34.6%) diagnosis descriptions, the four prompts yielded identical scores for each of the five scoring criteria, indicating consistency in those cases. However, for the remainder, responses varied depending on the phrasing of the question, suggesting that ChatGPT’s recommendations were influenced by the linguistic structure of the query.
+
+ChatGPT provided at least one treatment recommendation for 102 of 104 (98%) prompts. All outputs that included a recommendation contained at least one treatment that was concordant with 2021 National Comprehensive Cancer Network (NCCN) guidelines. However, 35 of these 102 (34.3%) outputs also included one or more treatment recommendations that were at least partially non-concordant with NCCN guidelines. Non-concordant recommendations were observed across all cancer types but were most frequent in breast and prostate cancer queries and in descriptions of localized disease. Among cases in which some, but not all, recommendations were guideline-concordant, the proportion of fully correct recommendations varied substantially by disease type and prompt phrasing, as detailed in Table 1.
+
+![](../figures/image90.png)
+
+Responses were hallucinated—that is, contained modalities not recommended in any relevant NCCN guideline—in 13 of 104 (12.5%) outputs. These hallucinated treatments were primarily recommendations for localized treatment in cases describing advanced disease, as well as inappropriate suggestions of targeted therapy or immunotherapy. While a few of these modalities have since become accepted in newer NCCN versions, most were not appropriate for the disease stage or histology described.
+
+Performance also differed across the four prompt templates (Table 2). When the prompt explicitly referenced NCCN guidelines—e.g., “What is a recommended treatment for [diagnosis] according to NCCN?”—ChatGPT achieved the highest concordance, producing fully guideline-aligned recommendations for 73% of diagnosis descriptions. In contrast, more conversational phrasings such as “How do you treat [diagnosis]?” or “What is the treatment for [diagnosis]?” yielded lower concordance, with only 58% of responses fully aligned. This variability demonstrates ChatGPT’s sensitivity to prompt formulation, even when the underlying clinical information was identical.
+
+![](../figures/image41.png)**DISCUSSION**
+
+One-third of ChatGPT treatment recommendations were at least partially non-concordant with NCCN guidelines, and recommendations varied based on how the question was posed. The disagreement among annotators’ scores highlights the ambiguities and challenges of interpreting generative LLM output—another source of treatment confusion. More work is needed before these methods can be considered for medical question-answering, where both reliability and robustness are critical.
+
+LLMs have been found to achieve a passing grade on the USMLE licensing exam,[4](https://paperpile.com/c/lIPKkH/fwS6) encode clinical knowledge[5](https://paperpile.com/c/lIPKkH/F27B), and provide diagnoses better than laypeople.[6](https://paperpile.com/c/lIPKkH/6U46) However, ChatGPT did not perform well at providing cancer treatment recommendations. Concerningly, ChatGPT was most likely to provide incorrect recommendations amongst correct recommendations, an insidious error mode difficult even for experts to detect.
+
+Although this study evaluates a single model at a snapshot in time, it provides insight into areas of concern and future research needs. ChatGPT does not purport to be a medical device, and need not be held to such standards. However, patients and their families will likely use such technologies in their self-education, and this will impact shared decision-making and the patient-clinician relationship.[2](https://paperpile.com/c/lIPKkH/hRL0) Developers should have some responsibility to distribute technologies that do not cause harm, and patients and clinicians need to be aware of the limitations of these technologies.**REFERENCES**
+
+1. [Introducing ChatGPT. Accessed March 10, 2023.](http://paperpile.com/b/lIPKkH/45SS)[https://openai.com/blog/chatgpt](https://openai.com/blog/chatgpt)
+
+2. [Arora VM, Madison S, Simpson L. Addressing Medical Misinformation in the Patient-Clinician Relationship.](http://paperpile.com/b/lIPKkH/hRL0)[*JAMA*](http://paperpile.com/b/lIPKkH/hRL0)[. 2020;324(23):2367-2368.](http://paperpile.com/b/lIPKkH/hRL0)
+
+3. [National comprehensive cancer network - home. NCCN. Accessed March 10, 2023.](http://paperpile.com/b/lIPKkH/1J7j)[https://www.nccn.org/Home](https://www.nccn.org/Home)
+
+4. [Kung TH, Cheatham M, Medenilla A, et al. Performance of ChatGPT on USMLE: Potential for AI-assisted medical education using large language models.](http://paperpile.com/b/lIPKkH/fwS6)[*PLOS Digital Health*](http://paperpile.com/b/lIPKkH/fwS6)[. 2023;2(2):e0000198.](http://paperpile.com/b/lIPKkH/fwS6)
+
+5. [Singhal K, Azizi S, Tu T, et al. Large Language Models Encode Clinical Knowledge.](http://paperpile.com/b/lIPKkH/F27B)[*arXiv [csCL]*](http://paperpile.com/b/lIPKkH/F27B)[. Published online December 26, 2022.](http://paperpile.com/b/lIPKkH/F27B)[http://arxiv.org/abs/2212.13138](http://arxiv.org/abs/2212.13138)
+
+6. [Levine DM, Tuwani R, Kompa B, et al. The diagnostic and triage accuracy of the GPT-3 artificial intelligence model.](http://paperpile.com/b/lIPKkH/6U46)[*medRxiv*](http://paperpile.com/b/lIPKkH/6U46)[. Published online February 1, 2023. doi:](http://paperpile.com/b/lIPKkH/6U46)[10.1101/2023.01.30.23285067](http://dx.doi.org/10.1101/2023.01.30.23285067)
+
+## **Acknowledgments**
+
+Dr Aerts reported receiving personal fees from Onc.AI, Sphera, LLC, and Bristol Myers Squibb outside the submitted work. Dr Mak reported receiving personal fees from ViewRay, AstraZeneca, Novartis, Varian Medical Systems, and Sio Capital outside the submitted work. Dr Bitterman reported serving as an associate editor for HemOnc.org and her institution received support for research from the American Association for Cancer Research outside the submitted work. No other disclosures were reported.**Funding/Support:** This work was supported by the Woods Foundation.
+
+#**Supporting Information:**
+
+# Code, guidelines, and all data are available at: [<u>https://github.com/AIM-Harvard/ChatGPT_NCCN</u>](https://github.com/AIM-Harvard/ChatGPT_NCCN).
+
+Below is an abstract of our extended work understanding models' abilities answering these questions in Spanish.**Purpose/Objective(s):** There is significant excitement about the potential of large language models (LLMs) to improve health literacy through multilingual question-answering, yet LLMs are predominantly trained in English. It is unknown how performance varies when accessed by patients who speak different languages. We assessed the generalizability of LLM performance in providing cancer treatment information in English and Spanish.**Materials/Methods:** One hundred four general questions about treatment for prostate, breast, and lung cancers of different disease staging were written in English and translated into Spanish by a bilingual oncologist. GPT-3.5-turbo-0613 was prompted with the questions on the same day via API. Quality concordance of responses with NCCN 2021 guidelines (based on GPT’s knowledge cut-off at that time) were scored by a bilingual oncologist using pre-specified criteria (Table). Mann-Whitney U- and Fisher’s exact tests were used to compare scores and frequency of key treatment terms, respectively.
+
+#**Results:** All LLM responses were provided in the same language as the question, despite no explicit instruction on response language. All LLM responses included at least 1 treatment recommendation. The Table shows the scored results overall, and per diagnosis. Clinical trials were recommended in 12 of 104 English and 1 of 104 Spanish responses (p < 0.01). Specific radiotherapy techniques such as 3DCRT, IMRT, SBRT, and proton therapy were mentioned in 8 of 104 English and 3 of 104 Spanish responses (p = 0.21). Palliative/supportive care was mentioned in 23 of 104 English and 6 of 104 Spanish responses (p < 0.01).
+
+#**Conclusion:** The same cancer information question, when asked in a different language, could elicit meaningfully different responses from LLMs. Importantly, asking a question in Spanish led to responses that were less likely to be guideline-concordant or include clinical trials/palliative approaches to treatment. This highlights the need for robust multilingual evaluation to harness the promise of LLMs in improving health literacy while avoiding perpetuation of health disparities in vulnerable populations.
+
+![](../figures/image45.png)

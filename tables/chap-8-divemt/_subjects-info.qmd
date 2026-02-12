@@ -1,0 +1,280 @@
+:::{#tbl-subjects-info}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable leftalign">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th><span data-qmd="**Gender**"></span></th>
+            <th><span data-qmd="**Age**"></span></th>
+            <th><span data-qmd="**Degree**"></span></th>
+            <th><span data-qmd="**Position**"></span></th>
+            <th><span data-qmd="**En Level**"></span></th>
+            <th><span data-qmd="**YoE**"></span></th>
+            <th><span data-qmd="**PE YoE**"></span></th>
+            <th><span data-qmd="**% PE**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="rowspan" rowspan="3"><span data-qmd="**Arabic**"></span></td>
+            <td><span data-qmd="T$_1$"></span></td>
+            <td>M</td>
+            <td>35-44</td>
+            <td>BA</td>
+            <td>Freelancer</td>
+            <td>C2</td>
+            <td>&gt; 15</td>
+            <td>2-5</td>
+            <td>20%-40%</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="T$_2$"></span></td>
+            <td>M</td>
+            <td>25-34</td>
+            <td>BA</td>
+            <td>Employed</td>
+            <td>C2</td>
+            <td>5-10</td>
+            <td>2-5</td>
+            <td>60%-80%</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="T$_3$"></span></td>
+            <td>M</td>
+            <td>25-34</td>
+            <td>MA</td>
+            <td>Freelancer</td>
+            <td>C1</td>
+            <td>5-10</td>
+            <td>&lt; 2</td>
+            <td>20%-40%</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="3"><span data-qmd="**Dutch**"></span></td>
+            <td><span data-qmd="T$_1$"></span></td>
+            <td>M</td>
+            <td>25-34</td>
+            <td>MA</td>
+            <td>Freelancer</td>
+            <td>C2</td>
+            <td>5-10</td>
+            <td>5-10</td>
+            <td>60%-80%</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="T$_2$"></span></td>
+            <td>F</td>
+            <td>35-44</td>
+            <td>MA</td>
+            <td>Freelancer</td>
+            <td>C1</td>
+            <td>10-15</td>
+            <td>5-10</td>
+            <td>40%-60%</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="T$_3$"></span></td>
+            <td>F</td>
+            <td>25-34</td>
+            <td>MA</td>
+            <td>Freelancer</td>
+            <td>C2</td>
+            <td>2-5</td>
+            <td>2-5</td>
+            <td>20%-40%</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="3"><span data-qmd="**Italian**"></span></td>
+            <td><span data-qmd="T$_1$"></span></td>
+            <td>F</td>
+            <td>25-34</td>
+            <td>MA</td>
+            <td>Employed</td>
+            <td>C1</td>
+            <td>5-10</td>
+            <td>5-10</td>
+            <td>20%-40%</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="T$_5$"></span></td>
+            <td>F</td>
+            <td>25-34</td>
+            <td>MA</td>
+            <td>Freelancer</td>
+            <td>C1</td>
+            <td>2-5</td>
+            <td>2-5</td>
+            <td>40%-60%</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="T$_4$"></span></td>
+            <td>F</td>
+            <td>35-44</td>
+            <td>BA</td>
+            <td>Freelancer</td>
+            <td>C2</td>
+            <td>10-15</td>
+            <td>5-10</td>
+            <td>&gt; 80%</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="3"><span data-qmd="**Turkish**"></span></td>
+            <td><span data-qmd="T$_1$"></span></td>
+            <td>F</td>
+            <td>25-34</td>
+            <td>BA</td>
+            <td>Freelancer</td>
+            <td>C2</td>
+            <td>5-10</td>
+            <td>2-5</td>
+            <td>&lt; 20%</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="T$_2$"></span></td>
+            <td>F</td>
+            <td>25-34</td>
+            <td>BA</td>
+            <td>Freelancer</td>
+            <td>C1</td>
+            <td>5-10</td>
+            <td>5-10</td>
+            <td>&lt; 20%</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="T$_3$"></span></td>
+            <td>M</td>
+            <td>25-34</td>
+            <td>High school</td>
+            <td>Freelancer</td>
+            <td>C2</td>
+            <td>10-15</td>
+            <td>&lt; 2</td>
+            <td>&lt; 20%</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="3"><span data-qmd="**Ukrainian**"></span></td>
+            <td><span data-qmd="T$_1$"></span></td>
+            <td>F</td>
+            <td>35-44</td>
+            <td>MA</td>
+            <td>Employed</td>
+            <td>C1</td>
+            <td>5-10</td>
+            <td>5-10</td>
+            <td>20%-40%</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="T$_2$"></span></td>
+            <td>M</td>
+            <td>35-44</td>
+            <td>MA</td>
+            <td>Employed</td>
+            <td>C1</td>
+            <td>10-15</td>
+            <td>10-15</td>
+            <td>20%-40%</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="T$_3$"></span></td>
+            <td>M</td>
+            <td>35-44</td>
+            <td>High school</td>
+            <td>Employed</td>
+            <td>B2</td>
+            <td>2-5</td>
+            <td>2-5</td>
+            <td>20%-40%</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="3"><span data-qmd="**Vietnamese**"></span></td>
+            <td><span data-qmd="T$_1$"></span></td>
+            <td>F</td>
+            <td>25-34</td>
+            <td>MA</td>
+            <td>Employed</td>
+            <td>C2</td>
+            <td>10-15</td>
+            <td>5-10</td>
+            <td>40%-60%</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="T$_2$"></span></td>
+            <td>F</td>
+            <td>25-34</td>
+            <td>BA</td>
+            <td>Freelancer</td>
+            <td>C1</td>
+            <td>5-10</td>
+            <td>&lt; 2</td>
+            <td>20%-40%</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="T$_3$"></span></td>
+            <td>F</td>
+            <td>25-34</td>
+            <td>MA</td>
+            <td>Employed</td>
+            <td>C1</td>
+            <td>2-5</td>
+            <td>&lt; 2</td>
+            <td>&lt; 20%</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}[!ht]
+    \setlength{\tabcolsep}{3pt}
+    \footnotesize
+    \centering
+    \begin{tabular}{lccccccccc}
+        \toprule
+         & & \textbf{Gender} & \textbf{Age} & \textbf{Degree} & \textbf{Position} & \textbf{En Level} & \textbf{YoE} & \textbf{PE YoE} & \textbf{\% PE}  \\
+        \midrule
+        \multirow{3}{*}{\textbf{Arabic}}
+          & T$_1$ & M & 35-44 & BA & Freelancer & C2 & > 15  & 2-5  & 20-40\% \\ 
+          & T$_2$ & M & 25-34 & BA & Employed   & C2 & 5-10  & 2-5  & 60-80\% \\ 
+          & T$_3$ & M & 25-34 & MA & Freelancer & C1 & 5-10  & < 2  & 20-40\% \\
+        \midrule
+        \multirow{3}{*}{\textbf{Dutch}} 
+          & T$_1$ & M & 25-34 & MA & Freelancer & C2 & 5-10  & 5-10  & 60-80\% \\ 
+          & T$_2$ & F & 35-44 & MA & Freelancer & C1 & 10-15 & 5-10  & 40-60\% \\ 
+          & T$_3$ & F & 25-34 & MA & Freelancer & C2 & 2-5   & 2-5   & 20-40\% \\
+        \midrule
+        \multirow{3}{*}{\textbf{Italian}} 
+          & T$_1$ & F & 25-34 & MA & Employed   & C1 & 5-10   & 5-10 & 20-40\% \\ 
+          & T$_5$ & F & 25-34 & MA & Freelancer & C1 & 2-5    & 2-5  & 40-60\% \\ 
+          & T$_4$ & F & 35-44 & BA & Freelancer & C2 & 10-15  & 5-10 & >80\%   \\
+        \midrule
+        \multirow{3}{*}{\textbf{Turkish}} 
+          & T$_1$ & F & 25-34 & BA          & Freelancer & C2 & 5-10   & 2-5  & <20\% \\ 
+          & T$_2$ & F & 25-34 & BA          & Freelancer & C1 & 5-10   & 5-10 & <20\% \\ 
+          & T$_3$ & M & 25-34 & High sch. & Freelancer & C2 & 10-15  & < 2  & <20\% \\
+        \midrule
+        \multirow{3}{*}{\textbf{Ukrainian}} 
+          & T$_1$ & F & 35-44 & MA          & Employed & C1 & 5-10  & 5-10  & 20-40\% \\ 
+          & T$_2$ & M & 35-44 & MA          & Employed & C1 & 10-15 & 10-15 & 20-40\% \\ 
+          & T$_3$ & M & 35-44 & High sch. & Employed & B2 &  2-5  &  2-5  & 20-40\% \\
+        \midrule
+        \multirow{3}{*}{\textbf{Vietnamese}} 
+          & T$_1$ & F & 25-34 & MA & Employed   & C2 & 10-15 & 5-10  & 40-60\% \\ 
+          & T$_2$ & F & 25-34 & BA & Freelancer & C1 & 5-10  & < 2   & 20-40\% \\ 
+          & T$_3$ & F & 25-34 & MA & Employed   & C1 & 2-5   & < 2   & <20\% \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Subjects information for DivEMT. The last three columns represent respectively the number of years of professional experience as a translator (YoE), the number of years of experience with MT post-editing (PE YoE) and the % of work assignments requiring post-editing in the last 12 months (% PE) for each subject.
+:::

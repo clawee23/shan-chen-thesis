@@ -1,0 +1,54 @@
+:::{#tbl-chap6-classifier-accuracy-avg}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th><span data-qmd="**Dataset**"></span></th>
+            <th><span data-qmd="**Attribute**"></span></th>
+            <th><span data-qmd="**# Train**"></span></th>
+            <th><span data-qmd="**# Test**"></span></th>
+            <th><span data-qmd="**Acc.**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td>CoCoA-MT</td>
+            <td>Formality</td>
+            <td>7,600</td>
+            <td>1,596</td>
+            <td>0.990</td>
+        </tr>
+        <tr>
+            <td>MT-GenEval</td>
+            <td>Gender</td>
+            <td>4,900</td>
+            <td>9,854</td>
+            <td>0.970</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\centering
+\begin{tabular}{llccc}
+ \bf Dataset & \bf Attribute & \bf \# Train & \bf \# Test & \bf Acc. \\
+ \hline
+ CoCoA-MT & Formality & 7,600 & 1,596 & 0.990 \\
+ MT-GenEval & Gender & 4,900 & 9,854 & 0.970 \\
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Dataset statistics. We report **#** of triplets in the **train**/**test** split aggregated across all languages and the classification **acc**uracy on the test split of the classifiers.
+:::

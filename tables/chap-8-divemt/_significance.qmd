@@ -1,0 +1,179 @@
+:::{#tbl-significance}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th><span data-qmd="**Predictor**"></span></th>
+            <th><span data-qmd="**Estim.**"></span></th>
+            <th><span data-qmd="**p-value**"></span></th>
+            <th><span data-qmd="**Sig.**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span data-qmd="`(intercept)`"></span></td>
+            <td>4.92</td>
+            <td>1.12e-11</td>
+            <td>***</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="`source length`"></span></td>
+            <td>0.38</td>
+            <td>&lt; 2e-16</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`lang_ara`"></span></td>
+            <td>-0.49</td>
+            <td>0.1209</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`lang_ita`"></span></td>
+            <td>-0.14</td>
+            <td>0.6407</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`lang_nld`"></span></td>
+            <td>-0.58</td>
+            <td>0.0733</td>
+            <td>x</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`lang_tur`"></span></td>
+            <td>-0.82</td>
+            <td>0.0162</td>
+            <td>*</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="`lang_vie`"></span></td>
+            <td>-0.24</td>
+            <td>0.4254</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`task_pe1`"></span></td>
+            <td>-0.49</td>
+            <td>&lt; 2e-16</td>
+            <td>***</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="`task_pe2`"></span></td>
+            <td>-0.22</td>
+            <td>1.77e-07</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`lang_ara:task_pe1`"></span></td>
+            <td>-0.11</td>
+            <td>0.0505</td>
+            <td>x</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`lang_ita:task_pe1`"></span></td>
+            <td>-0.40</td>
+            <td>8.97e-12</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`lang_nld:task_pe1`"></span></td>
+            <td>-0.41</td>
+            <td>5.74e-12</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`lang_tur:task_pe1`"></span></td>
+            <td>-0.14</td>
+            <td>0.0194</td>
+            <td>*</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="`lang_vie:task_pe1`"></span></td>
+            <td>0.13</td>
+            <td>0.0290</td>
+            <td>*</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`lang_ara:task_pe2`"></span></td>
+            <td>0.05</td>
+            <td>0.3535</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`lang_ita:task_pe2`"></span></td>
+            <td>-0.39</td>
+            <td>3.30e-11</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`lang_nld:task_pe2`"></span></td>
+            <td>-0.29</td>
+            <td>4.46e-07</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`lang_tur:task_pe2`"></span></td>
+            <td>0.03</td>
+            <td>0.5811</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`lang_vie:task_pe2`"></span></td>
+            <td>0.04</td>
+            <td>0.5289</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \small
+    \centering
+    \begin{tabular}{lrrr}
+        \toprule
+         \textbf{Predictor} & \textbf{Estim.} & \textbf{p-value} & \textbf{Sig.}\\
+        \midrule
+        \texttt{(intercept)}
+          & 4.92 & 1.12e-11&*** \\ 
+        \texttt{source length}
+          & 0.38 & < 2e-16&***\\
+          \midrule
+        \texttt{lang_ara} &            -0.49 &0.1209&\\
+        \texttt{lang_ita} &            -0.14 &0.6407&\\
+        \texttt{lang_nld} &            -0.58 &0.0733& x\\
+        \texttt{lang_tur} &            -0.82 &0.0162& *\\
+        \texttt{lang_vie} &            -0.24 &0.4254&\\
+        \midrule
+        \texttt{task_pe1} &            -0.49 &< 2e-16&***\\
+        \texttt{task_pe2} &            -0.22 & 1.77e-07&***\\
+        \midrule
+        \texttt{lang_ara:task_pe1}&   -0.11 &0.0505&x\\
+        \texttt{lang_ita:task_pe1}&   -0.40 &8.97e-12&***\\
+        \texttt{lang_nld:task_pe1}&   -0.41 &5.74e-12&***\\
+        \texttt{lang_tur:task_pe1}&   -0.14 &0.0194&*\\
+        \texttt{lang_vie:task_pe1}&    0.13 &0.0290&*\\
+        \midrule
+        \texttt{lang_ara:task_pe2}&    0.05 &0.3535&\\
+        \texttt{lang_ita:task_pe2}&   -0.39 &3.30e-11&***\\
+        \texttt{lang_nld:task_pe2}&   -0.29 &4.46e-07&***\\
+        \texttt{lang_tur:task_pe2}&    0.03 &0.5811&\\
+        \texttt{lang_vie:task_pe2}&    0.04 &0.5289&\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+LMER modeling results using translation time as the dependent variable. The reference levels for predictors `lang` and `task` are Ukrainian and Translation from scratch (HT), respectively. Estimate impact on edit time for every predictor is provided in log seconds. Significance: *** = < 0.001, * = < 0.05, x = < 0.1
+:::

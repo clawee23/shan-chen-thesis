@@ -1,0 +1,108 @@
+:::{#tbl-schedule}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th><span data-qmd="T$_1$"></span></th>
+            <th><span data-qmd="T$_2$"></span></th>
+            <th><span data-qmd="T$_3$"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="rowspan" rowspan="4">warm-up</td>
+            <td><span data-qmd="docW$_1$"></span></td>
+            <td>HT</td>
+            <td>HT</td>
+            <td>HT</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="docW$_2$"></span></td>
+            <td><span data-qmd="PE$_1$"></span></td>
+            <td><span data-qmd="PE$_1$"></span></td>
+            <td><span data-qmd="PE$_1$"></span></td>
+        </tr>
+        <tr>
+            <td>...</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="docW$_N$"></span></td>
+            <td><span data-qmd="PE$_2$"></span></td>
+            <td><span data-qmd="PE$_2$"></span></td>
+            <td><span data-qmd="PE$_2$"></span></td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="4">main</td>
+            <td><span data-qmd="docM$_1$"></span></td>
+            <td>HT</td>
+            <td><span data-qmd="PE$_1$"></span></td>
+            <td><span data-qmd="PE$_2$"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="docM$_2$"></span></td>
+            <td><span data-qmd="PE$_2$"></span></td>
+            <td>HT</td>
+            <td><span data-qmd="PE$_1$"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="docM$_3$"></span></td>
+            <td>HT</td>
+            <td><span data-qmd="PE$_2$"></span></td>
+            <td><span data-qmd="PE$_1$"></span></td>
+        </tr>
+        <tr>
+            <td>...</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><span data-qmd="docM$_N$"></span></td>
+            <td><span data-qmd="PE$_2$"></span></td>
+            <td><span data-qmd="PE$_1$"></span></td>
+            <td>HT</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}[t]\centering\small
+  \begin{tabular}{c l l l l}
+\toprule
+     & & T$_1$ & T$_2$ & T$_3$ \\
+\midrule
+\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{warm-up}}} 
+ & docW$_1$ & HT & HT & HT \\
+ & docW$_2$ & PE$_1$ & PE$_1$ & PE$_1$ \\
+ & \ \ ... &  &  & \\
+ & docW$_N$ & PE$_2$ & PE$_2$ & PE$_2$ \\
+\midrule
+\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{main}}} 
+ & docM$_1$ & HT & PE$_1$ & PE$_2$ \\
+ & docM$_2$ & PE$_2$ & HT & PE$_1$ \\
+ & docM$_3$ & HT & PE$_2$ & PE$_!$ \\
+ & \ \ ... &  &  & \\
+ & docM$_N$ & PE$_2$ & PE$_1$ & HT \\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Modality scheduling overview. For each language, each subject (T$_i$) works with a pseudo-random sequence of modalities (HT, PE$_1$, PE$_2$). For the warm-up task (*N*=5), all translators are provided with the same documents in the same modalities. For the main task (*N*=107), each translator is assigned a modality at random. Each document is translated once for every modality. The same procedure is repeated independently for all the languages.
+:::

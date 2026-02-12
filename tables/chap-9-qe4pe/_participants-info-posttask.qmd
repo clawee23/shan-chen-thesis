@@ -1,0 +1,397 @@
+:::{#tbl-qe4pe-participants-info-posttask}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable smallfont">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th colspan="6"><span data-qmd="**Highlights statements**"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th><span data-qmd="**Identifier**"></span></th>
+            <th><span data-qmd="**MT good / fluent / accurate**"></span></th>
+            <th><span data-qmd="**High. accurate / useful**"></span></th>
+            <th><span data-qmd="**Interface clear**"></span></th>
+            <th><span data-qmd="**Task difficult**"></span></th>
+            <th><span data-qmd="$\uparrow$ Speed?"></span></th>
+            <th><span data-qmd="$\uparrow$ Quality?"></span></th>
+            <th><span data-qmd="$\uparrow$ Effort?"></span></th>
+            <th><span data-qmd="$\uparrow$ Influence?"></span></th>
+            <th><span data-qmd="$\uparrow$ Spot errors?"></span></th>
+            <th><span data-qmd="$\uparrow$ Enjoy?"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="mediumlongrow"><code>ita-nohigh-fast</code></td>
+            <td>4 / 0.8 / 0.8</td>
+            <td>- / -</td>
+            <td>5</td>
+            <td>1</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td><code>ita-nohigh-avg</code></td>
+            <td class="mediumrow">3 / 0.6 / 0.4</td>
+            <td>- / -</td>
+            <td>2</td>
+            <td>4</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td><code>ita-nohigh-slow</code></td>
+            <td>3 / 0.8 / 0.8</td>
+            <td>- / -</td>
+            <td>1</td>
+            <td>5</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td><code>ita-oracle-fast</code></td>
+            <td>5 / 0.4 / 0.8</td>
+            <td>4 / 4</td>
+            <td>4</td>
+            <td>5</td>
+            <td>5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td><code>ita-oracle-avg</code></td>
+            <td>3 / 0.4 / 0.6</td>
+            <td>2 / 1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>1</td>
+            <td>1</td>
+            <td>4</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td><code>ita-oracle-slow</code></td>
+            <td>3 / 0.6 / 0.6</td>
+            <td>2 / 2</td>
+            <td>2</td>
+            <td>5</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>4</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td><code>ita-unsup-fast</code></td>
+            <td>3 / 0.8 / 0.6</td>
+            <td>3 / 2</td>
+            <td>4</td>
+            <td>5</td>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td><code>ita-unsup-avg</code></td>
+            <td>3 / 0.6 / 0.6</td>
+            <td>3 / 3</td>
+            <td>3</td>
+            <td>5</td>
+            <td>2</td>
+            <td>3</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td><code>ita-unsup-slow</code></td>
+            <td>3 / 0.4 / 0.6</td>
+            <td>2 / 2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>2</td>
+            <td>2</td>
+            <td>3</td>
+            <td>3</td>
+            <td>4</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td><code>ita-sup-fast</code></td>
+            <td>3 / 0.4 / 0.4</td>
+            <td>2 / 1</td>
+            <td>2</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1</td>
+            <td>3</td>
+            <td>1</td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td><code>ita-sup-avg</code></td>
+            <td>3 / 0.4 / 0.4</td>
+            <td>2 / 2</td>
+            <td>3</td>
+            <td>5</td>
+            <td>3</td>
+            <td>2</td>
+            <td>4</td>
+            <td>3</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr class="midrule">
+            <td><code>ita-sup-slow</code></td>
+            <td>3 / 0.6 / 0.6</td>
+            <td>2 / 2</td>
+            <td>1</td>
+            <td>2</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1</td>
+            <td>4</td>
+            <td>4</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td><code>nld-nohigh-fast</code></td>
+            <td>3 / 0.2 / 0.4</td>
+            <td>- / -</td>
+            <td>4</td>
+            <td>4</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td><code>nld-nohigh-avg</code></td>
+            <td>2 / 0.4 / 0.6</td>
+            <td>- / -</td>
+            <td>4</td>
+            <td>5</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td><code>nld-nohigh-slow</code></td>
+            <td>2 / 0.2 / 0.4</td>
+            <td>- / -</td>
+            <td>3</td>
+            <td>5</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td><code>nld-oracle-fast</code></td>
+            <td>3 / 0.6 / 0.6</td>
+            <td>2 / 1</td>
+            <td>3</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td><code>nld-oracle-avg</code></td>
+            <td>3 / 0.8 / 0.6</td>
+            <td>4 / 3</td>
+            <td>3</td>
+            <td>4</td>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td><code>nld-oracle-slow</code></td>
+            <td>3 / 0.6 / 0.4</td>
+            <td>3 / 1</td>
+            <td>3</td>
+            <td>4</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td><code>nld-unsup-fast</code></td>
+            <td>3 / 0.6 / 0.8</td>
+            <td>3 / 2</td>
+            <td>4</td>
+            <td>4</td>
+            <td>1</td>
+            <td>3</td>
+            <td>1</td>
+            <td>1</td>
+            <td>2</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td><code>nld-unsup-avg</code></td>
+            <td>3 / 0.6 / 0.6</td>
+            <td>4 / 3</td>
+            <td>2</td>
+            <td>4</td>
+            <td>3</td>
+            <td>3</td>
+            <td>4</td>
+            <td>3</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td><code>nld-unsup-slow</code></td>
+            <td>1 / 0.4 / 0.4</td>
+            <td>2 / 4</td>
+            <td>1</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+            <td>3</td>
+            <td>2</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td><code>nld-sup-fast</code></td>
+            <td>3 / 0.6 / 0.4</td>
+            <td>2 / 2</td>
+            <td>3</td>
+            <td>5</td>
+            <td>1</td>
+            <td>1</td>
+            <td>5</td>
+            <td>3</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td><code>nld-sup-avg</code></td>
+            <td>3 / 0.4 / 0.6</td>
+            <td>2 / 2</td>
+            <td>2</td>
+            <td>4</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td><code>nld-sup-slow</code></td>
+            <td>5 / 0.8 / 1</td>
+            <td>4 / 3</td>
+            <td>2</td>
+            <td>5</td>
+            <td>3</td>
+            <td>3</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>4</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+```{=latex}
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{1.5pt}
+    \tiny
+        \begin{tabular}{p{0.08\textwidth}@{\hskip 2.5pt}p{0.14\textwidth}@{\hskip 2.5pt}p{0.05\textwidth}p{0.05\textwidth}p{0.05\textwidth}p{0.05\textwidth}p{0.05\textwidth}p{0.05\textwidth}p{0.05\textwidth}p{0.05\textwidth}p{0.05\textwidth}p{0.05\textwidth}p{0.05\textwidth}p{0.05\textwidth}p{0.05\textwidth}p{0.05\textwidth}}
+    \toprule[1.5pt]
+        \multirow{2}{*}{\textbf{ID}} & \multirow{2}{*}{\textbf{Freq. Issues}} & \multirow{2}{*}{\textbf{Qual.}} & \multirow{2}{*}{\textbf{Flue.}} & \multirow{2}{*}{\textbf{Acc.}} & \multirow{2}{0.05\textwidth}{\textbf{High. acc.}} & \multirow{2}{0.05\textwidth}{\textbf{High. useful}} & \multirow{2}{0.05\textwidth}{\textbf{Inter. clear}} & \multirow{2}{0.05\textwidth}{\textbf{Hard?}} & \multicolumn{6}{c}{\textbf{Highlights statements}} \\
+        \cmidrule(lr){10-15}
+        &&&&&&&&&$\uparrow$ Speed? & $\uparrow$ Qual.? & $\uparrow$ Effort? & Infl. & Spot errors & $\uparrow$ Enjoy? \\
+        \midrule % & mt_accuracy & interequent_issuerface_statement_2 & interface_statement_4
+        ita-nohigh-fast & inflection, additions, omissions& 4 & 0.8 & 0.8 & - & - & 5 & 1 & - & - & - & - & - & - \\
+        ita-nohigh-avg & multiple& 3 & 0.6 & 0.4 & - & - & 2 & 4 & - & - & - & - & - & - \\
+        ita-nohigh-slow & terminology, omissions& 3 & 0.8 & 0.8 & - & - & 1 & 5 & - & - & - & - & - & - \\
+        ita-oracle-fast & inflection, terminology& 5 & 0.4 & 0.8 & 4 & 4 & 4 & 5 & 5 & 2 & 1 & 1 & 1 & 4 \\
+        ita-oracle-avg & syntax, terminology, omissions, no context& 3 & 0.4 & 0.6 & 2 & 1 & 2 & 3 & 1 & 1 & 4 & 1 & 1 & 1 \\
+        ita-oracle-slow & syntax, no context& 3 & 0.6 & 0.6 & 2 & 2 & 2 & 5 & 1 & 1 & 1 & 1 & 4 & 1 \\
+        ita-unsup-fast & omissions& 3 & 0.8 & 0.6 & 3 & 2 & 4 & 5 & 3 & 3 & 3 & 2 & 2 & 2 \\
+        ita-unsup-avg & syntax, terminology, no context& 3 & 0.6 & 0.6 & 3 & 3 & 3 & 5 & 2 & 3 & 2 & 1 & 1 & 3 \\
+        ita-unsup-slow & syntax, inflection, terminology, omissions& 3 & 0.4 & 0.6 & 2 & 2 & 3 & 4 & 2 & 2 & 3 & 3 & 4 & 4 \\
+        ita-sup-fast & syntax, terminology, no context& 3 & 0.4 & 0.4 & 2 & 1 & 2 & 2 & 1 & 1 & 3 & 1 & 2 & 2 \\
+        ita-sup-avg & syntax, terminology, no context& 3 & 0.4 & 0.4 & 2 & 2 & 3 & 5 & 3 & 2 & 4 & 3 & 3 & 4 \\
+        ita-sup-slow & syntax, terminology, omissions, no context& 3 & 0.6 & 0.6 & 2 & 2 & 1 & 2 & 2 & 1 & 1 & 4 & 4 & 1 \\
+        \midrule
+        nld-nohigh-fast & syntax, terminology, omissions, no context& 3 & 0.2 & 0.4 & - & - & 4 & 4 & - & - & - & - & - & - \\
+        nld-nohigh-avg & syntax, terminology, omissions, no context& 2 & 0.4 & 0.6 & - & - & 4 & 5 & - & - & - & - & - & - \\
+        nld-nohigh-slow & terminology, omissions, no context& 2 & 0.2 & 0.4 & - & - & 3 & 5 & - & - & - & - & - & - \\
+        nld-oracle-fast & syntax, inflection, terminology& 3 & 0.6 & 0.6 & 2 & 1 & 3 & 2 & 2 & 2 & 2 & 1 & 1 & 1 \\
+        nld-oracle-avg & syntax& 3 & 0.8 & 0.6 & 4 & 3 & 3 & 4 & 3 & 3 & 3 & 3 & 2 & 3 \\
+        nld-oracle-slow & syntax, terminology& 3 & 0.6 & 0.4 & 3 & 1 & 3 & 4 & 1 & 1 & 1 & 1 & 1 & 3 \\
+        nld-unsup-fast & terminology, additions, omissions& 3 & 0.6 & 0.8 & 3 & 2 & 4 & 4 & 1 & 3 & 1 & 1 & 2 & 1 \\
+        nld-unsup-avg & multiple & 3 & 0.6 & 0.6 & 4 & 3 & 2 & 4 & 3 & 3 & 4 & 3 & 2 & 3 \\
+        nld-unsup-slow & syntax, terminology, omissions & 1 & 0.4 & 0.4 & 2 & 4 & 1 & 4 & 4 & 4 & 3 & 2 & 2 & 3 \\
+        nld-sup-fast & terminology, omissions, no context& 3 & 0.6 & 0.4 & 2 & 2 & 3 & 5 & 1 & 1 & 5 & 3 & 1 & 1 \\
+        nld-sup-avg & syntax, additions, no context& 3 & 0.4 & 0.6 & 2 & 2 & 2 & 4 & 1 & 1 & 1 & 1 & 2 & 3 \\
+        nld-sup-slow & multiple & 5 & 0.8 & 1   & 4 & 3 & 2 & 5 & 3 & 3 & 2 & 2 & 2 & 4 \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Sample of post-task questionnaire results. Statements use a 1--Strongly disagree to 5--Strongly agree scale.
+:::
+

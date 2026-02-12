@@ -1,0 +1,90 @@
+:::{#tbl-chap5-eli5-results}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th rowspan="2"><span data-qmd="**Model**"></span></th>
+            <th rowspan="2"><span data-qmd="**Answer Attrib.**"></span></th>
+            <th colspan="3" class="group-header"><span data-qmd="**Citation**"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th>Prec.</th>
+            <th>Rec.</th>
+            <th>F1</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="rowspan" rowspan="3"><span data-qmd="Zephyr $\beta$"></span></td>
+            <td>Self-citation</td>
+            <td>41.4</td>
+            <td>24.3</td>
+            <td>30.6</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Mirage]{.smallcaps}$_{\text{ex}}$ Top 3"></span></td>
+            <td>38.3</td>
+            <td>46.2</td>
+            <td>41.9</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[Mirage]{.smallcaps}$_{\text{ex}}$ Top 5%"></span></td>
+            <td class="bold">44.7</td>
+            <td class="bold">46.5</td>
+            <td class="bold">45.6</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="3">LLaMA 2</td>
+            <td>Self-citation</td>
+            <td class="bold">37.9</td>
+            <td>19.8</td>
+            <td>26.0</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Mirage]{.smallcaps}$_{\text{ex}}$ Top 3"></span></td>
+            <td>21.8</td>
+            <td class="bold">29.6</td>
+            <td>25.1</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Mirage]{.smallcaps}$_{\text{ex}}$ Top 5%"></span></td>
+            <td>26.2</td>
+            <td>29.1</td>
+            <td class="bold">27.6</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\small
+\centering
+\begin{tabular}{llccc}
+\toprule
+\multirow{2}{*}{\bf Model} & \multirow{2}{*}{\bf Answer Attrib.} & \multicolumn{3}{c}{\bf Citation~$\uparrow$} \\
+& & Prec. & Rec. & F1 \\
+\midrule
+\multirow{3}{*}{Zephyr $\beta$}  & Self-citation & 41.4 & 24.3 & 30.6  \\
+& \text{Mirage}$_{\text{ex}}$ Top 3 & 38.3 & 46.2 & 41.9 \\
+& \text{Mirage}$_{\text{ex}}$ Top 5\% & \textbf{44.7} & \textbf{46.5} & \textbf{45.6} \\
+\midrule
+\multirow{3}{*}{LLaMA 2} & Self-citation & \textbf{37.9} & 19.8 & 26.0  \\
+& \text{Mirage}$_{\text{ex}}$ Top 3 & 21.8 & \textbf{29.6} & 25.1 \\
+& \text{Mirage}$_{\text{ex}}$ Top 5\% & 26.2 & 29.1 & \textbf{27.6} \\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Answer attribution quality estimated by TRUE for self-citation and [Mirage]{.smallcaps} on ELI5.
+:::

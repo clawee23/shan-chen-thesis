@@ -1,0 +1,77 @@
+:::{#tbl-pecore-examples-2}
+
+:::{.content-visible when-format="html"}
+```{=html}
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr class="bottomrule">
+            <td><span data-qmd="**3. Numeric format cohesion (English → French, incorrect)**"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_x$: The game kicked off at [10:00]{bg-color='brand-color.lightblueclear'}am with great weather apart from mid morning drizzle [...]"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_y$: Le match a commencé à [10:00]{bg-color='brand-color.lightblueclear'} du matin avec un beau temps à part la nuée du matin [...]"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$x$: South Africa started on the right note when they had a comfortable 26-00 win against Zambia."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$\tilde y$: L'Afrique du Sud a commencé sur la bonne note quand ils ont eu une confortable victoire de [26]{bg-color='brand-color.lightredclear'} contre le Zambia."></span></td>
+        </tr>
+        <tr class="midrule">
+            <td> <span data-qmd="$\hat y$: L'Afrique du Sud a commencé sur la bonne note quand ils ont eu une confortable victoire de [26:00]{bg-color='brand-color.lightgreen'} contre le Zambia."></span></td>
+        </tr>
+        <tr class="bottomrule">
+            <td><span data-qmd="**4. Lexical cohesion (English → Turkish, correct)**"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_x$: The activity of all stars in the system was found to be driven by their luminosity, their rotation, and nothing else."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_y$: Sistemdeki bütün ulduzların faaliyetlerinin, parlaklıkları, [rotasyonları]{bg-color='brand-color.lightblueclear'} ve başka hiçbir şeyin etkisi altında olduğunu ortaya çıkardılar."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$x$: The luminosity and rotation are used together to determine a star's Rossby number, which is related to plasma flow."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$\tilde y$: Parlaklık ve [döngü]{bg-color='brand-color.lightredclear'}, bir \textit{yıldızın plazm} akışıyla ilgili Rossby sayısını belirlemek için birlikte kullanılıyor."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$\hat y$: Parlaklık ve [rotasyon]{bg-color='brand-color.lightgreen'}, bir \textit{ulduzun plazma} akışıyla ilgili Rossby sayısını belirlemek için birlikte kullanılıyor."></span></td>
+        </tr>
+    </tbody>
+</table>
+```
+:::
+
+:::{.content-visible when-format="pdf"}
+```{=latex}
+\begin{table}
+    \centering
+    \scriptsize
+    \begin{tabular}{p{0.95\textwidth}}
+        \toprule[1.5pt]
+        \textbf{3. Numeric format cohesion (English $\rightarrow$ French, incorrect)} \\
+        \midrule
+        $C_x:$ The games kicked off at \colorbox{lightblueclear}{10:00}am with great weather apart from mid morning drizzle [...] \\
+        $C_y:$ Les matchs se sont écoulés à \colorbox{lightblueclear}{10:00} du matin avec un beau temps à part la nuée du matin [...] \vspace{3pt}\\
+        $x:$ South Africa started on the right note when they had a comfortable 26-00 win against Zambia. \\
+        $\tilde y:$ L'Afrique du Sud a commencé sur la bonne note quand ils ont eu une confortable victoire de \colorbox{lightred}{26} contre le Zambia. \\
+        $\hat y:$  L'Afrique du Sud a commencé sur la bonne note quand ils ont eu une confortable victoire de \colorbox{lightgreen}{26:00} contre le Zambia. \\
+        \midrule
+        \textbf{4. Lexical cohesion (English $\rightarrow$ Turkish, correct)} \\
+        \midrule
+        $C_x:$ The activity of all stars in the system was found to be driven by their luminosity, their rotation, and nothing else. \\
+        $C_y:$ Sistemdeki bütün ulduzların faaliyetlerinin, parlaklıkları, \colorbox{lightblueclear}{rotasyonları} ve başka hiçbir şeyin etkisi altında olduğunu ortaya çıkardılar. \vspace{3pt}\\
+        $x:$ The luminosity and rotation are used together to determine a star's Rossby number, which is related to plasma flow. \\
+        $\tilde y:$ Parlaklık ve \colorbox{lightred}{döngü}, bir \textit{yıldızın plazm} akışıyla ilgili Rossby sayısını belirlemek için birlikte kullanılıyor. \\
+        $\hat y:$ Parlaklık ve \colorbox{lightgreen}{rotasyon}, bir \textit{ulduzun plazma} akışıyla ilgili Rossby sayısını belirlemek için birlikte kullanılıyor. \\
+        \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+:::
+
+Flores-101 examples with cue-target pairs identified by [PECoRe]{.smallcaps} in mBART-50 contextual translations. [Context-sensitive tokens]{bg-color="brand-color.lightgreen"} generated instead of their [non-contextual]{bg-color="brand-color.lightredclear"} counterparts are identified by CTI, and [contextual cues]{bg-color="brand-color.lightblueclear"} justifying their predictions are retrieved by CCI. *Other changes* in $\hat y$ are not considered context-sensitive by [PECoRe]{.smallcaps}.
+:::

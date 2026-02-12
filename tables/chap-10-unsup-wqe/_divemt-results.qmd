@@ -1,0 +1,344 @@
+:::{#tbl-divemt-all-results}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th rowspan="2"><strong>Method</strong></th>
+            <th colspan="2"><strong>Italian</strong></th>
+            <th colspan="2"><strong>Dutch</strong></th>
+            <th colspan="2"><strong>Arabic</strong></th>
+            <th colspan="2"><strong>Turkish</strong></th>
+            <th colspan="2"><strong>Vietnamese</strong></th>
+            <th colspan="2"><strong>Ukrainian</strong></th>
+            <th colspan="2"><strong>Average</strong></th>
+        </tr>
+        <tr>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+            <th><strong>AP</strong></th>
+            <th><strong>F1<sup>*</sup></strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td class="mediumlongrow">Random Baseline</td>
+            <td>.25</td>
+            <td>.40</td>
+            <td>.28</td>
+            <td>.43</td>
+            <td>.33</td>
+            <td>.49</td>
+            <td>.34</td>
+            <td>.50</td>
+            <td>.35</td>
+            <td>.52</td>
+            <td>.48</td>
+            <td>.65</td>
+            <td>.34</td>
+            <td>.50</td>
+        </tr>
+        <tr>
+            <td>Surprisal</td>
+            <td>.34</td>
+            <td>.45</td>
+            <td>.36</td>
+            <td>.46</td>
+            <td>.42</td>
+            <td>.51</td>
+            <td>.43</td>
+            <td>.54</td>
+            <td>.46</td>
+            <td><u>.55</u></td>
+            <td>.55</td>
+            <td>.65</td>
+            <td>.43</td>
+            <td>.53</td>
+        </tr>
+        <tr>
+            <td>Out. Entropy</td>
+            <td>.37</td>
+            <td>.43</td>
+            <td>.39</td>
+            <td>.45</td>
+            <td>.45</td>
+            <td>.50</td>
+            <td><u>.49</u></td>
+            <td>.52</td>
+            <td><u>.48</u></td>
+            <td>.54</td>
+            <td>.58</td>
+            <td>.65</td>
+            <td>.46</td>
+            <td>.51</td>
+        </tr>
+        <tr>
+            <td>Surprisal MCD<span data-qmd="$_{\text{avg}}$"></span></td>
+            <td>.34</td>
+            <td>.45</td>
+            <td>.37</td>
+            <td><u>.47</u></td>
+            <td>.43</td>
+            <td>.52</td>
+            <td>.44</td>
+            <td>.54</td>
+            <td>.46</td>
+            <td><u>.55</u></td>
+            <td>.56</td>
+            <td>.65</td>
+            <td>.43</td>
+            <td>.53</td>
+        </tr>
+        <tr>
+            <td>Surprisal MCD<span data-qmd="$_{\text{var}}$"></span></td>
+            <td><u>.39</u></td>
+            <td><u>.46</u></td>
+            <td><u>.41</u></td>
+            <td><u>.47</u></td>
+            <td><u>.47</u></td>
+            <td><u>.53</u></td>
+            <td><u>.49</u></td>
+            <td><u>.55</u></td>
+            <td><u>.48</u></td>
+            <td><u>.55</u></td>
+            <td><u>.61</u></td>
+            <td><strong><u>.67</u></strong></td>
+            <td><u>.48</u></td>
+            <td><u>.54</u></td>
+        </tr>
+        <tr>
+            <td>LL Surprisal<span data-qmd="$_{\text{best}}$"></span></td>
+            <td>.33</td>
+            <td>.44</td>
+            <td>.36</td>
+            <td>.45</td>
+            <td>.41</td>
+            <td>.51</td>
+            <td>.44</td>
+            <td>.54</td>
+            <td>.44</td>
+            <td><u>.55</u></td>
+            <td>.55</td>
+            <td>.66</td>
+            <td>.42</td>
+            <td>.53</td>
+        </tr>
+        <tr>
+            <td>LL KL-Div<span data-qmd="$_{\text{best}}$"></span></td>
+            <td>.34</td>
+            <td>.42</td>
+            <td>.37</td>
+            <td>.45</td>
+            <td>.41</td>
+            <td>.51</td>
+            <td>.44</td>
+            <td>.52</td>
+            <td>.44</td>
+            <td>.52</td>
+            <td>.56</td>
+            <td>.65</td>
+            <td>.43</td>
+            <td>.51</td>
+        </tr>
+        <tr>
+            <td>LL Pred. Depth</td>
+            <td>.30</td>
+            <td>.42</td>
+            <td>.32</td>
+            <td>.44</td>
+            <td>.39</td>
+            <td>.50</td>
+            <td>.40</td>
+            <td>.52</td>
+            <td>.39</td>
+            <td>.53</td>
+            <td>.54</td>
+            <td>.66</td>
+            <td>.39</td>
+            <td>.51</td>
+        </tr>
+        <tr>
+            <td>Attn. Entropy<span data-qmd="$_{\text{avg}}$"></span></td>
+            <td>.28</td>
+            <td>.41</td>
+            <td>.30</td>
+            <td>.43</td>
+            <td>.35</td>
+            <td>.49</td>
+            <td>.37</td>
+            <td>.51</td>
+            <td>.40</td>
+            <td>.52</td>
+            <td>.50</td>
+            <td>.65</td>
+            <td>.37</td>
+            <td>.50</td>
+        </tr>
+        <tr>
+            <td>Attn. Entropy<span data-qmd="$_{\text{max}}$"></span></td>
+            <td>.25</td>
+            <td>.41</td>
+            <td>.26</td>
+            <td>.43</td>
+            <td>.34</td>
+            <td>.49</td>
+            <td>.34</td>
+            <td>.50</td>
+            <td>.35</td>
+            <td>.52</td>
+            <td>.47</td>
+            <td>.65</td>
+            <td>.34</td>
+            <td>.50</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[Blood]{.smallcaps}$_{\text{best}}$"></span></td>
+            <td>.26</td>
+            <td>.40</td>
+            <td>.28</td>
+            <td>.43</td>
+            <td>.35</td>
+            <td>.52</td>
+            <td>.35</td>
+            <td>.50</td>
+            <td>.36</td>
+            <td>.52</td>
+            <td>.49</td>
+            <td>.65</td>
+            <td>.35</td>
+            <td>.51</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xl]{.smallcaps}"></span></td>
+            <td>.34</td>
+            <td>.39</td>
+            <td>.37</td>
+            <td>.44</td>
+            <td>.41</td>
+            <td>.47</td>
+            <td>.44</td>
+            <td>.50</td>
+            <td>.42</td>
+            <td>.44</td>
+            <td>.56</td>
+            <td>.44</td>
+            <td>.42</td>
+            <td>.45</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xl]{.smallcaps}$_{\text{confw}}$"></span></td>
+            <td>.46</td>
+            <td>.47</td>
+            <td>.49</td>
+            <td><strong>.50</strong></td>
+            <td>.51</td>
+            <td>.53</td>
+            <td><strong>.58</strong></td>
+            <td><strong>.56</strong></td>
+            <td>.53</td>
+            <td>.55</td>
+            <td>.68</td>
+            <td><strong>.67</strong></td>
+            <td>.54</td>
+            <td><strong>.55</strong></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xxl]{.smallcaps}"></span></td>
+            <td>.34</td>
+            <td>.36</td>
+            <td>.35</td>
+            <td>.35</td>
+            <td>.43</td>
+            <td>.47</td>
+            <td>.45</td>
+            <td>.48</td>
+            <td>.43</td>
+            <td>.42</td>
+            <td>.57</td>
+            <td>.41</td>
+            <td>.43</td>
+            <td>.42</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xxl]{.smallcaps}$_{\text{confw}}$"></span></td>
+            <td><strong>.48</strong></td>
+            <td><strong>.49</strong></td>
+            <td><strong>.50</strong></td>
+            <td><strong>.50</strong></td>
+            <td><strong>.55</strong></td>
+            <td><strong>.54</strong></td>
+            <td><strong>.58</strong></td>
+            <td><strong>.56</strong></td>
+            <td><strong>.56</strong></td>
+            <td><strong>.57</strong></td>
+            <td><strong>.70</strong></td>
+            <td><strong>.67</strong></td>
+            <td><strong>.56</strong></td>
+            <td><strong>.55</strong></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\setlength{\tabcolsep}{3pt}
+\footnotesize
+\centering
+\begin{tabular}{l|cc|cc|cc|cc|cc|cc||cc}
+\toprule[1.5pt]
+\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Method}}} & \multicolumn{2}{c}{\textbf{Italian}} & \multicolumn{2}{c}{\textbf{Dutch}} & \multicolumn{2}{c}{\textbf{Arabic}} & \multicolumn{2}{c}{\textbf{Turkish}} & \multicolumn{2}{c}{\textbf{Vietnamese}} & \multicolumn{2}{c}{\textbf{Ukrainian}} & \multicolumn{2}{c}{\textbf{Average}}\\
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+\cmidrule(lr){6-7}
+\cmidrule(lr){8-9}
+\cmidrule(lr){10-11}
+\cmidrule(lr){12-13}
+\cmidrule(lr){14-15}
+
+                                     & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$}  & \b{AP}  & \b{F1$^{*}$} \\
+\midrule
+Random Baseline           &    .25  & .40     &    .28  & .43     &    .33  & .49     &    .34  & .50     &    .35  & .52     &    .48  & .65     &    .34  & .50     \\
+\midrule
+Surprisal                 &    .34  & .45 &    .36  & .46 &    .42  & .51     &    .43  & .54 & .46 & \u{.55} &    .55  & .65     &    .43  & .53 \\
+Out. Entropy              & .37 & .43     & .39 & .45     &    .45  & .50     & \u{.49} & .52     & \u{.48} & .54     & .58 & .65     & .46 & .51     \\
+Surprisal\mcdavg          &    .34  & .45 &    .37  & \u{.47} &    .43  & .52     &    .44  & .54 & .46 & \u{.55} &    .56  & .65     &    .43  & .53 \\
+Surprisal\mcdvar          & \u{.39} & \u{.46} & \u{.41} & \u{.47} & \u{.47} & \u{.53} & \u{.49} & \u{.55} & \u{.48} & \u{.55} & \u{.61} & \b{\u{.67}} & \u{.48} & \u{.54} \\
+LL Surprisal\best         &    .33  & .44     &    .36  & .45     &    .41  & .51     &    .44  & .54 &    .44  & \u{.55} &    .55  & .66 &    .42  & .53 \\
+LL KL-Div\best            &    .34  & .42     &    .37  & .45     &    .41  & .51     &    .44  & .52     &    .44  & .52     &    .56  & .65     &    .43  & .51     \\
+LL Pred. Depth            &    .30  & .42     &    .32  & .44     &    .39  & .50     &    .40  & .52     &    .39  & .53     &    .54  & .66 &    .39  & .51     \\
+Attn. Entropy\avg         &    .28  & .41     &    .30  & .43     &    .35  & .49     &    .37  & .51     &    .40  & .52     &    .50  & .65     &    .37  & .50     \\
+Attn. Entropy\maxim       &    .25  & .41     &    .26  & .43     &    .34  & .49     &    .34  & .50     &    .35  & .52     &    .47  & .65     &    .34  & .50     \\
+\textsc{Blood}\best       &    .26  & .40     &    .28  & .43     &    .35  & .52 &    .35  & .50     &    .36  & .52     &    .49  & .65     &    .35  & .51     \\
+\midrule
+\textsc{xcomet-xl}        &    .34  & .39     &    .37  & .44     &    .41  & .47     &    .44  & .50     &    .42  & .44     &    .56  & .44     &    .42  & .45     \\
+\textsc{xcomet-xl}\confw  &    .46  & .47     &    .49  & \b{.50} &    .51  & .53     & \b{.58} & \b{.56} &    .53  & .55     &    .68  & \b{.67} &    .54  & \b{.55} \\
+\textsc{xcomet-xxl}       &    .34  & .36     &    .35  & .35     &    .43  & .47     &    .45  & .48     &    .43  & .42     &    .57  & .41     &    .43  & .42     \\
+\textsc{xcomet-xxl}\confw & \b{.48} & \b{.49} & \b{.50} & \b{.50} & \b{.55} & \b{.54} & \b{.58} & \b{.56} & \b{.56} & \b{.57} & \b{.70} & \b{.67} & \b{.56} & \b{.55} \\
+
+\bottomrule[1.5pt]
+\end{tabular}
+\end{table}
+```
+
+:::
+
+WQE metrics' performance for predicting error spans from multiple edit sets (one per language) over mBART-50 translations across the six topologically diverse target languages of [DivEMT]{.smallcaps}.
+
+:::

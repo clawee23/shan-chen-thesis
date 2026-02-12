@@ -1,0 +1,115 @@
+:::{#tbl-qe4pe-unsup-selection}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th rowspan="3"><span data-qmd="**Method**"></span></th>
+            <th colspan="4" class="group-header"><span data-qmd="**DivEMT**"></span></th>
+            <th colspan="4" class="group-header"><span data-qmd="**QE4PE**"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th colspan="2"><span data-qmd="**en→it**"></span></th>
+            <th colspan="2"><span data-qmd="**en→nl**"></span></th>
+            <th colspan="2"><span data-qmd="**en→it**"></span></th>
+            <th colspan="2"><span data-qmd="**en→nl**"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th><span data-qmd="**AP**"></span></th>
+            <th><span data-qmd="**AU**"></span></th>
+            <th><span data-qmd="**AP**"></span></th>
+            <th><span data-qmd="**AU**"></span></th>
+            <th><span data-qmd="**AP**"></span></th>
+            <th><span data-qmd="**AU**"></span></th>
+            <th><span data-qmd="**AP**"></span></th>
+            <th><span data-qmd="**AU**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="verylongrow"><span data-qmd="[Logprobs]{.smallcaps}"></span></td>
+            <td>0.18</td>
+            <td>0.18</td>
+            <td>0.19</td>
+            <td>0.19</td>
+            <td>0.10</td>
+            <td>0.09</td>
+            <td>0.09</td>
+            <td>0.09</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[Logprobs]{.smallcaps} $_\text{mcd var}$ ([Unsup.]{.smallcaps color='brand-color.unsupervised'})"></span></td>
+            <td>0.41</td>
+            <td>0.41</td>
+            <td>0.42</td>
+            <td>0.42</td>
+            <td>0.23</td>
+            <td>0.23</td>
+            <td>0.31</td>
+            <td>0.31</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xxl]{.smallcaps} ([Sup.]{.smallcaps color='brand-color.supervised'})"></span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>0.16</td>
+            <td>0.23</td>
+            <td>0.19</td>
+            <td>0.28</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Avg.]{.smallcaps} [Oracle]{.smallcaps color='brand-color.oracle'} [single translator]{.smallcaps}"></span></td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>0.53</td>
+            <td>0.73</td>
+            <td>0.55</td>
+            <td>0.75</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \setlength{\tabcolsep}{3pt}
+    \footnotesize
+    \centering
+    \begin{tabular}{l|cccc|cccc}
+    \toprule[1.5pt]
+        \multicolumn{1}{c}{\multirow{3}{*}{\textbf{Method}}} & \multicolumn{4}{c}{\textbf{DivEMT}} & \multicolumn{4}{c}{\textbf{QE4PE}} \\
+    \cmidrule(lr){2-5}
+    \cmidrule(lr){6-9}
+        & \multicolumn{2}{c}{\textbf{En$\rightarrow$It}} & \multicolumn{2}{c}{\textbf{En$\rightarrow$Nl}} & \multicolumn{2}{c}{\textbf{En$\rightarrow$It}} & \multicolumn{2}{c}{\textbf{En$\rightarrow$Nl}} \\
+    \cmidrule(lr){2-3}
+    \cmidrule(lr){4-5}
+    \cmidrule(lr){6-7}
+    \cmidrule(lr){8-9}
+        & \textbf{AP} & \textbf{AU} & \textbf{AP} & \textbf{AU} & \textbf{AP} & \textbf{AU} & \textbf{AP} & \textbf{AU} \\
+    \midrule
+        \textsc{Logprobs}~\citep{fomicheva-etal-2020-unsupervised}      & 0.18 & 0.18 & 0.19 & 0.19 & 0.10 & 0.09 & 0.09 & 0.09 \\
+        \textsc{Logprobs}{\footnotesize~$_{\textsc{mcd var}}$}~(\citealp{fomicheva-etal-2020-unsupervised},~\UnsupervisedShort) & 0.41 & 0.41 & 0.42 & 0.42 & 0.23 & 0.23 & 0.31 & 0.31 \\
+    \midrule
+        XCOMET-XXL~(\citealp{guerreiro-etal-2024-xcomet},~\SupervisedShort) &  &  &  &  & 0.16 & 0.23 & 0.19 & 0.28 \\
+    \midrule
+        \textsc{avg.}~\Oracle~\textsc{single translator} & - & - & - & - & 0.53 & 0.73 & 0.55 & 0.75 \\
+    \midrule
+    
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Average Precision (AP) and Area Under the Precision-Recall Curve (AU) between metrics and error spans derived from human post-editing. We use mBART 1-to-50 and NLLB 3B respectively for DivEMT and QE4PE. For DivEMT, a single post-editor is available for computing the agreement, while for QE4PE we use consensus-based [Oracle]{.smallcaps} highlights. For QE4PE, we report the average agreement between individual oracle post-editors and their consensus as an agreement upper bound.
+:::

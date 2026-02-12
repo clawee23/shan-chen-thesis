@@ -1,0 +1,89 @@
+:::{#tbl-chap7-classifiers-perf}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th><span data-qmd="**Lang**"></span></th>
+            <th><span data-qmd="**Gemma 2 2B**"></span></th>
+            <th><span data-qmd="**Gemma 2 9B**"></span></th>
+            <th><span data-qmd="**Llama 3.1 8B**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td><span data-qmd="**DE**"></span></td>
+            <td>0.89</td>
+            <td>0.90</td>
+            <td>0.84</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**RU**"></span></td>
+            <td>0.92</td>
+            <td>0.90</td>
+            <td>0.91</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**ZH**"></span></td>
+            <td>0.99</td>
+            <td>0.98</td>
+            <td>0.98</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**IT**"></span></td>
+            <td>0.78</td>
+            <td>0.85</td>
+            <td>0.80</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**NL**"></span></td>
+            <td>0.79</td>
+            <td>0.78</td>
+            <td>0.82</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**FR**"></span></td>
+            <td>0.88</td>
+            <td>0.87</td>
+            <td>0.90</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**JA**"></span></td>
+            <td>0.76</td>
+            <td>0.79</td>
+            <td>0.76</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \small
+    \centering
+    \begin{tabular}{l|ccc}
+    \toprule[1.5pt]
+    \textbf{Lang.} & \textbf{Gemma 2 2B} & \textbf{Gemma 2 9B} & \textbf{Llama 3.1 8B} \\
+    \midrule
+    DE & 0.89 & 0.90 & 0.84 \\
+    RU & 0.92 & 0.90 & 0.91 \\
+    ZH & 0.99 & 0.98 & 0.98 \\
+    IT & 0.78 & 0.85 & 0.80 \\
+    NL & 0.79 & 0.78 & 0.82 \\
+    FR & 0.88 & 0.87 & 0.90 \\
+    JA & 0.76 & 0.79 & 0.76 \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Accuracy of model- and language-specific 3-way ([H$_1$]{color="brand-color.darkgreen"},[H$_2$]{color="brand-color.lightbluedim"}, [MT]{color="brand-color.darkorange"}) classifiers on balanced held-out sets for every language. Random baseline: 0.33.
+:::

@@ -1,0 +1,492 @@
+:::{#tbl-chap6-same-language-geneval-details}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th rowspan="2"></th>
+            <th rowspan="2"></th>
+            <th rowspan="2"></th>
+            <th colspan="2" class="group-header rline"><span data-qmd="**AR**"></span></th>
+            <th colspan="2" class="group-header rline"><span data-qmd="**ES**"></span></th>
+            <th colspan="2" class="group-header rline"><span data-qmd="**FR**"></span></th>
+            <th colspan="2" class="group-header rline"><span data-qmd="**HI**"></span></th>
+            <th colspan="2" class="group-header rline"><span data-qmd="**PT**"></span></th>
+            <th rowspan="2"><span data-qmd="**AVG**"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th>F</th>
+            <th class="rline">M</th>
+            <th>F</th>
+            <th class="rline">M</th>
+            <th>F</th>
+            <th class="rline">M</th>
+            <th>F</th>
+            <th class="rline">M</th>
+            <th>F</th>
+            <th class="rline">M</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="12" class="rowspan">XGLM 7.5B</td>
+            <td rowspan="4" class="rowspan">base</td>
+            <td>BLEU</td>
+            <td>7.6</td>
+            <td class="rline">7.5</td>
+            <td>35.5</td>
+            <td class="rline">38.2</td>
+            <td>27.1</td>
+            <td class="rline">28.6</td>
+            <td>13.8</td>
+            <td class="rline">16.4</td>
+            <td>29.2</td>
+            <td class="rline">33.1</td>
+            <td>23.7</td>
+        </tr>
+        <tr>
+            <td>COMET</td>
+            <td>-.040</td>
+            <td class="rline">-.012</td>
+            <td>.694</td>
+            <td class="rline">.738</td>
+            <td>.509</td>
+            <td class="rline">.555</td>
+            <td>.304</td>
+            <td class="rline">.332</td>
+            <td>.661</td>
+            <td class="rline">.713</td>
+            <td>.445</td>
+        </tr>
+        <tr>
+            <td>L-Acc</td>
+            <td>.848</td>
+            <td class="rline">.947</td>
+            <td>.688</td>
+            <td class="rline">.808</td>
+            <td>.715</td>
+            <td class="rline">.880</td>
+            <td>.585</td>
+            <td class="rline">.956</td>
+            <td>.621</td>
+            <td class="rline">.855</td>
+            <td>.790</td>
+        </tr>
+        <tr class="midrule">
+            <td>S-Acc</td>
+            <td>.617</td>
+            <td class="rline">.866</td>
+            <td>.651</td>
+            <td class="rline">.938</td>
+            <td>.581</td>
+            <td class="rline">.920</td>
+            <td>.303</td>
+            <td class="rline">.962</td>
+            <td>.494</td>
+            <td class="rline">.934</td>
+            <td>.727</td>
+        </tr>
+        <tr>
+            <td rowspan="4" class="rowspan">+mark</td>
+            <td>BLEU</td>
+            <td>7.7</td>
+            <td class="rline">7.8</td>
+            <td>35.4</td>
+            <td class="rline">38.2</td>
+            <td>27.5</td>
+            <td class="rline">28.7</td>
+            <td>14.0</td>
+            <td class="rline">16.7</td>
+            <td>29.1</td>
+            <td class="rline">32.4</td>
+            <td>23.7</td>
+        </tr>
+        <tr>
+            <td>COMET</td>
+            <td>-.038</td>
+            <td class="rline">-.020</td>
+            <td>.704</td>
+            <td class="rline">.735</td>
+            <td>.508</td>
+            <td class="rline">.556</td>
+            <td>.300</td>
+            <td class="rline">.317</td>
+            <td>.663</td>
+            <td class="rline">.714</td>
+            <td>.444</td>
+        </tr>
+        <tr>
+            <td>L-Acc</td>
+            <td>.868</td>
+            <td class="rline">.939</td>
+            <td>.665</td>
+            <td class="rline">.811</td>
+            <td>.701</td>
+            <td class="rline">.881</td>
+            <td>.581</td>
+            <td class="rline">.955</td>
+            <td>.626</td>
+            <td class="rline">.860</td>
+            <td>.789</td>
+        </tr>
+        <tr class="midrule">
+            <td>S-Acc</td>
+            <td>.664</td>
+            <td class="rline">.856</td>
+            <td>.612</td>
+            <td class="rline">.937</td>
+            <td>.562</td>
+            <td class="rline">.919</td>
+            <td>.355</td>
+            <td class="rline">.966</td>
+            <td>.519</td>
+            <td class="rline">.927</td>
+            <td>.732</td>
+        </tr>
+        <tr>
+            <td rowspan="4" class="rowspan"><span data-qmd="[Ramp]{.smallcaps}"></span></td>
+            <td>BLEU</td>
+            <td>9.2</td>
+            <td class="rline">8.8</td>
+            <td>37.5</td>
+            <td class="rline">39.4</td>
+            <td>27.5</td>
+            <td class="rline">29.2</td>
+            <td>14.8</td>
+            <td class="rline">16.6</td>
+            <td>31.4</td>
+            <td class="rline">33.3</td>
+            <td>24.8</td>
+        </tr>
+        <tr>
+            <td>COMET</td>
+            <td>.037</td>
+            <td class="rline">.043</td>
+            <td>.723</td>
+            <td class="rline">.759</td>
+            <td>.528</td>
+            <td class="rline">.571</td>
+            <td>.325</td>
+            <td class="rline">.337</td>
+            <td>.681</td>
+            <td class="rline">.723</td>
+            <td>.473</td>
+        </tr>
+        <tr>
+            <td>L-Acc</td>
+            <td>.939</td>
+            <td class="rline">.961</td>
+            <td>.750</td>
+            <td class="rline">.806</td>
+            <td>.781</td>
+            <td class="rline">.885</td>
+            <td>.667</td>
+            <td class="rline">.956</td>
+            <td>.759</td>
+            <td class="rline">.854</td>
+            <td>.836</td>
+        </tr>
+        <tr class="midrule">
+            <td>S-Acc</td>
+            <td>.836</td>
+            <td class="rline">.901</td>
+            <td>.722</td>
+            <td class="rline">.936</td>
+            <td>.716</td>
+            <td class="rline">.937</td>
+            <td>.509</td>
+            <td class="rline">.974</td>
+            <td>.729</td>
+            <td class="rline">.940</td>
+            <td>.820</td>
+        </tr>
+        <tr>
+            <td rowspan="12" class="rowspan">BLOOM 175B</td>
+            <td rowspan="4" class="rowspan">base</td>
+            <td>BLEU</td>
+            <td>14.8</td>
+            <td class="rline">16.9</td>
+            <td>45.6</td>
+            <td class="rline">50.3</td>
+            <td>38.1</td>
+            <td class="rline">41.7</td>
+            <td>20.8</td>
+            <td class="rline">24.6</td>
+            <td>37.6</td>
+            <td class="rline">42.2</td>
+            <td>33.3</td>
+        </tr>
+        <tr>
+            <td>COMET</td>
+            <td>.282</td>
+            <td class="rline">.395</td>
+            <td>.837</td>
+            <td class="rline">.892</td>
+            <td>.719</td>
+            <td class="rline">.770</td>
+            <td>.599</td>
+            <td class="rline">.629</td>
+            <td>.807</td>
+            <td class="rline">.861</td>
+            <td>.679</td>
+        </tr>
+        <tr>
+            <td>L-Acc</td>
+            <td>.665</td>
+            <td class="rline">.966</td>
+            <td>.578</td>
+            <td class="rline">.814</td>
+            <td>.660</td>
+            <td class="rline">.902</td>
+            <td>.480</td>
+            <td class="rline">.951</td>
+            <td>.594</td>
+            <td class="rline">.872</td>
+            <td>.748</td>
+        </tr>
+        <tr class="midrule">
+            <td>S-Acc</td>
+            <td>.411</td>
+            <td class="rline">.934</td>
+            <td>.515</td>
+            <td class="rline">.965</td>
+            <td>.581</td>
+            <td class="rline">.961</td>
+            <td>.212</td>
+            <td class="rline">.973</td>
+            <td>.525</td>
+            <td class="rline">.960</td>
+            <td>.704</td>
+        </tr>
+        <tr>
+            <td rowspan="4" class="rowspan">+mark</td>
+            <td>BLEU</td>
+            <td>15.2</td>
+            <td class="rline">17.1</td>
+            <td>45.8</td>
+            <td class="rline">50.0</td>
+            <td>37.9</td>
+            <td class="rline">41.3</td>
+            <td>20.3</td>
+            <td class="rline">23.8</td>
+            <td>37.6</td>
+            <td class="rline">42.2</td>
+            <td>33.1</td>
+        </tr>
+        <tr>
+            <td>COMET</td>
+            <td>.294</td>
+            <td class="rline">.387</td>
+            <td>.843</td>
+            <td class="rline">.887</td>
+            <td>.712</td>
+            <td class="rline">.767</td>
+            <td>.576</td>
+            <td class="rline">.606</td>
+            <td>.807</td>
+            <td class="rline">.861</td>
+            <td>.674</td>
+        </tr>
+        <tr>
+            <td>L-Acc</td>
+            <td>.707</td>
+            <td class="rline">.969</td>
+            <td>.610</td>
+            <td class="rline">.818</td>
+            <td>.663</td>
+            <td class="rline">.902</td>
+            <td>.493</td>
+            <td class="rline">.958</td>
+            <td>.594</td>
+            <td class="rline">.872</td>
+            <td>.759</td>
+        </tr>
+        <tr class="midrule">
+            <td>S-Acc</td>
+            <td>.482</td>
+            <td class="rline">.936</td>
+            <td>.568</td>
+            <td class="rline">.973</td>
+            <td>.588</td>
+            <td class="rline">.962</td>
+            <td>.284</td>
+            <td class="rline">.974</td>
+            <td>.525</td>
+            <td class="rline">.960</td>
+            <td>.725</td>
+        </tr>
+        <tr>
+            <td rowspan="4" class="rowspan"><span data-qmd="[Ramp]{.smallcaps}"></span></td>
+            <td>BLEU</td>
+            <td>16.7</td>
+            <td class="rline">17.6</td>
+            <td>47.9</td>
+            <td class="rline">50.2</td>
+            <td>39.5</td>
+            <td class="rline">41.8</td>
+            <td>22.2</td>
+            <td class="rline">25.0</td>
+            <td>39.3</td>
+            <td class="rline">42.7</td>
+            <td>34.3</td>
+        </tr>
+        <tr>
+            <td>COMET</td>
+            <td>.358</td>
+            <td class="rline">.407</td>
+            <td>.860</td>
+            <td class="rline">.895</td>
+            <td>.734</td>
+            <td class="rline">.787</td>
+            <td>.632</td>
+            <td class="rline">.646</td>
+            <td>.810</td>
+            <td class="rline">.858</td>
+            <td>.699</td>
+        </tr>
+        <tr>
+            <td>L-Acc</td>
+            <td>.841</td>
+            <td class="rline">.972</td>
+            <td>.709</td>
+            <td class="rline">.809</td>
+            <td>.765</td>
+            <td class="rline">.906</td>
+            <td>.633</td>
+            <td class="rline">.953</td>
+            <td>.701</td>
+            <td class="rline">.886</td>
+            <td>.817</td>
+        </tr>
+        <tr class="midrule">
+            <td>S-Acc</td>
+            <td>.721</td>
+            <td class="rline">.940</td>
+            <td>.707</td>
+            <td class="rline">.964</td>
+            <td>.732</td>
+            <td class="rline">.971</td>
+            <td>.518</td>
+            <td class="rline">.973</td>
+            <td>.683</td>
+            <td class="rline">.972</td>
+            <td>.818</td>
+        </tr>
+        <tr>
+            <td rowspan="4" colspan="2" class="rowspan">Adapted MT</td>
+            <td>BLEU</td>
+            <td>23.3</td>
+            <td class="rline">24.4</td>
+            <td>53.2</td>
+            <td class="rline">54.2</td>
+            <td>44.2</td>
+            <td class="rline">46.4</td>
+            <td>29.3</td>
+            <td class="rline">32.3</td>
+            <td>43.4</td>
+            <td class="rline">45.7</td>
+            <td>35.9</td>
+        </tr>
+        <tr>
+            <td>COMET</td>
+            <td>.496</td>
+            <td class="rline">.522</td>
+            <td>.876</td>
+            <td class="rline">.902</td>
+            <td>.759</td>
+            <td class="rline">.797</td>
+            <td>.722</td>
+            <td class="rline">.743</td>
+            <td>.825</td>
+            <td class="rline">.857</td>
+            <td>.528</td>
+        </tr>
+        <tr>
+            <td>L-Acc</td>
+            <td>.910</td>
+            <td class="rline">.981</td>
+            <td>.932</td>
+            <td class="rline">.921</td>
+            <td>.919</td>
+            <td class="rline">.956</td>
+            <td>.762</td>
+            <td class="rline">.837</td>
+            <td>.922</td>
+            <td class="rline">.961</td>
+            <td>.853</td>
+        </tr>
+        <tr>
+            <td>S-Acc</td>
+            <td>.940</td>
+            <td class="rline">.970</td>
+            <td>.910</td>
+            <td class="rline">.960</td>
+            <td>.950</td>
+            <td class="rline">.960</td>
+            <td>.280</td>
+            <td class="rline">.750</td>
+            <td>.930</td>
+            <td class="rline">.990</td>
+            <td>.863</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}[h]
+\setlength{\tabcolsep}{3pt}
+\centering
+\footnotesize
+\begin{tabular}{lll|rr|rr|rr|rr|rr|r}
+ & & & \multicolumn{2}{|c}{\bf\textsc{ar}} & \multicolumn{2}{|c}{\bf\textsc{es}} & \multicolumn{2}{|c}{\bf\textsc{fr}} & \multicolumn{2}{|c}{\bf\textsc{hi}} & \multicolumn{2}{|c|}{\bf\textsc{pt}} & \\
+ & & & \multicolumn{1}{|c}{F} & \multicolumn{1}{c}{M} & \multicolumn{1}{|c}{F} & \multicolumn{1}{c}{M} & \multicolumn{1}{|c}{F} & \multicolumn{1}{c}{M} & \multicolumn{1}{|c}{F} & \multicolumn{1}{c}{M} &\multicolumn{1}{|c}{F} & \multicolumn{1}{c|}{M} & AVG \\
+ \hline
+ \multirow{12}{4em}{\textsc{xglm} 7.5B} & \multirow{4}{*}{base} & BLEU & 7.6 & 7.5 & 35.5 & 38.2 & 27.1 & 28.6 & 13.8 & 16.4 & 29.2 & 33.1 & 23.7 \\
+ & & \textsc{comet} & -.040 & -.012 & .694 & .738 & .509 & .555 & .304 & .332 & .661 & .713 & .445 \\
+ & & L-Acc & .848 & .947 & .688 & .808 & .715 & .880 & .585 & .956 & .621 & .855 & .790 \\
+ & & S-Acc & .617 & .866 & .651 & .938 & .581 & .920 & .303 & .962 & .494 & .934 & .727 \\
+ \cline{2-14}
+ & \multirow{4}{*}{+mark} & BLEU & 7.7 & 7.8 & 35.4 & 38.2 & 27.5 & 28.7 & 14.0 & 16.7 & 29.1 & 32.4 & 23.7 \\
+ & & \textsc{comet} & -.038 & -.020& .704 & .735 & .508 & .556 & .300 & .317 & .663 & .714 & .444 \\
+ & & L-Acc & .868 & 0.939 & .665 & .811 & .701 & .881 & .581 & .955 & .626 & .860 & .789 \\
+ & & S-Acc & .664 & 0.856 & .612 & .937 & .562 & .919 & .355 & .966 & .519 & .927 & .732 \\
+ \cline{2-14}
+ & \multirow{4}{*}{\textsc{Ramp}} & BLEU & 9.2 & 8.8 & 37.5 & 39.4 & 27.5 & 29.2 & 14.8 & 16.6 & 31.4 & 33.3 & 24.8 \\
+ & & \textsc{comet} & .037 & .043 & .723 & .759 & .528 & .571 & .325 & .337 & .681 & .723 & .473 \\
+ & & L-Acc & .939 & .961 & .750 & .806 & .781 & .885 & .667 & .956 & .759 & .854 & .836 \\
+ & & S-Acc & .836 & .901 & .722 & .936 & .716 & .937 & .509 & .974 & .729 & .940 & .820 \\
+ \hline
+ \multirow{12}{4em}{\textsc{Bloom} 175B} & \multirow{4}{*}{base} & BLEU & 14.8 & 16.9 & 45.6 & 50.3 & 38.1 & 41.7 & 20.8 & 24.6 & 37.6 & 42.2 & 33.3 \\
+ & & \textsc{comet} & .282 & .395 & .837 & .892 & .719 & .770 & .599 & .629 & .807 & .861 & .679 \\
+ & & L-Acc & .665 & .966 & .578 & .814 & .660 & .902 & .480 & .951 & .594 & .872 & .748 \\
+ & & S-Acc & .411 & .934 & .515 & .965 & .581 & .961 & .212 & .973 & .525 & .960 & .704 \\
+ \cline{2-14}
+ & \multirow{4}{*}{+mark} & BLEU & 15.2 & 17.1 & 45.8 & 50.0 & 37.9 & 41.3 & 20.3 & 23.8 & 37.6 & 42.2 & 33.1 \\
+ & & \textsc{comet} & .294 & .387 & .843 & .887 & .712 & .767 & .576 & .606 & .807 & .861 & .674 \\
+ & & L-Acc & .707 & .969 & .610 & .818 & .663 & .902 & .493 & .958 & .594 & .872 & .759 \\
+ & & S-Acc & .482 & .936 & .568 & .973 & .588 & .962 & .284 & .974 & .525 & .960 & .725 \\
+ \cline{2-14}
+ & \multirow{4}{*}{\textsc{Ramp}} & BLEU & 16.7 & 17.6 & 47.9 & 50.2 & 39.5 & 41.8 & 22.2 & 25.0 & 39.3 & 42.7 & 34.3 \\
+ & & \textsc{comet} & .358 & .407 & .860 & .895 & .734 & .787 & .632 & .646 & .810 & .858 & .699 \\
+ & & L-Acc & .841 & .972 & .709 & .809 & .765 & .906 & .633 & .953 & .701 & .886 & .817 \\
+ & & S-Acc & .721 & .940 & .707 & .964 & .732 & .971 & .518 & .973 & .683 & .972 & .818 \\
+ \hline
+ \multirow{4}{4em}{Adapted MT} & & BLEU & 23.3 & 24.4 & 53.2 &	54.2 & 44.2 & 46.4 & 29.3 &	32.3 & 43.4 & 45.7 & 35.9 \\
+ & & \textsc{comet} & .496	& .522 & .876 & .902 & .759 & .797 &	.722 & .743 & .825 & .857 & .528 \\ 
+ & & L-Acc & .910 & .981 & .932 & .921 & .919 & .956 & .762 &	.837 & .922 & .961 & .853 \\
+ & & S-Acc & .940 & .970 & .910 & .960 & .950 & .960 &	.280 &	.750 &	.930 &	.990 & .863 \\
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Full results of same-language prompting on [MT-GenEval]{.smallcaps}.
+:::

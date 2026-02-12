@@ -1,0 +1,160 @@
+project:
+  type: book
+  output-dir: _output
+book:
+  title: "From Insights to Impact"
+  subtitle: "Utility and Failure Modes of Language Models in Clinical Practice"
+  author: "Shan Chen"
+  favicon: figures/logos/rug_crest_icon.png # Icon for the web version of the thesis
+  description: "Ph.D. Thesis, Center for Language and Cognition (CLCG), University of Groningen" # Description for the web version of the thesis
+  keyword: phd, thesis, quarto, template, groningen, rug, gronlp # Keywords for the web version of the thesis
+  url: https://gsarti.com/phd-thesis # The URL at which your thesis will be published
+  back-to-top-navigation: true
+  sidebar: 
+    logo: figures/logos/rug_eng_red_hat_line.png # Remove if you don't want any logo in the website sidebar
+    logo-alt: RUG Coat of Arms # Remove if you don't want any logo in the website sidebar
+    search: true
+    style: "floating"
+    background: "#ffffff"
+    tools:
+      - icon: github
+        href: https://github.com/gsarti/phd-thesis
+      - icon: person-circle
+        href: https://gsarti.com
+  page-footer:
+    border: true
+    left: |
+      © 2026 Shan Chen. All rights reserved.
+    center: |
+      <a href="https://www.rug.nl/?lang=en">![](/figures/logos/rug_eng_red.png){style='width: auto; height: 35px; padding-left: 10px; padding-right: 10px; margin-bottom:5px;'}</a>
+      <a href="https://www.rug.nl/research/clcg/?lang=en">![](/figures/logos/clcg.png){style='width: auto; height: 35px; padding-left: 10px; padding-right: 10px; margin-bottom:5px;'}</a>
+      <a href="https://projects.illc.uva.nl/indeep/">![](/figures/logos/indeep_logo_horizontal.png){style='width: auto; height: 35px; padding-left: 10px; padding-right: 10px; margin-bottom:5px;'}</a>
+      <a href="https://www.rug.nl/research/clcg/research/cl/?lang=en">![](/figures/logos/gronlp.png){style='width: auto; height: 35px; padding-left: 10px; padding-right: 10px; margin-bottom:5px;'}</a>
+    right: |
+      Written with <a href="https://quarto.org/">Quarto</a>.
+  date: today
+  date-format: "MMM Do, YYYY"
+  output-file: "thesis"
+  chapters:
+    - index.qmd
+    - chapters/chap-1.qmd
+    - part: "Part I: Potential Utilities of Language Models in Real Clinical Practice"
+      chapters:
+        - chapters/chap-2.qmd
+        - chapters/chap-3.qmd
+        - chapters/chap-4.qmd
+        - chapters/chap-5.qmd
+        - chapters/chap-6.qmd
+    - part: "Part II: Potential Fails of Language Models in Medical Settings"
+      chapters:
+        - chapters/chap-7.qmd
+        - chapters/chap-8.qmd
+        - chapters/chap-9.qmd
+        - chapters/chap-10.qmd
+        - chapters/chap-11.qmd
+        - chapters/chap-12.qmd
+    - chapters/chap-13.qmd
+    - chapters/references.qmd
+  appendices:
+    - chapters/appendix-a.qmd
+    - chapters/appendix-b.qmd
+    - chapters/appendix-c.qmd
+
+pdf-lang: "eng"
+freeze: auto
+frontmatter:
+
+  # Details page
+  department: "Center for Language and Cognition Groningen (CLCG)"
+  faculty: "Faculty of Arts"
+  funding_agency: "Dutch Research Council (NWO)" # Leave empty if not applicable
+  funding_project_type: "NWA-ORC"
+  funding_project_title: "InDeep: Interpreting Deep Learning Models for Text and Sound"
+  funding_project_number: "NWA.1292.19.399"
+  document_formatting_comment: "Document typeset with Quarto and compiled using pdfLaTeX"
+  cover_designer: "Gabriele Sarti and Lukas Edman"
+  book_series: "Groningen Dissertations in Linguistics"
+  volume: "263"
+  year: "2025"
+
+  # Front matter
+  eng:
+    university: "University of Groningen"
+    defense_date: "Thursday 11 December 2025" # Use e.g. Thursday 11 December 2025 format
+    candidate_birth_date: "11 November 1996" # Use e.g. January 22nd, 1996
+    rector_magnificus: "Prof. J. M. A. Scherpen"
+  nld:
+    university: "Rijksuniversiteit Groningen"
+    rector_magnificus: "prof. dr. ir. J. M. A. Scherpen"
+    defense_date: "donderdag 11 december 2025" # Use e.g. donderdag 16 november 2023 format
+    candidate_birth_date: "11 november 1996" # Use e.g. 4 februari 1994
+  defense_time: "14:30"
+  candidate_birthplace: "Trieste, Italy"
+
+  # Supervisors and examiners
+  supervisors:
+    - title: "Dr."
+      name: "A. Bisazza"
+    - title: "Prof."
+      name: "M. Nissim"
+  cosupervisors:
+    - title: "Dr."
+      name: "G. Chrupała"
+  committee:
+    - title: "Prof."
+      name: "M. Biehl"
+    - title: "Prof."
+      name: "B. Plank"
+    - title: "Prof."
+      name: "I. Titov"
+  
+  dedication: "A nonno Giancarlo, e alle sue simmetrie nell'arte e nella scienza"
+
+bibliography:
+- latex/references/anthology-filtered.bib
+- latex/references/index.bib
+- latex/references/chap-2-background.bib
+- latex/references/chap-3-inseq.bib
+- latex/references/chap-4-pecore.bib
+- latex/references/chap-5-mirage.bib
+- latex/references/chap-6-ramp.bib
+- latex/references/chap-7-sae-litmt.bib
+- latex/references/chap-8-divemt.bib
+- latex/references/chap-9-qe4pe.bib
+- latex/references/chap-10-unsup-wqe.bib
+- latex/references/chap-11-conclusion.bib
+- latex/references/appendices.bib
+
+format:
+  html:
+    filters:
+      - highlight-text
+      - pseudocode
+      - pdf-to-image
+    mainfont: Roboto
+    monofont: Fira Code
+    highlight-style: arrow
+    monobackgroundcolor: "#F7F7F7"
+    theme: 
+      - html/theme.css
+      - html/theme.scss
+      - lumen
+    code-fold: false
+    css: html/custom.css
+    backgroundcolor: "#ffffff"
+    tbl-cap-location: bottom
+    csl: html/bibliography.csl
+  pdf:
+    filters:
+      - highlight-text
+      - pseudocode 
+      - at: pre-ast
+        path: _extensions/gsarti/rug-phd-thesis/rug-phd-thesis.lua
+    template: latex/rug-phd-thesis.tex
+    cite-method: natbib
+    link-citations: true
+    pdf-engine: pdflatex
+    keep-tex: true
+    fig-pos: "!ht"
+    tbl-pos: "t"
+    tbl-cap-location: bottom

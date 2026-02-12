@@ -1,0 +1,126 @@
+:::{#tbl-divemt-fields}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable leftalign">
+    <thead>
+        <tr>
+            <th><span data-qmd="**Field name**"></span></th>
+            <th><span data-qmd="**Description**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td><span data-qmd="`unit_id, flores_id, subject_id, task_type`"></span></td>
+            <td>Identifiers for the item, respective FLORES-101 sentence, translator and translation mode.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`src_text`"></span></td>
+            <td>The original source sentence extracted from Wikinews, wikibooks or wikivoyage.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`mt_text`"></span></td>
+            <td>MT output sentence before post-editing, present only if <span data-qmd="`task_type`"></span> is 'pe'.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`tgt_text`"></span></td>
+            <td>Final sentence produced by the translator (either from scratch or post-editing <span data-qmd="`mt_text`"></span>)</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="`aligned_edit`"></span></td>
+            <td>Aligned visual representation of the machine translation and its post-edit with edit operations</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`edit_time`"></span></td>
+            <td>Total editing time for the translation in seconds.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`k_letter, k_digit, k_white, k_symbol, k_nav`"></span></td>
+            <td>Number of keystrokes for various key types (letters, digits, keystrokes, whitespaces, punctuation, navigation keys) during the translation.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`k_erease, k_copy, k_paste, k_cut, k_do`"></span></td>
+            <td>Number of keystrokes for erease (backspace, cancel), copy, paste, cut and Enter actions during the translation.</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="`k_total`"></span></td>
+            <td>Total number of all keystroke categories during the translation.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`n_pause_geq_N`"></span>, <span data-qmd="`len_pause_geq_N`"></span></td>
+            <td>Number and length of pauses longer than 300ms and 1000ms during the translation.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`num_annotations`"></span></td>
+            <td>Number of times the translator focused the target sentence texbox during the session.</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="`n_insert, n_delete, n_substitute, n_shift, tot_shifted_words, tot_edits, hter`"></span></td>
+            <td>Granular editing metrics and overall HTER computed using the Tercom library.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`cer`"></span></td>
+            <td>Character-level HTER score computed between the MT and post-edited outputs.</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="`bleu, chrf`"></span></td>
+            <td>Sentence-level BLEU and ChrF scores between MT and post-edited fields computed using the SacreBLEU library with default parameters.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="`time_per_char, key_per_char, words_per_hour, words_per_minute`"></span></td>
+            <td>Edit time per source character, expressed in seconds. Proportion of keys per character needed to perform the translation. Amount of source words translated or post-edited per hour/minute</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="`subject_visit_order`"></span></td>
+            <td>Id denoting the order in which the translator accessed documents in the interface.</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}[ht]
+    \centering\footnotesize
+    \begin{tabular}{p{1.3in}p{\textwidth - 1.7in}}
+    \toprule
+        \textbf{Field name} & \textbf{Description} \\
+        \midrule
+        \scriptsize\texttt{unit_id, flores_id,} \texttt{subject_id, task_type} & Identifiers for the item, respective FLORES-101 sentence, translator and translation mode. \\
+        \midrule
+        \scriptsize\texttt{src_text} & The original source sentence extracted from Wikinews, wikibooks or wikivoyage. \\
+        \scriptsize\texttt{mt_text} & MT output sentence before post-editing, present only if \texttt{task_type} is `pe'. \\
+        \scriptsize\texttt{tgt_text} & Final sentence produced by the translator (either from scratch or post-editing \texttt{mt_text}) \\
+        \scriptsize\texttt{aligned_edit} & Aligned visual representation of the machine translation and its post-edit with edit operations \\
+        \midrule
+        \scriptsize\texttt{edit_time} & Total editing time for the translation in seconds. \\
+        \midrule
+        \scriptsize\texttt{k_letter, k_digit,} \texttt{k_white, k_symbol,} \texttt{k_nav} & Number of keystrokes for various key types (letters, digits, keystrokes, whitespaces, punctuation, navigation keys) during the translation. \\
+        \scriptsize\texttt{k_erease, k_copy,} \texttt{k_paste, k_cut, k_do} & Number of keystrokes for erease (backspace, cancel), copy, paste, cut and Enter actions during the translation. \\
+        \scriptsize\texttt{k_total} & Total number of all keystroke categories during the translation. \\
+        \midrule
+        \scriptsize\texttt{n_pause_geq_N}, \texttt{len_pause_geq_N} & Number and length of pauses longer than 300ms and 1000ms during the translation. \\
+        \midrule
+        \scriptsize\texttt{num_annotations} & Number of times the translator focused the target sentence texbox during the session. \\
+        \midrule
+        \scriptsize\texttt{n_insert, n_delete,} \texttt{n_substitute, n_shift,} \texttt{tot_shifted_words,} \texttt{tot_edits, hter} & Granular editing metrics and overall HTER computed using the Tercom library. \\
+        \scriptsize\texttt{cer} & Character-level HTER score computed between the MT and post-edited outputs. \\
+        \midrule
+        \scriptsize\texttt{bleu, chrf} & Sentence-level BLEU and ChrF scores between MT and post-edited fields computed using the SacreBLEU library with default parameters. \\
+        \midrule
+        \scriptsize\texttt{time_per_char,} \texttt{key_per_char,} \texttt{words_per_hour/minute} & Edit time per source character, expressed in seconds. Proportion of keys per character needed to perform the translation. Amount of source words translated or post-edited per hour/minute \\
+        \midrule
+        \scriptsize\texttt{subject_visit_order} & Id denoting the order in which the translator accessed documents in the interface. \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Description of the main fields associated to every DivEMT data entry. An entry correspond to a translation in a specific modality (HT, PE$_1$ or PE$_2$) for one of the six target languages
+:::

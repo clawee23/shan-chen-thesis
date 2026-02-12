@@ -1,0 +1,190 @@
+:::{#tbl-chap6-cross-lingual-analysis}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr>
+            <td rowspan="14" class="rowspan"><span data-qmd="**In-context examples (EN)**"></span></td>
+            <td><span data-qmd="1. **Maybe he should. What did you think about that guy findin 3 million dollars worth of old baseball cards in his grandpas attic.**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="2. **Yeah that makes sense, did you heard about the $10 million bunker he has?**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="3. I have. I heard that he started a library in 1895 with 32,000 books in it. All from his personal collection. Can you imagine?"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="4. **Yeah that makes sense, did you heard about the $10 million bunker he has?**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="5. **Yeah that makes sense, did you heard about the $10 million bunker he has?**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="6. **Maybe he should. What did you think about that guy findin 3 million dollars worth of old baseball cards in his grandpas attic.**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="7. That is really expensive I agree, did you watch the Lego Batman movie?"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="8. **Yeah that makes sense, did you heard about the $10 million bunker he has?**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="9. That is crazy. Do you like Tom Hanks, he's grossed over 8.5 billion at the box office"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="10. That is really expensive I agree, did you watch the Lego Batman movie?"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="11. That is crazy. Do you like Tom Hanks, he's grossed over 8.5 billion at the box office"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="12. That is crazy. Do you like Tom Hanks, he's grossed over 8.5 billion at the box office"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="13. He doesnt look like he has 56 years! I heard he made 75000000 from Mission Impossible 3"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="14. Really? I guess he made a valuable contribution to science and also to medicine, did you hear of that species of flying snakes"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Input (EN)**"></span></td>
+            <td><span data-qmd="If you got it why not? He is worth over 20 billion dollars after all."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Reference (ES)**"></span></td>
+            <td><span data-qmd="Si lo tiene, ¿por qué no? Al fin y al cabo, vale más de 20 000 millones de dólares."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**[Ramp]{.smallcaps} (ES)**"></span></td>
+            <td><span data-qmd="Si lo tienes, ¿por qué no? Es millonario después de todo."></span></td>
+        </tr>
+        <tr class="bottomrule">
+            <td><span data-qmd="**base (ES)**"></span></td>
+            <td><span data-qmd="Si lo tienes, ¿por qué no? Él vale más de 20 mil millones de dólares después de todo."></span></td>
+        </tr>
+        <tr>
+            <td rowspan="14" class="rowspan"><span data-qmd="**In-context examples (EN)**"></span></td>
+            <td><span data-qmd="1. thats such a fun thing to have in your code of conduct. are you more of a dog person than cat person?"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="2. For sure lol, it was so nice talking with you, say hi to your cats for me!"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="3. thats such a fun thing to have in your code of conduct. are you more of a dog person than cat person?"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="4. **What can't dogs do! I know they aren't color blind like we were taught when young. It was so nice chatting with you, tell yuki hi!**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="5. For sure lol, it was so nice talking with you, say hi to your cats for me!"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="6. **Oh yeah. That sucker was mean let me tell you. I think I would have a rabid dog chase me, which by the way dogs are not color blind!**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="7. **Thanks you too! And watch out for dogs, they're not actually colorblind but they just don't see as many colors as a normal human can**"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="8. LOL That's funny! Google prefers dogs over cats! The wrote in their code of conduct that they are a dog company. It's been fun chatting with you!"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="9. Such gorgeous dogs! Do you & your dogs live in a northern climate?"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="10. LOL That's funny! Google prefers dogs over cats! The wrote in their code of conduct that they are a dog company. It's been fun chatting with you!"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="11. thats such a fun thing to have in your code of conduct. are you more of a dog person than cat person?"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="12. Such gorgeous dogs! Do you & your dogs live in a northern climate?"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="13. **haha me too! I heard that they wore clothes that were full of color. Surprised me because I always thought of them as wearing black and white.**"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="14. For sure lol, it was so nice talking with you, say hi to your cats for me!"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Input (EN)**"></span></td>
+            <td><span data-qmd="lol I had an African grey that could say everything I said around the house. Like clean your room! as well any loud sounds."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Reference (PT)**"></span></td>
+            <td><span data-qmd='"lol Tinha um papagaio-cinzento que conseguia dizer tudo o que ouvia em casa. Tipo "Limpe o seu quarto!" e também quaisquer sons altos"'></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**[Ramp]{.smallcaps} (PT)**"></span></td>
+            <td><span data-qmd="haha eu também! Eu ouvi dizer que eles usam roupas de todas as cores. Surpreendeu-me porque eu sempre pensei neles usando preto e branco."></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**base (PT)**"></span></td>
+            <td><span data-qmd="hahaha eu tinha um papagaio cinza africano que dizia tudo o que eu dizia em casa. Como limpar o quarto! Bem como qualquer som alto."></span></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\setlength{\tabcolsep}{3pt}
+\centering
+\scriptsize
+\begin{tabular}{p{0.10\linewidth}cp{0.8\linewidth}}
+\toprule
+\multirow{3}{5em}{In-context examples (\textsc{en})} & 1. & \textbf{Maybe he should. What did you think about that guy findin 3 million dollars worth of old baseball cards in his grandpas attic.} \\ 
+& 2. & \textbf{Yeah that makes sense, did you heard about the \$10 million bunker he has?} \\ 
+& 3. & I have. I heard that he started a library in 1895 with 32,000 books in it. All from his personal collection. Can you imagine? \\ 
+& 4. & \textbf{Yeah that makes sense, did you heard about the \$10 million bunker he has?} \\ 
+& 5. & \textbf{Yeah that makes sense, did you heard about the \$10 million bunker he has?} \\
+& 6. & \textbf{Maybe he should. What did you think about that guy findin 3 million dollars worth of old baseball cards in his grandpas attic.} \\
+& 7. & That is really expensive I agree, did you watch the Lego Batman movie? \\
+& 8. & \textbf{Yeah that makes sense, did you heard about the \$10 million bunker he has?} \\
+& 9. & That is crazy. Do you like Tom Hanks, he's grossed over 8.5 billion at the box office \\
+& 10. &  That is really expensive I agree, did you watch the Lego Batman movie? \\
+& 11. & That is crazy. Do you like Tom Hanks, he's grossed over 8.5 billion at the box office \\
+& 12. & That is crazy. Do you like Tom Hanks, he's grossed over 8.5 billion at the box office \\
+& 13. & He doesnt look like he has 56 years! I heard he made 75000000 from Mission Impossible 3 \\
+& 14. & Really? I guess he made a valuable contribution to science and also to medicine, did you hear of that species of flying snakes \\
+\midrule
+Input (\textsc{en}) & & If you got it why not? He is worth over 20 billion dollars after all. \\
+Reference (\textsc{es}) & & Si lo tiene, ¿por qué no? Al fin y al cabo, vale más de 20 000 millones de dólares. \\
+\textsc{Ramp} (\textsc{es}) & & Si lo tienes, ¿por qué no? Es millonario después de todo. \\
+base (\textsc{es}) & & Si lo tienes, ¿por qué no? Él vale más de 20 mil millones de dólares después de todo. \\
+\midrule
+\midrule
+\multirow{3}{5em}{In-context examples (\textsc{en})} & 1. & thats such a fun thing to have in your code of conduct. are you more of a dog person than cat person? \\
+ & 2. & For sure lol, it was so nice talking with you, say hi to your cats for me! \\
+& 3. & thats such a fun thing to have in your code of conduct. are you more of a dog person than cat person? \\
+& 4. & \textbf{What can't dogs do! I know they aren't color blind like we were taught when young. It was so nice chatting with you, tell yuki hi!} \\
+& 5.& For sure lol, it was so nice talking with you, say hi to your cats for me! \\
+& 6. & \textbf{Oh yeah. That sucker was mean let me tell you. I think I would have a rabid dog chase me, which by the way dogs are not color blind!} \\
+& 7. & \textbf{Thanks you too! And watch out for dogs, they're not actually colorblind but they just don't see as many colors as a normal human can} \\
+& 8. & LOL That's funny! Google prefers dogs over cats! The wrote in their code of conduct that they are a dog company. It's been fun chatting with you! \\
+& 9.  & Such gorgeous dogs! Do you \& your dogs live in a northern climate? \\
+& 10. & LOL That's funny! Google prefers dogs over cats! The wrote in their code of conduct that they are a dog company. It's been fun chatting with you! \\
+& 11. &  thats such a fun thing to have in your code of conduct. are you more of a dog person than cat person? \\
+& 12. & Such gorgeous dogs! Do you \& your dogs live in a northern climate? \\
+& 13. & \textbf{haha me too! I heard that they wore clothes that were full of color. Surprised me because I always thought of them as wearing black and white.} \\
+& 14. & For sure lol, it was so nice talking with you, say hi to your cats for me! \\ 
+\midrule
+Input (\textsc{en}) & & lol I had an African grey that could say everything I said around the house. Like clean your room! as well any loud sounds. \\
+Reference (\textsc{pt}) & & "lol Tinha um papagaio-cinzento que conseguia dizer tudo o que ouvia em casa. Tipo ""Limpe o seu quarto!"" e também quaisquer sons altos" \\
+\textsc{Ramp} (\textsc{pt}) & & haha eu também! Eu ouvi dizer que eles usam roupas de todas as cores. Surpreendeu-me porque eu sempre pensei neles usando preto e branco. \\
+base (\textsc{pt}) & & hahaha eu tinha um papagaio cinza africano que dizia tudo o que eu dizia em casa. Como limpar o quarto! Bem como qualquer som alto. \\
+\midrule
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Examples of [CoCoA-MT]{.smallcaps} (formal) where [Ramp]{.smallcaps} performs worse than the base model in cross-lingual zero-shot setting. Potentially problematic in-context examples leading to mistranslations or hallucinations are highlighted.
+:::

@@ -1,0 +1,313 @@
+:::{#tbl-qe4pe-questionnaire}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<p style="font-weight: bold;font-style: italic;font-size: 0.8em">Hover bars to see avg. response values.</p>
+<table class="center-table leftalign">
+    <thead>
+        <tr>
+            <th><span data-qmd="**Question**"></span></th>
+            <th class="bar-chart-cell"><span data-qmd="**Italian**"></span></th>
+            <th class="bar-chart-cell"><span data-qmd="**Dutch**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="longrow">MT outputs were generally of high quality.</td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group">
+                        <div class="bar" style="height: 66.6%; background-color: #3949f5;" title="No Highlight: 3.33"></div>
+                        <div class="bar" style="height: 73.2%; background-color: #1c9a0e;" title="Oracle: 3.66"></div>
+                        <div class="bar" style="height: 60%; background-color: #e6950a;" title="Unsupervised: 3"></div>
+                        <div class="bar" style="height: 60%; background-color: #dc0d97;" title="Supervised: 3"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group">
+                        <div class="bar" style="height: 46.6%; background-color: #3949f5;" title="No Highlight: 2.33"></div>
+                        <div class="bar" style="height: 60%; background-color: #1c9a0e;" title="Oracle: 3"></div>
+                        <div class="bar" style="height: 46.6%; background-color: #e6950a;" title="Unsupervised: 2.33"></div>
+                        <div class="bar" style="height: 73.2%; background-color: #dc0d97;" title="Supervised: 3.66"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+        </tr>
+        <tr class="midrule">
+            <td>Provided texts were challenging to translate.</td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group">
+                        <div class="bar" style="height: 66.6%; background-color: #3949f5;" title="No Highlight: 3.33"></div>
+                        <div class="bar" style="height: 73.4%; background-color: #1c9a0e;" title="Oracle: 3.67"></div>
+                        <div class="bar" style="height: 73.4%; background-color: #e6950a;" title="Unsupervised: 3.67"></div>
+                        <div class="bar" style="height: 86.6%; background-color: #dc0d97;" title="Supervised: 4.33"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group">
+                        <div class="bar" style="height: 93.4%; background-color: #3949f5;" title="No Highlight: 4.67"></div>
+                        <div class="bar" style="height: 73.4%; background-color: #1c9a0e;" title="Oracle: 3.67"></div>
+                        <div class="bar" style="height: 86.6%; background-color: #e6950a;" title="Unsupervised: 4.33"></div>
+                        <div class="bar" style="height: 60%; background-color: #dc0d97;" title="Supervised: 3.00"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="bold">Highlights ...</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>... were generally accurate in detecting potential issues.</td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group-3">
+                        <div class="bar" style="height: 53.4%; background-color: #1c9a0e;" title="Oracle: 2.67"></div>
+                        <div class="bar" style="height: 53.4%; background-color: #e6950a;" title="Unsupervised: 2.67"></div>
+                        <div class="bar" style="height: 40%; background-color: #dc0d97;" title="Supervised: 2"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group-3">
+                        <div class="bar" style="height: 60%; background-color: #1c9a0e;" title="Oracle: 3"></div>
+                        <div class="bar" style="height: 60%; background-color: #e6950a;" title="Unsupervised: 3"></div>
+                        <div class="bar" style="height: 53.4%; background-color: #dc0d97;" title="Supervised: 2.67"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>... were generally useful during editing.</td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group-3">
+                        <div class="bar" style="height: 46.6%; background-color: #1c9a0e;" title="Oracle: 2.33"></div>
+                        <div class="bar" style="height: 46.6%; background-color: #e6950a;" title="Unsupervised: 2.33"></div>
+                        <div class="bar" style="height: 33.4%; background-color: #dc0d97;" title="Supervised: 1.67"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group-3">
+                        <div class="bar" style="height: 33.4%; background-color: #1c9a0e;" title="Oracle: 1.67"></div>
+                        <div class="bar" style="height: 60%; background-color: #e6950a;" title="Unsupervised: 3"></div>
+                        <div class="bar" style="height: 46.6%; background-color: #dc0d97;" title="Supervised: 2.33"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>... improved my editing productivity.</td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group-3">
+                        <div class="bar" style="height: 46.6%; background-color: #1c9a0e;" title="Oracle: 2.33"></div>
+                        <div class="bar" style="height: 46.6%; background-color: #e6950a;" title="Unsupervised: 2.33"></div>
+                        <div class="bar" style="height: 40%; background-color: #dc0d97;" title="Supervised: 2.00"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group-3">
+                        <div class="bar" style="height: 40%; background-color: #1c9a0e;" title="Oracle: 2.0"></div>
+                        <div class="bar" style="height: 53.4%; background-color: #e6950a;" title="Unsupervised: 2.67"></div>
+                        <div class="bar" style="height: 33.4%; background-color: #dc0d97;" title="Supervised: 1.67"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>... improved the quality of my translations.</td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group-3">
+                        <div class="bar" style="height: 26.6%; background-color: #1c9a0e;" title="Oracle: 1.33"></div>
+                        <div class="bar" style="height: 53.4%; background-color: #e6950a;" title="Unsupervised: 2.67"></div>
+                        <div class="bar" style="height: 26.6%; background-color: #dc0d97;" title="Supervised: 1.33"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group-3">
+                        <div class="bar" style="height: 40%; background-color: #1c9a0e;" title="Oracle: 2"></div>
+                        <div class="bar" style="height: 66.6%; background-color: #e6950a;" title="Unsupervised: 3.33"></div>
+                        <div class="bar" style="height: 33.4%; background-color: #dc0d97;" title="Supervised: 1.67"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>... required additional editing effort on my part.</td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group-3">
+                        <div class="bar" style="height: 40%; background-color: #1c9a0e;" title="Oracle: 2.00"></div>
+                        <div class="bar" style="height: 53.4%; background-color: #e6950a;" title="Unsupervised: 2.67"></div>
+                        <div class="bar" style="height: 53.4%; background-color: #dc0d97;" title="Supervised: 2.67"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group-3">
+                        <div class="bar" style="height: 40%; background-color: #1c9a0e;" title="Oracle: 2.00"></div>
+                        <div class="bar" style="height: 53.4%; background-color: #e6950a;" title="Unsupervised: 2.67"></div>
+                        <div class="bar" style="height: 53.4%; background-color: #dc0d97;" title="Supervised: 2.67"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>... influenced my choices regarding edits.</td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group-3">
+                        <div class="bar" style="height: 20%; background-color: #1c9a0e;" title="Oracle: 1"></div>
+                        <div class="bar" style="height: 40%; background-color: #e6950a;" title="Unsupervised: 2.00"></div>
+                        <div class="bar" style="height: 53.4%; background-color: #dc0d97;" title="Supervised: 2.67"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group-3">
+                        <div class="bar" style="height: 33.4%; background-color: #1c9a0e;" title="Oracle: 1.67"></div>
+                        <div class="bar" style="height: 40%; background-color: #e6950a;" title="Unsupervised: 2.00"></div>
+                        <div class="bar" style="height: 40%; background-color: #dc0d97;" title="Supervised: 2.00"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>... helped identify errors I'd have otherwise missed.</td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group-3">
+                        <div class="bar" style="height: 40%; background-color: #1c9a0e;" title="Oracle: 2"></div>
+                        <div class="bar" style="height: 46.6%; background-color: #e6950a;" title="Unsupervised: 2.33"></div>
+                        <div class="bar" style="height: 60%; background-color: #dc0d97;" title="Supervised: 3"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+            <td class="bar-chart-cell">
+                <div class="bar-chart">
+                    <div class="bar-group-3">
+                        <div class="bar" style="height: 26.6%; background-color: #1c9a0e;" title="Oracle: 1.33"></div>
+                        <div class="bar" style="height: 40%; background-color: #e6950a;" title="Unsupervised: 2"></div>
+                        <div class="bar" style="height: 33.4%; background-color: #dc0d97;" title="Supervised: 1.67"></div>
+                    </div>
+                    <div class="midline"></div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+.bar-chart {
+    position: relative;
+    height: 40px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.bar-group {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    width: 80px;
+    gap: 2px;
+}
+
+.bar-group-3 {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    width: 60px;
+    gap: 2px;
+}
+
+.bar {
+    width: 18px;
+    min-height: 2px;
+    transition: opacity 0.3s ease;
+}
+
+.bar:hover {
+    opacity: 0.8;
+}
+
+.midline {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-style: dashed;
+    border-width: 2px 0 0 0;
+    width: 80px;
+}
+</style>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \center
+    \footnotesize
+    \begin{tabular}{>{\raggedright}p{4.1cm}m{1.3cm}m{1.3cm}}
+    \toprule[1.5pt]
+    \textbf{Question} &\hspace{-0.35cm}\textbf{Italian}\hspace{-0.2cm} & \hspace{-0.35cm}\textbf{Dutch}\hspace{-0.2cm} \\
+    \midrule
+    MT outputs were generally of high quality. & \modblocks{3.33}{3.66}{3}{3} & \modblocks{2.33}{3}{2.33}{3.66} \\
+    Provided texts were challenging to translate. & \modblocks{3.33}{3.67}{3.67}{4.33} & \modblocks{4.67}{3.67}{4.33}{3.00} \\
+    \midrule
+    \textbf{Highlights ...} & & \\
+    ... were generally accurate in detecting potential issues. & \modblockshigh{2.67}{2.67}{2} & \modblockshigh{3}{3}{2.67} \\
+    ... were generally useful during editing. & \modblockshigh{2.33}{2.33}{1.67} & \modblockshigh{1.67}{3}{2.33} \\
+    ... improved my editing productivity. & \modblockshigh{2.33}{2.33}{2.00} & \modblockshigh{2.0}{2.67}{1.67} \\
+    ... improved the quality of my translations. & \modblockshigh{1.33}{2.67}{1.33} & \modblockshigh{2}{3.33}{1.67} \\
+    ... required additional editing effort on my part. & \modblockshigh{2.00}{2.67}{2.67} & \modblockshigh{2.00}{2.67}{2.67} \\
+    ... influenced my choices regarding edits. & \modblockshigh{1}{2.00}{2.67} & \modblockshigh{1.67}{2.00}{2.00} \\
+    ... helped identify errors I'd have otherwise missed. & \modblockshigh{2}{2.33}{3} & \modblockshigh{1.33}{2}{1.67} \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Post-task questionnaire responses. Bars represent responses ranging from 1--Strongly disagree (no bar) to 5--Strongly agree (full bar), averaged across $n=3$ translators per language for [No Highlight]{.smallcaps}, [Oracle]{.smallcaps}, [Unsupervised]{.smallcaps}, and [Supervised]{.smallcaps}. Dotted line mark avg. judgments of 3--Neither agree nor disagree.
+:::

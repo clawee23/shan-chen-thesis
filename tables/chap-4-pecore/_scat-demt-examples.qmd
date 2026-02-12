@@ -1,0 +1,142 @@
+:::{#tbl-scat-demt-examples}
+
+:::{.content-visible when-format="html"}
+```{=html}
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr class="bottomrule">
+            <td><span data-qmd="**SCAT+**"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_x$: I loathe that [song]{bg-color='brand-color.lightblueclear'}. But why did you bite poor Birdie's head off? Because I've heard it more times than I care to. [It]{bg-color='brand-color.lightblueclear'} haunts me. Just stop, for a moment."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_y$: Je hais cette [chanson]{bg-color='brand-color.lightblueclear'} [(*song*, **feminine**)]{color='brand-color.lightgray'}. Mais pourquoi avoir parlé ainsi à la pauvre Birdie ? Parce que j'ai entendu ce chant plus que de fois que je ne le peux. [Elle]{bg-color='brand-color.lightblueclear'} [(*she*)]{color='brand-color.lightgray'} me hante. Arrêtez-vous un moment."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$x$: How does [it]{bg-color='brand-color.lightgreen'} haunt you?"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td> <span data-qmd="$y$: Comment peut-[elle]{bg-color='brand-color.lightgreen'} [(*she*)]{color='brand-color.lightgray'} vous hanter?"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_x$: - Ah! Sven! It's been so long. - Riley, it's good to see you. - You, too. How's the [boat]{bg-color='brand-color.lightblueclear'}? Uh, [it]{bg-color='brand-color.lightblueclear'} creaks, [it]{bg-color='brand-color.lightblueclear'} groans."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_y$: Sven ! - Riley, contente de te voir. - Content aussi. Comment va le [bateau]{bg-color='brand-color.lightblueclear'} [(*boat*, **masculine**)]{color='brand-color.lightgray'}? [Il]{bg-color='brand-color.lightblueclear'} [(*he*)]{color='brand-color.lightgray'} craque de partout."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$x$: Not as fast as [it]{bg-color='brand-color.lightgreen'} used to be."></span></td>
+        </tr>
+        <tr class="midrule">
+            <td> <span data-qmd="$y$: [Il]{bg-color='brand-color.lightgreen'} [(*he*)]{color='brand-color.lightgray'} n'est pas aussi rapide qu'avant."></span></td>
+        </tr>
+        <tr class="bottomrule">
+            <td><span data-qmd="**[DiscEval-MT ana]{.smallcaps}**"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_x$: But how do you know the [woman]{bg-color='brand-color.lightblueclear'} isn't going to turn out like all the others?"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_y$: Mais comment tu sais que la [femme]{bg-color='brand-color.lightblueclear'} [(*woman*, **feminine**)]{color='brand-color.lightgray'} ne finira pas comme toutes les autres?"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$x$: [This one]{bg-color='brand-color.lightgreen'}'s different."></span></td>
+        </tr>
+        <tr class="midrule">
+            <td> <span data-qmd="$y$: [Celle-ci]{bg-color='brand-color.lightgreen'} [(*This one*, **feminine**)]{color='brand-color.lightgray'} est différente."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_x$: Can you authenticate these [signatures]{bg-color='brand-color.lightblueclear'}, please?"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_y$: Pourriez-vous authentifier ces [signatures]{bg-color='brand-color.lightblueclear'} [(**feminine**)]{color='brand-color.lightgray'}, s'il vous plaît?"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$x$: Yes, they're [mines]{bg-color='brand-color.lightgreen'}."></span></td>
+        </tr>
+        <tr class="midrule">
+            <td> <span data-qmd="$y$: Oui, ce sont les [miennes]{bg-color='brand-color.lightgreen'} [(*mines*, **feminine**)]{color='brand-color.lightgray'}."></span></td>
+        </tr>
+        <tr class="bottomrule">
+            <td><span data-qmd="**[DiscEval-MT lex]{.smallcaps}**"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_x$: Do you think you can [shoot]{bg-color='brand-color.lightblueclear'} it from here?"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_y$: Tu penses que tu peux le [tirer]{bg-color='brand-color.lightblueclear'} [(*shoot*)]{color='brand-color.lightgray'} dessus à partir d'ici?"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$x$: Hand me that [bow]{bg-color='brand-color.lightgreen'}."></span></td>
+        </tr>
+        <tr class="midrule">
+            <td> <span data-qmd="$y$: Passe-moi cet [arc]{bg-color='brand-color.lightgreen'} [(*bow*, **weapon**)]{color='brand-color.lightgray'}."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_x$: Can I help you with the [wrapping]{bg-color='brand-color.lightblueclear'}?"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$C_y$: Est-ce que je peux t'aider pour l'[emballage]{bg-color='brand-color.lightblueclear'} [(*wrapping*)]{color='brand-color.lightgray'}?"></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$x$: Hand me that [bow]{bg-color='brand-color.lightgreen'}."></span></td>
+        </tr>
+        <tr>
+            <td> <span data-qmd="$y$: Passe-moi ce [ruban]{bg-color='brand-color.lightgreen'} [(*bow*, **gift wrap**)]{color='brand-color.lightgray'}."></span></td>
+        </tr>
+    </tbody>
+</table>
+```
+:::
+
+:::{.content-visible when-format="pdf"}
+```{=latex}
+\begin{table}
+    \centering
+    \footnotesize
+    \begin{tabular}{p{0.95\textwidth}}
+        \toprule[1.5pt]
+        \textbf{SCAT+} \\
+        \midrule
+        $C_x:$ I loathe that \colorbox{lightblueclear}{song}. But why did you bite poor Birdie's head off? Because I've heard it more times than I care to. \colorbox{lightblueclear}{It} haunts me. Just stop, for a moment. \\
+        $C_y:$ Je hais cette \colorbox{lightblueclear}{chanson} \textcolor{lightgray}{(song, \textsc{feminine})}. Mais pourquoi avoir parlé ainsi à la pauvre Birdie ? Parce que j'ai entendu ce chant plus que de fois que je ne le peux. \colorbox{lightblueclear}{Elle} \textcolor{lightgray}{(she)} me hante. Arrêtez-vous un moment. \\
+        $x:$ How does \colorbox{lightgreen}{it} haunt you? \\
+        $y:$ Comment peut-\colorbox{lightgreen}{elle} \textcolor{lightgray}{(she)} vous hanter? \\
+        \midrule
+        $C_x$: - Ah! Sven! It's been so long. - Riley, it's good to see you. - You, too. How's the \colorbox{lightblueclear}{boat}? Uh, \colorbox{lightblueclear}{it} creaks, \colorbox{lightblueclear}{it} groans. \\
+        $C_y:$ Sven ! - Riley, contente de te voir. - Content aussi. Comment va le \colorbox{lightblueclear}{bateau} \textcolor{lightgray}{(boat, \textsc{masculine})}? \colorbox{lightblueclear}{Il} \textcolor{lightgray}{(he)} craque de partout. \\
+        $x:$ Not as fast as \colorbox{lightgreen}{it} used to be. \\
+        $y:$ \colorbox{lightgreen}{Il} \textcolor{lightgray}{(he)} n'est pas aussi rapide  qu'avant. \\
+        \midrule
+        \textbf{\textsc{DiscEval-MT ana}} \\
+        \midrule
+        $C_x:$ But how do you know the \colorbox{lightblueclear}{woman} isn't going to turn out like all the others? \\
+        $C_y:$ Mais comment tu sais que la \colorbox{lightblueclear}{femme} \textcolor{lightgray}{(woman, \textsc{feminine})} ne finira pas comme toutes les autres? \\
+        $x:$ \colorbox{lightgreen}{This one}'s different. \\
+        $y:$ \colorbox{lightgreen}{Celle-ci} \textcolor{lightgray}{(This one, \textsc{feminine})} est différente. \\
+        \midrule
+        $C_x:$ Can you authenticate these \colorbox{lightblueclear}{signatures}, please? \\
+        $C_y:$ Pourriez-vous authentifier ces \colorbox{lightblueclear}{signatures} \textcolor{lightgray}{(\textsc{feminine})}, s'il vous plaît? \\
+        $x:$ Yes, they're \colorbox{lightgreen}{mines}. \\
+        $y:$ Oui, ce sont les \colorbox{lightgreen}{miennes} \textcolor{lightgray}{(mines, \textsc{feminine})}. \\
+        \midrule
+        \textbf{\textsc{DiscEval-MT lex}} \\
+        \midrule
+        $C_x:$ Do you think you can \colorbox{lightblueclear}{shoot} it from here? \\
+        $C_y:$ Tu penses que tu peux le \colorbox{lightblueclear}{tirer} \textcolor{lightgray}{(shoot)} dessus à partir d'ici? \\
+        $x:$ Hand me that \colorbox{lightgreen}{bow}. \\
+        $y:$ Passe-moi cet \colorbox{lightgreen}{arc} \textcolor{lightgray}{(bow, \textsc{weapon})}. \\
+        \midrule
+        $C_x:$ Can I help you with the \colorbox{lightblueclear}{wrapping}? \\
+        $C_y:$ Est-ce que je peux t'aider pour l'\colorbox{lightblueclear}{emballage} \textcolor{lightgray}{(wrapping)}? \\
+        $x:$ Hand me that \colorbox{lightgreen}{bow}. \\
+        $y:$ Passe-moi ce \colorbox{lightgreen}{ruban} \textcolor{lightgray}{(bow, \textsc{gift wrap})}. \\
+        \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+:::
+
+Examples from the SCAT+ and [DiscEval-MT]{.smallcaps} datasets used in our analysis with highlighted [context-sensitive tokens]{bg-color="brand-color.lightgreen"} and [contextual cues]{bg-color="brand-color.lightblueclear"} used for plausibility evaluation using [PECoRe]{.smallcaps}. [Glosses]{color="brand-color.lightgray"} are added for French words of interest to facilitate understanding.
+:::

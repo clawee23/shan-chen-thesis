@@ -1,0 +1,135 @@
+\newcommand{\cirtxt}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {\texttt{#1}}}}}
+\definecolor{codebg}{gray}{0.95}
+\definecolor{codeframe}{gray}{0.8}
+\setlength\fboxsep{1.5pt}
+\newcommand{\inlinecode}[1]{\fcolorbox{codeframe}{codebg}{\small\!\texttt{#1}\!}}
+
+\DeclareUnicodeCharacter{2640}{\Female}
+\DeclareUnicodeCharacter{2642}{\Male}
+\DeclareUnicodeCharacter{FE0F}{}
+\DeclareUnicodeCharacter{24E2}{\cirtxt{S}}
+\DeclareUnicodeCharacter{24E3}{\cirtxt{T}}
+\DeclareUnicodeCharacter{24F5}{\cirtxt{1}}
+\DeclareUnicodeCharacter{24F6}{\cirtxt{2}}
+\DeclareUnicodeCharacter{24F7}{\cirtxt{3}}
+\DeclareUnicodeCharacter{24F8}{\cirtxt{4}}
+\DeclareUnicodeCharacter{24F9}{\cirtxt{5}}
+\DeclareUnicodeCharacter{24FA}{\cirtxt{6}}
+\DeclareUnicodeCharacter{2192}{\textcolor{TransColor}{\ding{212}}}
+
+\definecolor{lightgray}{HTML}{bebebe} % #bebebe
+\definecolor{lightred}{HTML}{ea9999} % #ea9999
+\definecolor{lightblueclear}{HTML}{9fc5e8} % #9fc5e8
+\definecolor{lightbluedim}{HTML}{6fa8dc} % #6fa8dc
+\definecolor{lightgreen}{HTML}{b6d7a8} % #b6d7a8
+\definecolor{lightorange}{HTML}{ffb366} % #ffb366
+\definecolor{lightyellow}{HTML}{ffe6b2} % #ffe6b2
+
+\definecolor{darkorange}{HTML}{CB793A} % #CB793A
+\definecolor{darkgreen}{HTML}{466362} % #466362
+\definecolor{darkpurple}{HTML}{800080} % #800080
+
+\definecolor{blue1}{RGB}{204, 229, 255}  % #CCE5FF
+\definecolor{blue2}{RGB}{179, 217, 255}  % #B3D9FF
+\definecolor{blue3}{RGB}{153, 204, 255}  % #99CCFF
+\definecolor{blue4}{RGB}{128, 191, 255}  % #80BFFF
+\definecolor{blue5}{RGB}{102, 178, 255}  % #66B2FF
+\definecolor{blue6}{RGB}{77, 153, 230}   % #4D99E6
+
+\definecolor{red1}{RGB}{255, 229, 229}  % #FFE5E5
+\definecolor{red2}{RGB}{255, 204, 204}  % #FFCCCC
+\definecolor{red3}{RGB}{255, 179, 179}  % #FFB3B3
+\definecolor{red4}{RGB}{255, 153, 153}  % #FF9999
+\definecolor{red5}{RGB}{244, 143, 143}  % #F48F8F
+\definecolor{red6}{RGB}{230, 120, 120}  % #E67878
+
+\definecolor{NoHighlightColor}{HTML}{3949f5}  % #3949f5
+\definecolor{UnsupervisedColor}{HTML}{e6950a} % #e6950a
+\definecolor{SupervisedColor}{HTML}{dc0d97}   % #dc0d97
+\definecolor{OracleColor}{HTML}{1c9a0e}       % #1c9a0e
+\definecolor{RandomColor}{HTML}{888888}       % #888888
+\definecolor{TransColor}{HTML}{54278f}        % #54278f
+
+\definecolor{MajorErrorColor}{HTML}{ed6a05} % #ed6a05
+\definecolor{MinorErrorColor}{HTML}{e6bb00} % #e6bb00
+
+\newcommand{\Both}{\footnotesize\textcolor{OliveGreen}{Both}}
+\newcommand{\Neither}{\footnotesize\textcolor{BrickRed}{Neither}}
+\newcommand{\NldOnly}{\textcolor{Apricot}{\textsc{nld}}}
+\newcommand{\ItaOnly}{\textcolor{Apricot}{\textsc{ita}}}
+
+\newcommand{\nohighlight}{\textcolor{NoHighlightColor}{\textbf{\textit{no highlight}}}\xspace}
+\newcommand{\unsupervised}{\textcolor{UnsupervisedColor}{\textbf{\textit{unsupervised}}}\xspace}
+\newcommand{\supervised}{\textcolor{SupervisedColor}{\textbf{\textit{supervised}}}\xspace}
+\newcommand{\oracle}{\textcolor{OracleColor}{\textbf{\textit{oracle}}}\xspace}
+
+\newcommand{\NoHighlight}{\textcolor{NoHighlightColor}{\textbf{No Highlight}}\xspace}
+\newcommand{\Unsupervised}{\textcolor{UnsupervisedColor}{\textbf{Unsupervised}}\xspace}
+\newcommand{\Supervised}{\textcolor{SupervisedColor}{\textbf{Supervised}}\xspace}
+\newcommand{\Oracle}{\textcolor{OracleColor}{\textbf{Oracle}}\xspace}
+\newcommand{\Random}{\textcolor{RandomColor}{\textbf{Random}}\xspace}
+
+\newcommand{\NoHighlightShort}{\textcolor{NoHighlightColor}{\textbf{No High.}}\xspace}
+\newcommand{\UnsupervisedShort}{\textcolor{UnsupervisedColor}{\textbf{Unsup.}}\xspace}
+\newcommand{\SupervisedShort}{\textcolor{SupervisedColor}{\textbf{Sup.}}\xspace}
+\newcommand{\OracleShort}{\textcolor{OracleColor}{\textbf{Oracle}}\xspace}
+
+\newcommand{\notepos}[1]{$\textcolor{OliveGreen}{\null_{\uparrow#1}}$}
+\newcommand{\noteneg}[1]{$\textcolor{BrickRed}{\null_{\downarrow#1}}$}
+
+\newcommand{\qemajor}[1]{\textcolor{black}{\sethlcolor{Apricot}\hl{#1}}}
+\newcommand{\nohighvv}[1]{{\color{NoHighlightColor}\vv{\color{black}{#1}}}}
+
+\newcommand{\ncbox}[3]{$\overset{\text{#2}}{\colorbox{#1}{\text{#3}}}$}
+
+\def\modblocks#1#2#3#4{
+    \vspace{0.07cm}
+    \hspace{-0.34cm}
+    \begin{tikzpicture}[x=1em, y=1.3em]
+        \draw [use as bounding box] (0,0) rectangle (4,1.8);
+        \pgfmathsetmacro\NoHighlightTot{#1 * (1.8/5)}
+        \pgfmathsetmacro\OracleTot{#2 * (1.8/5)}
+        \pgfmathsetmacro\UnsupervisedTot{#3 * (1.8/5)}
+        \pgfmathsetmacro\SupervisedTot{#4 * (1.8/5)}
+        \fill [fill=NoHighlightColor]  (0,0) rectangle (1,\NoHighlightTot);
+        \fill [fill=OracleColor]       (1,0) rectangle (2,\OracleTot);
+        \fill [fill=UnsupervisedColor] (2,0) rectangle (3,\UnsupervisedTot);
+        \fill [fill=SupervisedColor]   (3,0) rectangle (4,\SupervisedTot);
+        % midline
+        \draw [thick, dashed] (0,0.9) -- (4,0.9);
+    \end{tikzpicture}
+    \hspace{-0.3cm}
+    \vspace{-0.4cm}
+}
+
+\def\modblockshigh#1#2#3{
+    \vspace{0.07cm}
+    \hspace{-0.34cm}
+    \begin{tikzpicture}[x=1em, y=1.3em]
+        \draw [use as bounding box] (0,0) rectangle (4,1.8);
+        \pgfmathsetmacro\OracleTot{#1 * (1.8/5)}
+        \pgfmathsetmacro\UnsupervisedTot{#2 * (1.8/5)}
+        \pgfmathsetmacro\SupervisedTot{#3 * (1.8/5)}
+        \fill [fill=OracleColor]       (0,0) rectangle (1.33,\OracleTot);
+        \fill [fill=UnsupervisedColor] (1.33,0) rectangle (2.66,\UnsupervisedTot);
+        \fill [fill=SupervisedColor]   (2.66,0) rectangle (3.99,\SupervisedTot);
+        % midline
+        \draw [thick, dashed] (0,0.9) -- (4,0.9);
+    \end{tikzpicture}
+    \hspace{-0.3cm}
+    \vspace{-0.4cm}
+}
+
+\newcommand{\best}{{\tiny~$_{\textsc{best}}$~}}
+\newcommand{\mcdavg}{{\tiny~$_{\textsc{mcd avg}}$~}}
+\newcommand{\mcdvar}{{\tiny~$_{\textsc{mcd var}}$~}}
+\newcommand{\minim}{{\tiny~$_{\textsc{min}}$~}}
+\newcommand{\maxim}{{\tiny~$_{\textsc{max}}$~}}
+\newcommand{\var}{{\tiny~$_{\textsc{var}}$~}}
+\newcommand{\avg}{{\tiny~$_{\textsc{avg}}$~}}
+\newcommand{\topk}{{\tiny~$_{\textsc{top-}5}$~}}
+\newcommand{\severity}{{\tiny~$_{\textsc{severity}}$~}}
+\newcommand{\confw}{{\tiny~$_{\textsc{conf}}$~}}
+\newcommand{\binary}{{\tiny~$_{\textsc{binary}}$~}}
+\renewcommand{\u}[1]{\underline{#1}}
+\renewcommand{\b}[1]{\textbf{#1}}

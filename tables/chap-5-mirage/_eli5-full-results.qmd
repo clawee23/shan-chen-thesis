@@ -1,0 +1,149 @@
+:::{#tbl-eli5-full-results}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th rowspan="2"><span data-qmd="**Model**"></span></th>
+            <th rowspan="2"><span class="mediumrow" data-qmd="**Prompt**"></span></th>
+            <th rowspan="2"><span data-qmd="**Answer Attribution**"></span></th>
+            <th rowspan="2"><span data-qmd="**Filter**"></span></th>
+            <th colspan="3" class="group-header"><span data-qmd="**Citation**"></span></th>
+            <th rowspan="2"><span data-qmd="**Corr.** $\uparrow$"></span></th>
+            <th rowspan="2"><span data-qmd="**Fluency** $\uparrow$"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th>Prec.</th>
+            <th>Rec.</th>
+            <th>F1</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="midrule">
+            <td rowspan="5" class="rowspan">Zephyr</td>
+            <td rowspan="3" class="rowspan">Self-citation</td>
+            <td class="smallrow">Self-citation</td>
+            <td>--</td>
+            <td>41.4</td>
+            <td>24.3</td>
+            <td>30.6</td>
+            <td rowspan="3" class="rowspan">9.9</td>
+            <td rowspan="3" class="rowspan">28.6</td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="rowspan"><span data-qmd="[Mirage]{.smallcaps}$_{\text{ex}}$"></span></td>
+            <td class="smallrow">Top 3</td>
+            <td>38.3</td>
+            <td>46.2</td>
+            <td>41.9</td>
+        </tr>
+        <tr class="midrule">
+            <td>Top 5%</td>
+            <td class="bold">44.7</td>
+            <td class="bold">46.5</td>
+            <td class="bold">45.6</td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="rowspan">Standard</td>
+            <td rowspan="2" class="rowspan"><span data-qmd="[Mirage]{.smallcaps}$_{\text{ex}}$"></span></td>
+            <td>Top 3</td>
+            <td>29.8</td>
+            <td>34.5</td>
+            <td>32.0</td>
+            <td rowspan="2" class="bold rowspan">11.3</td>
+            <td rowspan="2" class="bold rowspan">34.3</td>
+        </tr>
+        <tr class="midrule">
+            <td>Top 5%</td>
+            <td>34.1</td>
+            <td>34.2</td>
+            <td>34.1</td>
+        </tr>
+        <tr class="midrule">
+            <td rowspan="5" class="rowspan">LLaMA</td>
+            <td rowspan="3" class="rowspan">Self-citation</td>
+            <td>Self-citation</td>
+            <td>--</td>
+            <td class="bold">37.9</td>
+            <td>19.8</td>
+            <td>26.0</td>
+            <td rowspan="3" class="rowspan">11.8</td>
+            <td rowspan="3" class="rowspan">24.8</td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="rowspan"><span data-qmd="[Mirage]{.smallcaps}$_{\text{ex}}$"></span></td>
+            <td>Top 3</td>
+            <td>21.8</td>
+            <td class="bold">29.6</td>
+            <td>25.1</td>
+        </tr>
+        <tr class="midrule">
+            <td>Top 5%</td>
+            <td>26.2</td>
+            <td>29.1</td>
+            <td class="bold">27.6</td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="rowspan">Standard</td>
+            <td rowspan="2" class="rowspan"><span data-qmd="[Mirage]{.smallcaps}$_{\text{ex}}$"></span></td>
+            <td>Top 3</td>
+            <td>17.8</td>
+            <td>20.9</td>
+            <td>19.2</td>
+            <td rowspan="2" class="rowspan bold">13.0</td>
+            <td rowspan="2" class="rowspan bold">26.4</td>
+        </tr>
+        <tr>
+            <td>Top 5%</td>
+            <td>21.1</td>
+            <td>20.1</td>
+            <td>20.6</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\footnotesize
+\begin{center}
+\begin{tabular}{ccccccccc}
+\toprule
+\multirow{2}{*}{\bf Model} & \multirow{2}{*}{\bf Prompt} & {\bf Answer} & \multirow{2}{*}{\bf Filter} & \multicolumn{3}{c}{\bf Citation$\uparrow$} & \multirow{2}{*}{\bf Corr.$\uparrow$} & \multirow{2}{*}{\bf Fluency$\uparrow$} \\
+& & {\bf Attribution} & & Prec. & Rec. & F1\\
+\midrule
+\multirow{5}{*}{Zephyr} & \multirow{3}{*}{Self-citation} 
+& \multirow{1}{*}{Self-citation} & - & 41.4 & 24.3 & 30.6 & \multirow{3}{*}{9.9} & \multirow{3}{*}{28.6}\\
+\cmidrule(lr){3-7}
+& & \multirow{2}{*}{\textsc{mirage}$_{\textsc{~ex}}$} & Top 3 & 38.3 & 46.2 & 41.9 \\
+& & & Top 5\% & \textbf{44.7} & \textbf{46.5} & \textbf{45.6} \\
+\cmidrule(lr){2-9}
+& \multirow{2}{*}{Standard} &
+\multirow{2}{*}{\textsc{mirage}$_{\textsc{~ex}}$} & Top 3 & 29.8 & 34.5 & 32.0 & \multirow{2}{*}{\bf 11.3} & \multirow{2}{*}{\bf 34.3}\\
+& & & Top 5\% & 34.1 & 34.2 & 34.1 \\
+\midrule
+\multirow{5}{*}{LLaMA} 
+& \multirow{3}{*}{\shortstack{Self-citation}} & \multirow{1}{*}{Self-citation} & - & \textbf{37.9} & 19.8 & 26.0 & \multirow{3}{*}{11.8} & \multirow{3}{*}{24.8}\\
+\cmidrule(lr){3-7}
+& & \multirow{2}{*}{\textsc{mirage}$_{\textsc{~ex}}$} & Top 3  & 21.8 & \textbf{29.6} & 25.1 \\
+& & & Top 5\% & 26.2 & 29.1 & \textbf{27.6} \\
+\cmidrule(lr){2-9}
+& \multirow{2}{*}{Standard} &
+\multirow{2}{*}{\textsc{mirage}$_{\textsc{~ex}}$} & Top 3 & 17.8 & 20.9 & 19.2 & \multirow{2}{*}{\bf 13.0} & \multirow{2}{*}{\bf 26.4}\\
+& & & Top 5\% & 21.1 & 20.1 & 20.6 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+```
+
+:::
+
+Citation quality (F1, Recall, Precision), correctness (Corr.), and fluency of self-citation and [Mirage]{.smallcaps} on ELI5 when using self-citation instruction and standard prompts of [@tbl-prompts].
+:::

@@ -1,0 +1,157 @@
+:::{#tbl-qe4pe-qa-guidelines}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable">
+    <thead>
+        <tr>
+            <th><span data-qmd="**Error category**"></span></th>
+            <th><span data-qmd="**Subcategory**"></span></th>
+            <th><span data-qmd="**Description**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="5"><span data-qmd="**Accuracy**<br/>Incorrect meaning has been transferred to the source text."></span></td>
+            <td><span data-qmd="**Addition**"></span></td>
+            <td>Translation includes the information that is not present in the source and it changes or distorts the original message.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Omission**"></span></td>
+            <td>Translation is missing the information that is present in the source, which is important to convey the message.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Mistranslation**"></span></td>
+            <td>Translation does not accurately represent the source content meaning.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Inconsistency**"></span></td>
+            <td>There are internal inconsistencies in the translation (for example, using different verb forms in the bullet list or in CTAs, calling the same UI element differently, terminology used inconsistently etc).</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="**Untranslated**"></span></td>
+            <td>Content that should have been translated has been left untranslated.</td>
+        </tr>
+        <tr>
+            <td rowspan="3"><span data-qmd="**Linguistic**<br/>Official linguistic reference sources such as grammar books."></span></td>
+            <td><span data-qmd="**Punctuation**"></span></td>
+            <td>Punctuation is used incorrectly (for the locale or style), including missing or extra white spaces and the incorrect use of space (non-breaking space). Violation of typographic conventions of the locale.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Spelling**"></span></td>
+            <td>Issues related to spelling of words, including typos, wrong word hyphenation, word breaks and capitalization.</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="**Grammar**"></span></td>
+            <td>Issues related to the grammar or syntax of the text, other than spelling.</td>
+        </tr>
+        <tr>
+            <td rowspan="3"><span data-qmd="**Style**<br/>Not suitable/native; too literal or awkward."></span></td>
+            <td><span data-qmd="**Inconsistent Style**"></span></td>
+            <td>Style is inconsistent within a text.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Readability**"></span></td>
+            <td>Translation does not read well (due to heavy sentence structure, frequent repetitions, unidiomatic).</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Wrong Register**"></span></td>
+            <td>Inappropriate style for the specific subject field, the level of formality, and the mode of discourse (e.g., written text versus transcribed speech).</td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="fullwidthtable">
+    <thead>
+        <tr>
+            <th><span data-qmd="**Severity**"></span></th>
+            <th><span data-qmd="**Description**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span data-qmd="**Major**"></span></td>
+            <td>The Severity Level of an error that seriously affects the understandability, reliability, or usability of the content for its intended purpose or hinders the proper use of the product or service due to a significant loss or change in meaning or because the error appears in a highly visible or important part of the content.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Minor**"></span></td>
+            <td>The Severity Level of an error that does not seriously impede the usability, understandability, or reliability of the content for its intended purpose, but has a limited impact on, for example, accuracy, stylistic quality, consistency, fluency, clarity, or general appeal of the content.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Neutral**"></span></td>
+            <td>The Severity Level of an error that differs from a quality evaluator's preferential translation or that is flagged for the translator's attention but is an acceptable translation.</td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+.vertical-text {
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    vertical-align: middle;
+    text-align: center;
+    width: 3cm;
+    padding: 8px;
+}
+</style>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \setlength{\tabcolsep}{3pt}
+    \scriptsize
+    \begin{tabularx}{\linewidth}{llX}
+    \toprule
+    \bf Error category &
+    \bf Subcategory &
+    \bf Description \\
+    \midrule
+    \multirow{5}{*}{\makecell*[{{p{3cm}}}]{\textbf{Accuracy}\newline\vspace{3pt} Incorrect meaning has been transferred to the source text.}}
+    & \textbf{Addition}
+    & Translation includes the information that is not present in the source and it changes or distorts the original message. \\
+    \cmidrule(lr){3-3}
+    & \textbf{Omission} & Translation is missing the information that is present in the source, which is important to convey the message. \\
+    \cmidrule(lr){3-3}
+    & \textbf{Mistranslation} & Translation does not accurately represent the source content meaning. \\
+    \cmidrule(lr){3-3}
+    & \textbf{Inconsistency} & There are internal inconsistencies in the translation (for example, using different verb forms in the bullet list or in CTAs, calling the same UI element differently, terminology used inconsistently etc). \\
+    \cmidrule(lr){3-3}
+    & \textbf{Untranslated} & Content that should have been translated has been left untranslated. \\
+    \midrule
+    \multirow{3}{*}{\makecell*[{{p{3cm}}}]{\textbf{Linguistic}\newline\vspace{3pt} Official linguistic reference sources such as grammar books.}}
+    & \textbf{Punctuation} & Punctuation is used incorrectly (for the locale or style), including missing or extra white spaces and the incorrect use of space (non-breaking space). Violation of typographic conventions of the locale. \\
+    \cmidrule(lr){3-3}
+    & \textbf{Spelling} & Issues related to spelling of words, including typos, wrong word hyphenation, word breaks and capitalization. \\
+    \cmidrule(lr){3-3}
+    & \textbf{Grammar} & Issues related to the grammar or syntax of the text, other than spelling. \\
+    \midrule
+    \multirow{3}{*}{\makecell*[{{p{3cm}}}]{\textbf{Style}\newline\vspace{3pt} Not suitable/native; too literal or awkward.}}
+    & \textbf{Inconsistent Style} & Style is inconsistent within a text. \\
+    \cmidrule(lr){3-3}
+    & \textbf{Readability} & Translation does not read well (due to heavy sentence structure, frequent repetitions, unidiomatic). \\
+    \cmidrule(lr){3-3}
+    & \textbf{Wrong Register} & Inappropriate style for the specific subject field, the level of formality, and the mode of discourse (e.g., written text versus transcribed speech). \\
+    \end{tabularx}
+    \begin{tabularx}{\linewidth}{lX}
+    \toprule
+    \textbf{Severity level} & \textbf{Description}\\
+    \midrule
+    \textbf{Major} & The Severity Level of an error that seriously affects the understandability, reliability, or usability of the content for its intended purpose or hinders the proper use of the product or service due to a significant loss or change in meaning or because the error appears in a highly visible or important part of the content.\\
+    \cmidrule(lr){2-2}
+    \textbf{Minor} & The Severity Level of an error that does not seriously impede the usability, understandability, or reliability of the content for its intended purpose, but has a limited impact on, for example, accuracy, stylistic quality, consistency, fluency, clarity, or general appeal of the content.\\
+    \cmidrule(lr){2-2}
+    \textbf{Neutral} & The Severity Level of an error that differs from a quality evaluator's preferential translation or that is flagged for the translator's attention but is an acceptable translation.\\
+    \bottomrule
+    \end{tabularx}
+\end{table}
+```
+
+:::
+
+Annotation instructions for our MQM-inspired error taxonomy.
+:::

@@ -1,0 +1,168 @@
+:::{#tbl-chap6-full-results}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th rowspan="2"></th>
+            <th rowspan="2"></th>
+            <th rowspan="2"></th>
+            <th colspan="4" class="group-header"><span data-qmd="**CoCoA-MT**"></span></th>
+            <th colspan="4" class="group-header"><span data-qmd="**MT-GenEval**"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th>BLEU</th>
+            <th>COMET</th>
+            <th>L-Acc</th>
+            <th>S-Acc</th>
+            <th>BLEU</th>
+            <th>COMET</th>
+            <th>L-Acc</th>
+            <th>S-Acc</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="7" class="rowspan">Same-Language</td>
+            <td rowspan="3" class="rowspan">XGLM 7.5B</td>
+            <td>base</td>
+            <td>28.6</td>
+            <td class="bold">0.463</td>
+            <td>0.835</td>
+            <td>0.846</td>
+            <td>23.7</td>
+            <td>0.445</td>
+            <td>0.790</td>
+            <td>0.727</td>
+        </tr>
+        <tr>
+            <td>+mark</td>
+            <td>28.7</td>
+            <td>0.423</td>
+            <td>0.920</td>
+            <td>0.902</td>
+            <td>23.7</td>
+            <td>0.444</td>
+            <td>0.789</td>
+            <td>0.732</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[Ramp]{.smallcaps}"></span></td>
+            <td class="bold">30.0</td>
+            <td>0.451</td>
+            <td class="bold">0.938</td>
+            <td class="bold">0.923</td>
+            <td class="bold">24.8</td>
+            <td class="bold">0.473</td>
+            <td class="bold">0.836</td>
+            <td class="bold">0.820</td>
+        </tr>
+        <tr>
+            <td rowspan="3" class="rowspan">BLOOM 175B</td>
+            <td>base</td>
+            <td>39.9</td>
+            <td>0.691</td>
+            <td>0.930</td>
+            <td>0.940</td>
+            <td>33.3</td>
+            <td>0.679</td>
+            <td>0.748</td>
+            <td>0.704</td>
+        </tr>
+        <tr>
+            <td>+mark</td>
+            <td>40.3</td>
+            <td>0.688</td>
+            <td>0.970</td>
+            <td class="bold">0.970</td>
+            <td>33.1</td>
+            <td>0.674</td>
+            <td>0.759</td>
+            <td>0.725</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="[Ramp]{.smallcaps}"></span></td>
+            <td class="bold">41.9</td>
+            <td class="bold">0.711</td>
+            <td class="bold">0.973</td>
+            <td class="bold">0.970</td>
+            <td class="bold">34.3</td>
+            <td class="bold">0.699</td>
+            <td class="bold">0.817</td>
+            <td class="bold">0.818</td>
+        </tr>
+        <tr class="midrule">
+            <td colspan="2">Adapted MT</td>
+            <td>38.5</td>
+            <td>0.454</td>
+            <td>0.691</td>
+            <td>0.693</td>
+            <td>39.6</td>
+            <td>0.750</td>
+            <td>0.842</td>
+            <td>0.864</td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="rowspan">Cross-Lingual</td>
+            <td rowspan="2" class="rowspan">BLOOM 175B</td>
+            <td>base</td>
+            <td>32.1</td>
+            <td>0.644</td>
+            <td>0.567</td>
+            <td>0.596</td>
+            <td>28.5</td>
+            <td>0.469</td>
+            <td>0.777</td>
+            <td>0.633</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Ramp]{.smallcaps}"></span></td>
+            <td>31.8</td>
+            <td>0.646</td>
+            <td class="bold">0.625</td>
+            <td class="bold">0.622</td>
+            <td class="bold">29.4</td>
+            <td class="bold">0.502</td>
+            <td class="bold">0.788</td>
+            <td class="bold">0.673</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\setlength{\tabcolsep}{3pt}
+\centering
+\footnotesize
+\begin{tabular}{lll|cccc|cccc}
+ & & & \multicolumn{4}{|c}{\bf CoCoA-MT} & \multicolumn{4}{|c}{\bf MT-GenEval} \\
+ & & & \textsc{bleu} & \textsc{comet} & L-Acc & S-Acc & \textsc{bleu} & \textsc{comet} & L-Acc & S-Acc \\
+ \hline
+ \multirow{7}{7em}{Same Lang.} & & base & 28.6 & \bf 0.463 & 0.835 & 0.846 & 23.7 & 0.445 & 0.790 & 0.727 \\
+ & XGLM & +mark & 28.7 & 0.423 & 0.920 & 0.902 & 23.7 & 0.444 & 0.789 & 0.732 \\
+ & & \textsc{Ramp} & \bf 30.0 & 0.451 & \bf 0.938 & \bf 0.923 & \bf 24.8 & \bf 0.473 & \bf 0.836 & \bf 0.820 \\
+ \cline{2-11}
+ & & base & 39.9 & 0.691 & 0.930 & 0.940 & 33.3 & 0.679 & 0.748 & 0.704 \\
+ & \textsc{bloom} & +mark & 40.3 & 0.688 & 0.970 & \bf 0.970 & 33.1 & 0.674 & 0.759 & 0.725 \\
+ & & \textsc{Ramp} & \bf 41.9 & \bf 0.711 & \bf 0.973 & \bf 0.970 & \bf 34.3 & \bf 0.699 & \bf 0.817 & \bf 0.818 \\
+ \cline{2-11}
+ & \multicolumn{2}{l|}{Adap. MT} & 38.5 & 0.454 & 0.691 & 0.693 & 39.6 & 0.750 & 0.842 & 0.864 \\
+ \hline
+ \hline
+ \multirow{2}{7em}{Cross Lang.} & \multirow{2}{*}{\textsc{bloom}} & base & 32.1 & 0.644 & 0.567 & 0.596 & 28.5 & 0.469 & 0.777 & 0.633 \\
+ & & \textsc{Ramp} & 31.8 & 0.646 & \bf 0.625 & \bf 0.622 & \bf 29.4 & \bf 0.502 & \bf 0.788 & \bf 0.673 \\
+\end{tabular}
+\end{table}
+```
+
+:::
+
+BLEU, COMET, **L**exical- and **S**entential-**Acc**uracy of selected LLMs using 16 same-language in-context examples on two tasks, alongside adapted MT models. Scores are aggregated across **seen** languages (w.r.t. BLOOM pre-training) and both attributes for each task. (Full results in @tbl-chap6-same-language-cocoa-details--@tbl-chap6-cross-lingual-geneval-details.)
+:::

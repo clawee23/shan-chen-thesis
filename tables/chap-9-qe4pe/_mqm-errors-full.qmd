@@ -1,0 +1,410 @@
+:::{#tbl-qe4pe-mqm-errors-full}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable smallfont">
+    <thead>
+        <tr>
+            <th rowspan="2"><span data-qmd="**Language**"></span></th>
+            <th rowspan="2"><span data-qmd="**MQM Category**"></span></th>
+            <th colspan="2" class="group-header"><span data-qmd="**MT**"></span></th>
+            <th colspan="2" class="group-header"><span data-qmd="[No Highlight]{.smallcaps color='brand-color.nohighlight'}"></span></th>
+            <th colspan="2" class="group-header"><span data-qmd="[Oracle]{.smallcaps color='brand-color.oracle'}"></span></th>
+            <th colspan="2" class="group-header"><span data-qmd="[Unsupervised]{.smallcaps color='brand-color.unsupervised'}"></span></th>
+            <th colspan="2" class="group-header"><span data-qmd="[Supervised]{.smallcaps color='brand-color.supervised'}"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th><span data-qmd="**Maj.**"></span></th>
+            <th><span data-qmd="**Min.**"></span></th>
+            <th><span data-qmd="**Maj.**"></span></th>
+            <th><span data-qmd="**Min.**"></span></th>
+            <th><span data-qmd="**Maj.**"></span></th>
+            <th><span data-qmd="**Min.**"></span></th>
+            <th><span data-qmd="**Maj.**"></span></th>
+            <th><span data-qmd="**Min.**"></span></th>
+            <th><span data-qmd="**Maj.**"></span></th>
+            <th><span data-qmd="**Min.**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="rowspan" rowspan="12"><span data-qmd="**Italian**"></span></td>
+            <td class="longrow">Accuracy - Addition</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Accuracy - Mistranslation</td>
+            <td>21</td>
+            <td>22</td>
+            <td>10</td>
+            <td>12</td>
+            <td>4</td>
+            <td>8</td>
+            <td>24</td>
+            <td>17</td>
+            <td>17</td>
+            <td>17</td>
+        </tr>
+        <tr>
+            <td>Accuracy - Inconsistency</td>
+            <td>2</td>
+            <td>4</td>
+            <td>1</td>
+            <td>3</td>
+            <td>2</td>
+            <td>2</td>
+            <td>1</td>
+            <td>3</td>
+            <td>0</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>Accuracy - Omission</td>
+            <td>2</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+            <td>4</td>
+            <td>1</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr class="midrule">
+            <td>Accuracy - Untranslated</td>
+            <td>1</td>
+            <td>4</td>
+            <td>1</td>
+            <td>2</td>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>3</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>Style - Inconsistent Style</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>Style - Readability</td>
+            <td>17</td>
+            <td>25</td>
+            <td>5</td>
+            <td>30</td>
+            <td>0</td>
+            <td>12</td>
+            <td>4</td>
+            <td>34</td>
+            <td>1</td>
+            <td>29</td>
+        </tr>
+        <tr class="midrule">
+            <td>Style - Wrong Register</td>
+            <td>0</td>
+            <td>8</td>
+            <td>0</td>
+            <td>3</td>
+            <td>0</td>
+            <td>3</td>
+            <td>1</td>
+            <td>1</td>
+            <td>3</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>Linguistic - Grammar</td>
+            <td>6</td>
+            <td>15</td>
+            <td>2</td>
+            <td>16</td>
+            <td>0</td>
+            <td>5</td>
+            <td>3</td>
+            <td>12</td>
+            <td>2</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>Linguistic - Punctuation</td>
+            <td>1</td>
+            <td>13</td>
+            <td>0</td>
+            <td>9</td>
+            <td>0</td>
+            <td>3</td>
+            <td>1</td>
+            <td>6</td>
+            <td>0</td>
+            <td>3</td>
+        </tr>
+        <tr class="midrule">
+            <td>Linguistic - Spelling</td>
+            <td>5</td>
+            <td>3</td>
+            <td>0</td>
+            <td>4</td>
+            <td>0</td>
+            <td>3</td>
+            <td>3</td>
+            <td>2</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+        <tr class="midrule">
+            <td class="bold">Total</td>
+            <td class="bold">55</td>
+            <td class="bold">95</td>
+            <td class="bold">19</td>
+            <td class="bold">79</td>
+            <td class="bold">6</td>
+            <td class="bold">38</td>
+            <td class="bold">42</td>
+            <td class="bold">77</td>
+            <td class="bold">28</td>
+            <td class="bold">71</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="12"><span data-qmd="**Dutch**"></span></td>
+            <td>Accuracy - Addition</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>2</td>
+            <td>0</td>
+            <td>3</td>
+            <td>0</td>
+            <td>2</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Accuracy - Mistranslation</td>
+            <td>25</td>
+            <td>34</td>
+            <td>18</td>
+            <td>25</td>
+            <td>23</td>
+            <td>27</td>
+            <td>12</td>
+            <td>31</td>
+            <td>16</td>
+            <td>29</td>
+        </tr>
+        <tr>
+            <td>Accuracy - Inconsistency</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>2</td>
+            <td>0</td>
+            <td>2</td>
+            <td>0</td>
+            <td>2</td>
+            <td>0</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Accuracy - Omission</td>
+            <td>3</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>4</td>
+            <td>2</td>
+        </tr>
+        <tr class="midrule">
+            <td>Accuracy - Untranslated</td>
+            <td>4</td>
+            <td>4</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>4</td>
+            <td>1</td>
+            <td>3</td>
+            <td>0</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>Style - Inconsistent Style</td>
+            <td>2</td>
+            <td>0</td>
+            <td>0</td>
+            <td>5</td>
+            <td>1</td>
+            <td>7</td>
+            <td>0</td>
+            <td>2</td>
+            <td>0</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>Style - Readability</td>
+            <td>1</td>
+            <td>27</td>
+            <td>1</td>
+            <td>20</td>
+            <td>0</td>
+            <td>13</td>
+            <td>2</td>
+            <td>15</td>
+            <td>6</td>
+            <td>41</td>
+        </tr>
+        <tr class="midrule">
+            <td>Style - Wrong Register</td>
+            <td>0</td>
+            <td>2</td>
+            <td>0</td>
+            <td>3</td>
+            <td>0</td>
+            <td>3</td>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>Linguistic - Grammar</td>
+            <td>3</td>
+            <td>19</td>
+            <td>2</td>
+            <td>14</td>
+            <td>3</td>
+            <td>23</td>
+            <td>2</td>
+            <td>6</td>
+            <td>3</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>Linguistic - Punctuation</td>
+            <td>0</td>
+            <td>6</td>
+            <td>0</td>
+            <td>3</td>
+            <td>0</td>
+            <td>4</td>
+            <td>0</td>
+            <td>2</td>
+            <td>0</td>
+            <td>3</td>
+        </tr>
+        <tr class="midrule">
+            <td>Linguistic - Spelling</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>2</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td class="bold">Total</td>
+            <td class="bold">39</td>
+            <td class="bold">95</td>
+            <td class="bold">24</td>
+            <td class="bold">77</td>
+            <td class="bold">32</td>
+            <td class="bold">88</td>
+            <td class="bold">18</td>
+            <td class="bold">66</td>
+            <td class="bold">30</td>
+            <td class="bold">104</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \setlength{\tabcolsep}{3pt}
+    \scriptsize
+    \centering
+    \begin{tabular}{ll|cc|cc|cc|cc|cc}
+    \toprule[1.5pt]
+\multirow{2}{*}{\textbf{Lang.}} & \multirow{2}{*}{\textbf{MQM Category}} & \multicolumn{2}{c}{\textbf{MT}} & \multicolumn{2}{c}{\textbf{\NoHighlight}} & \multicolumn{2}{c}{\textbf{\Oracle}} & \multicolumn{2}{c}{\textbf{\Unsupervised}} & \multicolumn{2}{c}{\textbf{\Supervised}} \\
+\cmidrule(lr){3-4}
+\cmidrule(lr){5-6}
+\cmidrule(lr){7-8}
+\cmidrule(lr){9-10}
+\cmidrule(lr){11-12}
+& & \textbf{Maj.} & \textbf{Min.} & \textbf{Maj.} & \textbf{Min.} & \textbf{Maj.} & \textbf{Min.} & \textbf{Maj.} & \textbf{Min.} & \textbf{Maj.} & \textbf{Min.} \\
+\midrule
+\multirow{12}{*}{\rotatebox{90}{\textbf{Italian}}} & Accuracy - Addition 
+                             & 0  & 1  & 0  & 0  & 0  & 0  & 0  & 0  & 1  & 1  \\
+& Accuracy - Mistranslation  & 21 & 22 & 10 & 12 & 4  & 8  & 24 & 17 & 17 & 17 \\
+& Accuracy - Inconsistency   & 2  & 4  & 1  & 3  & 2  & 2  & 1  & 3  & 0  & 2  \\
+& Accuracy - Omission        & 2  & 0  & 0  & 0  & 0  & 1  & 4  & 1  & 1  & 2  \\
+& Accuracy - Untranslated    & 1  & 4  & 1  & 2  & 0  & 1  & 1  & 1  & 3  & 2  \\
+\cmidrule(lr){2-12}
+& Style - Inconsistent Style & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  \\
+& Style - Readability        & 17 & 25 & 5  & 30 & 0  & 12 & 4  & 34 & 1  & 29 \\
+& Style - Wrong Register     & 0  & 8  & 0  & 3  & 0  & 3  & 1  & 1  & 3  & 2  \\
+\cmidrule(lr){2-12}
+& Linguistic - Grammar       & 6  & 15 & 2  & 16 & 0  & 5  & 3  & 12 & 2  & 12 \\
+& Linguistic - Punctuation   & 1  & 13 & 0  & 9  & 0  & 3  & 1  & 6  & 0  & 3  \\
+& Linguistic - Spelling      & 5  & 3  & 0  & 4  & 0  & 3  & 3  & 2  & 0  & 1  \\
+\cmidrule(lr){2-12}
+& \textbf{Total}             & 55 & 95 & 19 & 79 & 6  & 38 & 42 & 77 & 28 & 71 \\
+\midrule
+\midrule
+\multirow{12}{*}{\rotatebox{90}{\textbf{Dutch}}} & Accuracy - Addition        
+                             & 0  & 1  & 0  & 2  & 0  & 3  & 0  & 2  & 0  & 1  \\
+& Accuracy - Mistranslation  & 25 & 34 & 18 & 25 & 23 & 27 & 12 & 31 & 16 & 29 \\
+& Accuracy - Inconsistency   & 0  & 0  & 0  & 2  & 0  & 2  & 0  & 2  & 0  & 5  \\
+& Accuracy - Omission        & 3  & 1  & 1  & 1  & 2  & 1  & 1  & 1  & 4  & 2  \\
+& Accuracy - Untranslated    & 4  & 4  & 1  & 1  & 1  & 4  & 1  & 3  & 0  & 2  \\
+\cmidrule(lr){2-12}
+& Style - Inconsistent Style & 2  & 0  & 0  & 5  & 1  & 7  & 0  & 2  & 0  & 9  \\
+& Style - Readability        & 1  & 27 & 1  & 20 & 0  & 13 & 2  & 15 & 6  & 41 \\
+& Style - Wrong Register     & 0  & 2  & 0  & 3  & 0  & 3  & 0  & 1  & 1  & 0  \\
+\cmidrule(lr){2-12}
+& Linguistic - Grammar       & 3  & 19 & 2  & 14 & 3  & 23 & 2  & 6  & 3  & 12 \\
+& Linguistic - Punctuation   & 0  & 6  & 0  & 3  & 0  & 4  & 0  & 2  & 0  & 3  \\
+& Linguistic - Spelling      & 1  & 1  & 1  & 1  & 2  & 1  & 0  & 1  & 0  & 0  \\
+\cmidrule(lr){2-12}
+& \textbf{Total}             & 39 & 95 & 24 & 77 & 32 & 88 & 18 & 66 & 30 & 104\\
+\bottomrule[1.5pt]
+\end{tabular}
+\end{table}
+```
+
+:::
+
+MQM error counts averaged across $n = 3$ translators per highlight modality for every translation direction. A description of MQM categories is available in @tbl-qe4pe-qa-guidelines.
+:::

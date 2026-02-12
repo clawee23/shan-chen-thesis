@@ -1,0 +1,96 @@
+:::{#tbl-qe4pe-data-stats}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th><span data-qmd="**Task**"></span></th>
+            <th><span data-qmd="**Domain**"></span></th>
+            <th><span data-qmd="**# Docs**"></span></th>
+            <th><span data-qmd="**# Seg.**"></span></th>
+            <th><span data-qmd="**# Words**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="rowspan" rowspan="2"><span data-qmd="[Pre]{.smallcaps}"></span></td>
+            <td>Social</td>
+            <td>4</td>
+            <td>23</td>
+            <td>539</td>
+        </tr>
+        <tr class="midrule">
+            <td>Biomed.</td>
+            <td>2</td>
+            <td>15</td>
+            <td>348</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="2"><span data-qmd="[Main]{.smallcaps}"></span></td>
+            <td>Social</td>
+            <td>30</td>
+            <td>160</td>
+            <td>3375</td>
+        </tr>
+        <tr class="midrule">
+            <td>Biomed.</td>
+            <td>21</td>
+            <td>165</td>
+            <td>3384</td>
+        </tr>
+        <tr>
+            <td class="rowspan" rowspan="2"><span data-qmd="[Post]{.smallcaps}"></span></td>
+            <td>Social</td>
+            <td>6</td>
+            <td>34</td>
+            <td>841</td>
+        </tr>
+        <tr class="midrule">
+            <td>Biomed.</td>
+            <td>2</td>
+            <td>16</td>
+            <td>257</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="bold">Total</td>
+            <td class="bold">64</td>
+            <td class="bold">413</td>
+            <td class="bold">8744</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \centering
+    \footnotesize
+    \begin{tabular}{llccc}
+        \toprule[1.5pt]
+         \bf Task & \bf Domain & \bf \# Docs & \bf \# Seg. & \bf \# Words \\
+        \midrule
+        \multirow{2}{*}{\textsc{Pre}} &  Social & 4 & 23 & 539 \\
+        & Biomed. & 2 & 15 & 348 \\
+        \midrule
+        \multirow{2}{*}{\textsc{Main}} & Social & 30 & 160 & 3375 \\
+        & Biomed. & 21 & 165 & 3384 \\
+        \midrule
+        \multirow{2}{*}{\textsc{Post}} &  Social & 6 & 34 & 841 \\
+        & Biomed. & 2 & 16 & 257 \\
+        \midrule
+        \multicolumn{2}{c}{\bf Total} & 64 & 413 & 8744 \\
+        \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Statistics for QE4PE data.
+:::

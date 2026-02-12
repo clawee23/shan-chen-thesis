@@ -1,0 +1,105 @@
+:::{#tbl-chap7-novels-details}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table">
+    <thead>
+        <tr>
+            <th><span data-qmd="**Lang**"></span></th>
+            <th><span data-qmd="**Novel name**"></span></th>
+            <th><span data-qmd="**Train**"></span></th>
+            <th><span data-qmd="**Val**"></span></th>
+            <th><span data-qmd="**Test**"></span></th>
+            <th><span data-qmd="**ICL Ex.**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="mediumrow"><span data-qmd="**Italian (IT)**"></span></td>
+            <td>Pinocchio</td>
+            <td>745</td>
+            <td>82</td>
+            <td>107</td>
+            <td class="smallrow">20</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**French (FR)**"></span></td>
+            <td class="verylongrow">Around the World in Eighty Days</td>
+            <td>829</td>
+            <td>92</td>
+            <td>120</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Dutch (NL)**"></span></td>
+            <td>The Diary of a Young Girl</td>
+            <td>769</td>
+            <td>85</td>
+            <td>110</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**German (DE)**"></span></td>
+            <td>Beware of Pity</td>
+            <td>606</td>
+            <td>67</td>
+            <td>96</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Russian (RU)**"></span></td>
+            <td>Crime and Punishment</td>
+            <td>1517</td>
+            <td>168</td>
+            <td>224</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Japanese (JA)**"></span></td>
+            <td>No Longer Human</td>
+            <td>652</td>
+            <td>40</td>
+            <td>81</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Chinese (ZH)**"></span></td>
+            <td>Dream of the Red Chamber</td>
+            <td>694</td>
+            <td>76</td>
+            <td>92</td>
+            <td>20</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llrrrr}
+\toprule
+Lang & Novel name & Train & Val & Test \\ 
+\midrule
+Italian (IT) & Pinocchio                          & 745  & 82 & 107 \\
+French (FR)  & Around the World in Eighty Days    & 829  & 92 & 120 \\ 
+Dutch (NL)   & The Diary of a Young Girl          & 769  & 85 & 110 \\ 
+German (DE)  & Beware of Pity                     & 606  & 67 & 96 \\ 
+Russian (RU) & Crime and Punishment               & 1517  & 168 & 224 \\ 
+Japanese (JA) & No Longer Human                    & 652  & 40 & 81 \\ 
+Chinese (ZH) & Dream of the Red Chamber           & 694  & 76 & 92 \\ 
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Languages and novels used in our evaluation. Numbers corresponds to a single paragraph in the dataset. In training, each paragraph is associated with three distinct translations: [H$_1$]{color="brand-color.darkgreen"},[H$_2$]{color="brand-color.lightbluedim"}, and [MT]{color="brand-color.darkorange"}. 20 additional in-context examples are left aside for each language for prompting and steering methods. 
+:::

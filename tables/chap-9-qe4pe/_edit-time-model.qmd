@@ -1,0 +1,165 @@
+:::{#tbl-qe4pe-edit-time-model}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="center-table" style="width: 100% !important;">
+    <thead>
+        <tr>
+            <th colspan="3" class="group-header"><span data-qmd="**Target:** Seg. Edit Time, 5s bins from 0 to 600s"></span></th>
+        </tr>
+        <tr class="subheader">
+            <th><span data-qmd="**Feature**"></span></th>
+            <th><span data-qmd="**Coeff.**"></span></th>
+            <th><span data-qmd="**Sig.**"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="longrow">(Intercept)</td>
+            <td>1.67</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td>MT Num. Chars</td>
+            <td>2.42</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td>Highlight Ratio %</td>
+            <td>1.59</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td>Target Lang.: ITA</td>
+            <td>-0.34</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td>Text Domain: Social</td>
+            <td>0.31</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Oracle]{.smallcaps color='brand-color.oracle'} Highlight"></span></td>
+            <td>-0.79</td>
+            <td>.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Sup.]{.smallcaps color='brand-color.supervised'} Highlight"></span></td>
+            <td>0.02</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[Unsup.]{.smallcaps color='brand-color.unsupervised'} Highlight"></span></td>
+            <td>-0.07</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>MT XCOMET QE Score</td>
+            <td>0.01</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="ITA:[Oracle]{.smallcaps color='brand-color.oracle'}"></span></td>
+            <td>0.91</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="ITA:[Sup.]{.smallcaps color='brand-color.supervised'}"></span></td>
+            <td>1.18</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="ITA:[Unsup.]{.smallcaps color='brand-color.unsupervised'}"></span></td>
+            <td>0.48</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Social:[Oracle]{.smallcaps color='brand-color.oracle'}"></span></td>
+            <td>-0.19</td>
+            <td>**</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Social:[Sup.]{.smallcaps color='brand-color.supervised'}"></span></td>
+            <td>-0.34</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Social:[Unsup.]{.smallcaps color='brand-color.unsupervised'}"></span></td>
+            <td>-0.22</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="Highlight Ratio:[Oracle]{.smallcaps color='brand-color.oracle'}"></span></td>
+            <td>-0.83</td>
+            <td>*</td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="Highlight Ratio:[Sup.]{.smallcaps color='brand-color.supervised'}"></span></td>
+            <td>-1.33</td>
+            <td>***</td>
+        </tr>
+        <tr>
+            <td>Edit Order</td>
+            <td colspan="2" rowspan="3" class="center rowspan"><span data-qmd="**Random Factors**"></span></td>
+        </tr>
+        <tr>
+            <td>Translator ID</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Segment ID</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \setlength{\tabcolsep}{3pt}
+    \footnotesize
+    \centering
+    \begin{tabular}{lcc}
+    \toprule[1.5pt]
+    \multicolumn{3}{l}{\textbf{Target:} Seg. Edit Time, 5s bins from 0 to 600s} \\[0.2em]
+    % \midrule
+    \textbf{Feature} & \textbf{Coeff.} & \textbf{Sig.} \\
+    \midrule
+    (Intercept)                      & 1.67 & *** \\
+    MT Num. Chars                    & 2.42 & *** \\
+    High. Ratio \%                   & 1.59 & *** \\
+    Target Lang.: ITA                & -0.34 & *** \\
+    Domain: Social                   & 0.31 & *** \\
+    \OracleShort~Highlight           & -0.79 & . \\
+    \SupervisedShort Highlight       & 0.02 & \\
+    \UnsupervisedShort~Highlight     & -0.07 & \\
+    MT \textsc{xcomet} QE            & 0.01 & *** \\
+    ITA:\OracleShort                 & 0.91 & *** \\
+    ITA:\SupervisedShort             & 1.18 & *** \\
+    ITA:\UnsupervisedShort           & 0.48 & *** \\
+    Social:\OracleShort              & -0.19 & ** \\
+    Social:\SupervisedShort          & -0.34 & *** \\
+    Social:\UnsupervisedShort        & -0.22 & *** \\
+    High. Ratio:\OracleShort         & -0.83 & * \\
+    High. Ratio:\SupervisedShort     & -1.33 & *** \\
+    \midrule
+    Edit Order & \multicolumn{2}{c}{\multirow{3}{*}{\textbf{Random Factors}}} \\
+    Translator ID \\
+    Segment ID \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Details for the negative binomial mixed-effect model used for the productivity analysis of @sec-qe4pe-productivity.
+:::

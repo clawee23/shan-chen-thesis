@@ -1,0 +1,86 @@
+:::{#tbl-example-wmt24-encs}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<p style="font-weight: bold;font-style: italic;font-size: 0.8em">Hover highlighted spans to see error annotations.</p>
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr>
+            <td style="font-weight: bold;">Source<sub style="font-variant: small-caps;">en</sub></td>
+            <td>So the challenges in this are already showing themselves. I'm likely going to have a VERY difficult time getting a medical clearance due to the FAA's stance on certain medications.</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">MT<sub style="font-variant: small-caps;">cs</sub> (Aya23)</td>
+            <td>Takže problémy s tím se již projevují. Pravděpodobně budu mít PŘESNĚ obtížný čas dostat lékařské potvrzení kvůli postoji FAA k některým lékům.</td>
+        </tr>
+        <tr class="midrule">
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Annotator</td>
+            <td>Takže <span style="background-color: #b3d9ff" title="minor">problémy</span> s tím se již projevují. Pravděpodobně budu mít <span style="background-color: #66b3ff" title="major">PŘESNĚ obtížný čas</span> dostat lékařské potvrzení kvůli postoji FAA k některým lékům.</td>
+        </tr>
+        <tr class="midrule">
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xl]{.smallcaps}"></span></td>
+            <td>Takže problémy s tím se již projevují. Pravděpodobně budu mít <span style="background-color: #ffcccb" title="minor">PŘESNĚ obtížný</span> <span style="background-color: #ffcccb" title="minor">čas dostat</span> lékařské <span style="background-color: #ffcccb" title="minor">potvrzení</span> kvůli postoji FAA k některým lékům</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xxl]{.smallcaps}"></span></td>
+            <td><span style="background-color: #ffcccb" title="minor">Takže problémy s tím se již projevují</span>. Pravděpodobně budu mít <span style="background-color: #ff9999" title="major">PŘESNĚ obtížný čas dostat</span> lékařské potvrzení kvůli postoji FAA k některým lékům.</td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xl]{.smallcaps}$_{\text{conf}}$"></span></td>
+            <td><span style="background-color: #ff9999" title="0.23">Takže</span> <span style="background-color: #ff8c00" title="0.28">problémy</span> <span style="background-color: #ff9999" title="0.26">s</span> <span style="background-color: #ff8c00" title="0.28">tím</span> <span style="background-color: #ffa500" title="0.17">se</span> <span style="background-color: #ffa500" title="0.19">již</span> <span style="background-color: #ff9999" title="0.31">projevují</span> <span style="background-color: #ffa500" title="0.17">.</span> <span style="background-color: #ff9999" title="0.23">Pravděpodobně</span> <span style="background-color: #ff6666" title="0.40">budu</span> <span style="background-color: #ff6666" title="0.48">mít</span> <span style="background-color: #ff0000" title="0.79">PŘESNĚ</span> <span style="background-color: #ff6600" title="0.65">obtížný</span> <span style="background-color: #ff6600" title="0.76">čas</span> <span style="background-color: #ff6600" title="0.64">dostat</span> <span style="background-color: #ff6666" title="0.50">lékařské</span> <span style="background-color: #ff6666" title="0.51">potvrzení</span> <span style="background-color: #ffa500" title="0.19">kvůli</span> <span style="background-color: #ff8c00" title="0.34">postoji</span> <span style="background-color: #ff9999" title="0.27">FAA</span> <span style="background-color: #ffa500" title="0.20">k</span> <span style="background-color: #ffa500" title="0.20">některým</span> <span style="background-color: #ffa500" title="0.21">lékům</span> <span style="background-color: #ffa500" title="0.17">.</span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="[xcomet-xxl]{.smallcaps}$_{\text{conf}}$"></span></td>
+            <td><span style="background-color: #ff6666" title="0.25">Takže</span> <span style="background-color: #ff8c00" title="0.24">problémy</span> <span style="background-color: #ff8c00" title="0.26">s</span> <span style="background-color: #ff6666" title="0.31">tím</span> <span style="background-color: #ff6666" title="0.29">se</span> <span style="background-color: #ff8c00" title="0.23">již</span> <span style="background-color: #ff6666" title="0.26">projevují</span> <span style="background-color: #ffffff" title="0.01">.</span> <span style="background-color: #ffffff" title="0.01">Pravděpodobně</span> <span style="background-color: #ffffcc" title="0.03">budu</span> <span style="background-color: #ff6600" title="0.37">PŘESNĚ</span> <span style="background-color: #ff6666" title="0.30">obtížný</span> <span style="background-color: #ff6666" title="0.32">čas</span> <span style="background-color: #ff8c00" title="0.24">dostat</span> <span style="background-color: #ff9999" title="0.10">lékařské</span> <span style="background-color: #ff8c00" title="0.13">potvrzení</span> <span style="background-color: #ffffff" title="0.01">kvůli</span> <span style="background-color: #ffffff" title="0.00">postoji</span> <span style="background-color: #ffffff" title="0.00">FAA</span> <span style="background-color: #ffffff" title="0.00">k</span> <span style="background-color: #ffffff" title="0.00">některým</span> <span style="background-color: #ffffff" title="0.00">lékům</span> <span style="background-color: #ffffff" title="0.00">.</span></td>
+        </tr>
+        <tr>
+            <td>Out. Entropy</td>
+            <td><span style="background-color: #ff8c00" title="0.88">Takže</span> <span style="background-color: #ff6600" title="1.93">problémy</span> <span style="background-color: #ff6600" title="1.88">s</span> <span style="background-color: #ff9999" title="0.84">tím</span> <span style="background-color: #ff6666" title="1.66">se</span> <span style="background-color: #ff9999" title="1.13">již</span> <span style="background-color: #ff8c00" title="0.89">projevují</span> <span style="background-color: #ffffcc" title="0.11">.</span> <span style="background-color: #ffa500" title="0.44">Pravděpodobně</span> <span style="background-color: #ffa500" title="0.22">budu</span> <span style="background-color: #ffffcc" title="0.09">mít</span> <span style="background-color: #ff0000" title="2.09">PŘESNĚ</span> <span style="background-color: #ff0000" title="3.70">obtížný</span> <span style="background-color: #ffffcc" title="0.09">čas</span> <span style="background-color: #ff6600" title="1.40">dostat</span> <span style="background-color: #ff6666" title="1.02">lékařské</span> <span style="background-color: #ff9999" title="0.64">potvrzení</span> <span style="background-color: #ffa500" title="0.69">kvůli</span> <span style="background-color: #ffa500" title="0.24">postoji</span> <span style="background-color: #ff9999" title="0.80">FAA</span> <span style="background-color: #ff6666" title="1.01">k</span> <span style="background-color: #ff9999" title="0.55">některým</span> <span style="background-color: #ffa500" title="0.18">lékům</span> <span style="background-color: #ffffcc" title="0.11">.</span></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+    \scriptsize
+    \centering
+    \setlength{\tabcolsep}{3pt}
+    \begin{tabular}{lp{9.5cm}}
+        \toprule[1.5pt] % Thick top rule
+        Source\textsubscript{~\textsc{en}} & So the challenges in this are already showing themselves. I'm likely going to have a VERY difficult time getting a medical clearance due to the FAA's stance on certain medications. \\
+        MT\textsubscript{~\textsc{cs}} (Aya23) & Takže problémy s tím se již projevují. Pravděpodobně budu mít PŘESNĚ obtížný čas dostat lékařské potvrzení kvůli postoji FAA k některým lékům. \\
+        \midrule % Standard mid rule
+        Annotator & Takže \ncbox{blue1}{minor}{problémy} s tím se již projevují. Pravděpodobně budu mít \ncbox{blue6}{major}{PŘESNĚ obtížný čas} dostat lékařské potvrzení kvůli postoji FAA k některým lékům.\\
+        \midrule
+        \textsc{xcomet-xl}       & Takže problémy s tím se již projevují. Pravděpodobně budu mít \ncbox{red3}{minor}{PŘESNĚ obtížný} \ncbox{red3}{minor}{čas dostat} lékařské \ncbox{red3}{minor}{potvrzení} kvůli postoji FAA k některým lékům \\
+        \textsc{xcomet-xxl}      & \ncbox{red3}{minor}{Takže problémy s tím se již projevují}. Pravděpodobně budu mít \ncbox{red5}{major}{PŘESNĚ obtížný čas dostat} lékařské potvrzení kvůli postoji FAA k některým lékům. \\
+        \textsc{xcomet-xl}\textsubscript{~\textsc{conf}} & \ncbox{red3}{0.23}{Takže}
+        \ncbox{red4}{0.28}{problémy} \ncbox{red3}{0.26}{s} \ncbox{red4}{0.28}{tím} \ncbox{red2}{0.17}{se} \ncbox{red2}{0.19}{již} \ncbox{red3}{0.31}{projevují} \ncbox{red2}{0.17}{.} \ncbox{red3}{0.23}{Pravděpodobně} \ncbox{red5}{0.40}{budu} \ncbox{red5}{0.48}{mít} \ncbox{BrickRed}{0.79}{PŘESNĚ} \ncbox{red6}{0.65}{obtížný} \ncbox{red6}{0.76}{čas} \ncbox{red6}{0.64}{dostat} \ncbox{red5}{0.50}{lékařské} \ncbox{red5}{0.51}{potvrzení} \ncbox{red2}{0.19}{kvůli} \ncbox{red4}{0.34}{postoji} \ncbox{red3}{0.27}{FAA} \ncbox{red3}{0.20}{k} \ncbox{red3}{0.20}{některým} \ncbox{red3}{0.21}{lékům} \ncbox{red2}{0.17}{.} \\
+        \textsc{xcomet-xxl}\textsubscript{~\textsc{conf}} & \ncbox{red5}{0.25}{Takže} \ncbox{red4}{0.24}{problémy} \ncbox{red4}{0.26}{s} \ncbox{red5}{0.31}{tím} \ncbox{red5}{0.29}{se} \ncbox{red4}{0.23}{již} \ncbox{red5}{0.26}{projevují} \ncbox{White}{0.01}{.} \ncbox{White}{0.01}{Pravděpodobně} \ncbox{White}{0.03}{budu} \ncbox{red6}{0.37}{PŘESNĚ} \ncbox{red5}{0.30}{obtížný} \ncbox{red5}{0.32}{čas} \ncbox{red4}{0.24}{dostat} \ncbox{red3}{0.10}{lékařské} \ncbox{red4}{0.13}{potvrzení} \ncbox{White}{0.01}{kvůli} \ncbox{White}{0.00}{postoji} \ncbox{White}{0.00}{FAA} \ncbox{White}{0.00}{k} \ncbox{White}{0.00}{některým} \ncbox{White}{0.00}{lékům} \ncbox{White}{0.00}{.}
+ \\
+        % no MCD for Aya
+        Out. Entropy & \ncbox{red4}{0.88}{Takže} \ncbox{red6}{1.93}{problémy} \ncbox{red6}{1.88}{s} \ncbox{red3}{0.84}{tím} \ncbox{red5}{1.66}{se} \ncbox{red3}{1.13}{již} \ncbox{red4}{0.89}{projevují} \ncbox{White}{0.11}{.} \ncbox{red2}{0.44}{Pravděpodobně} \ncbox{red1}{0.22}{budu} \ncbox{White}{0.09}{mít} \ncbox{BrickRed}{2.09}{PŘESNĚ} \ncbox{BrickRed}{3.70}{obtížný} \ncbox{White}{0.09}{čas} \ncbox{red6}{1.40}{dostat} \ncbox{red5}{1.02}{lékařské} \ncbox{red3}{0.64}{potvrzení} \ncbox{red2}{0.69}{kvůli} \ncbox{red2}{0.24}{postoji} \ncbox{red3}{0.80}{FAA} \ncbox{red5}{1.01}{k} \ncbox{red3}{0.55}{některým} \ncbox{red1}{0.18}{lékům} \ncbox{White}{0.11}{.}
+ \\
+        \bottomrule[1.5pt] % Thick bottom rule
+    \end{tabular}
+\end{table}
+```
+
+:::
+
+Annotated example from the En$\rightarrow$Cs portion of the WMT24 dataset. **Top:** Annotator edits with highlighted Error Span Annotation of [minor]{style="background-color: #b3d9ff"} and [major]{style="background-color: #66b3ff"} errors. **Bottom:** Word-level annotations for best-performing metrics discussed in the study.
+:::

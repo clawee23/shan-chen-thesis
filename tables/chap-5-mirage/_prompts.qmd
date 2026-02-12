@@ -1,0 +1,54 @@
+:::{#tbl-prompts}
+
+:::{.content-visible when-format="html"}
+
+```{=html}
+<table class="fullwidthtable leftalign">
+    <tbody>
+        <tr class="bottomrule">
+            <td><span data-qmd="[Self-citation]{.smallcaps} [@gao-etal-2023-enabling]"></span></td>
+        </tr>
+        <tr class="midrule">
+            <td><span data-qmd="**Instruction:** Write an accurate, engaging, and concise answer for the given question using only the provided search results (some of which might be irrelevant) and cite them properly. Use an unbiased and journalistic tone. Always cite for any factual claim. When citing several search results, use [1][2][3]. Cite at least one document and at most three documents in each sentence. If multiple documents support the sentence, only cite a minimum sufficient subset of the documents."></span></td>
+        </tr>
+        <tr class="bottomrule">
+            <td><span data-qmd="[Standard]{.smallcaps}"></span></td>
+        </tr>
+        <tr>
+            <td><span data-qmd="**Instruction:** Write an accurate, engaging, and concise answer for the given question using only the provided search results (some of which might be irrelevant). Use an unbiased and journalistic tone."></span></td>
+        </tr>
+    </tbody>
+</table>
+```
+
+:::
+
+:::{.content-visible when-format="pdf"}
+
+```{=latex}
+\begin{table}
+\centering
+\small
+\begin{tabular}{p{0.9\linewidth}}
+\toprule
+\textsc{Self-citation}~\citep{gao-etal-2023-enabling}\\
+\midrule
+Instruction: Write an accurate, engaging, and concise answer for the given question using only
+the provided search results (some of which might be irrelevant) and cite them properly. Use an
+unbiased and journalistic tone. Always cite for any factual claim. When citing several search
+results, use [1][2][3]. Cite at least one document and at most three documents in each sentence.
+If multiple documents support the sentence, only cite a minimum sufficient subset of the
+documents.\\
+\midrule
+\textsc{Standard}\\
+\midrule
+Instruction: Write an accurate, engaging, and concise answer for the given question using only the provided search results (some of which might be irrelevant). Use an unbiased and journalistic tone.\\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+:::
+
+Self-citation prompt, taken from @gao-etal-2023-enabling, and standard prompt with no citation instruction.
+:::
