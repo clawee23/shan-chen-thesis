@@ -4,60 +4,61 @@ An Agentic AI System Enhances Clinical Detection of Immunotherapy Toxicities: a 
 
 ---
 
-Jack Gallifant, **Shan Chen**, Kee-Young Shin, Katherine C. Kellogg, Patrick F. Doyle,   
-Joyce Guo, Bingyang Ye, Andrew Warrington, Bingxue K Zhai, Matthew J. Hadfield,   
-Alexander Gusev, Biagio Ricciuti, David Christiani, Hugo JWL Aerts, Raymond H. Mak,   
-Tanna L. Nelson, Paul Nguyen, Jonathan D. Schoenfeld, Umit Topaloglu,   
-Paul Catalano, Harry Hochheiser, Jeremy L. Warner, Elad Sharon,   
-David E. Kozono, Guergana K. Savova, Danielle S. Bitterman 
+Jack Gallifant, **Shan Chen**, Kee-Young Shin, Katherine C. Kellogg, Patrick F. Doyle,
+Joyce Guo, Bingyang Ye, Andrew Warrington, Bingxue K Zhai, Matthew J. Hadfield,
+Alexander Gusev, Biagio Ricciuti, David Christiani, Hugo JWL Aerts, Raymond H. Mak,
+Tanna L. Nelson, Paul Nguyen, Jonathan D. Schoenfeld, Umit Topaloglu,
+Paul Catalano, Harry Hochheiser, Jeremy L. Warner, Elad Sharon,
+David E. Kozono, Guergana K. Savova, Danielle S. Bitterman
 
 Submitted to Nature Cancer
 
 ## Summary
 
-## 
+##
 
 ## Background
 
 Immune checkpoint inhibitors (ICIs) frequently cause immune-related adverse events (irAEs), yet structured EHR fields capture only a fraction of these toxicities. Most clinically relevant details—temporality, CTCAE grade, attribution, and certainty—appear exclusively in free-text notes, and existing NLP approaches are limited to binary detection or require large supervised datasets. Whether agentic large language models (LLMs), which decompose complex tasks into coordinated subtasks, can reliably extract these attributes or improve human chart review is unknown.
 
-## 
+##
 
 ## Methods
 
 We built an agentic LLM pipeline to extract six irAEs and four attributes from oncology notes of ICI-treated adults (2015–2024). Expert-annotated gold standards guided model development. The system used specialized agents, self-consistency across multiple runs, and extraction of supporting evidence snippets. We evaluated performance retrospectively, then prospectively in silent mode across real-time notes, followed by deployment in an annotation interface, and finally in a randomized crossover study comparing manual versus LLM-assisted review.
 
-## 
+##
 
 ## Findings
 
 Retrospectively (263 notes), the system achieved macro-averaged F1 of 0.92 for detection and 0.66 for multi-class severity grading; self-consistency improved F1 by 0.14. In prospective silent deployment over three months (884 notes), detection F1 was 0.72–0.79. In a randomized crossover study (17 participants, 316 observations), agentic assistance reduced annotation time by 40% (P \< 0.001), increased complete-match accuracy (OR 1.45; 95% CI 1.01–2.09; P \= 0.045), and improved inter-annotator agreement (Krippendorff's α from 0.22–0.51 to 0.82–0.85). These results demonstrate that agentic AI coupled with human verification enhances efficiency, accuracy, and consistency of adverse event curation from clinical documentation.
 
-## 
+##
 
 ## Interpretation
 
 A compact agentic LLM system can reliably extract clinically meaningful irAE attributes from routine oncology notes and measurably accelerate expert review. Its combination of accuracy, interpretability, and workflow benefit suggests strong potential for scalable, near-real-time irAE surveillance and more efficient pharmacovigilance.
 
-**INTRODUCTION**  
+## INTRODUCTION
+
 Accurate detection and reporting of treatment‑related adverse events (AEs) are foundational to cancer care, pharmacovigilance, and survivorship planning. In routine practice, however, many clinically important AEs are documented primarily in unstructured clinical narratives; structured electronic health record (EHR) fields (e.g., diagnosis codes) incompletely capture their occurrence, necessitating laborious manual chart review.
 
 Against this backdrop, immune checkpoint inhibitors have transformed cancer treatment, yet their success comes with a critical challenge: up to 40% of patients develop immune-related adverse events (irAEs) that can affect any organ system.[1–4](https://paperpile.com/c/1dXwSL/b14r+dahP+i0XR+h9bQ) While timely detection saves lives, these toxicities often hide in clinical notes, escaping standard surveillance methods.[4,5](https://paperpile.com/c/1dXwSL/h9bQ+cXKv) Furthermore, as the number of cancer survivors treated with ICIs grows, projected to contribute significantly to the 26 million cancer survivors anticipated by 2040 in the US alone,[6](https://paperpile.com/c/1dXwSL/VjyW)  the challenge of long-term irAE surveillance and management, particularly in non-oncology settings, becomes increasingly critical.
 
 Despite their clinical significance, systematically identifying irAEs presents a considerable challenge for both clinical care and pharmacovigilance.[7](https://paperpile.com/c/1dXwSL/N28d) Structured data fields within electronic health records (EHRs), such as ICD codes, do not reliably capture irAEs, especially those that do not result in hospitalization but still have important impacts on patients’ overall morbidity and quality of life. Even of those that result in hospitalization, ICD codes have a sensitivity of only approximately 68%.[8,9](https://paperpile.com/c/1dXwSL/tqHf+YbWl) This is because critical details regarding potential irAEs are frequently documented exclusively within unstructured, free-text clinical notes, necessitating laborious manual chart review for accurate extraction.
 
-Early efforts to automate irAE detection using natural language processing (NLP) relied on rule-based systems or conventional machine learning classifiers, which generally achieved modest performance, particularly for less common events.[10](https://paperpile.com/c/1dXwSL/FWQ9) Subsequent adoption of deep learning architectures, including Bidirectional Long Short-Term Memory networks (Bi-LSTMs) and Transformer-based models like BERT, demonstrated improved recall but typically required large, task-specific annotated datasets for supervised training and often involved complex model pipelines.[11,12](https://paperpile.com/c/1dXwSL/lhYX+PaFJ) 
+Early efforts to automate irAE detection using natural language processing (NLP) relied on rule-based systems or conventional machine learning classifiers, which generally achieved modest performance, particularly for less common events.[10](https://paperpile.com/c/1dXwSL/FWQ9) Subsequent adoption of deep learning architectures, including Bidirectional Long Short-Term Memory networks (Bi-LSTMs) and Transformer-based models like BERT, demonstrated improved recall but typically required large, task-specific annotated datasets for supervised training and often involved complex model pipelines.[11,12](https://paperpile.com/c/1dXwSL/lhYX+PaFJ)
 
 Large language models can now extract clinical information without extensive fine-tuning. These models exhibit remarkable capabilities for zero-shot or few-shot information extraction through sophisticated prompting, potentially obviating the need for extensive supervised fine-tuning. Preliminary studies applying LLMs to irAE identification have shown promise;[8,13,14](https://paperpile.com/c/1dXwSL/gJgz+4PWZ+tqHf) however, they have predominantly focused on binary classification (irAE present/absent) and cannot be used for real-time detection using real-time notes, as they operate retrospectively at the patient level. Furthermore, they have not addressed the extraction of fine-grained clinical attributes, which are crucial for comprehensive review, clinical decision-making, translational research, and regulatory reporting. These critical attributes include the temporal status (distinguishing between current, active events and historical ones), severity grading (aligned with standardized scales such as CTCAE), attribution (the clinician's assessment of the likelihood that the event is ICI-related), and the certainty of that attribution. Extracting these details accurately from narrative text remains an unmet barrier to understanding and addressing irAEs and cancer treatment adverse events more broadly.
 
 Concurrently, advanced prompting strategies and architectures, often described as "agentic" systems, are pushing the boundaries of LLM capabilities.[15](https://paperpile.com/c/1dXwSL/2d3T) These systems decompose complex reasoning tasks into smaller, manageable sub-problems, often addressed by multiple specialized LLM instances (agents), and synthesize the final output.[15](https://paperpile.com/c/1dXwSL/2d3T) It remains unknown whether such agentic architectures can be effectively leveraged for the complex, multi-faceted task of extracting detailed irAE attributes from clinical notes. Critically, even if technically feasible, the impact of integrating such sophisticated AI assistance into the workflow of human reviewers, examining its effect on their efficiency, accuracy, cognitive load, and overall experience, is unexplored terrain. This human-computer interaction (HCI) component is crucial for translating technological potential into practical clinical or research applications.
 
 Therefore, this study aimed to address these key questions through two primary objectives. First, we sought to develop and test a real-time agentic LLM pipeline, incorporating self-consistency, explicitly designed to extract not only the presence of six high-priority irAE types (myocarditis, dermatitis, thyroiditis, hepatitis, colitis, pneumonitis) but also their essential clinical attributes – temporal status, CTCAE-aligned grade, attribution to ICI therapy, and certainty of attribution – from unstructured oncology progress notes obtained from the Brigham and Women's Hospital (BWH) and Dana-Farber Cancer Institute (DFCI). Second, we conducted a prospective field study to evaluate the impact of integrating this LLM assistance into an annotation interface for retrospective chart curation, focusing on reviewer speed and agreement with the model's own predictions. We hypothesized that the agentic LLM system would achieve high technical performance in extracting detailed irAE attributes and that its integration would significantly improve human reviewer efficiency without compromising the quality and accuracy of the extracted data.
+*Figure 1 |** Multi-dimensional validation framework for agentic LLM-based irAE detection system
 
-***Figure 1 |** Multi-dimensional validation framework for agentic LLM-based irAE detection system![][image24]**a,** Retrospective development workflow progressing from dataset curation (289 expert-annotated notes) through agent development with prompt optimization on pneumonitis subset (n=26) to validation on held-out test set (n=263), achieving F1 scores of 0.92 (detection), 0.66 (CTCAE grading), and 0.95 (attribution). The agentic architecture employs six specialized agents with self-consistency mechanisms for robust extraction. **b,** Three parallel real-world validation streams evaluating complementary aspects of system performance: prospective pilot demonstrates real-time monitoring capability with 98% agreement (n=1000), controlled HCI study quantifies efficiency gains using crossover design (n=20 notes, 20 CRCs), and field study confirms operational effectiveness with 73% time reduction in chart curation. Total validation encompassed real-world cases across diverse clinical contexts. BWH, Brigham and Women's Hospital; DFCI, Dana-Farber Cancer Institute; CTCAE, Common Terminology Criteria for Adverse Events; CRC, clinical research coordinator; HCI, human-computer interaction; ICI, immune checkpoint inhibitor; irAE, immune-related adverse event.*
-
-**METHODS**
-
+![][image24]
+a,** Retrospective development workflow progressing from dataset curation (289 expert-annotated notes) through agent development with prompt optimization on pneumonitis subset (n=26) to validation on held-out test set (n=263), achieving F1 scores of 0.92 (detection), 0.66 (CTCAE grading), and 0.95 (attribution). The agentic architecture employs six specialized agents with self-consistency mechanisms for robust extraction. **b,** Three parallel real-world validation streams evaluating complementary aspects of system performance: prospective pilot demonstrates real-time monitoring capability with 98% agreement (n=1000), controlled HCI study quantifies efficiency gains using crossover design (n=20 notes, 20 CRCs), and field study confirms operational effectiveness with 73% time reduction in chart curation. Total validation encompassed real-world cases across diverse clinical contexts. BWH, Brigham and Women's Hospital; DFCI, Dana-Farber Cancer Institute; CTCAE, Common Terminology Criteria for Adverse Events; CRC, clinical research coordinator; HCI, human-computer interaction; ICI, immune checkpoint inhibitor; irAE, immune-related adverse event.*
+METHODS
 ### *Study Design and Oversight*
 
 This multi-phase study evaluated an agentic LLM system for detecting and extracting irAEs from clinical documentation, progressing systematically from retrospective analysis to real-world deployment. The study comprised three distinct phases: note-level attribute extraction with gold standard validation, prospective silent validation in real-time clinical workflow, and field deployment for chart curation as part of a human-computer interaction assessment (Figure 1). The study protocol received ethical approval from the Institutional Review Boards of Mass General Brigham and Dana-Farber Cancer Institute (MGB 2022P002195, DF/HCC 24-735, DF/HCC 20-328). A waiver of informed consent was granted for the retrospective components, as the research involved minimal risk and did not alter any clinical care. Verbal informed consent was obtained for the Field study.
@@ -76,18 +77,21 @@ The creation of high-quality ground truth labels followed a strict protocol desi
 
 Further, annotation guidelines were developed for four attributes we aimed to extract for each identified irAE mention within a note that drives clinical decision-making. We annotated the following characteristics and corresponding attributes for each irAE:
 
-* Temporal status: Temporal status distinguishes current, active events that require immediate management from historical events that may influence future treatment decisions. Attributes: Past, Current, Both  
-* Severity grading: Severity grading. Followed the National Cancer Institute Common Terminology Criteria for Adverse Events (CTCAE) version 5.0, a standardized system that guides treatment modifications and regulatory reporting in grades 1, 2, 3, 4, and 5\.  
-* Attribution: Attribution captured the clinician's documented assessment of causality between the adverse event and ICI therapy, recognizing that many symptoms in cancer patients have multiple potential etiologies. Attributes: positive, negative.  
+* Temporal status: Temporal status distinguishes current, active events that require immediate management from historical events that may influence future treatment decisions. Attributes: Past, Current, Both
+
+* Severity grading: Severity grading. Followed the National Cancer Institute Common Terminology Criteria for Adverse Events (CTCAE) version 5.0, a standardized system that guides treatment modifications and regulatory reporting in grades 1, 2, 3, 4, and 5\.
+
+* Attribution: Attribution captured the clinician's documented assessment of causality between the adverse event and ICI therapy, recognizing that many symptoms in cancer patients have multiple potential etiologies. Attributes: positive, negative.
+
 * Certainty: Certainty reflected the degree of diagnostic confidence expressed in the documentation, guided in part by the Naranjo scale but adjusted for note-level, text-based determination.[16](https://paperpile.com/c/1dXwSL/2llE) Attributes: none, unlikely, possible, probable, definite.
 
 Pilot rounds of 10-20 notes were dual-annotated, and annotation guidelines were iteratively updated for clarity and consistency until inter-annotator agreement exceeded 0.70 for each irAE type. Each clinical note underwent independent annotation by a physician and clinical research coordinator with \>3 years of experience in oncology data abstraction. All discrepancies were tracked and resolved through consensus discussion. Cases requiring adjudication were reviewed by a senior oncologist, whose decision constituted the final gold standard. The open-source Label Studio Community Platform v1.15 (HumanSignal, San Francisco, US), which is locally hosted behind our institution's firewall, was used as our annotation platform. The final annotation guidelines are available on the project github.
 
 ## Note Selection and Annotation
 
-Real-time clinical decision-making and time-sensitive research reporting require precise extraction of irAE attributes from individual clinical encounters. A total of 289 retrospective patient notes were annotated for retrospective evaluation. These notes were divided into a development set of 26 notes, all from pneumonitis-positive patients, and a test set of 263 notes, used to evaluate the final developed system. Notes were stratified to include all six target irAE types with adequate representation of each, spanning the full spectrum of documentation complexity from brief follow-up notes (approximately 300 words) to long consultation reports exceeding 3,000 words.   
-![][image25]  
-***Figure 2 | Multi-attribute annotation of immune-related adverse events (irAEs) from clinical text.***   
+Real-time clinical decision-making and time-sensitive research reporting require precise extraction of irAE attributes from individual clinical encounters. A total of 289 retrospective patient notes were annotated for retrospective evaluation. These notes were divided into a development set of 26 notes, all from pneumonitis-positive patients, and a test set of 263 notes, used to evaluate the final developed system. Notes were stratified to include all six target irAE types with adequate representation of each, spanning the full spectrum of documentation complexity from brief follow-up notes (approximately 300 words) to long consultation reports exceeding 3,000 words.
+![][image25]
+*Figure 2 | Multi-attribute annotation of immune-related adverse events (irAEs) from clinical text.*
 *Clinical note highlighting shows key information spans (left) linked to four annotation categories (right): Temporal Status, Severity Grading, Attribution, and Certainty. Example shown for Pneumonitis demonstrates conversion of unstructured text to structured multi-dimensional labels.*
 
 ## Development of the Agentic LLM Architecture
@@ -96,21 +100,21 @@ We leveraged our HIPAA-compliant Azure infrastructure, complete with business as
 
 The architecture employed an agentic design pattern, decomposing the complex task of irAE extraction into specialized subtasks handled by distinct model instances (Figure 2). A preprocessing agent first extracted and formatted relevant clinical text, handling the varied structures and formats present in EHR documentation. Subsequently, specialized extraction agents focused on specific attributes: one agent determined temporal status by analyzing verb tenses and temporal markers, another mapped clinical descriptions to CTCAE grades using detailed criteria, a third assessed attribution by identifying causal language and clinical reasoning, and a fourth evaluated the certainty of diagnosis based on hedging language and diagnostic workup discussions. Prompt engineering was optimized on the development set and for pneumonitis only in order to assess the generalizability of our approach across irAEs.
 
-Given the potential for variability in LLM outputs and hallucination risk, we also evaluated whether adding a self-consistency mechanism.[17–19](https://paperpile.com/c/1dXwSL/2gx2+rO0R+zGEN) Here, each note was processed through three parallel inference runs with controlled randomness. A final judge agent then synthesized these parallel outputs, implementing a majority-vote mechanism for discrete categories and selecting the most coherent extraction when unanimity was absent. 
+Given the potential for variability in LLM outputs and hallucination risk, we also evaluated whether adding a self-consistency mechanism.[17–19](https://paperpile.com/c/1dXwSL/2gx2+rO0R+zGEN) Here, each note was processed through three parallel inference runs with controlled randomness. A final judge agent then synthesized these parallel outputs, implementing a majority-vote mechanism for discrete categories and selecting the most coherent extraction when unanimity was absent.
 
 Finally, to aid human determination in the field study and real deployment setting, we included a crucial feature: the models were designed to extract "string-matched" snippets directly from the clinical notes. These snippets serve as supporting evidence for the determinations made at each agent stage. This functionality was then integrated into the user interface, providing a user-friendly summary that significantly aids human reviewers in their annotation tasks.
 
 ## Comparative Baseline Methods
 
-To contextualize the performance of our agentic system, we implemented several baseline approaches representing different points on the complexity-performance spectrum. These included rule-based extraction using regular expressions previously used in our institution to identify patients admitted for irAEs[20](https://paperpile.com/c/1dXwSL/7Eao); and zero-shot prompting. We compared open-source (Qwen/Qwen3-32B, deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) and proprietary OpenAI models (GPT-4.1-mini, GPT-4.1-nano, O4-mini) using our institutional HIPAA-secure OpenAI API endpoint. 
+To contextualize the performance of our agentic system, we implemented several baseline approaches representing different points on the complexity-performance spectrum. These included rule-based extraction using regular expressions previously used in our institution to identify patients admitted for irAEs[20](https://paperpile.com/c/1dXwSL/7Eao); and zero-shot prompting. We compared open-source (Qwen/Qwen3-32B, deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) and proprietary OpenAI models (GPT-4.1-mini, GPT-4.1-nano, O4-mini) using our institutional HIPAA-secure OpenAI API endpoint.
 
-### 
+###
 
 ### *Phase 2: Prospective Silent Pilot*
 
 Following retrospective analysis, we implemented our system in a prospective, real-time clinical environment to assess performance under operational conditions. The system was integrated with our institution’s clinical data warehouse to automatically identify all patients receiving ICI therapy within the past year, a population at the highest risk for developing new or evolving irAEs.
 
-Each morning, automated processes screened for new clinical documentation from this cohort, including progress notes, consultation reports, emergency department records, and discharge summaries. Notes meeting criteria were immediately processed through the complete LLM pipeline, with results generated 
+Each morning, automated processes screened for new clinical documentation from this cohort, including progress notes, consultation reports, emergency department records, and discharge summaries. Notes meeting criteria were immediately processed through the complete LLM pipeline, with results generated
 
 within minutes of document availability. The system produced structured reports containing predicted irAEs, their attributes, and crucially, extracted text segments serving as evidence for each prediction.
 
@@ -118,7 +122,7 @@ The prospective validation employed a “silent mode” approach where model pre
 
 This prospective phase lasted for three months, during which we processed over 884 real-time clinical notes and gained crucial insights into system performance, including stability over time, and failure modes not apparent in retrospective data. The temporal separation from our training data also assessed the model’s robustness to evolving clinical language and documentation practices.
 
-### *Phase 3: Chart Curation Field Study* 
+### *Phase 3: Chart Curation Field Study*
 
 To translate our technical capabilities into practical clinical utility, we developed a bespoke web application that integrates the LLM system into operational workflows, built using React 18.2 with a FastAPI backend (Figure 3). We conducted “think-aloud” sessions with 3 clinical research coordinators and iteratively incorporated their feedback to optimize interface design. The interface prominently displayed model predictions alongside source text evidence, highlighted directly within the clinical note viewer. Structured data entry forms were pre-populated with model suggestions, allowing for easy modification. Audit trails tracked human interactions, timings, and modifications for secondary analysis.
 
@@ -126,9 +130,9 @@ The application was deployed for production use in retrospectively curating irAE
 
 ### *Phase 4: Randomized User Effect Study*
 
-To evaluate the LLM system's impact on human performance in a more controlled setting, we conducted a randomized crossover user study involving 10-20 clinical research coordinators (CRCs). The study was designed to determine if the LLM-aided annotation tool improved the efficiency, accuracy, and inter-annotator agreement of irAE annotation compared to a manual process. Following training and a practice session, participants were randomized into one of four cohorts in a crossover design. This design counterbalanced the order of the two interventions—(1) using the LLM-aided interface and (2) a manual control method using a spreadsheet—as well as two distinct sets of clinical notes (Set A and Set B). This structure was chosen to mitigate potential carryover effects from either the annotation method or the note set, which were planned to be estimated using a difference-in-differences analysis. 
+To evaluate the LLM system's impact on human performance in a more controlled setting, we conducted a randomized crossover user study involving 10-20 clinical research coordinators (CRCs). The study was designed to determine if the LLM-aided annotation tool improved the efficiency, accuracy, and inter-annotator agreement of irAE annotation compared to a manual process. Following training and a practice session, participants were randomized into one of four cohorts in a crossover design. This design counterbalanced the order of the two interventions—(1) using the LLM-aided interface and (2) a manual control method using a spreadsheet—as well as two distinct sets of clinical notes (Set A and Set B). This structure was chosen to mitigate potential carryover effects from either the annotation method or the note set, which were planned to be estimated using a difference-in-differences analysis.
 
-The primary endpoint was annotation efficiency (a continuous measure). Secondary endpoints were accuracy (a binary measure compared against a gold standard) and inter-annotator agreement, evaluated by the precision of the kappa statistic. Sample size calculations were powered to detect clinically significant differences, and statistical models were selected to account for the expected correlation of repeated annotations from the same CRC. 
+The primary endpoint was annotation efficiency (a continuous measure). Secondary endpoints were accuracy (a binary measure compared against a gold standard) and inter-annotator agreement, evaluated by the precision of the kappa statistic. Sample size calculations were powered to detect clinically significant differences, and statistical models were selected to account for the expected correlation of repeated annotations from the same CRC.
 
 ### *Metrics and Statistical Analysis*
 
@@ -144,27 +148,25 @@ Binary detection. On retrospective evaluation, the agentic system achieved macro
 
 ## CTCAE Grading Performance
 
-Exact grade assignment on the 6‑class CTCAE scale was more challenging, with macro F1 = 0.66 for the current grade overall. Performance varied by condition—highest for dermatitis (0.73) and thyroiditis (0.72), moderate for pneumonitis (0.67) and myocarditis (0.67), and lower for hepatitis (0.66) and colitis (0.51). Grade‑level analysis shows the expected pattern of strong performance at the extremes (Grade 0: 0.99; Grade 5: 1.00) and lower F1 for intermediate grades (Grade 1: 0.34; Grade 2: 0.43). 
-
-**Attribution and Certainty Extraction**  
+Exact grade assignment on the 6‑class CTCAE scale was more challenging, with macro F1 = 0.66 for the current grade overall. Performance varied by condition—highest for dermatitis (0.73) and thyroiditis (0.72), moderate for pneumonitis (0.67) and myocarditis (0.67), and lower for hepatitis (0.66) and colitis (0.51). Grade‑level analysis shows the expected pattern of strong performance at the extremes (Grade 0: 0.99; Grade 5: 1.00) and lower F1 for intermediate grades (Grade 1: 0.34; Grade 2: 0.43).
+Attribution and Certainty Extraction
 The system reliably captured clinician‑stated causality, with binary F1 = 0.92 (current) and 0.94 (past) for attribution. Certainty estimation reached macro F1 = 0.59 (current) and 0.57 (past) on the 5‑class scale; when reduced to binary (any certainty vs none), performance was high (F1 = 0.93 current; 0.94 past).
-
-**Temporality Sensitivity**  
+Temporality Sensitivity
 A cross‑temporal analysis that treats a label as correct if predicted in either “current” or “past” shows only modest gains (binary F1 rises to 0.93 vs 0.92/0.91 by timepoint), suggesting most errors are detection‑, not temporality‑, related. For attribution and certainty, temporal assignment error rates were small in magnitude (|ΔF1| \< 0.05 across conditions).
 
 ## Model Architecture Comparisons
 
 Among all configurations, the agentic GPT‑4.1‑mini (default) provided the best balance of accuracy and efficiency across tasks (top row in the across‑model summary), and we therefore adopt 4.1‑mini as the default model going forward. Relative to this configuration, 4.1‑nano (default) showed lower performance (Δ current detection F1 −0.14, 0.78 vs 0.92; Δ current grade multi‑class −0.14, 0.52 vs 0.66). 4o‑mini (default) also trailed (Δ detection −0.13, 0.79 vs 0.92; Δ grade multi‑class −0.19, 0.47 vs 0.66). Open‑source baselines were consistently weaker on grading (e.g., Qwen‑3 30B instruct (agent): 0.59, Δ −0.07; Qwen‑3 30B instruct (zeroshot): 0.51, Δ −0.15; Gemma‑3 27B (agent): 0.38, Δ −0.28) and on detection (e.g., 0.78–0.86 vs 0.92).
 
-Within the 4.1‑mini family, removing self‑consistency (single‑stage ablation) produced modest to meaningful drops—detection F1 0.92 → 0.78 (Δ −0.14) and grade macro F1 0.66 → 0.64 (Δ −0.02)—underscoring the benefit of the full agentic pipeline. For 4o‑mini, ablation effects were inconsistent (e.g., no‑judge variant improved multi‑class grading to 0.65 from 0.47), but even the best ablated variants remained below 4.1‑mini overall. 
+Within the 4.1‑mini family, removing self‑consistency (single‑stage ablation) produced modest to meaningful drops—detection F1 0.92 → 0.78 (Δ −0.14) and grade macro F1 0.66 → 0.64 (Δ −0.02)—underscoring the benefit of the full agentic pipeline. For 4o‑mini, ablation effects were inconsistent (e.g., no‑judge variant improved multi‑class grading to 0.65 from 0.47), but even the best ablated variants remained below 4.1‑mini overall.
 
 ### *Phase 2: Prospective Silent Validation*
 
-Over a three-month prospective deployment, the system processed 884 clinical notes comprising 31,824 label adjudications across grade, attribution, and certainty for both current and past timepoints. In real-time use it maintained high agreement with human review: overall binary accuracy 97.85% with binary F1 \= 0.76 (Table 2). Performance was similar across temporalities (current: 97.67%, F1 0.72; past: 98.02%, F1 0.79). By label family, attribution achieved 98.39% accuracy (F1 0.77) and certainty 98.54% (F1 0.80). At the note level (all labels for that metric within a note must be correct), accuracy was 87% for attribution (771/884 notes), 83% for certainty (732/884), and 62% for grade (549/884). 
+Over a three-month prospective deployment, the system processed 884 clinical notes comprising 31,824 label adjudications across grade, attribution, and certainty for both current and past timepoints. In real-time use it maintained high agreement with human review: overall binary accuracy 97.85% with binary F1 \= 0.76 (Table 2). Performance was similar across temporalities (current: 97.67%, F1 0.72; past: 98.02%, F1 0.79). By label family, attribution achieved 98.39% accuracy (F1 0.77) and certainty 98.54% (F1 0.80). At the note level (all labels for that metric within a note must be correct), accuracy was 87% for attribution (771/884 notes), 83% for certainty (732/884), and 62% for grade (549/884).
 
-### *Phase 3: Chart Curation Field Study* 
+### *Phase 3: Chart Curation Field Study*
 
-To assess temporal stability (bucket ≈ week), we grouped the 299 co-annotated notes into six sequential buckets. Inter-rater agreement on grade—the primary endpoint—was substantial overall (Cohen’s κ \= 0.80) and largely steady across time, with a transient dip for notes 101–150 (κ \= 0.55) that rebounded thereafter (0.71–0.93). Agreement with the model on grade was high overall (mean κ \= 0.89) and stable across buckets, with CRC-1 near-perfect in every bucket (κ ≈ 0.95–1.00) and CRC-2 substantial but more variable (κ ≈ 0.55–0.94). Time per note was 161 s on average versus a 600-s baseline (\~3.7× faster) and improved over time: from \~48 s and \~380 s in the first bucket to \~18 s and \~31 s by notes 201–250 for CRC-1 and CRC-2, respectively; a spike in bucket 3 (793 s for CRC-2) coincided with the κ dip, after which times remained low (final bucket: 28 s vs 141 s) and the between-user gap narrowed markedly (from 335 s in bucket 1 to 30 s in bucket 5). 
+To assess temporal stability (bucket ≈ week), we grouped the 299 co-annotated notes into six sequential buckets. Inter-rater agreement on grade—the primary endpoint—was substantial overall (Cohen’s κ \= 0.80) and largely steady across time, with a transient dip for notes 101–150 (κ \= 0.55) that rebounded thereafter (0.71–0.93). Agreement with the model on grade was high overall (mean κ \= 0.89) and stable across buckets, with CRC-1 near-perfect in every bucket (κ ≈ 0.95–1.00) and CRC-2 substantial but more variable (κ ≈ 0.55–0.94). Time per note was 161 s on average versus a 600-s baseline (\~3.7× faster) and improved over time: from \~48 s and \~380 s in the first bucket to \~18 s and \~31 s by notes 201–250 for CRC-1 and CRC-2, respectively; a spike in bucket 3 (793 s for CRC-2) coincided with the κ dip, after which times remained low (final bucket: 28 s vs 141 s) and the between-user gap narrowed markedly (from 335 s in bucket 1 to 30 s in bucket 5).
 
 ### *Phase 4: Randomized User Effect Study*
 
@@ -176,162 +178,201 @@ Inter‑annotator agreement (IAA; Cohen’s κ, averaged over rater pairs) was c
 
 Participants’ perceptions mirrored these objective gains. The mean System Usability Scale score increased from 35.3 to 52.1 (p \= 0.00025), perceived efficiency from 2.5 to 3.9 (p \= 0.005), confidence in labeling accuracy from 3.1 to 3.8 (p \= 0.018), and belief that AI can assist complex clinical interpretation from 2.3 to 3.0 (p \= 0.026). Eighty‑eight percent of annotators preferred the AI‑assisted workflow to manual review. Full estimates (point differences, 95% CIs, and p‑values) are reported in Table 3a (performance) and Table 3b (survey).
 
-**DISCUSSION**  
+## DISCUSSION
+
 The present study shows that a carefully engineered, agentic large‑language‑model (LLM) system can extract clinically salient attributes of immune‑related adverse events (irAEs) from routine oncology documentation with performance that translates from retrospective benchmarking to prospective, real‑world use. Across six high‑priority irAEs, the system achieved high note‑level detection (macro F1 = 0.92 for current events; 0.91 for past), robust clinician‑stated attribution extraction (binary F1 = 0.92–0.94), and competitive multi‑class CTCAE grading (macro F1 = 0.66), with the expected degradation at intermediate grades. In a three‑month prospective silent deployment (884 notes; 31,824 label adjudications), agreement with human review remained high (overall binary accuracy 97.85%, F1 = 0.76). Embedded within an annotation interface, the tool accelerated expert curation approximately 3.7‑fold (161 s vs 600 s per note), with substantial CRC–CRC agreement on grading (Cohen’s κ = 0.80) and high CRC–model agreement (mean κ = 0.89). Together, these results suggest that agentic LLMs, coupled to human verification and evidence highlighting, can shift irAE ascertainment from labor‑intensive retrospective review to scalable, near‑real‑time surveillance.
 
 ## Advancing beyond binary detection
 
 Prior approaches emphasize patient‑ or visit‑level irAE classification, often retrospectively and without the fine‑grained attributes required for actionability (temporality, grade, and clinician‑stated attribution).[8,10,11,13](https://paperpile.com/c/1dXwSL/tqHf+FWQ9+lhYX+gJgz) By decomposing the task into specialized agents for temporality, grading, attribution, and certainty—with explicit extraction of supporting spans—our system overcomes known challenges in textual causality and nuance.[14,21](https://paperpile.com/c/1dXwSL/4PWZ+hZRx) Self‑consistency contributed materially (detection macro F1 \+0.14 relative to a single‑stage variant), consistent with the value of ensembling and cross‑examination to reduce variance and error.[17,18](https://paperpile.com/c/1dXwSL/rO0R+2gx2) Temporal misassignment was small (|ΔF1| \< 0.05 across conditions), and a cross‑temporal view yielded only modest gains (binary F1 = 0.93), indicating that residual errors are primarily detection‑ or grading‑related rather than due to incorrect timepoint assignment. Open‑source baselines and smaller closed‑source models trailed notably on grading, reinforcing the accuracy–efficiency balance of the GPT‑4.1‑mini agentic configuration.
-
-**Clinical and pharmacovigilance significance**  
+Clinical and pharmacovigilance significance
 Reliable, note‑level extraction of irAE attributes addresses a persistent blind spot in structured EHR fields and claims data, where sensitivity is limited even for hospitalization‑associated events. The ability to surface candidate events with attributed causality and provisional grade shortly after documentation can shorten time‑to‑recognition for life‑threatening toxicities (e.g., myocarditis, pneumonitis) and standardize ascertainment for research registries and safety reporting. Importantly, grading performance was strongest at the extremes (e.g., Grade 0 and Grade 5), a pattern aligned with clinical triage thresholds (e.g., action typically escalates at higher grades), whereas adjacent intermediate grades showed lower separability—underscoring the value of human verification for borderline cases.
-
-**Prospective reliability and human factors**  
+Prospective reliability and human factors
 Performance was stable prospectively across temporalities (current: 97.67% accuracy, F1 = 0.72; past: 98.02%, F1 = 0.79). At the note level, synthesized outputs were verifiable in practice (attribution accuracy 87% \[771/884\], certainty 83% \[732/884\], grade 62% \[549/884\]). In a pragmatic field study, the human‑in‑the‑loop interface—pairing predictions with verbatim evidence—reduced median review time and exhibited a clear learning curve, while maintaining substantial CRC–CRC agreement (κ = 0.80) and high CRC–model agreement (mean κ = 0.89).
 
 A randomized user study further isolated the effect of assistance: mean time per note fell by 2.32 minutes (Control 7.80 vs LLM 5.47, paired sign test p = 0.004). LLM assistance improved accuracy for attribution (overall Δ 0.064, p = 0.004; current Δ 0.096, p = 0.004) and certainty (overall Δ 0.052, p = 0.039; current Δ 0.078, p = 0.008), while grade accuracy gains were modest and not statistically significant. Human–human inter‑annotator agreement (κ) increased with assistance, achieving significant gains for grade (overall κ 0.785 vs 0.456, Δ 0.328, p = 0.016; current 0.825 vs 0.397, Δ 0.427, p = 0.016) and positive, non‑significant trends for attribution and certainty. Perceptions aligned with these objective effects: SUS improved from 35.3 pre‑exposure to 52.1 post‑exposure (p = 0.00025); perceived efficiency rose from 2.5 to 3.9 (p = 0.005); confidence in labeling accuracy from 3.1 to 3.8 (p = 0.018); belief that AI can assist complex interpretation from 2.3 to 3.0 (p = 0.026); and 88% of participants preferred the AI‑assisted workflow.
-
-**Interpretation of grading performance**  
+Interpretation of grading performance
 Multi‑class CTCAE grading remains the most challenging subtask. Two considerations temper this result. First, ambiguity at intermediate grades often reflects documentation incompleteness (e.g., missing quantitative stool counts for colitis, absent laboratory trend context for hepatitis) rather than model error per se; such ambiguity similarly burdens human reviewers. Second, operating points can be adapted to clinically meaningful bins (e.g., none/low vs ≥ Grade 3), which may improve effective performance for triage and reporting while preserving granular outputs for research. Incorporating structured signals (laboratories, medications such as corticosteroid initiation, imaging impressions) and temporal aggregation across notes are promising strategies to disambiguate intermediate grades without sacrificing interpretability.
-
-**Generalizability, governance, and cost**  
+Generalizability, governance, and cost
 The architecture generalized across six irAEs with consistent detection performance, suggesting portability to a broader irAE spectrum. Nevertheless, this is a single‑health‑system study with local templates and vernacular; external validation across institutions, EHRs, and oncology subspecialties is necessary. Agentic pipelines incur non‑trivial compute (multiple model calls per note); our results with a mid‑sized model show that accuracy–cost trade‑offs can be managed, but privacy‑preserving, production‑grade deployments (including options for local models under HIPAA BAAs) and robust monitoring for data drift will be essential as indications and combination regimens expand.
-
-**Limitations**  
+Limitations
 We focused on six irAEs—a clinically important subset of the broader CTCAE v5.0 ontology. Expansion to rarer neurologic, renal, and hematologic toxicities will require targeted evaluation. Ground‑truth labels, though adjudicated, remain constrained by documentation quality and the inherent subjectivity of grading and attribution. The prospective deployment did not assess patient outcomes (e.g., time to steroid initiation, hospitalization, treatment interruption). The field study was observational; causal effects on efficiency and agreement were isolated in the separate randomized study but only for note‑level labeling tasks.
-
-**Implications and future directions**  
+Implications and future directions
 Methodologically, agentic decomposition with self‑consistency and explicit evidence extraction yielded accurate, auditable outputs suitable for clinical workflows. Practically, staging validation from retrospective testing to silent prospective monitoring and embedded human collaboration provides a template for closing the “deployment gap” in clinical AI. Next steps include multi‑site external validation at Rhode-Island Hospital, integration of structured and imaging signals to strengthen intermediate‑grade discrimination, threshold‑optimized operating modes for triage and regulatory reporting, pre‑specified drift monitoring with periodic model refresh, and outcome‑oriented trials to test whether earlier detection reduces severe irAEs, hospitalizations, or informs safer rechallenge decisions. Given the expanding survivor population exposed to ICIs and diffusion of care into non‑oncology settings, scalable, auditable assistance for irAE detection is poised to become a core informatics capability for oncology services and pharmacovigilance programs.
+CONCLUSIONS
+In summary, an agentic LLM system, validated across retrospective, prospective, and embedded field settings, can extract the who/when/how‑bad/why of irAEs from free‑text notes with accuracy sufficient for workflow integration, while measurably accelerating expert review. The combination of high detection performance, actionable attribute extraction, and verifiable evidence moves irAE surveillance beyond binary classification toward a learning health‑system approach that is both technically rigorous and operationally feasible. With external validation and outcome‑focused trials, such systems could become integral to real‑time safety monitoring, trial curation, and high‑reliability oncology care.
 
-**CONCLUSIONS**  
-In summary, an agentic LLM system, validated across retrospective, prospective, and embedded field settings, can extract the who/when/how‑bad/why of irAEs from free‑text notes with accuracy sufficient for workflow integration, while measurably accelerating expert review. The combination of high detection performance, actionable attribute extraction, and verifiable evidence moves irAE surveillance beyond binary classification toward a learning health‑system approach that is both technically rigorous and operationally feasible. With external validation and outcome‑focused trials, such systems could become integral to real‑time safety monitoring, trial curation, and high‑reliability oncology care.  
-**REFERENCES**
+## REFERENCES
 
-1\.	[Postow, M. A., Sidlow, R. & Hellmann, M. D. Immune-related adverse events associated with immune checkpoint blockade. *N. Engl. J. Med.* **378**, 158–168 (2018).](http://paperpile.com/b/1dXwSL/b14r)  
-2\.	[Brahmer, J. R. *et al.* Management of immune-related adverse events in patients treated with immune checkpoint inhibitor therapy: American society of clinical oncology clinical practice guideline. *J. Clin. Oncol.* **36**, 1714–1768 (2018).](http://paperpile.com/b/1dXwSL/dahP)  
-3\.	[Schneider, B. J. *et al.* Management of immune-related adverse events in patients treated with immune checkpoint inhibitor therapy: ASCO guideline update. *J. Clin. Oncol.* **39**, 4073–4126 (2021).](http://paperpile.com/b/1dXwSL/i0XR)  
-4\.	[Yeoh, H.-L. *et al.* Immune-related adverse events secondary to immunotherapy in oncology: A guide for general practice. *Aust. J. Gen. Pract.* **52**, 378–385 (2023).](http://paperpile.com/b/1dXwSL/h9bQ)  
-5\.	[Couey, M. A. *et al.* Delayed immune-related events (DIRE) after discontinuation of immunotherapy: diagnostic hazard of autoimmunity at a distance. *J. Immunother. Cancer* **7**, 165 (2019).](http://paperpile.com/b/1dXwSL/cXKv)  
-6\.	[Tonorezos, E. *et al.* Prevalence of cancer survivors in the United States. *J. Natl. Cancer Inst.* **116**, 1784–1790 (2024).](http://paperpile.com/b/1dXwSL/VjyW)  
-7\.	[Gallifant, J., Celi, L. A., Sharon, E. & Bitterman, D. S. Navigating the complexities of artificial intelligence-enabled real-world data collection for oncology pharmacovigilance. *JCO Clin. Cancer Inform.* **8**, e2400051 (2024).](http://paperpile.com/b/1dXwSL/N28d)  
-8\.	[Sun, V. H. *et al.* Enhancing precision in detecting severe immune-related adverse events: Comparative analysis of large language models and International Classification of Disease codes in patient records. *J. Clin. Oncol.* **42**, 4134–4144 (2024).](http://paperpile.com/b/1dXwSL/tqHf)  
-9\.	[Kalinich, M. *et al.* Prediction of severe immune-related adverse events requiring hospital admission in patients on immune checkpoint inhibitors: study of a population level insurance claims database from the USA. *J. Immunother. Cancer* **9**, e001935 (2021).](http://paperpile.com/b/1dXwSL/YbWl)  
-10\.	[Gupta, S., Belouali, A., Shah, N. J., Atkins, M. B. & Madhavan, S. Automated identification of patients with immune-related adverse events from clinical notes using word embedding and machine learning. *JCO Clin. Cancer Inform.* **5**, 541–549 (2021).](http://paperpile.com/b/1dXwSL/FWQ9)  
-11\.	[Zitu, M. M. *et al.* Detection of patient-level immunotherapy-related adverse events (irAEs) from clinical narratives of electronic health records: A high-sensitivity artificial intelligence model. *Pragmat. Obs. Res.* **15**, 243–252 (2024).](http://paperpile.com/b/1dXwSL/lhYX)  
-12\.	[Chen, S. *et al.* Natural Language Processing to Automatically Extract the Presence and Severity of Esophagitis in Notes of Patients Undergoing Radiotherapy. *JCO Clin Cancer Inform* **7**, e2300048 (2023).](http://paperpile.com/b/1dXwSL/PaFJ)  
-13\.	[Barman, H. *et al.* Identification and characterization of immune checkpoint inhibitor-induced toxicities from electronic health records using natural language processing. *JCO Clin. Cancer Inform.* **8**, e2300151 (2024).](http://paperpile.com/b/1dXwSL/gJgz)  
-14\.	[Bejan, C. A. *et al.* irAE-GPT: Leveraging large language models to identify immune-related adverse events in electronic health records and clinical trial datasets. *medRxiv* (2025) doi:](http://paperpile.com/b/1dXwSL/4PWZ)[10.1101/2025.03.05.25323445](http://dx.doi.org/10.1101/2025.03.05.25323445)[.](http://paperpile.com/b/1dXwSL/4PWZ)  
-15\.	[Zhang, J. *et al.* AFlow: Automating Agentic Workflow Generation. *arXiv \[cs.AI\]* (2024).](http://paperpile.com/b/1dXwSL/2d3T)  
-16\.	[Adverse drug reaction probability scale (Naranjo) in drug induced liver injury. in *LiverTox: Clinical and Research Information on Drug-Induced Liver Injury* (National Institute of Diabetes and Digestive and Kidney Diseases, Bethesda (MD), 2012).](http://paperpile.com/b/1dXwSL/2llE)  
-17\.	[Wang, X. *et al.* Self-consistency improves chain of thought reasoning in language models. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/1dXwSL/2gx2)  
-18\.	[Cohen, R., Hamri, M., Geva, M. & Globerson, A. LM vs LM: Detecting factual errors via cross examination. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/1dXwSL/rO0R)  
-19\.	[Abbasian, M., Azimi, I., Rahmani, A. M. & Jain, R. Conversational Health Agents: A personalized LLM-powered agent framework. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/1dXwSL/zGEN)  
-20\.	[Abu-Shawer, O. *et al.* Novel platform leveraging electronic medical record (EMR) to triage patients admitted with high-grade immune-related adverse events (irAEs) to the immune-toxicity (ITOX) service. *J. Immunother. Cancer* **8**, e000992 (2020).](http://paperpile.com/b/1dXwSL/7Eao)  
-21\.	[Van Veen, D. *et al.* Adapted large language models can outperform medical experts in clinical text summarization. *Nat. Med.* **30**, 1134–1142 (2024).](http://paperpile.com/b/1dXwSL/hZRx)  
-22\.	[Rosenthal, J. T., Beecy, A. & Sabuncu, M. R. Rethinking clinical trials for medical AI with dynamic deployments of adaptive systems. *NPJ Digit. Med.* **8**, 252 (2025).](http://paperpile.com/b/1dXwSL/XEBE)  
-23\.	[Lopez, I. *et al.* Clinical entity augmented retrieval for clinical information extraction. *NPJ Digit. Med.* **8**, 45 (2025).](http://paperpile.com/b/1dXwSL/8YPf)  
-24\.	[Martins, F. *et al.* Adverse effects of immune-checkpoint inhibitors: epidemiology, management and surveillance. *Nat. Rev. Clin. Oncol.* **16**, 563–580 (2019).](http://paperpile.com/b/1dXwSL/HDUo)  
-25\.	[Johnson, D. B., Nebhan, C. A., Moslehi, J. J. & Balko, J. M. Immune-checkpoint inhibitors: long-term implications of toxicity. *Nat. Rev. Clin. Oncol.* **19**, 254–267 (2022).](http://paperpile.com/b/1dXwSL/3818)  
-26\.	[de Miguel, M. & Calvo, E. Clinical challenges of immune checkpoint inhibitors. *Cancer Cell* **38**, 326–333 (2020).](http://paperpile.com/b/1dXwSL/eFHs)  
-27\.	[Hazell, L. & Shakir, S. A. W. Under-reporting of adverse drug reactions : a systematic review. *Drug Saf.* **29**, 385–396 (2006).](http://paperpile.com/b/1dXwSL/PxfB)  
+1\.	[Postow, M. A., Sidlow, R. & Hellmann, M. D. Immune-related adverse events associated with immune checkpoint blockade. *N. Engl. J. Med.* **378**, 158–168 (2018).](http://paperpile.com/b/1dXwSL/b14r)
+2\.	[Brahmer, J. R. *et al.* Management of immune-related adverse events in patients treated with immune checkpoint inhibitor therapy: American society of clinical oncology clinical practice guideline. *J. Clin. Oncol.* **36**, 1714–1768 (2018).](http://paperpile.com/b/1dXwSL/dahP)
+3\.	[Schneider, B. J. *et al.* Management of immune-related adverse events in patients treated with immune checkpoint inhibitor therapy: ASCO guideline update. *J. Clin. Oncol.* **39**, 4073–4126 (2021).](http://paperpile.com/b/1dXwSL/i0XR)
+4\.	[Yeoh, H.-L. *et al.* Immune-related adverse events secondary to immunotherapy in oncology: A guide for general practice. *Aust. J. Gen. Pract.* **52**, 378–385 (2023).](http://paperpile.com/b/1dXwSL/h9bQ)
+5\.	[Couey, M. A. *et al.* Delayed immune-related events (DIRE) after discontinuation of immunotherapy: diagnostic hazard of autoimmunity at a distance. *J. Immunother. Cancer* **7**, 165 (2019).](http://paperpile.com/b/1dXwSL/cXKv)
+6\.	[Tonorezos, E. *et al.* Prevalence of cancer survivors in the United States. *J. Natl. Cancer Inst.* **116**, 1784–1790 (2024).](http://paperpile.com/b/1dXwSL/VjyW)
+7\.	[Gallifant, J., Celi, L. A., Sharon, E. & Bitterman, D. S. Navigating the complexities of artificial intelligence-enabled real-world data collection for oncology pharmacovigilance. *JCO Clin. Cancer Inform.* **8**, e2400051 (2024).](http://paperpile.com/b/1dXwSL/N28d)
+8\.	[Sun, V. H. *et al.* Enhancing precision in detecting severe immune-related adverse events: Comparative analysis of large language models and International Classification of Disease codes in patient records. *J. Clin. Oncol.* **42**, 4134–4144 (2024).](http://paperpile.com/b/1dXwSL/tqHf)
+9\.	[Kalinich, M. *et al.* Prediction of severe immune-related adverse events requiring hospital admission in patients on immune checkpoint inhibitors: study of a population level insurance claims database from the USA. *J. Immunother. Cancer* **9**, e001935 (2021).](http://paperpile.com/b/1dXwSL/YbWl)
+10\.	[Gupta, S., Belouali, A., Shah, N. J., Atkins, M. B. & Madhavan, S. Automated identification of patients with immune-related adverse events from clinical notes using word embedding and machine learning. *JCO Clin. Cancer Inform.* **5**, 541–549 (2021).](http://paperpile.com/b/1dXwSL/FWQ9)
+11\.	[Zitu, M. M. *et al.* Detection of patient-level immunotherapy-related adverse events (irAEs) from clinical narratives of electronic health records: A high-sensitivity artificial intelligence model. *Pragmat. Obs. Res.* **15**, 243–252 (2024).](http://paperpile.com/b/1dXwSL/lhYX)
+12\.	[Chen, S. *et al.* Natural Language Processing to Automatically Extract the Presence and Severity of Esophagitis in Notes of Patients Undergoing Radiotherapy. *JCO Clin Cancer Inform* **7**, e2300048 (2023).](http://paperpile.com/b/1dXwSL/PaFJ)
+13\.	[Barman, H. *et al.* Identification and characterization of immune checkpoint inhibitor-induced toxicities from electronic health records using natural language processing. *JCO Clin. Cancer Inform.* **8**, e2300151 (2024).](http://paperpile.com/b/1dXwSL/gJgz)
+14\.	[Bejan, C. A. *et al.* irAE-GPT: Leveraging large language models to identify immune-related adverse events in electronic health records and clinical trial datasets. *medRxiv* (2025) doi:](http://paperpile.com/b/1dXwSL/4PWZ)[10.1101/2025.03.05.25323445](http://dx.doi.org/10.1101/2025.03.05.25323445)[.](http://paperpile.com/b/1dXwSL/4PWZ)
+15\.	[Zhang, J. *et al.* AFlow: Automating Agentic Workflow Generation. *arXiv \[cs.AI\]* (2024).](http://paperpile.com/b/1dXwSL/2d3T)
+16\.	[Adverse drug reaction probability scale (Naranjo) in drug induced liver injury. in *LiverTox: Clinical and Research Information on Drug-Induced Liver Injury* (National Institute of Diabetes and Digestive and Kidney Diseases, Bethesda (MD), 2012).](http://paperpile.com/b/1dXwSL/2llE)
+17\.	[Wang, X. *et al.* Self-consistency improves chain of thought reasoning in language models. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/1dXwSL/2gx2)
+18\.	[Cohen, R., Hamri, M., Geva, M. & Globerson, A. LM vs LM: Detecting factual errors via cross examination. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/1dXwSL/rO0R)
+19\.	[Abbasian, M., Azimi, I., Rahmani, A. M. & Jain, R. Conversational Health Agents: A personalized LLM-powered agent framework. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/1dXwSL/zGEN)
+20\.	[Abu-Shawer, O. *et al.* Novel platform leveraging electronic medical record (EMR) to triage patients admitted with high-grade immune-related adverse events (irAEs) to the immune-toxicity (ITOX) service. *J. Immunother. Cancer* **8**, e000992 (2020).](http://paperpile.com/b/1dXwSL/7Eao)
+21\.	[Van Veen, D. *et al.* Adapted large language models can outperform medical experts in clinical text summarization. *Nat. Med.* **30**, 1134–1142 (2024).](http://paperpile.com/b/1dXwSL/hZRx)
+22\.	[Rosenthal, J. T., Beecy, A. & Sabuncu, M. R. Rethinking clinical trials for medical AI with dynamic deployments of adaptive systems. *NPJ Digit. Med.* **8**, 252 (2025).](http://paperpile.com/b/1dXwSL/XEBE)
+23\.	[Lopez, I. *et al.* Clinical entity augmented retrieval for clinical information extraction. *NPJ Digit. Med.* **8**, 45 (2025).](http://paperpile.com/b/1dXwSL/8YPf)
+24\.	[Martins, F. *et al.* Adverse effects of immune-checkpoint inhibitors: epidemiology, management and surveillance. *Nat. Rev. Clin. Oncol.* **16**, 563–580 (2019).](http://paperpile.com/b/1dXwSL/HDUo)
+25\.	[Johnson, D. B., Nebhan, C. A., Moslehi, J. J. & Balko, J. M. Immune-checkpoint inhibitors: long-term implications of toxicity. *Nat. Rev. Clin. Oncol.* **19**, 254–267 (2022).](http://paperpile.com/b/1dXwSL/3818)
+26\.	[de Miguel, M. & Calvo, E. Clinical challenges of immune checkpoint inhibitors. *Cancer Cell* **38**, 326–333 (2020).](http://paperpile.com/b/1dXwSL/eFHs)
+27\.	[Hazell, L. & Shakir, S. A. W. Under-reporting of adverse drug reactions : a systematic review. *Drug Saf.* **29**, 385–396 (2006).](http://paperpile.com/b/1dXwSL/PxfB)
 28\.	[Hsiehchen, D., Watters, M. K., Lu, R., Xie, Y. & Gerber, D. E. Variation in the assessment of immune-related adverse event occurrence, grade, and timing in patients receiving immune checkpoint inhibitors. *JAMA Netw. Open* **2**, e1911519 (2019).](http://paperpile.com/b/1dXwSL/iKZc)
-
-**Table 1: Primary Performance Summary**
-
+Table 1: Primary Performance Summary
 | Condition | Current Grade Multi-class Macro F1 | Current Grade Binary F1 | Current Grade Binary Precision | Current Grade Binary Recall |
+
 | :---- | :---- | :---- | :---- | :---- |
+
 | Overall (Average Across Conditions) | 0.66 | 0.92 | 0.93 | 0.91 |
+
 | Thyroiditis | 0.72 | 0.94 | 1.00 | 0.89 |
+
 | Hepatitis | 0.66 | 0.96 | 0.97 | 0.95 |
+
 | Colitis | 0.51 | 0.87 | 0.86 | 0.88 |
+
 | Pneumonitis | 0.67 | 0.96 | 0.96 | 0.97 |
+
 | Myocarditis | 0.67 | 0.86 | 0.87 | 0.85 |
+
 | Dermatitis | 0.73 | 0.92 | 0.92 | 0.92 |
+
 | *Current Grade Multi-class Macro F1: Macro-averaged F1 score across all 6 grade classes (0-5) for current conditions. For classes with no examples, F1 is set to 1.0. Current Grade Binary F1/Precision/Recall: Macro-averaged metrics for binary classification (Grade 0 vs Grade 1+) for current conditions. These are the average of metrics for both class 0 and class 1\. Overall (Average Across Conditions): Simple unweighted average of each metric across all 6 conditions (Thyroiditis, Hepatitis, Colitis, Pneumonitis, Myocarditis, Dermatitis).* |  |  |  |  |
 
-#### 
-
-**Table 2: Prospective Performance (Overall and by Condition)**
-
+####
+Table 2: Prospective Performance (Overall and by Condition)
 | Category | Assessments | Notes | Binary F1 | Macro F1 |
+
 | :---- | ----: | ----: | ----: | ----: |
+
 | Overall | 31824 | 884 | 0.76 | 0.52 |
+
 | Colitis | 5304 | 884 | 0.74 | 0.65 |
+
 | Dermatitis | 5304 | 884 | 0.74 | 0.61 |
+
 | Hepatitis | 5304 | 884 | 0.79 | 0.59 |
+
 | Myocarditis | 5304 | 884 | 0.75 | 0.61 |
+
 | Pneumonitis | 5304 | 884 | 0.71 | 0.47 |
+
 | Thyroiditis | 5304 | 884 | 0.81 | 0.73 |
-
-**Table 3a. Time Efficiency, Accuracy, and Inter-Annotator Agreement (Control vs LLM)**
-
+Table 3a. Time Efficiency, Accuracy, and Inter-Annotator Agreement (Control vs LLM)
 | Section | Metric | Control | LLM-Assisted | Improvement |
+
 | :---- | :---- | ----: | ----: | ----: |
+
 | **Timing** |  |  |  |  |
+
 | Overall | Mean minutes/note | 7.80 (5.96–9.64) | 5.47 (3.57–7.38) | 2.32 (1.10–3.54) **(p=0.004)** |
+
 | **Accuracy (exact-match vs gold)** |  |  |  |  |
+
 | Grade (overall) | % | 0.800 (0.764–0.841) | 0.843 (0.829–0.857) | 0.043 (-0.006–0.086) (p=0.791) |
+
 | Grade (current) | % | 0.763 (0.718–0.814) | 0.809 (0.791–0.828) | 0.046 (-0.014–0.101) (p=0.607) |
+
 | Attribution (overall) | % | 0.864 (0.837–0.894) | 0.928 (0.917–0.938) | 0.064 (0.032–0.092) **(p=\<0.001)** |
+
 | Attribution (current) | % | 0.841 (0.809–0.877) | 0.933 (0.924–0.942) | 0.092 (0.054–0.127) **(p=\<0.001)** |
+
 | Certainty (overall) | % | 0.798 (0.766–0.835) | 0.855 (0.847–0.862) | 0.056 (0.021–0.087) **(p=0.021)** |
+
 | Certainty (current) | % | 0.764 (0.718–0.818) | 0.854 (0.842–0.866) | 0.090 (0.042–0.131) **(p=\<0.001)** |
+
 | **Inter-annotator Agreement (Cohen's kappa)** |  |  |  |  |
+
 | Grade (overall) | % (kappa) | 0.444 (0.410–0.581) | 0.785 (0.744–0.825) | 0.341 (0.221–0.357) **(p=\<0.001)** |
+
 | Grade (current) | % (kappa) | 0.424 (0.381–0.556) | 0.825 (0.797–0.853) | 0.400 (0.266–0.446) **(p=\<0.001)** |
+
 | Attribution (overall) | % (kappa) | 0.404 (0.360–0.537) | 0.772 (0.729–0.816) | 0.369 (0.245–0.403) **(p=\<0.001)** |
+
 | Attribution (current) | % (kappa) | 0.357 (0.302–0.508) | 0.822 (0.787–0.858) | 0.465 (0.315–0.520) **(p=\<0.001)** |
+
 | Certainty (overall) | % (kappa) | 0.353 (0.252–0.470) | 0.758 (0.714–0.801) | 0.405 (0.292–0.501) **(p=\<0.001)** |
+
 | Certainty (current) | % (kappa) | 0.383 (0.289–0.508) | 0.793 (0.754–0.831) | 0.410 (0.272–0.517) **(p=0.002)** |
+
 | *Timing p-value from two-sided paired sign test across participants. Accuracy p-values from paired sign test on within-participant accuracy differences (LLM − Control). IAA p-values from paired sign test across matched rater pairs; kappa is quadratic-weighted for grade and certainty, unweighted for attribution. 95% CIs are normal approximations.* |  |  |  |  |
-
-**Table 3 b: Pre/post survey results of AI-assisted labeling usability and attitudes**
-
+Table 3 b: Pre/post survey results of AI-assisted labeling usability and attitudes
 | Metric | Scale | Pre | Post | Δ | N | p-value |
+
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+
 | System Usability Scale (SUS) | 0–100 | 35.34 | 52.05 | 16.70 | 22 | **\<0.001** |
+
 | Perceived efficiency (interface) | 1–5 | 2.53 | 3.94 | 1.41 | 17 | **0.005** |
+
 | Perceived label accuracy confidence (interface) | 1–5 | 3.12 | 3.82 | 0.71 | 17 | **0.018** |
+
 | Confidence AI can assist (task) | 1–5 | 2.27 | 3.00 | 0.65 | 17 | **0.026** |
+
 | Preference: AI vs Manual (post) | % prefer AI | — | 88.20 | 82.40 | 17 | — |
+
 | *SUS row uses a paired t-test on total SUS scores (0–100). Likert-scale items use paired Wilcoxon signed-rank tests after ordinal mapping (1–5). The preference row reports the percent of participants preferring AI and the margin vs. manual; it is post-only and no paired test is applicable. Abbreviations: SUS \= System Usability Scale; Δ \= mean change (Post–Pre).* |  |  |  |  |  |  |
-
-**Appendix 1\. Patient-level demographic information across the 3 validation stages**
-
+Appendix 1\. Patient-level demographic information across the 3 validation stages
 | Characteristic |  | Field cohort (N=27) | Prospective cohort (N=228) | Retrospective cohort (N=100) |
+
 | :---- | :---- | :---- | :---- | :---- |
+
 | Age (years) |  | 67.4 (8.7) | 63.9 (14.6) | 66.3 (13.2) |
+
 | Sex | Female | 17 (63.0%) | 114 (50.0%) | 55 (55.0%) |
+
 |  | Male | 10 (37.0%) | 114 (50.0%) | 45 (45.0%) |
+
 | Race group | White | 27 (100.0%) | 195 (85.5%) | 97 (97.0%) |
+
 |  | Black | 0 (0.0%) | 14 (6.1%) | 1 (1.0%) |
+
 |  | Asian | 0 (0.0%) | 5 (2.2%) | 2 (2.0%) |
+
 |  | Other | 0 (0.0%) | 7 (3.1%) | 0 (0.0%) |
+
 |  | Declined | 0 (0.0%) | 4 (1.8%) | 0 (0.0%) |
+
 |  | Two or More | 0 (0.0%) | 1 (0.4%) | 0 (0.0%) |
+
 | Ethnic group | Non Hispanic | 27 (100.0%) | 213 (93.4%) | 100 (100.0%) |
+
 |  | DECLINED | 0 (0.0%) | 7 (3.1%) | 0 (0.0%) |
+
 |  | HISPANIC | 0 (0.0%) | 4 (1.8%) | 0 (0.0%) |
+
 | Primary language | English | 27 (100.0%) | 208 (91.2%) | 96 (96.0%) |
+
 |  | Non-English | 0 (0.0%) | 20 (8.8%) | 4 (4.0%) |
+
 | Age is presented as the mean (SD), with the rest shown as exact percentages rounded to 1dp.  |  |  |  |  |
+Appendix 2\.
+Pre-Study Survey: Clinical Note Labeling for Immunotherapy Adverse Events
+For the full detailed survey please check:
+*Figure 1 |** Detailed agentic workflow*
+*Multi-stage agentic architecture for irAE detection, grading, attribution, and certainty assessment. Unstructured clinical notes from the electronic health record (EHR) are first processed by an Event Splitter module that routes each note to condition-specific extraction pipelines spanning six irAE subtypes (pneumonitis, hepatitis, colitis, myocarditis, thyroiditis, and dermatitis), enabling parallel processing across organ systems. The pipeline proceeds through four sequential stages: (1) Detection — binary classification of irAE presence using self-consistency decoding (×3 runs) with judge adjudication; (2) Grading — severity assignment per CTCAE v5.0 criteria using self-consistency decoding (×3 runs) with consensus-based grade selection; (3) Attribution — immune checkpoint inhibitor (ICI) causality assessment via a single-agent causal reasoning step; and (4) Certainty — diagnostic confidence estimation via a single-agent certainty analysis step. Self-consistency is applied to the detection and grading stages, where classification ambiguity is highest, while attribution and certainty rely on single-pass inference given their more subjective, reasoning-intensive nature. The pipeline produces structured JSON output with supporting evidence traces for each identified event.*
 
-**Appendix 2\.**  
-**Pre-Study Survey: Clinical Note Labeling for Immunotherapy Adverse Events** 
-
-**For the full detailed survey please check:**
-
-***Figure 1 |** Detailed agentic workflow*  
-*Multi-stage agentic architecture for irAE detection, grading, attribution, and certainty assessment. Unstructured clinical notes from the electronic health record (EHR) are first processed by an Event Splitter module that routes each note to condition-specific extraction pipelines spanning six irAE subtypes (pneumonitis, hepatitis, colitis, myocarditis, thyroiditis, and dermatitis), enabling parallel processing across organ systems. The pipeline proceeds through four sequential stages: (1) Detection — binary classification of irAE presence using self-consistency decoding (×3 runs) with judge adjudication; (2) Grading — severity assignment per CTCAE v5.0 criteria using self-consistency decoding (×3 runs) with consensus-based grade selection; (3) Attribution — immune checkpoint inhibitor (ICI) causality assessment via a single-agent causal reasoning step; and (4) Certainty — diagnostic confidence estimation via a single-agent certainty analysis step. Self-consistency is applied to the detection and grading stages, where classification ambiguity is highest, while attribution and certainty rely on single-pass inference given their more subjective, reasoning-intensive nature. The pipeline produces structured JSON output with supporting evidence traces for each identified event.*  
 ![][image26]
-
-***Figure 2 |** Annotation platform user interface*
+*Figure 2 |** Annotation platform user interface*
 
 ![][image27]
+*Figure 3 |** Detailed effectiveness user studies design*
 
-***Figure 3 |** Detailed effectiveness user studies design*
-
-*Severity classification performance across immune-related adverse event (irAE) subtypes. F1 scores for CTCAE grade prediction across six irAE categories and overall. Three classification schemes are evaluated: grade-wise multiclass classification (Macro F1; purple), binary classification of clinically significant toxicity at the Grade ≥ 2 threshold (pink), and binary classification of high-grade toxicity at the Grade ≥ 3 threshold (cyan).* 
+*Severity classification performance across immune-related adverse event (irAE) subtypes. F1 scores for CTCAE grade prediction across six irAE categories and overall. Three classification schemes are evaluated: grade-wise multiclass classification (Macro F1; purple), binary classification of clinically significant toxicity at the Grade ≥ 2 threshold (pink), and binary classification of high-grade toxicity at the Grade ≥ 3 threshold (cyan).*
 
 ![][image28]
 

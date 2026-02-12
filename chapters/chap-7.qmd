@@ -1,32 +1,24 @@
 # Chapter 7
 
-Evaluation of ChatGPT Family of Models for Biomedical Reasoning and Classification 
+Evaluation of ChatGPT Family of Models for Biomedical Reasoning and Classification
 
 ---
-
-***Shan Chen\****, Yingya Li\*, Sheng Lu, Hoang Van, Hugo JWL Aerts,   
+*Shan Chen\****, Yingya Li\*, Sheng Lu, Hoang Van, Hugo JWL Aerts,
 Guergana K Savova, Danielle S Bitterman
 
                                 Journal of the American Medical Informatics Association
-
-**Summary**
-
-**Background**  
+Summary
+Background
 Large language models (LLMs) such as ChatGPT (GPT-3.5, GPT-4) demonstrate strong general question-answering ability but remain under-explored for specialized biomedical applications. Understanding their performance in structured biomedical tasks is essential before clinical or research deployment.
-
-**Methods**  
+Methods
 Using 11,122 samples, our study evaluated ChatGPT-family models on two core biomedical natural language processing tasks: **classification** of health advice in scientific literature (n \= 8676\) and **reasoning** via detection of causal relations (n \= 2446). Prompts were developed under zero-shot and few-shot settings, with and without chain-of-thought (CoT) reasoning. The best prompts from each configuration were compared against two baselines: a simple bag-of-words (BoW) logistic regression model and fine-tuned BioBERT models.
-
-**Findings**  
+Findings
 Fine-tuned BioBERT achieved the highest F1 scores for both classification (0.800–0.902) and reasoning (0.851). Among LLMs, few-shot CoT prompting produced the strongest results—classification F1 0.671–0.770 and reasoning F1 0.682—comparable to the BoW baseline (F1 0.602–0.753 and 0.675, respectively). However, achieving optimal LLM performance required **78 hours**, compared with only **0.078 hours** for BioBERT and **0.008 hours** for BoW.
-
-**Interpretation**  
+Interpretation
 Despite the popularity of ChatGPT, task-specific fine-tuning of domain-adapted models like BioBERT remains the most effective and efficient strategy for biomedical NLP. LLM prompting can approach—but not surpass—traditional methods, while requiring substantially more computational time and engineering effort.
 
-### 
-
-**INTRODUCTION**
-
+###
+INTRODUCTION
 The advancements in machine learning (ML) methods for natural language process (NLP), such as transformers[1](https://paperpile.com/c/FgFYMN/OA2QZ) and reinforcement learning[2](https://paperpile.com/c/FgFYMN/EWdNo), in combination with abundant digital text and scaled-up hardware capabilities has led to many pretrained large language models (LLMs) — also referred to as foundation models. Coupling some of these LLMs with smart engineering gave the world the viral ChatGPT, which in turn popularized the technology and re-invigorated the artificial intelligence (AI)/artificial general intelligence (AGI) debate. Although most LLMs are trained as chatbots, some of the claims in the mainstream media go as far as stating that the LLMs are sentient, even able to solve tasks that previously required a high level of human expertise and specialized training. On the other hand, the scientific papers describing the LLMs are much more measured[3](https://paperpile.com/c/FgFYMN/yZqXo) outlining limitations: *“… Aside from intentional misuse, there are many domains where large language models should be deployed only with great care, or not at all. Examples include high-stakes domains such as medical diagnoses, classifying people based on protected characteristics, determining eligibility for credit, employment, or housing, generating political advertisements, and law enforcement.”[4](https://paperpile.com/c/FgFYMN/Ki4xv)* Therefore the scientific community bears the responsibility of understanding the LLMs’ strengths and weaknesses, how their limitations and risks can be managed, and implications for our future.[5,6](https://paperpile.com/c/FgFYMN/bupsp+nlsHV)
 
 Medicine is one of the highest-stakes domains for LLMs. The excitement surrounding the LLMs has penetrated the biomedical and clinical communities motivating various early use-case evaluations. For example, studies have shown that ChatGPT can pass the US Medical Licensing Examination (USMLE).[7,8](https://paperpile.com/c/FgFYMN/6p9xd+Kdn6v) Zuccon and Koopman[9](https://paperpile.com/c/FgFYMN/HuOMB) investigate the effect of prompts on ChatGPT in answering complex health information questions. Chen et al.[10](https://paperpile.com/c/FgFYMN/V4C6) evaluate the performance and robustness of ChatGPT in providing cancer treatment recommendations that align with National Comprehensive Cancer Network (NCCN) guidelines. Lyu et al.[11](https://paperpile.com/c/FgFYMN/LOqlU) research the feasibility of using ChatGPT to translate radiology reports into plain language for patients and healthcare providers. A paper by Google Research and DeepMind[12](https://paperpile.com/c/FgFYMN/Ah0nd) presents experiments with Google’s PaLM family of LLMs, suggesting the potential utility of LLMs in medicine but also revealing important limitations, reinforcing the importance of evaluation frameworks and methods development.
@@ -34,82 +26,74 @@ Medicine is one of the highest-stakes domains for LLMs. The excitement surroundi
 In parallel, the practical use of LLMs is limited by their huge size and computational requirements, limiting accessibility for most healthcare practices and researchers. Thus, researchers have been pursuing broader questions such as the utility of specialized clinical models, especially ones that are smaller and thus computationally affordable, in the LLM era. Lehman et al.[13](https://paperpile.com/c/FgFYMN/lDUlL) show that relatively small specialized clinical models substantially outperform bigger LLMs, even when fine-tuned on limited annotated data. In addition, they show that pretraining on clinical datasets allows for smaller, more parameter-efficient models that either match or outperform the much bigger computationally hungry LLMs. Wang et al.[14](https://paperpile.com/c/FgFYMN/VfLjI) focus on exploring ChatGPT robustness where a medical diagnosis dataset represents out-of-domain distributions. Results are consistent with Lehman at al.[13](https://paperpile.com/c/FgFYMN/lDUlL)
 
 We set out to contribute to the growing understanding of LLMs in the biomedical domain, with a focus on practical end-use. NLP research on the clinical narrative within the Electronic Medical Records (EMR) has direct applications to translational science[15](https://paperpile.com/c/FgFYMN/Q4Xhw), clinical decision support,[16](https://paperpile.com/c/FgFYMN/ECcXS) and healthcare administration[17](https://paperpile.com/c/FgFYMN/9Zs2K) in addition to direct patient care. Two fundamental NLP tasks to support these applications are classification (e.g. patient phenotyping) and reasoning (e.g. adverse events of medications), and understanding how LLMs handle these tasks will provide insight into optimal uses of these methods. Thus, we aim to evaluate the state-of-the-art (SOTA) LLM performance on classification and reasoning tasks requiring understanding of contextual nuances. While numerous LLMs have been trained in recent years, most are proprietary and not publicly available for a local download (e.g., GPT-3, ChatGPT), which precludes their evaluation on clinical datasets containing Protected Health Information (PHI) data, even if the data are de-identified. Therefore, we work with proxy biomedical data. We evaluate LLMs within the constraints of the typical user to understand their real-world utility, using the OpenAI API[18](https://paperpile.com/c/FgFYMN/l2nGi) and LLMs that are computationally feasible for the IT capabilities of most hospitals and clinical practice.
-
-**METHOD**
-
-**2.1 Tasks and datasets**  
+METHOD
+2.1 Tasks and datasets
 We examine the performance of LLMs on two fundamental tasks in the clinical domain – classification and reasoning. Specifically, we select two open datasets annotated for health advice and causal language to test the ability of the models to classify and reason over medical literature findings, and their implications for health-related practices.
 
-* **Classification task: HealthAdvice**[19](https://paperpile.com/c/FgFYMN/lfPHu) is a dataset consisting of annotations of 10,000+ sentences extracted from abstracts and discussion/conclusion sections of medical research literature. The dataset adopts a multi-dimensional taxonomy and categorizes each sentence into “no advice”, “weak advice”, and “strong advice” to capture the occurrence and strength of clinical and policy recommendations. As health advice normally appears in either abstracts or discussion/conclusion sections and its language style may vary across different sections, the labels are further separated into three datasets: *advice in discussion sections, advice in unstructured abstracts, and advice in structured abstracts*.  
+* **Classification task: HealthAdvice**[19](https://paperpile.com/c/FgFYMN/lfPHu) is a dataset consisting of annotations of 10,000+ sentences extracted from abstracts and discussion/conclusion sections of medical research literature. The dataset adopts a multi-dimensional taxonomy and categorizes each sentence into “no advice”, “weak advice”, and “strong advice” to capture the occurrence and strength of clinical and policy recommendations. As health advice normally appears in either abstracts or discussion/conclusion sections and its language style may vary across different sections, the labels are further separated into three datasets: *advice in discussion sections, advice in unstructured abstracts, and advice in structured abstracts*.
+
 * **Reasoning task: CausalRelation**[20](https://paperpile.com/c/FgFYMN/uPu1p) is a multi-label reasoning  dataset with the goal to identify correlational and causal claims in the findings of medical research literature. The annotated corpus includes over 3,000 PubMed research conclusion sentences extracted from abstracts. Each sentence is labeled as “correlational”, “conditional causal”, “direct causal”, and “no relationship” by its certainty and reasoning type.
 
-Appendix Table B1 and B2 show the dataset distributions. We split the two datasets into development and test sets. The development set is a proportionate sample of 20% the original dataset, while the remaining 80% of the dataset is used as the test set. Final evaluation is performed on the test set. 
+Appendix Table B1 and B2 show the dataset distributions. We split the two datasets into development and test sets. The development set is a proportionate sample of 20% the original dataset, while the remaining 80% of the dataset is used as the test set. Final evaluation is performed on the test set.
+*Figure 1\.** Examples of the prompt templates used for the classification and reasoning tasks. Prompt templates were created for each of the prompting settings evaluated: **(A)** zero-shot, **(B)** zero-shot with Chain of Thought (CoT), **(C)** one-shot and few-shot, and **(D)** one-shot and few-shot with CoT. “…more exemplars…” (highlighted in green) were added only for the few-shot with and without CoT settings. All evaluated prompts are in the Appendix B. BoW \= bag-of-words.*
 
-***Figure 1\.** Examples of the prompt templates used for the classification and reasoning tasks. Prompt templates were created for each of the prompting settings evaluated: **(A)** zero-shot, **(B)** zero-shot with Chain of Thought (CoT), **(C)** one-shot and few-shot, and **(D)** one-shot and few-shot with CoT. “…more exemplars…” (highlighted in green) were added only for the few-shot with and without CoT settings. All evaluated prompts are in the Appendix B. BoW \= bag-of-words.*
-
-\[Original Context\] \= Georgian public health specialists working in the HIV field should prioritize implementation of such interventions among HIV patients.  
-\[Question\] \= Is this a 0\) no advice, 1\) weak advice or 2\) strong advice?  
-\[Answer\] \= 2\) Strong advice.  
-\[CoT Solution\] \=   
-1\) The statement is a directive, so it is a strong advice.   
-2\) The statement is specific and clear, so it is not a weak advice.   
-3\) Therefore, the statement is a strong advice.   
+\[Original Context\] \= Georgian public health specialists working in the HIV field should prioritize implementation of such interventions among HIV patients.
+\[Question\] \= Is this a 0\) no advice, 1\) weak advice or 2\) strong advice?
+\[Answer\] \= 2\) Strong advice.
+\[CoT Solution\] \=
+1\) The statement is a directive, so it is a strong advice.
+2\) The statement is specific and clear, so it is not a weak advice.
+3\) Therefore, the statement is a strong advice.
 Answer: 2\) Strong advice.
-
-**2.1 Baseline models**  
+2.1 Baseline models
 We compare the performance of LLMs with classic ML approaches and transformer-based pretrained language models. For the classic ML approach, we train logistic regression fitted with Stochastic Gradient Descent (SGD), using bag-of-words (BoW) representations with tf-idf as the vectorization method. We fine-tune BioBERT models, given that BERT-based pre-trained language models[21](https://paperpile.com/c/FgFYMN/nut9V), particularly BioBERT[22](https://paperpile.com/c/FgFYMN/QLAXk), have exhibited their efficacy on the aforementioned two tasks (Hyperparameter settings are in the Appendix Table A1). The baseline models are trained and fine-tuned on the full development set and tested on the test set. To further examine the effect of the amount of data on model performance, we trained and tested the BoW and BioBERT models with the 20%, 50%, and 100% of the development set. We track the time required to develop and evaluate the BoW and BioBERT models.
-
-**2.2 ChatGPT Family of Models**  
+2.2 ChatGPT Family of Models
 We evaluate GPT-4 and its predecessors, including GPT-3.5-Turbo (20B) and GPT-Davinci-003 (175B), on the two tasks. For GPT-3.5 models, we consider zero-shot, one-shot, and few-shot prompting with and without Chain-of-Thought (CoT). Given computational cost limits, for GPT-4, we consider zero-shot (the simplest prompting strategy mimicking an average user) and few-show with CoT (the most complex prompting strategy). CoT techniques explicitly outline the intermediate reasoning steps as prompts to LLMs to elicit multi-step reasoning behavior.[23](https://paperpile.com/c/FgFYMN/bHjK3)
 
 To design a prompt, we follow the prompt structure applied in prior studies.[23](https://paperpile.com/c/FgFYMN/bHjK3) Fig 1 shows an example of the prompt templates for the classification task. For the zero-shot settings, five of the authors each independently developed two prompts. For the one- and few-shot settings without CoT, exemplars are chosen directly from the development set. For the one- and few-shot settings with CoT, the same five authors independently wrote CoT prompts for exemplars from each of the datasets. To evaluate model efficiency, we track the total time spent on designing prompts. Given the different number of classes in the health advice (3 classes) and causal language (4 classes) datasets, we apply 3- and 4-shot exemplars for the few-shot settings for the classification and reasoning tasks respectively. We use regular expressions to match the model output to labels in the datasets, and conduct validation to verify the accuracy of the regular expressions. To assess the model’s performance, we compare the prediction results against the gold annotations in the datasets. Performance of the prompts was initially evaluated on the development set, and the best performing prompt was selected for the final evaluation on the test dataset. Performance across exemplars from different classes was also evaluated. The full set of evaluated prompts are included in the Appendix Table B3 and B4.
 
 We use the OpenAI Application Programming Interface (API) to run the prediction and measure the performance of the models based on the averaged macro-F1 score on 4-fold cross validation on the test set. F1 score is a classic NLP metric representing the harmonic mean of recall/sensitivity and precision/positive predictive value. Macro F1 score is computed using the arithmetic mean of all per-class F1 scores. For comparison of model efficiency, we track the time and cost for running the inference using the API (Appendix Table A2-A4)
-
-**2.3 Smaller LLMs**  
+2.3 Smaller LLMs
 The same settings (zero- and few-shot with and without CoT) were used to evaluate the performance of select smaller LLMs (less than 10B parameters) on the tasks, including GPT-J, GPT-JT, and Galactica[24](https://paperpile.com/c/FgFYMN/DU3ir). GPT-J, built on EleutherAI’s 6B parameter GPT-J-6B, is fine-tuned with 3.5 billion tokens. It performs very similarly to GPT-3 on various zero-shot downstream tasks. GPT-JT, a fork of GPT-J-6B, is fine-tuned on 3.53 billion tokens and has been shown to even outperform GPT-3 at some classification tasks. Galactica is trained on 48 million examples of scientific articles, websites, textbooks, lecture notes, and encyclopedias. Same evaluation procedure as for the GPT-family models is applied.
-
-**2.4 Statistical Analysis**  
+2.4 Statistical Analysis
 Paired *t* tests are used to compare average macro-F1 score across tasks, and a two-sided *p*\<0.05 is considered statistically significant. Analyses are performed using python version 3.9.7 (Python Software Foundation).
 
-### **RESULTS** 
+## RESULTS
 
 ### A summary of our findings is in Table 1; Figs 2-4 present multiple comparative analyses to provide context and facilitate interpretation of the outcomes.
+*Figure 2\. (A)** Comparison of model performance on each dataset. Using fine-tuning BioBERT as a reference, average macro-F1 across all datasets was significantly better than all other models (p\<0.05 for all); there was no statistically significant difference in average performance between the other pair-wise model comparisons (Appendix Table A5). **(B)** Time (hours) required to obtain the best-performing results versus average performance across all datasets. BoW \= bag-of-words; CoT \= Chain of Thought.*
 
-***Figure 2\. (A)** Comparison of model performance on each dataset. Using fine-tuning BioBERT as a reference, average macro-F1 across all datasets was significantly better than all other models (p\<0.05 for all); there was no statistically significant difference in average performance between the other pair-wise model comparisons (Appendix Table A5). **(B)** Time (hours) required to obtain the best-performing results versus average performance across all datasets. BoW \= bag-of-words; CoT \= Chain of Thought.*  
-![][image29]  
-**3.1 Effect of fine-tuning and prompt development on model performance, run time and time investment**   
-For the reasoning and classification tasks, fine-tuning BioBERT consistently outperforms the best GPT settings by a considerable margin (Δmacro F1 0.109 \- 0.169) (Fig 2(A) and Table 1). Averaging performance on all datasets, BioBERT's macro F1 scores are significantly better than the other models (*p*\<0.05 for all, Fig 2(A). There is no statistical difference between the average performance of the BoW, best-performing GPT-3.5s, and GPT-4 models (Appendix Table A3). 
+![][image29]
+3.1 Effect of fine-tuning and prompt development on model performance, run time and time investment
+For the reasoning and classification tasks, fine-tuning BioBERT consistently outperforms the best GPT settings by a considerable margin (Δmacro F1 0.109 \- 0.169) (Fig 2(A) and Table 1). Averaging performance on all datasets, BioBERT's macro F1 scores are significantly better than the other models (*p*\<0.05 for all, Fig 2(A). There is no statistical difference between the average performance of the BoW, best-performing GPT-3.5s, and GPT-4 models (Appendix Table A3).
+*Figure 3\.** (A-D) Performance comparison of fine-tuned BioBERT (green bar) and BoW  (yellow bar) models with different proportions (20%, 50% or 100%) of development set data versus the best GPTs settings (few-shot CoT in red-line) among four tasks. **(A)** Comparison on advice in discussion sections, **(B)** comparison on advice in unstructured abstracts, **(C)** comparison on advice in structured abstracts, **(D)** comparison on causal relation detection. BoW \= bag-of-words; CoT \= Chain of Thought*
 
-***Figure 3\.** (A-D) Performance comparison of fine-tuned BioBERT (green bar) and BoW  (yellow bar) models with different proportions (20%, 50% or 100%) of development set data versus the best GPTs settings (few-shot CoT in red-line) among four tasks. **(A)** Comparison on advice in discussion sections, **(B)** comparison on advice in unstructured abstracts, **(C)** comparison on advice in structured abstracts, **(D)** comparison on causal relation detection. BoW \= bag-of-words; CoT \= Chain of Thought*  
-![][image30]  
-Furthermore, engineering the LLM prompts that yield the best results requires a substantial time investment. Fig 2(B) shows the time needed to achieve the best results, taking into account the time needed to develop and identify the prompting strategies for the few-shot settings. Even for the zero-shot setting, which does not require any prompt development, inference time — an indicator of run time and a consideration for compute budget— is longer and yields worse performance compared to BoW and BioBERT performance. Taken together, training a task-specific neural network through classic fine-tuning methodology is both faster and yields better performance.  
-**3.2 Effect of amount of training data on model performance**   
-In this experiment, we investigate the amount of training/fine-tuning data from the development set needed to achieve similar or better performing BoW and BioBERT models compared to the best GPT settings (few-shot CoT). As shown in Fig 3, using only 20% of the development set for the supervised fine-tuning of BioBERT surpasses the best GPTs in three of four datasets. Fine-tuning BioBERT on 50% of the development set outperforms the best GPTs on all datasets. Furthermore, the simple and computationally efficient BoW model using 100% of the development set outperforms the best GPTs in two of four datasets. 
+![][image30]
 
-**3.3 Effect of number of exemplar prompts and CoT prompts on model performance**   
+Furthermore, engineering the LLM prompts that yield the best results requires a substantial time investment. Fig 2(B) shows the time needed to achieve the best results, taking into account the time needed to develop and identify the prompting strategies for the few-shot settings. Even for the zero-shot setting, which does not require any prompt development, inference time — an indicator of run time and a consideration for compute budget— is longer and yields worse performance compared to BoW and BioBERT performance. Taken together, training a task-specific neural network through classic fine-tuning methodology is both faster and yields better performance.
+3.2 Effect of amount of training data on model performance
+In this experiment, we investigate the amount of training/fine-tuning data from the development set needed to achieve similar or better performing BoW and BioBERT models compared to the best GPT settings (few-shot CoT). As shown in Fig 3, using only 20% of the development set for the supervised fine-tuning of BioBERT surpasses the best GPTs in three of four datasets. Fine-tuning BioBERT on 50% of the development set outperforms the best GPTs on all datasets. Furthermore, the simple and computationally efficient BoW model using 100% of the development set outperforms the best GPTs in two of four datasets.
+3.3 Effect of number of exemplar prompts and CoT prompts on model performance
 We examine the relationship between the number of exemplars and CoT prompts and their impact on GPT settings performance. As shown in Fig 4(A), we observe a drop in performance when comparing one-shot to few-shot settings in three of the datasets. Reasoning for causal relation detection is the only task that consistently improves by adding prompt examples,  without CoT. However, as demonstrated in Fig 4(B), incorporating more CoT exemplars results in consistent improvements across datasets. This observation highlights the value of adding CoT exemplars,  albeit at substantial cost due to the time effort needed to create the CoT prompts.
 
 Another observation from the one-shot experiments (both with and without CoT) among the LLMs evaluated is the impact of different exemplar prompt choices on performance. Variations in the text of the exemplar prompts for one-shot prompts led to notable variations in model outcomes (Appendix Table A8-A10).
-
-**3.4 Error Analysis**  
-Of the investigated GPTs, GPT-4 with few-shot CoT settings yields the best performance for three of four datasets. Thus, we analyze GPT-4’s generated CoTs and identify common error patterns to better understand their strengths and limitations. To maintain consistency, we randomly select 100 prediction errors of GPT-4 with few-shot CoT setting from the test set of each dataset. The selection of the error examples follows the same error type ratio from the confusion matrices of the prediction result. Two common error patterns are identified. Pattern A is an incorrect reasoning step based on one specific keyword. For example, the model classifies an input text as a strong advice if the word “importance” appears in the text (Appendix Table A13, row 4). Pattern B is a false positive due to the model incorrectly determining that there is health advice or a relationship for the classification and reasoning tasks, respectively, when in fact there is none. For instance, Appendix Table A16, row 3 presents a pattern B error where GPT-4 misclassifies a relationship between extracted entities as a clinical relationship. Appendix Tables A13-A16 show examples of the error patterns.    
-***Figure 4\.** Comparison of GPT-3.5s performance on each dataset with increasing exemplars without **(A)** and with **(B)** Chain of Thought (CoT). For both plots, random is shown as a baseline and is the uniform distribution across class labels. Here, one-shot uses the majority class exemplar for each task and few-shot uses one exemplar per class. Few-shot \= 3 exemplars for classification datasets and four exemplars for the reasoning dataset, reflecting the number of classes for each task.*
-
-**DISSCUSSION**  
+3.4 Error Analysis
+Of the investigated GPTs, GPT-4 with few-shot CoT settings yields the best performance for three of four datasets. Thus, we analyze GPT-4’s generated CoTs and identify common error patterns to better understand their strengths and limitations. To maintain consistency, we randomly select 100 prediction errors of GPT-4 with few-shot CoT setting from the test set of each dataset. The selection of the error examples follows the same error type ratio from the confusion matrices of the prediction result. Two common error patterns are identified. Pattern A is an incorrect reasoning step based on one specific keyword. For example, the model classifies an input text as a strong advice if the word “importance” appears in the text (Appendix Table A13, row 4). Pattern B is a false positive due to the model incorrectly determining that there is health advice or a relationship for the classification and reasoning tasks, respectively, when in fact there is none. For instance, Appendix Table A16, row 3 presents a pattern B error where GPT-4 misclassifies a relationship between extracted entities as a clinical relationship. Appendix Tables A13-A16 show examples of the error patterns.
+*Figure 4\.** Comparison of GPT-3.5s performance on each dataset with increasing exemplars without **(A)** and with **(B)** Chain of Thought (CoT). For both plots, random is shown as a baseline and is the uniform distribution across class labels. Here, one-shot uses the majority class exemplar for each task and few-shot uses one exemplar per class. Few-shot \= 3 exemplars for classification datasets and four exemplars for the reasoning dataset, reflecting the number of classes for each task.*
+DISSCUSSION
 In this study, we found that, even with the best in-context learning approaches, fine-tuning BioBERT consistently out-performed LLM performance by macro F1 \>0.100 for all datasets. In fact, fine-tuning on just 20% of the development dataset outperformed the best GPT-4 and GPT-3.5 performance for all of the classification datasets, and outperformed the best GPT-3.5 performance for the reasoning dataset. Surprisingly, the simple BoW models out-performed all LLM in-context learning approaches without CoT, and performed similarly to the best performing GPT-4 approach for classification of structured abstracts (macro F1 \-0.017), and the reasoning task (macro F1 \-0.007).
 
-Our study emphasizes the performance, time, and computational trade-offs that should be taken into account when considering various approaches for clinical NLP tasks. At present, our results suggest that the overall balance is in favor of fine-tuning task-specific smaller models, consistent with Lehman et al16. SOTA LLMs such as GPT-3.5/GPT-4 are orders of magnitude larger than traditional language models and cannot be trained or fine-tuned without significant computational resources. For example, GPT-3 has 175 billion parameters and required several thousand petaflop/s-days for pre-training.[25](https://paperpile.com/c/FgFYMN/Ua2Fh) On the other hand, smaller, more accessible out-of-the-box LLMs without fine-tuning (\<10 billion parameters) performed very poorly on our tasks and did not demonstrate improvement with in-context learning, in line with the finding that emergent LLMs abilities scale with model size.[26](https://paperpile.com/c/FgFYMN/95vn0) 
+Our study emphasizes the performance, time, and computational trade-offs that should be taken into account when considering various approaches for clinical NLP tasks. At present, our results suggest that the overall balance is in favor of fine-tuning task-specific smaller models, consistent with Lehman et al16. SOTA LLMs such as GPT-3.5/GPT-4 are orders of magnitude larger than traditional language models and cannot be trained or fine-tuned without significant computational resources. For example, GPT-3 has 175 billion parameters and required several thousand petaflop/s-days for pre-training.[25](https://paperpile.com/c/FgFYMN/Ua2Fh) On the other hand, smaller, more accessible out-of-the-box LLMs without fine-tuning (\<10 billion parameters) performed very poorly on our tasks and did not demonstrate improvement with in-context learning, in line with the finding that emergent LLMs abilities scale with model size.[26](https://paperpile.com/c/FgFYMN/95vn0)
 
 However, the computational requirements of LLMs could theoretically be offset if their zero- or few-shot performance was adequate. Our results clearly demonstrate that zero-short performance was poor. While few-shot CoT prompting improved performance, fine-tuning BioBERT, a 110 million parameter pre-trained language model, consistently provided the best performance. Prompt development to identify the best prompting strategies is itself resource-intensive, requiring human effort to design the prompts, and computational and time resources to evaluate. Ultimately, at most 50% of each dataset’s full development set was needed to fine-tune BioBERT models that exceeded LLM performance with the best prompting strategies identified using the full development set. Taking into account prompt development and evaluation, obtaining the best-performing LLM results required 100x the time needed to fine-tune our best performing BioBERT model. Of note, we did not include time needed to annotate the datasets, as all methods required the full development set for model development or prompt engineering, and the full test set for evaluation.
 
-Despite under-performing fine-tuned BioBERT, in-context learning—especially CoT prompting—led to important improvements in performance for the classification and reasoning tasks. The ability of CoT to elicit reasoning and improve LLM performance in the general domain has previously been demonstrated.[23,27](https://paperpile.com/c/FgFYMN/bHjK3+nrYzn) Interestingly, while providing more exemplars with CoT prompting consistently improved performance, this was not always the case for prompting without CoT. For GPT-3.5, one-shot prompting provided the best results for classification, while few-shot prompting provided the best results for reasoning. This could be due to noise provided from including less informative prompts, and highlights the fragility of LLM performance based on the provided prompts. 
+Despite under-performing fine-tuned BioBERT, in-context learning—especially CoT prompting—led to important improvements in performance for the classification and reasoning tasks. The ability of CoT to elicit reasoning and improve LLM performance in the general domain has previously been demonstrated.[23,27](https://paperpile.com/c/FgFYMN/bHjK3+nrYzn) Interestingly, while providing more exemplars with CoT prompting consistently improved performance, this was not always the case for prompting without CoT. For GPT-3.5, one-shot prompting provided the best results for classification, while few-shot prompting provided the best results for reasoning. This could be due to noise provided from including less informative prompts, and highlights the fragility of LLM performance based on the provided prompts.
 
 This lack of robustness is also illustrated by the fact that the choice of exemplar for prompting had major impacts on performance. These findings are in line with Shi et al., who showed that, for arithmetic tasks, prompting may provide irrelevant context that reduces performance.[28](https://paperpile.com/c/FgFYMN/eKzvW) Clearly, simply providing more exemplars does not solve the challenge of LLMs robustness—a major area of concern and future research for the clinical domain, where robust performance is paramount. Concerningly, even small, seemingly non-substantive changes to prompts such as typos have been shown to impact performance.[10,14](https://paperpile.com/c/FgFYMN/VfLjI+V4C6) There is an emerging body of work on developing strategies to improve robustness and self-consistency.[14,29](https://paperpile.com/c/FgFYMN/VfLjI+ktchQ) Methods to improve performance will be especially important in the medical domain, where jargon, typos, abbreviations, and synonyms are common, limiting our ability to develop reliable prompting strategies and robustly assess real-world performance.
 
 It should be noted that our tasks indirectly address the question of how LLMs perform on clinical NLP text, and use biomedical texts as a proxy for essential clinical NLP tasks. SOTA LLMs such as GPT-3.5/GPT-4 cannot be used with PHI, precluding an evaluation on real clinical data. Nevertheless, LLM performance is known to decrease on out-of-domain tasks, i.e. tasks that include text that does not reflect what it was trained on, including synthetic clinical text.[14](https://paperpile.com/c/FgFYMN/VfLjI) At the same time, classic language models trained on clinical text has been shown to out-perform LLMs with in-context learning.[13](https://paperpile.com/c/FgFYMN/lDUlL) Taken together with our finding that BioBERT, which is pre-trained on biomedical text, out-performs LLMs, it is reasonable to anticipate that findings would be similar on clinical datasets, but further evaluation will be needed once GPT-3.5/GPT-4 are safely and widely accessible for HIPAA-protected data. Further, non-clinical biomedical NLP has important implications in its own right, including in processing and transmitting medical information and knowledge outside of EMR contexts.[30](https://paperpile.com/c/FgFYMN/4UG7r)
 
-Most studies evaluating LLMs for clinical applications have focused on question-answering, with mixed results.[7–10,12](https://paperpile.com/c/FgFYMN/6p9xd+Kdn6v+HuOMB+Ah0nd+V4C6) For example, while LLMs have achieved passing scores in the USMLE,[7,8](https://paperpile.com/c/FgFYMN/6p9xd+Kdn6v) several recent studies have shown sub-par performance of ChatGPT, including answering neonatal board exam questions,[31](https://paperpile.com/c/FgFYMN/tvjz) answering questions about cancer treatment,[10](https://paperpile.com/c/FgFYMN/V4C6) and providing assistance to laypeople.[32](https://paperpile.com/c/FgFYMN/K2Wb) However, question-answering is not representative of the range of NLP tasks needed to process clinical texts,[30](https://paperpile.com/c/FgFYMN/4UG7r) and in isolation has limited practical use for clinic and research. Further, such studies to date have largely focused on whether the LLM answers a question correctly but do not provide insight into why models may fail, which is critical to improving LLMs for medicine and moving the field forward. We chose our tasks—classification and reasoning—because they are fundamental to the development of NLP technologies that can support clinical care and research beyond question-answering, and are granular enough to reveal the specific language processing steps where LLMs may not perform well. 
+Most studies evaluating LLMs for clinical applications have focused on question-answering, with mixed results.[7–10,12](https://paperpile.com/c/FgFYMN/6p9xd+Kdn6v+HuOMB+Ah0nd+V4C6) For example, while LLMs have achieved passing scores in the USMLE,[7,8](https://paperpile.com/c/FgFYMN/6p9xd+Kdn6v) several recent studies have shown sub-par performance of ChatGPT, including answering neonatal board exam questions,[31](https://paperpile.com/c/FgFYMN/tvjz) answering questions about cancer treatment,[10](https://paperpile.com/c/FgFYMN/V4C6) and providing assistance to laypeople.[32](https://paperpile.com/c/FgFYMN/K2Wb) However, question-answering is not representative of the range of NLP tasks needed to process clinical texts,[30](https://paperpile.com/c/FgFYMN/4UG7r) and in isolation has limited practical use for clinic and research. Further, such studies to date have largely focused on whether the LLM answers a question correctly but do not provide insight into why models may fail, which is critical to improving LLMs for medicine and moving the field forward. We chose our tasks—classification and reasoning—because they are fundamental to the development of NLP technologies that can support clinical care and research beyond question-answering, and are granular enough to reveal the specific language processing steps where LLMs may not perform well.
 
 NLP for classification entails determining what category an input text belongs in. Classification methods identify if a patient’s EMR includes a characteristic or outcome of interest, which has implications for outcomes research, clinical trial matching, and identifying key events at the point-of-care. Reasoning entails determining the relationships between entities, which is to automatically identify how different events in a patient’s medical history relate to one another. Especially because nuanced information conveying medical reasoning can often only be expressed in free text, NLP methods for reasoning are needed to automate higher-level medical inferencing. Here, we investigated causative relationships, which is needed for tasks that require linking any clinical outcome with causative factors, such as associating adverse drug events with their inciting agent. Other reasoning tasks include temporal reasoning, which is determining the order of medical events over time. Another benefit of our task selection is that, compared to question-answering, they are more straight-forward to objectively evaluate, enabling a more direct evaluation of how LLMs perform in the biomedical domain and providing a clearer understanding into the types of performance gaps that need to be improved with additional research and development. In the future, evaluation of LLMs in the clinical domain for other classification and reasoning tasks, as well as other common NLP tasks such as relation extraction, named entity recognition, coreference resolution, word sense disambiguation, and machine translation, will be needed.
 
@@ -120,352 +104,481 @@ This study suggests an ongoing role for classic NLP models fine-tuned for specif
 ## Data Availability Statement:
 
 All data generated/analysed during this study are available and can be found at [https://github.com/shan23chen/HealthLLM\_Eval](https://github.com/shan23chen/HealthLLM_Eval).
-
-**Acknowledgement**  
+Acknowledgement
 The study was funded by R01GM114355 (Author YL), R01LM013486 (Authors HV, GS), and the Woods Foundation (Authors SC, DB). The funder played no role in study design, data collection, analysis and interpretation of data, or the writing of this manuscript.
 
-**REFERENCES**
+## REFERENCES
 
-1\.	[Vaswani, A. *et al.* Attention is all you need. in *NeurIPS Proceedings* (2017).](http://paperpile.com/b/FgFYMN/OA2QZ)  
-2\.	[Sutton, R. S. & Barto, A. G. *Reinforcement Learning: An Introduction, 2nd Edition*. (The MIT Press, Cambridge, MA, 2018).](http://paperpile.com/b/FgFYMN/EWdNo)  
-3\.	[Ouyang, L. *et al.* Training language models to follow instructions with human feedback. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/yZqXo)  
-4\.	[Ouyang, L. *et al.* Training language models to follow instructions with human feedback. in *NeurIPS Proceesings* (2022).](http://paperpile.com/b/FgFYMN/Ki4xv)  
-5\.	[Lee, P., Bubeck, S. & Petro, J. Benefits, Limits, and Risks of GPT-4 as an AI Chatbot for Medicine. *N. Engl. J. Med.* **388**, 1233–1239 (2023).](http://paperpile.com/b/FgFYMN/bupsp)  
-6\.	[Reardon, S. AI Chatbots Can Diagnose Medical Conditions at Home. How Good Are They? *Scientific American* (By Sara Reardon on March 31 2023).](http://paperpile.com/b/FgFYMN/nlsHV)  
-7\.	[Gilson, A. *et al.* How Does ChatGPT Perform on the United States Medical Licensing Examination? The Implications of Large Language Models for Medical Education and Knowledge Assessment. *JMIR Med Educ* **9**, e45312 (2023).](http://paperpile.com/b/FgFYMN/6p9xd)  
-8\.	[Liévin, V., Hother, C. E. & Winther, O. Can large language models reason about medical questions? *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/Kdn6v)  
-9\.	[Zuccon, G. & Koopman, B. Dr ChatGPT, tell me what I want to hear: How prompt knowledge impacts health answer correctness. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/FgFYMN/HuOMB)  
-10\.	[Chen, S. *et al.* Use of Artificial Intelligence Chatbots for Cancer Treatment Information. *JAMA Oncol* (2023) doi:](http://paperpile.com/b/FgFYMN/V4C6)[10.1001/jamaoncol.2023.2954](http://dx.doi.org/10.1001/jamaoncol.2023.2954)[.](http://paperpile.com/b/FgFYMN/V4C6)  
-11\.	[Lyu, Q. *et al.* Translating Radiology Reports into Plain Language using ChatGPT and GPT-4 with Prompt Learning: Promising Results, Limitations, and Potential. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/FgFYMN/LOqlU)  
-12\.	[Singhal, K. *et al.* Large Language Models Encode Clinical Knowledge. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/Ah0nd)  
-13\.	[Lehman, E. *et al.* Do We Still Need Clinical Language Models? *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/FgFYMN/lDUlL)  
-14\.	[Wang, J. *et al.* On the Robustness of ChatGPT: An Adversarial and Out-of-distribution Perspective. *arXiv \[cs.AI\]* (2023).](http://paperpile.com/b/FgFYMN/VfLjI)  
-15\.	[Liao, K. P. *et al.* Development of phenotype algorithms using electronic medical records and incorporating natural language processing. *BMJ* **350**, h1885 (2015).](http://paperpile.com/b/FgFYMN/Q4Xhw)  
-16\.	[Zhang, Y. *et al.* Comparison of Chest Radiograph Captions Based on Natural Language Processing vs Completed by Radiologists. *JAMA Netw Open* **6**, e2255113 (2023).](http://paperpile.com/b/FgFYMN/ECcXS)  
-17\.	[Medori, J. & Fairon, C. Machine learning and features selection for semi-automatic ICD-9-CM encoding. in *Proceedings of the NAACL HLT 2010 Second Louhi Workshop on Text and Data Mining of Health Documents* 84–89 (Association for Computational Linguistics, Los Angeles, California, USA, 2010).](http://paperpile.com/b/FgFYMN/9Zs2K)  
-18\.	[OpenAI API.](http://paperpile.com/b/FgFYMN/l2nGi) [http://platform.openai.com](http://platform.openai.com)[.](http://paperpile.com/b/FgFYMN/l2nGi)  
-19\.	[Li, Y., Wang, J. & Yu, B. Detecting Health Advice in Medical Research Literature. in *Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing* 6018–6029 (Association for Computational Linguistics, Online and Punta Cana, Dominican Republic, 2021).](http://paperpile.com/b/FgFYMN/lfPHu)  
-20\.	[Yu, B., Li, Y. & Wang, J. Detecting Causal Language Use in Science Findings. in *Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)* 4664–4674 (Association for Computational Linguistics, Hong Kong, China, 2019).](http://paperpile.com/b/FgFYMN/uPu1p)  
-21\.	[Devlin, J., Chang, M.-W., Lee, K. & Toutanova, K. BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. *arXiv \[cs.CL\]* (2018).](http://paperpile.com/b/FgFYMN/nut9V)  
-22\.	[Lee, J. *et al.* BioBERT: a pre-trained biomedical language representation model for biomedical text mining. *Bioinformatics* **36**, 1234–1240 (2020).](http://paperpile.com/b/FgFYMN/QLAXk)  
-23\.	[Wei, J. *et al.* Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/bHjK3)  
-24\.	[Taylor, R. *et al.* Galactica: A Large Language Model for Science. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/DU3ir)  
-25\.	[Brown, T. B. *et al.* Language Models are Few-Shot Learners. *arXiv \[cs.CL\]* (2020).](http://paperpile.com/b/FgFYMN/Ua2Fh)  
-26\.	[Wei, J. *et al.* Emergent Abilities of Large Language Models. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/95vn0)  
-27\.	[Kojima, T., Gu, S. S., Reid, M., Matsuo, Y. & Iwasawa, Y. Large Language Models are Zero-Shot Reasoners. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/nrYzn)  
-28\.	[Shi, F. *et al.* Large Language Models Can Be Easily Distracted by Irrelevant Context. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/FgFYMN/eKzvW)  
-29\.	[Wang, X. *et al.* Self-Consistency Improves Chain of Thought Reasoning in Language Models. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/ktchQ)  
-30\.	[Savova, G. K. *et al.* Use of Natural Language Processing to Extract Clinical Cancer Phenotypes from Electronic Medical Records. *Cancer Res.* **79**, 5463–5470 (2019).](http://paperpile.com/b/FgFYMN/4UG7r)  
-31\.	[Beam, K. *et al.* Performance of a Large Language Model on Practice Questions for the Neonatal Board Examination. *JAMA Pediatr.* **177**, 977–979 (2023).](http://paperpile.com/b/FgFYMN/tvjz)  
+1\.	[Vaswani, A. *et al.* Attention is all you need. in *NeurIPS Proceedings* (2017).](http://paperpile.com/b/FgFYMN/OA2QZ)
+2\.	[Sutton, R. S. & Barto, A. G. *Reinforcement Learning: An Introduction, 2nd Edition*. (The MIT Press, Cambridge, MA, 2018).](http://paperpile.com/b/FgFYMN/EWdNo)
+3\.	[Ouyang, L. *et al.* Training language models to follow instructions with human feedback. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/yZqXo)
+4\.	[Ouyang, L. *et al.* Training language models to follow instructions with human feedback. in *NeurIPS Proceesings* (2022).](http://paperpile.com/b/FgFYMN/Ki4xv)
+5\.	[Lee, P., Bubeck, S. & Petro, J. Benefits, Limits, and Risks of GPT-4 as an AI Chatbot for Medicine. *N. Engl. J. Med.* **388**, 1233–1239 (2023).](http://paperpile.com/b/FgFYMN/bupsp)
+6\.	[Reardon, S. AI Chatbots Can Diagnose Medical Conditions at Home. How Good Are They? *Scientific American* (By Sara Reardon on March 31 2023).](http://paperpile.com/b/FgFYMN/nlsHV)
+7\.	[Gilson, A. *et al.* How Does ChatGPT Perform on the United States Medical Licensing Examination? The Implications of Large Language Models for Medical Education and Knowledge Assessment. *JMIR Med Educ* **9**, e45312 (2023).](http://paperpile.com/b/FgFYMN/6p9xd)
+8\.	[Liévin, V., Hother, C. E. & Winther, O. Can large language models reason about medical questions? *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/Kdn6v)
+9\.	[Zuccon, G. & Koopman, B. Dr ChatGPT, tell me what I want to hear: How prompt knowledge impacts health answer correctness. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/FgFYMN/HuOMB)
+10\.	[Chen, S. *et al.* Use of Artificial Intelligence Chatbots for Cancer Treatment Information. *JAMA Oncol* (2023) doi:](http://paperpile.com/b/FgFYMN/V4C6)[10.1001/jamaoncol.2023.2954](http://dx.doi.org/10.1001/jamaoncol.2023.2954)[.](http://paperpile.com/b/FgFYMN/V4C6)
+11\.	[Lyu, Q. *et al.* Translating Radiology Reports into Plain Language using ChatGPT and GPT-4 with Prompt Learning: Promising Results, Limitations, and Potential. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/FgFYMN/LOqlU)
+12\.	[Singhal, K. *et al.* Large Language Models Encode Clinical Knowledge. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/Ah0nd)
+13\.	[Lehman, E. *et al.* Do We Still Need Clinical Language Models? *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/FgFYMN/lDUlL)
+14\.	[Wang, J. *et al.* On the Robustness of ChatGPT: An Adversarial and Out-of-distribution Perspective. *arXiv \[cs.AI\]* (2023).](http://paperpile.com/b/FgFYMN/VfLjI)
+15\.	[Liao, K. P. *et al.* Development of phenotype algorithms using electronic medical records and incorporating natural language processing. *BMJ* **350**, h1885 (2015).](http://paperpile.com/b/FgFYMN/Q4Xhw)
+16\.	[Zhang, Y. *et al.* Comparison of Chest Radiograph Captions Based on Natural Language Processing vs Completed by Radiologists. *JAMA Netw Open* **6**, e2255113 (2023).](http://paperpile.com/b/FgFYMN/ECcXS)
+17\.	[Medori, J. & Fairon, C. Machine learning and features selection for semi-automatic ICD-9-CM encoding. in *Proceedings of the NAACL HLT 2010 Second Louhi Workshop on Text and Data Mining of Health Documents* 84–89 (Association for Computational Linguistics, Los Angeles, California, USA, 2010).](http://paperpile.com/b/FgFYMN/9Zs2K)
+18\.	[OpenAI API.](http://paperpile.com/b/FgFYMN/l2nGi) [http://platform.openai.com](http://platform.openai.com)[.](http://paperpile.com/b/FgFYMN/l2nGi)
+19\.	[Li, Y., Wang, J. & Yu, B. Detecting Health Advice in Medical Research Literature. in *Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing* 6018–6029 (Association for Computational Linguistics, Online and Punta Cana, Dominican Republic, 2021).](http://paperpile.com/b/FgFYMN/lfPHu)
+20\.	[Yu, B., Li, Y. & Wang, J. Detecting Causal Language Use in Science Findings. in *Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)* 4664–4674 (Association for Computational Linguistics, Hong Kong, China, 2019).](http://paperpile.com/b/FgFYMN/uPu1p)
+21\.	[Devlin, J., Chang, M.-W., Lee, K. & Toutanova, K. BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. *arXiv \[cs.CL\]* (2018).](http://paperpile.com/b/FgFYMN/nut9V)
+22\.	[Lee, J. *et al.* BioBERT: a pre-trained biomedical language representation model for biomedical text mining. *Bioinformatics* **36**, 1234–1240 (2020).](http://paperpile.com/b/FgFYMN/QLAXk)
+23\.	[Wei, J. *et al.* Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/bHjK3)
+24\.	[Taylor, R. *et al.* Galactica: A Large Language Model for Science. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/DU3ir)
+25\.	[Brown, T. B. *et al.* Language Models are Few-Shot Learners. *arXiv \[cs.CL\]* (2020).](http://paperpile.com/b/FgFYMN/Ua2Fh)
+26\.	[Wei, J. *et al.* Emergent Abilities of Large Language Models. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/95vn0)
+27\.	[Kojima, T., Gu, S. S., Reid, M., Matsuo, Y. & Iwasawa, Y. Large Language Models are Zero-Shot Reasoners. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/nrYzn)
+28\.	[Shi, F. *et al.* Large Language Models Can Be Easily Distracted by Irrelevant Context. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/FgFYMN/eKzvW)
+29\.	[Wang, X. *et al.* Self-Consistency Improves Chain of Thought Reasoning in Language Models. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/ktchQ)
+30\.	[Savova, G. K. *et al.* Use of Natural Language Processing to Extract Clinical Cancer Phenotypes from Electronic Medical Records. *Cancer Res.* **79**, 5463–5470 (2019).](http://paperpile.com/b/FgFYMN/4UG7r)
+31\.	[Beam, K. *et al.* Performance of a Large Language Model on Practice Questions for the Neonatal Board Examination. *JAMA Pediatr.* **177**, 977–979 (2023).](http://paperpile.com/b/FgFYMN/tvjz)
 32\.	[Murk, W., Goralnick, E., Brownstein, J. S. & Landman, A. B. Quality of Layperson CPR Instructions From Artificial Intelligence Voice Assistants. *JAMA Netw Open* **6**, e2331205 (2023).](http://paperpile.com/b/FgFYMN/K2Wb)
 
 ## Appendix A:
-
-**Table A1 Parameters and hyperparameters for fine-tuning BioBERT**
-
+Table A1 Parameters and hyperparameters for fine-tuning BioBERT
 |  | Classification:  Advice in  discussion  sections | Classification:  Advice in unstructured abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
+
 | :---- | ----- | ----- | ----- | ----- |
+
 | random seed | 42 | 42 | 42 | 42 |
+
 | batch size (per\_device\_train) | 128 | 128 | 128 | 128 |
+
 | batch size (per\_device\_eval) | 512 | 512 | 512 | 512 |
+
 | epoch | 50 | 50 | 50 | 200 |
+
 | learning rate | 2e-5 | 2e-5 | 2e-5 | 2e-5 |
+
 | max sequence length | 512 | 512 | 512 | 512 |
+
 | warmup\_steps | 500 | 500 | 500 | 500 |
+
 | weight\_decay | 0.01 | 0.01 | 0.01 | 0.01 |
 
-Tables A2-A4 provide a comparison of the estimated time required for training and inferencing using different models and settings. 
+Tables A2-A4 provide a comparison of the estimated time required for training and inferencing using different models and settings.
 
-The total spending of inference OpenAI API was $1,299 based on OpenAI pricing for Feb-Mar, 2023[^1] 
-
-**Table A2 Time required for training and inferencing of each method**
-
+The total spending of inference OpenAI API was $1,299 based on OpenAI pricing for Feb-Mar, 2023[^1]
+Table A2 Time required for training and inferencing of each method
 | Model & Setting | Prompt creation time (seconds) | Inference time for  training on dev setc  (seconds) | Inference time  on test setc  (seconds) | Total (hours) | Performanced |
+
 | :---- | ----- | ----- | ----- | ----- | ----- |
+
 | GPT zero-shot | 2400.000a | 28296.000 | 11322.000 | 11.005 | 0.458 |
+
 | GPT few-shot CoT | 18000.000b | 94320.000 | 37740.000 | 36.683 | 0.709 |
+
 | BoW | 0 | 13.000 | 0.700 | 0.004 | 0.667 |
+
 | FT BioBERT | 0 | 139.427 | 0.800 | 0.039 | 0.844 |
 
-CoT \= Chain-of-Thought, BoW \= bag-of-words; FT \= fine-tuning.  
-aIt took roughly 240 seconds to create zero-shot prompts, and a total of 10 prompts were tested.  
-bIt took roughly 1800 seconds to write a few-shot CoT prompt, and a total of 10 prompts were tested.  
-c1.2s per query for 0-shot, 4s per query 4-shot CoT.  
+CoT \= Chain-of-Thought, BoW \= bag-of-words; FT \= fine-tuning.
+aIt took roughly 240 seconds to create zero-shot prompts, and a total of 10 prompts were tested.
+bIt took roughly 1800 seconds to write a few-shot CoT prompt, and a total of 10 prompts were tested.
+c1.2s per query for 0-shot, 4s per query 4-shot CoT.
 dPerformance is the average macro F1 among the 4 datasets.
-
-**Table A3 Time required for training and inferencing of an Oracle prompter**
-
+Table A3 Time required for training and inferencing of an Oracle prompter
 | Model & Setting | Oracle prompter | Assuming an Oracle prompt writer who creates only one prompt to achieve the best performance on the test set. Thus, no prompts needed for the validation set. |  |  |  |
+
 | :---- | ----- | ----- | ----- | ----- | ----- |
+
 |  | **Prompt  creation time (in seconds)a** | **Inference time for  training on dev set (in seconds)** | **Inference time  on test setb  (in seconds)** | **Total (in hours)** | **Performancec** |
+
 | GPT zero-shot | 120.000 | 0.000 | 11322.000 | 3.145 | 0.458 |
+
 | GPT few-shot CoT | 900.000 | 0.000 | 37740.000 | 10.483 | 0.709 |
+
 | BoW | 0.000 | 13.000 | 0.700 | 0.004 | 0.667 |
+
 | FT BioBERT | 0.000 | 139.427 | 0.800 | 0.039 | 0.844 |
 
-CoT \= Chain-of-Thought, BoW \= bag-of-words; FT \= fine-tuning.  
-aWe assume the Oracle prompt writer will also create prompts 100% more efficiently than humans (Table A2).  
-b1.2s per query for 0-shot, 4s per query 4-shot CoT.  
+CoT \= Chain-of-Thought, BoW \= bag-of-words; FT \= fine-tuning.
+aWe assume the Oracle prompt writer will also create prompts 100% more efficiently than humans (Table A2).
+b1.2s per query for 0-shot, 4s per query 4-shot CoT.
 cPerformance is the average macro F1 among the 4 datasets.
-
-**Table A4 Time required for training and inferencing of an Oracle prompter with machine that can parallel inference in batch of 512**
-
+Table A4 Time required for training and inferencing of an Oracle prompter with machine that can parallel inference in batch of 512
 | Model & Setting | Oracle prompter | Batch mode: 512 |  |  |  |
+
 | :---- | ----- | ----- | ----- | ----- | ----- |
+
 |  | **Prompt  creation time (in seconds)a** | **Inference time for  training on dev set (in seconds)** | **Inference time  on test setb  (in seconds)** | **Total (in hours)** | **Performancec** |
+
 | GPT zero-shot | 120.000 | 0.000 | 22.113 | 0.006 | 0.458 |
+
 | GPT few-shot CoT | 900.000 | 0.000 | 73.711 | 0.020 | 0.709 |
+
 | BoW | 0.000 | 13.000 | 0.700 | 0.004 | 0.667 |
+
 | FT BioBERT | 0.000 | 139.427 | 0.800 | 0.039 | 0.844 |
 
-CoT \= Chain-of-Thought, BoW \= bag-of-words; FT \= fine-tuning.  
-aWe assume the Oracle prompt writer will also create prompts 100% more efficiently than humans (Table A2).  
-b1.2s per query for 0-shot, 4s per query 4-shot CoT.  
+CoT \= Chain-of-Thought, BoW \= bag-of-words; FT \= fine-tuning.
+aWe assume the Oracle prompt writer will also create prompts 100% more efficiently than humans (Table A2).
+b1.2s per query for 0-shot, 4s per query 4-shot CoT.
 cPerformance is the average macro F1 among the 4 datasets.
-
-**Table A5 *P*\-values for pairwise comparison of average model performance among the 4 datasets**
-
+Table A5 *P*\-values for pairwise comparison of average model performance among the 4 datasets
 |  | GPT-3.5s | BoW | FT BioBERT |
+
 | :---- | ----- | ----- | ----- |
+
 | **GPT-4** | 0.4150 | 0.4228 | 0.0062\* |
+
 | **GPT-3.5s** | – | 0.7969 | 0.0008\* |
+
 | **BoW** | – | – | 0.0041\* |
 
-BoW \= bag-of-words; FT \= fine-tuning.  
+BoW \= bag-of-words; FT \= fine-tuning.
 \*: *p*\<0.05 considered statistically significant.
-
-**Table A6 Macro F1 scores for GPT-3.5-Davinci vs Turbo(ChatGPT) vs GPT-4 on the test set** 
-
+Table A6 Macro F1 scores for GPT-3.5-Davinci vs Turbo(ChatGPT) vs GPT-4 on the test set
 |  | Classification:  Advice in  discussion  sections | Classification:  Advice in  unstructured  abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
+
 | :---- | ----- | ----- | ----- | ----- |
+
 | Zero-shot Davinci | 0.503 | 0.461 | **0.548** | 0.242 |
+
 | Zero-shot Turbo | 0.506 | **0.489** | 0.484 | 0.288 |
+
 | Zero-shot GPT-4 | **0.509** | 0.478 | 0.517 | **0.304** |
+
 | Few-shot CoT Davinci | **0.671** | 0.617 | 0.718 | 0.649 |
+
 | Few-shot CoT Turbo | 0.603 | 0.670 | 0.699 | 0.566 |
+
 | Few-shot CoT GPT-4 | 0.648 | **0.712** | **0.770** | **0.682** |
 
-Best results are bolded.  
+Best results are bolded.
 CoT \= Chain-of-Thought.
-
-**Table A7 Macro F1 scores for GPT-3.5-Davinci vs Turbo(ChatGPT) on the test set** 
-
+Table A7 Macro F1 scores for GPT-3.5-Davinci vs Turbo(ChatGPT) on the test set
 |  | Classification:  Advice in  discussion  sections | Classification:  Advice in  unstructured  abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
+
 | :---- | ----- | ----- | ----- | ----- |
+
 | Zero-shot Davinci | 0.503 | 0.461 | **0.548** | 0.242 |
+
 | Zero-shot Turbo | **0.506** | **0.489** | 0.484 | **0.288** |
+
 | One-shot Davinci | 0.513 | 0.501 | **0.593** | 0.210 |
+
 | One-shot Turbo | 0.513 | **0.554** | 0.470 | **0.396** |
+
 | Few-shot Davinci | 0.468 | **0.403** | **0.495** | **0.542** |
+
 | Few-shot Turbo | **0.475** | 0.243 | 0.436 | 0.513 |
+
 | Zero-CoT Davinci | **0.436** | 0.383 | **0.515** | 0.332 |
+
 | Zero-CoT Turbo | 0.418 | **0.424** | 0.486 | **0.345** |
+
 | One-CoT Davinci | 0.418 | **0.423** | 0.470 | 0.489 |
+
 | One-CoT Turbo | **0.430** | 0.410 | **0.552** | **0.553** |
+
 | Few-CoT Davinci | **0.671** | 0.617 | **0.718** | **0.649** |
+
 | Few-CoT Turbo | 0.603 | **0.670** | 0.699 | 0.566 |
 
-Best results are bolded.  
+Best results are bolded.
 CoT \= Chain-of-Thought.
 
 Tables A8-A10 present a comparison of development/test set performance when exemplars from different classes are used for GPT-3.5-Davinci under the one-shot and one-shot with Chain-of-Thought settings. One-shot results on the test set were not evaluated due to cost limitations.
-
-**Table A8 GPT-3.5-Davinci, one-shot CoT results on the test set** 
-
+Table A8 GPT-3.5-Davinci, one-shot CoT results on the test set
 | Class of Exemplar (Classification/Reasoning) | Classification:  Advice in  discussion  sections | Classification:  Advice in unstructured abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
+
 | :---- | ----- | ----- | ----- | ----- |
+
 | None/Nonea | 0.421 | **0.410** | **0.552** | 0.526 |
+
 | Weak/Correlational | **0.430** | 0.283 | 0.381 | 0.455 |
+
 | Strong/Conditional Causal | 0.343 | 0.319 | 0.447 | **0.553** |
+
 | Direct Causal | – | – | – | 0.386 |
 
-Best results are bolded.  
+Best results are bolded.
 aNone class is the majority class for all datasets.
-
-**Table A9 GPT-3.5-Davinci, one-shot results on the development set**
-
+Table A9 GPT-3.5-Davinci, one-shot results on the development set
 | Class of Exemplar (Classification/Reasoning) | Classification:  Advice in  discussion  sections | Classification:  Advice in unstructured abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
+
 | :---- | ----- | ----- | ----- | ----- |
+
 | None/Nonea | **0.462** | **0.510** | **0.552** | **0.521** |
+
 | Weak/Correlational | 0.460 | 0.333 | 0.391 | 0.495 |
+
 | Strong/Conditional Causal | 0.393 | 0.339 | 0.448 | 0.453 |
+
 | Direct Causal | – | – | – | 0.456 |
 
-Best results are bolded.  
+Best results are bolded.
 aNone class is the majority class for all datasets.
-
-**Table A10 GPT3.5-Davinci, one-shot CoT results on the development set**   
-**Bold indicates best performance** 
-
+Table A10 GPT3.5-Davinci, one-shot CoT results on the development set
+Bold indicates best performance
 | Class of Exemplar (Classification/Reasoning) | Classification:  Advice in  discussion  sections | Classification:  Advice in unstructured abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
+
 | :---- | ----- | ----- | ----- | ----- |
+
 | None/Nonea | **0.411** | 0.390 | **0.423** | 0.526 |
+
 | Weak/Correlational | 0.340 | 0.283 | 0.361 | 0.455 |
+
 | Strong/Conditional Causal | 0.343 | **0.430** | 0.350 | **0.553** |
+
 | Direct Causal | – | – | – | 0.456 |
 
-Best results are bolded.  
+Best results are bolded.
 aNone class is the majority class for all datasets.
-
-**Table A11 Performance of smaller GPT models (\< 10B parameters) on the test set**
-
+Table A11 Performance of smaller GPT models (\< 10B parameters) on the test set
 |  | Classification:  Advice in  discussion  sections | Classification:  Advice in unstructured abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
+
 | :---- | ----- | ----- | ----- | ----- |
+
 | Zero-shot GPT-J | 0.248 | 0.230 | 0.302 | 0.211 |
+
 | Zero-shot GPT-JT | **0.272** | **0.262** | **0.321** | 0.226 |
+
 | Zero-shot Galactica | 0.234 | 0.218 | 0.294 | **0.252** |
+
 | Few-shot GPT-J | 0.157 | 0.142 | 0.292 | 0.191 |
+
 | Few-shot GPT-JT | **0.276** | **0.284** | **0.358** | 0.216 |
+
 | Few-shot Galactica | 0.246 | 0.205 | 0.293 | **0.244** |
 
 Best results are bolded.
-
- 
-
-**Table A12 Performance of smaller GPT models (\< 10B parameters) on the dev set** 
-
+Table A12 Performance of smaller GPT models (\< 10B parameters) on the dev set
 |  | Classification:  Advice in  discussion  sections | Classification:  Advice in unstructured abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
+
 | :---- | ----- | ----- | ----- | ----- |
+
 | Zero-shot GPT-J | 0.247 | 0.246 | 0.296 | 0.210 |
+
 | Zero-shot GPT-JT | **0.285** | **0.262** | **0.331** | 0.226 |
+
 | Zero-shot Galactica | 0.233 | 0.209 | 0.278 | **0.250** |
+
 | Few-shot GPT-J | 0.155 | 0.143 | 0.286 | 0.192 |
+
 | Few-shot GPT-JT | **0.284** | **0.282** | **0.348** | 0.217 |
+
 | Few-shot Galactica | 0.257 | 0.222 | 0.308 | **0.257** |
+
 | Few-CoT GPT-J | 0.211 | 0.200 | 0.323 | – |
+
 | Few-CoT GPT-JT | 0.172 | 0.129 | 0.269 | – |
+
 | Few-CoT Galactica | 0.241 | 0.195 | 0.368 | – |
 
-Best results are bolded.  
+Best results are bolded.
 CoT \= Chain-of-Thought.
-
-**Table A13 Sample of generated three-shot Chain-of-Thought from GPT-4 for advice in the structured abstracts in the HealthAdvice test set.**
-
+Table A13 Sample of generated three-shot Chain-of-Thought from GPT-4 for advice in the structured abstracts in the HealthAdvice test set.
 | Sentence |  | GPT–4 Answer |  |  | Gold | Pred |
+
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+
 | Testing this hypothesis may represent a direction of future research. |  | 1\. The term "may represent" indicates that there is an advice in the context. 2\. "May represent" suggests a possibility, which is not a strong opinion. 3\. The answer is weak advice. |  |  | no  advice | weak  advice |
+
 | Future research should attempt to replicate these findings in a larger-scale trial using a more sophisticated, user-friendly program and additional measures of improvement in more diverse samples. |  | 1\. The term "should attempt" indicates that there is an advice in the context. 2\. "Should" indicates a directive opinion. 3\. The answer is strong advice. |  |  | no  advice | strong advice |
+
 | Our results suggest that pregnant women with an HbA1c of 5.4% (36\\u2005mmol/mol) should proceed with an OGTT. |  | 1\. The term "suggest" indicates that there is an advice in the context. 2\. "Suggest" indicates a directive opinion, but not as strong as a recommendation. 3\. The answer is weak advice. |  |  | strong advice | weak  advice |
+
 | This highlights the importance of considering subgroups of patients with LRTI to develop RP evidence-based practice. |  | 1\. The context mentions the importance of considering subgroups, which implies a suggestion or advice. 2\. The term "importance" indicates that the opinion is not weak. 3\. The answer is strong advice. |  |  | weak advice | strong advice |
+
 | Surgery done as soon as possible is helpful to reduce the force caused by the obstruction and helpful to the normal facial growth. |  | 1\. The context states that surgery is helpful, which implies a suggestion or advice. 2\. The phrase "as soon as possible" indicates a sense of urgency, making the advice stronger. 3\. The answer is strong advice. |  |  | weak  advice | strong advice |
+
 | This study shows the lack of normative consensus about ACP and highlights the need for consistent educational programs regarding the role of the CBLTC provider in the ACP process. |  | 1\. The context states the need for consistent educational programs, which is an advice. 2\. The term "highlights the need" indicates that the opinion is not strong. 3\. The answer is weak advice. |  |  | strong advice | weak  advice |
+
 | Pattern A     Incorrect reasoning step based on specific keywords Pattern B     Incorrect classification of health advice |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
+
 |  |  |  |  |  |  |  |
 
-**Table A14 Sample of generated three-shot Chain-of-Thought from GPT-4 for advice in the unstructured abstracts in the HealthAdvice test set.**
-
+|  |  |  |  |  |  |  |
+Table A14 Sample of generated three-shot Chain-of-Thought from GPT-4 for advice in the unstructured abstracts in the HealthAdvice test set.
 | Sentence |  | GPT–4 Answer |  |  | Gold | Pred |
+
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+
 | Future research should seek to implement additional evidence-based actions to improve QoL in this population. |  | 1\. The term "should seek to implement" indicates that there is an advice in the context. 2\. "Should" indicates a strong opinion. 3\. The answer is strong advice. |  |  | no  advice | strong advice |
+
 | In conclusion, contrast-enhanced whole-heart CMRA at 3.0T can depict the normal and variant cardiac venous anatomy. |  | 1\. The context states a conclusion, which is not an advice. 2\. The answer is no advice. |  |  | weak  advice | no  advice |
+
 | However, because our analysis was based on a relatively small number of genes, a larger study will be needed to identify the best predictors of disease outcome overall. |  | 1\. The context mentions "a larger study will be needed," which indicates an advice. 2\. "Will be needed" suggests a strong opinion. 3\. The answer is strong advice. |  |  | no  advice | strong advice |
+
 | The manufacturer of the CDI 500 in-line blood gas monitor recommends gas calibration before use. |  | 1\. The context states a recommendation, which is a form of advice. 2\. The term "recommends" indicates a strong opinion. 3\. The answer is strong advice. |  |  | no  advice | strong advice |
+
 | Health promotion in transport industry workplaces should be an important topic for future research. |  | 1\. The term "should be" indicates that there is an advice in the context. 2\. "Should be" indicates a strong opinion. 3\. The answer is strong advice. |  |  | no  advice | strong advice |
+
 | Treatment with iodoform would be beneficial. |  | 1\. The term "would be beneficial" indicates an advice in the context. 2\. "Would be" indicates a strong opinion. 3\. The answer is strong advice. |  |  | weak  advice | strong advice |
+
 | A comprehensive early childhood vision screening program in Hawai'i utilizing automated hand-held photoscreeners may have public health value. |  | 1\. The term "may have" indicates an advice in the context. 2\. "May have" indicates a weak opinion. 3\. The answer is weak advice. |  |  | no  advice | weak advice |
+
 |  |  |  |  |  |  |  |
+
 |  |  |  |  |  |  |  |
+
 | Although the AD-associated genetic variants appear to have small effects on early cognitive change, replication will be required to establish whether there is a discernible influence on cognitive status in midlife. |  | 1\. The phrase "replication will be required" indicates an advice in the context. 2\. "Will be required" indicates a strong opinion. 3\. The answer is strong advice. |  |  | no  advice | strong advice |
+
 | Replication tests in more generalizable samples and of longer duration are indicated. |  | 1\. The term "are indicated" suggests that there is an advice in the context. 2\. "Are indicated" implies a strong opinion. 3\. The answer is strong advice. |  |  | no  advice | strong advice |
+
 | Pattern A     Incorrect reasoning step based on specific keywords Pattern B     Incorrect classification of health advice |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
+
 |  |  |  |  |  |  |  |
 
-**Table A15 Sample of generated three-shot Chain-of-Thought from GPT-4 for advice in the discussion in the HealthAdvice test set.**
-
+|  |  |  |  |  |  |  |
+Table A15 Sample of generated three-shot Chain-of-Thought from GPT-4 for advice in the discussion in the HealthAdvice test set.
 | Sentence |  | GPT–4 Answer |  |  | Gold | Pred |
+
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+
 | In this Saudi sample, the mean arch widths were narrower when compared to a Turkish sample,19 a North American sample, a South American sample, a Korean sample,20 and an Egyptian sample;21 on the other hand, it was close to a Malay sample.22 These ethnic groups’ differences in arch dimensions explain the need for specific orthodontic arch wire for each patient, based on the initial arch form. |  | 1\) The claim is discussing the differences in arch dimensions among various ethnic groups. 2\) The claim suggests the need for specific orthodontic arch wires for each patient based on their initial arch form. 3\) The claim does not use strong or hedged language, but it does imply an actionable suggestion for orthodontic treatment. 4\) Therefore, the claim has weak advice. Answer: (2) weak advice. |  |  | no  advice | weak  advice |
+
 | In comparison, Patient 3 demonstrated significant PR3-ANCA antibody production without evidence of peripheral B cell repopulation, which emphasizes the need to consider granulomata in GPA as B cell containing tertiary lymphoid structures pivotal to driving the relapsing disease course. |  | 1\) The claim is discussing the importance of considering granulomata in GPA as B cell containing tertiary lymphoid structures. 2\) The claim uses the phrase "emphasizes the need to consider," which indicates a suggestion or recommendation. 3\) However, the strength of the advice is not explicitly strong or weak, but it leans more towards a weak advice due to the use of the word "emphasizes." Answer: (2) weak advice. |  |  | strong advice | weak  advice |
+
 | Despite considerable challenges that face the interpretation of clinicoanatomical correlations in neurodegenerative diseases, the current results suggest that at least parts of the left anterior temporal neocortex should be inserted into the temporosylvian language network where they are likely to play critical roles in linking words to their object referents and in sharpening the taxonomic acuity of naming and word comprehension. |  | 1\) The claim has an actionable suggestion related to the insertion of parts of the left anterior temporal neocortex into the temporosylvian language network. 2\) When describing the suggestion, the authors used the phrase "suggest that" and "likely to play critical roles", which indicates the strength of the claim is not strong but weak. 3\) Therefore, the claim has weak advice. Answer: (2) weak advice. |  |  | strong advice | weak  advice |
+
 | The results, coupled with other correlational and quasiexperimental results, stress the importance of providing high quality evidence-based reading instruction throughout the early grades. |  | 1\) The claim has an actionable suggestion related to providing high-quality, evidence-based reading instruction in early grades. 2\) When describing the suggestion, the authors used the phrase "stress the importance of", which indicates the strength of the claim is strong. 3\) Therefore, the claim has strong advice. Answer: (1) strong advice. |  |  | weak  advice | strong  advice |
+
 | It is important for nurses to be aware of rescue analgesia strategies, such as PCA analgesia to protect against breakthrough pain on ambulation, end-of-dose failure on controlled-release opioids, or spontaneous pain with no obvious pathology (Chiaretti & Langer, 2005). |  | 1\) The claim has an actionable suggestion for nurses to be aware of rescue analgesia strategies. 2\) When describing the suggestion, the authors used the phrase "it is important for", which indicates the strength of the suggestion is strong. 3\) Therefore, the claim has strong advice. Answer: (1) strong advice. |  |  | weak  advice | strong  advice |
+
 | It is reasonable for IVF clinics to use low oxygen concentration from embryo culture beginning, and it will optimize the patients’ treatment outcome in a long-term perspective. |  | 1\) The claim has an actionable suggestion related to the use of low oxygen concentration in IVF clinics. 2\) When describing the suggestion, the authors used the word "reasonable", which indicates a certain level of confidence in the suggestion, making it strong advice. 3\) Therefore, the claim has strong advice. Answer: (1) strong advice. |  |  | weak  advice | strong  advice |
+
 | While the study findings provide information about QoL and some influencing factors among PLWHIV in Georgia, the limitations of the current study can be considered and minimized in future studies. |  | 1\) The claim is talking about the study findings and their limitations. 2\) The claim suggests that the limitations can be considered and minimized in future studies, which is an actionable suggestion for future research. 3\) However, the claim does not use strong modal words or phrases, making the advice weak. Answer: (2) weak advice. |  |  | no  advice | weak  advice |
+
 |  |  |  |  |  |  |  |
+
 |  |  |  |  |  |  |  |
+
 | Pattern A     Incorrect reasoning step based on specific keywords Pattern B    Incorrect classification of health advice |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
+
 |  |  |  |  |  |  |  |
 
-**Table A16 Sample of generated four-shot Chain-of-Thought from GPT-4 for reasoning in the CausalRelation test set.**
-
+|  |  |  |  |  |  |  |
+Table A16 Sample of generated four-shot Chain-of-Thought from GPT-4 for reasoning in the CausalRelation test set.
 | Sentence |  | GPT–4 Answer |  |  | Gold | Pred |
+
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+
 | The present literature supports the idea that authoritative parenting may be protective against later overweight and obesity, although findings are mixed. |  | 1\) The sentence describes the relationship between "authoritative parenting" and "later overweight and obesity". 2\) The authors used the language cue "protective against", which suggests a relationship between the two entities. 3\) However, the authors also mentioned that "findings are mixed", which indicates that the relationship is not definitive or certain. 4\) Therefore, the sentence expresses a correlation, but with some uncertainty. Answer: 2 \- correlation |  |  | conditional causation | correlation |
+
 | The bidirectional association between AN diagnosis and CD warrants attention in the initial assessment and follow-up of these conditions because underdiagnosis and misdiagnosis of these disorders likely cause protracted and unnecessary morbidity. |  | 1\) The sentence describes the relationship between "AN diagnosis" and "CD". 2\) The authors used the phrase "bidirectional association", which suggests a correlation between the two conditions. 3\) Therefore, the sentence expresses correlation. Answer: 2 \- correlation |  |  | conditional causation | correlation |
+
 | This figure would be below accepted international thresholds to undertake screening mammography and raises radiation protection issues. |  | 1\) The sentence describes the relationship between "the figure being below accepted international thresholds" and "raising radiation protection issues". 2\) The authors used the verb "raises", which suggests that there is a direct effect between them. 3\) When describing the effect, the authors did not use any hedge words or modal verbs to tone down the certainty of the effect. 4\) Therefore, the sentence expresses direct causation. Answer: 4 \- causation |  |  | no relation | causation |
+
 | High-risk populations may accept CESM as a screening exam and may prefer it over screening MRI if ongoing trials demonstrate screening CESM to be clinically non-inferior MRI. |  | 1\) The sentence describes the relationship between "accepting CESM as a screening exam" and "ongoing trials demonstrating screening CESM to be clinically non-inferior MRI". 2\) The authors used the conditional language "may accept" and "if ongoing trials demonstrate", which suggests that there is a conditional effect between them. 3\) Therefore, the sentence expresses conditional causation. Answer: 3 \- conditional causation |  |  | no relation | conditional causation |
+
 | 3D MRI reconstruction after NAC could accurately detect the residual tumors after neoadjuvant chemotherapy, and contribute to select patients who received breast conserving therapy after NAC with tumor downstaging. |  | 1\) The sentence describes the relationship between "3D MRI reconstruction after NAC" and "accurately detecting residual tumors" and "contributing to selecting patients for breast conserving therapy after NAC with tumor downstaging". 2\) The authors used the verbs "could accurately detect" and "contribute to select", which suggest that there is a direct effect between them. 3\) When describing the effect, the authors also used a hedge word "could" to tone down the certainty of the effect. 4\) Therefore, the sentence expresses conditional causation only. Answer: 3 \- conditional causation |  |  | direct causation | conditional causation |
+
 | The results showed no effects of aromatherapy on QOL, sleep quality, and vital signs. |  | 1\) The sentence describes the relationship between "aromatherapy" and "QOL, sleep quality, and vital sign". 2\) The authors used the phrase "no effects", which suggests that there is no relationship between the two entities. 3\) Therefore, the sentence expresses no relationship. Answer: 1 \- no relationship |  |  | direct causation | no  relation |
+
 | The rs7903146 (C/T) polymorphism of the TCF7L2 gene might not be associated with obesity in the Cameroonian population. |  | 1\) The sentence describes the relationship between "rs7903146 (C/T) polymorphism of the TCF7L2 gene" and "obesity in the Cameroonian population". 2\) The authors used the language cue "might not be associated with" to describe the relationship, which suggests a lack of correlation. 3\) The use of "might not" indicates uncertainty, but the focus is still on the potential absence of a relationship. 4\) Therefore, the sentence expresses no relationship. Answer: 1 \- no relationship |  |  | correlation | no  relation |
+
 |  |  |  |  |  |  |  |
+
 |  |  |  |  |  |  |  |
+
 | This protocol will save money, time, and workload without compromising patients safety and future management. |  | 1\) The sentence describes the relationship between "this protocol" and "saving money, time, and workload" as well as "not compromising patient safety and future management". 2\) The authors used the verb "will save" and "without compromising", which suggests that there is a direct effect between the protocol and the outcomes mentioned. 3\) The certainty of the effect is strong and direct, as the authors used the word "will" to describe the effect. 4\) Therefore, the sentence expresses causation. Answer: 4 \- causation |  |  | no  relation | causation |
+
 | We should have major policy changes to increase future screening programs and health education programs which would have an overall positive impact on reducing the disease burden. |  | 1\) The sentence describes the relationship between "major policy changes" and "reducing the disease burden". 2\) The authors used the language cue "would have an overall positive impact on", which suggests that there is a direct effect between them. 3\) When describing the effect, the authors used a hedge word "would" to tone down the certainty of the effect. 4\) Therefore, the sentence expresses conditional causation only. Answer: 3 \- conditional causation |  |  | no  relation | conditional causation |
+
 | Pattern A     Incorrect reasoning step based on specific keywords Pattern B     Incorrect classification of reasoning relation |  |  |  |  |  |  |
+
 |  |  |  |  |  |  |  |
+
 |  |  |  |  |  |  |  |
 
 ## Appendix B:
-
-**Table B1  HealthAdvice dataset distributions**
-
+Table B1  HealthAdvice dataset distributions
 | Task | Label | Advice in discussion sections (n) | Advice in unstructured abstracts (n) | Advice in structured abstracts (n) |
+
 | :---- | :---- | ----- | ----- | ----- |
+
 | Classification: HealthAdvice | Weak advice | 162 | 28 | 1482 |
+
 |  | Strong advice | 135 | 16 | 925 |
+
 |  | No advice | 3635 | 890 | 3575 |
+
 |  | Total | 3932 | 934 | 5982 |
-
-**Table B2  CausalRelation dataset distributions**
-
+Table B2  CausalRelation dataset distributions
 | Task | Label | Count (n) |
+
 | :---- | :---- | ----- |
+
 | Reasoning: CausalRelation | Correlational | 998 |
+
 |  | Conditional causal | 213 |
+
 |  | Causal | 494 |
+
 |  | No relationship | 1356 |
+
 |  | Total | 3061 |
-
-**Table B3 Prompt templates for zero-shot, one-shot, few-shot, and zero-shot Chain-of-Thought**
-
+Table B3 Prompt templates for zero-shot, one-shot, few-shot, and zero-shot Chain-of-Thought
 | Prompt Template |  Settinga | IDb | Dataset |
+
 | ----- | ----- | ----- | ----- |
+
 | "Context: {context} \\n Question: is this a 2\) strong advice, 1\) weak advice 0\) no advice?" | Zero-shot | cs | HealthAdvice |
+
 | "Context: {context} \\n Question: does the context contain any medical advice? : 2: yes, 1: maybe 0: no" |  | cs | HealthAdvice |
+
 | Context: {context} \\n Question: Is it a (0) no advice, (1) strong advice, or (2) weak advice statement? |  | yy | HealthAdvice |
+
 | Context: {context} \\n Question: Does this claim have (1) strong advice, (2) weak advice, or there is (0) no advice? | One-shot | yy | HealthAdvice |
+
 | Context: {context} \\n Question: Is this (0) no advice, (1) strong advice, or (2) weak advice? | Few-shot | db | HealthAdvice |
+
 | Context: {context} \\n Question: What type of advice is this? Select only one from: 0 – no advice, 1 \- strong advice, or 2 \- weak advice. |  | db | HealthAdvice |
+
 | Context: {context} \\n Label the sentence as strong medical advice, weak medical advice or no medical advice | Zero-shot CoTc | gs | HealthAdvice |
+
 | Context: {context} \\n The strength of the medical advice if any in this sentence is .... |  | gs | HealthAdvice |
+
 | Context: {context} \-- Question: What type of relationship is this describing? Select only one from: 1\) no relationship, 2\) correlation, 3\) conditional causation, or 4\) direct causation. |  | hv | HealthAdvice |
+
 | Context: {context} \-- Question: Is the previous statement describing a (1) directly correlative relationship, (2) conditionally causative relationship, (3) causative relationship, or (0) no relationship. |  | hv | HealthAdvice |
+
 | Context: {context} \\n Question: choose from the following causal relationships: 0: None, 1: Correlational, 2: Conditional causal, 3: Direct causal? |  | cs | CausalRelation |
+
 | Context: {context} \\n Question: Is this a: 0\) None, 1\) Correlational, 2\) Conditional causal, 3\) Direct causal?" |  | cs | CausalRelation |
+
 | Context: {context} \\n Question: Does 1 \- correlation, 2 \- conditional causation, or 3 – direct causation expressed in the sentence, or it is a 0 \- no relationship sentence? |  Few-shot | yy | CausalRelation |
+
 | Context: {context} \\n Question: Is it 1 \- no relationship, 2 \- correlation, 3 \- conditional causation, or 4 – direct causation? | One-shot | yy | CausalRelation |
+
 | Context: {context} \\n Question: What type of relationship is this describing? Select only one from: 0 \- no relationship, 2 \- correlation, 3 \- conditional causation, or 4 – direct causation. | Zero-shot Zero-shot CoT | db | CausalRelation |
+
 | Context: {context} \\n Question: Is this describing a (1) directly correlative relationship, (2) conditionally causative relationship, (3) causative relationship, or (0) no relationship. |  | db | CausalRelation |
+
 | Context: {context} \\n Label the relation expressed in the sentence as one of correlation, conditional causation, causation or other |  | gs | CausalRelation |
+
 | Context: {context} \\n The relation in the sentence is of type... |  | gs | CausalRelation |
+
 | Context: {context} \-- Question: What type of relationship is this describing? Select only one from: 1\) no relationship, 2\) correlation, 3\) conditional causation, or 4\) direct causation. |  | hv | CausalRelation |
+
 | Context: {context} \-- Question: Is the previous statement describing a (1) directly correlative relationship, (2) conditionally causative relationship, (3) causative relationship, or (0) no relationship. |  | hv | CausalRelation |
 
-CoT \= Chain-of-Thought.  
-aThe 2 best-performing prompts for a given setting used on the test set. Blank cell means that the prompt was not selected for evaluation on the test set.  
-bInitials of the author who wrote the prompt.  
-cThe string “Let’s think step-by-step.” was appended to the end of the prompt for zero-shot CoT 
-
-**Table B4 Prompt templates for one- and few-shot Chain-of-Thought Used on the test set**
-
+CoT \= Chain-of-Thought.
+aThe 2 best-performing prompts for a given setting used on the test set. Blank cell means that the prompt was not selected for evaluation on the test set.
+bInitials of the author who wrote the prompt.
+cThe string “Let’s think step-by-step.” was appended to the end of the prompt for zero-shot CoT
+Table B4 Prompt templates for one- and few-shot Chain-of-Thought Used on the test set
 | Prompt Template | Dataset | Setting |
+
 | ----- | ----- | ----- |
+
 | "CONTEXT: Third, although our study have taken a large number of potential confounders into consideration, we could not completely rule out the possibility of unmeasured confounding. QUESTION: Does this claim have (1) strong advice, (2) weak advice, or there is (0) no advice? Let’s think step by step: 1\) The claim is talking about limitations of the current study. 2\) The claim does not have any actionable suggestions for health-related clinical or policy changes. 3\) Therefore, the claim does not have strong or weak advice. It is a no advice statement. Answer: (0) no advice. CONTEXT: Georgian public health specialists working in the HIV field should prioritize implementation of such interventions among HIV patients. QUESTION: Does this claim have (1) strong advice, (2) weak advice, or there is (0) no advice? Let’s think step by step: 1\) The claim has an actionable suggestion related to the implementation of an intervention. 2\) When describing the suggestion, the authors used modal word "should", which indicates the strength of the suggestion and it is strong. 3\) Therefore, the claim has strong advice. Answer: (1) strong advice. CONTEXT: Here we demonstrate that cancer recurrence after curative surgery was significantly lower in ANP-treated patients than in control patients, suggesting that ANP could potentially be used to prevent cancer recurrence after surgery. QUESTION: Does this claim have (1) strong advice, (2) weak advice, or there is (0) no advice? Let’s think step by step: 1\) The claim has an actionable suggestion for the use of ANP to prevent cancer recurrence after surgery. 2\) When describing the suggestion, the authors used a hedged phrase "could potentially be used to", which indicates the strength of the claim is not strong but weak. 3\) Therefore, the claim has weak advice. Answer: (2) weak advice. CONTEXT: {context} QUESTION: Does this claim have (1) strong advice, (2) weak advice, or there is (0) no advice? Let’s think step by step: | Classification:  Advice in  discussion  sections | Few-shot CoT |
+
 | CONTEXT: Correlation of serologic titers for Chlamydia trachomatis with other tests has been based on direct fluorescence antibody (DFA) testing and culture, but not on nucleic acid-based tests that are used for screening. QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. ANSWER: 1\. The context states a fact, which is not an advice. 2\. The answer is no advice. CONTEXT: These results suggest that the LOS test is an informative tool that should be included in any objective balance evaluations that screen TBI patients with balance complaints. QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. ANSWER: 1\. The term "should be included" indicate that there is an advice in the context. 2\. "Should be" indicates a strong opinion. 3\. The answer is strong advice. CONTEXT: Therefore, intraoperative antifibrinolysis may not be indicated in routine cardiac surgery when other blood-saving techniques are adopted. QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. ANSWER: 1\. The term "may not be indicated" indicates an advice in the context. 2\. "May not" indicates a weak opinion. 3\. The answer is weak advice. CONTEXT: {context} QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. | Classification:  Advice in  unstructured  abstracts | Few-shot CoT |
+
 | CONTEXT: Further mechanistic research in larger cohorts is necessary to reconcile the potential role of T2D in UF risk. QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. ANSWER: 1\. The context states the necessity of further research, which is not an advice. 2\. The answer is no advice. CONTEXT: Since blood pressure problems run a worse course in Blacks, we recommend encouragement of night-time intake in those preferring it and suggest that in those requiring two or more drugs one should be taken at night. QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. ANSWER: 1\. The terms "we recommend" and "suggest" indicate that there is an advice in the context. 2\. "Recommend" and "suggest" indicate a directive opinion. 3\. The answer is strong advice. CONTEXT: Therefore, this regimen would be a viable option for acne treatments either as monotherapy or as combination therapy. QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. ANSWER: 1\. The term "would be a viable option" indicates that there is an advice in the context. 2\. "Would be" indicates that the opinion is not strong. 3\. The answer is weak advice. CONTEXT: {context} QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. | Classification:  Advice in  structured  abstracts | Few-shot CoT |
+
 | "CONTEXT: The high rate of text message usage makes it feasible to recruit YAMs for a prospective study in which personalized text messages are used to promote healthy behaviors. QUESTION: Does 2 \- correlation, 3 \- conditional causation, or 4 – direct causation expressed in the sentence, or it is a 1 \- no relationship sentence? Let’s think step by step:  1\) The sentence does not describe any correlation or causation relation between two entities. 2\) It is a no relationship sentence. Answer: 1 \- no relationship CONTEXT: The incidence of falls and poor quality of life may be partially associated with the presence of depression. QUESTION: Does 2 \- correlation, 3 \- conditional causation, or 4 – direct causation expressed in the sentence, or it is a 1 \- no relationship sentence? Let’s think step by step:  1\) The sentence describes the relationship between "the incidence of falls and poor quality of life" and "depression". 2\) The relationship between them is correlation, as the authors used the language cue "associated with" to describe it. "Associated with" is a commonly used expression to indicate correlation. 3\) Therefore, the sentence expresses correlation. Answer: 2 \- correlation CONTEXT: Our study provides preliminary evidence that mothers who consume diets higher in fruit and lower in fried foods and cured meats during pregnancy may reduce the risk of unilateral retinoblastoma in their offspring. QUESTION: Does 2 \- correlation, 3 \- conditional causation, or 4 – direct causation expressed in the sentence, or it is a 1 \- no relationship sentence? Let’s think step by step:  1\) The sentence describes the relationship between "diets higher in fruit and lower in fried foods and cured meats" and "the risk of "unilateral retinoblastoma in offspring". 2\) The authors used the verb "reduce", which suggests that there is a direct effect between them. 3\) When describing the effect, the authors also used a hedge word "may" to tone down the certainty of the effect. 3\) Therefore, the sentence expresses conditional causation only. Answer: 3 \- conditional causation CONTEXT: The nutritional course for patients undergoing colon surgery can be improved by implementing early oral nutritional supplements in the PACU. QUESTION: Does 2 \- correlation, 3 \- conditional causation, or 4 – direct causation expressed in the sentence, or it is a 1 \- no relationship sentence? Let’s think step by step:  1\) The sentence describes the relationship between "nutritional course" and "the risk of "oral nutritional supplements in the PACU". 2\) The authors used the verb "can be improved by", which suggests that there is a direct effect between them. 3\) When describing the effect, the authors also used a modal verb "can", suggesting that the certainty of the effect is strong and direct. And no hedge word is used to tone down the certainty. 3\) Therefore, the sentence expresses causation. Answer: 4 \- causation | Reasoning:  Causal relation detection | Few-shot CoT |
 
 [image29]: <data:image/png;base64,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UmWBLAEAQKVQMllyUjR69GgzefJkr3z48OE2uj336quveuVhIEvlA7IEAACVQslkaefOnaajo8P079/f1NfXm7q6OtPY2OiNp2WpskCWAACgUiiZLInz5897w62trVaekoAslQ/IEgAAVAollaViQZbKB2QJAAAqBWQJMgFZAgCASgFZgkxAlgAAoFJAliATkCUAAKgUkCXIBGQJAAAqBWQJMgFZAgCASgFZgkxAlgAAoFJAliATkCUAAKgUkCXIBGQJAAAqBWQJMgFZAgCASgFZgkxAlgAAoFJAliATkCUAAKgUkCXIBGQJAAAqBWQJMgFZAgCASqFkstTc3GyamppM3759zcmTJ73yJ5980nz++eemT5/oj4IslQ/IEgAAVArRhpISM2bMsK9Dhw4106ZN88rb2trs65133umVdQWyVD4gSwAAUCmUTJYGDRpkXydNmmQGDBiQM65///62xSkKZKl8QJYAAKBSKJksjR492r5OmDDBjBw5MmfcuXPnvPGOEydO2BOuP5KlYBnpmaGuCCGE9ISkQclkaefOnaajo8O2ItXX15u6ujrT2Nhozpw5Y8cvWrQoMEc+tCyVD2ltoAAAADebksmSOH/+vDfc2tpq5am9vd1cvnzZN1XXIEvlA7IEAACVQkllqViQpfIBWQIAgEoBWYJMQJYAAKBSQJYgE5AlAACoFJAlyARkCQAAKgVkCTIBWQIAgEoBWYJMQJYAAKBSQJYgE5AlAACoFJAlyARkCQAAKgVkCTIBWQIAgEoBWYJMQJYAAKBSQJYgE5AlAACoFJAlyARkCQAAKgVkCTIBWQIAgEoBWYJMQJYAAKBSKKksjRkzxqxevTqnrKmpydx6662mpqYmpzwMZKl8QJYAAKBSKJkszZgxw74OHTrUTJs2zStfvHixfX3ttde8sq5AlsoHZAkAACqFkslSdXW1fR03bpwZMWJEYKwxy5cvDxblgSyVD8gSAABUCiWTpdGjR9vXCRMmmJEjR+aMW7VqlZkyZUpO2YkTJ+wJ1x/JUrCM9MxQV4QQQnpC0qBksrRz507T8f+3d3cvUUQNHMf7B7z1yisvuuiiCyEQRIhAJEIkIglRDIUuIqOUrASDCip6I6ioDBEvKomISkikjKKLwooyezF60crU3szKLMk6D78DM884rls8Nrsz83w/MMzsObOzu51m59eZ056J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>
