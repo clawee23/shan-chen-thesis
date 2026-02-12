@@ -1,30 +1,30 @@
 # Chapter 4
 
-# **<u>Chapter 4</u>**
-
 Natural Language Processing to Automatically Extract the Presence and Severity of Esophagitis in Notes of Patients Undergoing Radiotherapy
 
 ---***Shan Chen***, Marco Guevara, Nicolas Ramirez, Arpi Murray, Jeremy L Warner, Hugo JWL Aerts, Timothy A Miller, Guergana K Savova, Raymond H Mak, Danielle S Bitterman
 
 ### JCO Clinical Cancer Informatics
 
-###**Summary**
+## Summary
 
-###**Background**
+## Background
 
 Radiotherapy (RT) toxicities can impair survival and quality of life, yet remain understudied. Real-world evidence holds potential to improve our understanding of toxicities, but toxicity information is often only in clinical notes. We developed natural language processing (NLP) models to identify the presence and severity of esophagitis from notes of patients treated with thoracic RT.
 
-###**Methods**
+## Methods
 
 Our corpus consisted of a gold-labeled data set of 1,524 clinical notes from 124 patients with lung cancer treated with RT, manually annotated for Common Terminology Criteria for Adverse Events (CTCAE) v5.0 esophagitis grade, and a silver-labeled data set of 2,420 notes from 1,832 patients from whom toxicity grades had been collected as structured data during clinical care. We fine-tuned statistical and pretrained Bidirectional Encoder Representations from Transformers–based models for three esophagitis classification tasks: task 1, no esophagitis versus grade 1-3; task 2, grade ≤1 versus >1; and task 3, no esophagitis versus grade 1 versus grade 2-3. Transferability was tested on 345 notes from patients with esophageal cancer undergoing RT.
 
-###**Findings**
+## Findings
 
 Fine-tuning of PubMedBERT yielded the best performance. The best macro-F1 was 0.92, 0.82, and 0.74 for tasks 1, 2, and 3, respectively. Selecting the most informative note sections during fine-tuning improved macro-F1 by ≥2% for all tasks. Silver-labeled data improved the macro-F1 by ≥3% across all tasks. For the esophageal cancer notes, the best macro-F1 was 0.73, 0.74, and 0.65 for tasks 1, 2, and 3, respectively, without additional fine-tuning.
 
-###**Interpretation**
+## Interpretation
 
-To our knowledge, this is the first effort to automatically extract esophagitis toxicity severity according to CTCAE guidelines from clinical notes. This provides proof of concept for NLP-based automated detailed toxicity monitoring in expanded domains.**INTRODUCTION**
+To our knowledge, this is the first effort to automatically extract esophagitis toxicity severity according to CTCAE guidelines from clinical notes. This provides proof of concept for NLP-based automated detailed toxicity monitoring in expanded domains.
+
+## Introduction
 
 Cancer treatment-related adverse events (TRAEs) are an under-studied cancer outcome that have important impacts on patients' survival and quality-of-life. As cancer-specific survival improves,[1,2](https://paperpile.com/c/M3S8Zv/3FHCb+AABc) a better understanding of the epidemiology, trajectories, and risk factors for TRAEs is urgently needed to support treatment decision-making and survivorship care. However, the vast majority of our understanding of TRAEs is from clinical trials, which are crucial but inherently limited in their ability to provide information on less common adverse events.[3–7](https://paperpile.com/c/M3S8Zv/UtRQ+1JYj+QNjv+ZDik+TXva)
 
@@ -94,7 +94,9 @@ Manual review of the best-performing model output revealed discrete error modes.
 
 ![](../figures/image60.png)**Comparison with structured EHR data**
 
-The best-performing NLP model for Task 1 predicted esophagitis perfectly for all 13 patients in the test set. Of the 12 patients with esophagitis, only four were identified as having esophagitis already present as structured data using both the narrow- and broadly-defined set of esophagitis ICD-10 codes. Similarly, only 25/124 patients in the overall dataset had an esophagitis ICD-10 code documented as structured data.**DISCUSSION**
+The best-performing NLP model for Task 1 predicted esophagitis perfectly for all 13 patients in the test set. Of the 12 patients with esophagitis, only four were identified as having esophagitis already present as structured data using both the narrow- and broadly-defined set of esophagitis ICD-10 codes. Similarly, only 25/124 patients in the overall dataset had an esophagitis ICD-10 code documented as structured data.
+
+## Discussion
 
 This study provides proof-of-concept for the ability of NLP methods to automatically extract cancer treatment adverse event severity according to CTCAE grade from clinical notes. Our models for esophagitis extraction from the notes of patients undergoing RT for lung cancer performed well, with macro-F1 of 0.74-0.92. Unsurprisingly, performance dropped when the model was used cross-domain on notes of patients undergoing RT for esophageal cancer. We showed that our NLP methods supplemented the ICD-10 codes entered as structured data in the EHR for identifying patients with an esophagitis diagnosis, underscoring the importance of methods for text-based data extraction for adverse events. To the best of our knowledge, this is the first report of NLP methods for cancer treatment-related adverse event severity scoring, and demonstrates the potential for computational methods to support high-quality RWE generation on adverse events.
 

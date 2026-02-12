@@ -1,3 +1,9 @@
 # Abstract
 
-This thesis was converted from `thesis_content/ShanChenThesis.html`. Add the final abstract text here if needed.
+Large language models (LLMs) are rapidly entering clinical workflows, but their practical value depends on whether gains in utility can be achieved without introducing unacceptable safety risks. This thesis examines that dual challenge through a set of empirical studies spanning patient-facing communication, clinical text extraction, benchmark design, and model failure analysis.
+
+Part I demonstrates where LLMs can provide real clinical benefit. We show that LLMs can support patient messaging workflows, extract clinically meaningful signals from unstructured records (including treatment toxicities and social determinants of health), and power agentic systems for oncology trial safety operations. Across these use cases, the strongest results come from workflow-aware designs, domain-specific adaptation, and human-in-the-loop verification rather than fully autonomous deployment.
+
+Part II characterizes key failure modes that currently limit safe clinical use. We identify persistent vulnerabilities to pre-training bias, lexical fragility, and sycophantic compliance, including settings where models produce fluent but medically incorrect outputs. We further introduce evaluation resources for multilingual and deep-research medical reasoning, showing that current frontier systems remain far below reliability thresholds required for high-stakes clinical decision support.
+
+Taken together, the findings support a practical thesis: clinical LLM progress should be judged by measurable utility under realistic constraints, coupled with rigorous evaluation of harms and robustness. Safe translation into healthcare will require transparent benchmarks, localized alignment, and deployment strategies that prioritize factual correctness, equity, and auditability.

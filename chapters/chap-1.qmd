@@ -78,7 +78,7 @@ Together, this thesis provides an empirically grounded, dual-narrative examinati
 
 Proposition
 
-# ***Proposition:***
+## Proposition
 
 1. It is time for the second half of the AI development, evaluations, and experiences. - paraphrase from Richard S. Sutton and Shunyu Yao
 2. Three key measurements of an ideal benchmark: natural, automatically evaluatable, and challenging. - paraphrase from Ofir Press and Percy Liang
@@ -91,40 +91,40 @@ Proposition
 
 Glossary
 
-#***Glossary***
+## Glossary
 
--**SAE (Sparse Autoencoder)** A neural architecture that learns sparse, part-based representations from hidden states. Used for interpretability, feature decomposition, and downstream probing.
--**RAG (Retrieval-Augmented Generation)** A framework that integrates a retriever with a generative model so outputs can condition on, cite, and reason over external context.
--**SFT (Supervised Fine-Tuning)** Gradient-based (usually with cross-entropy) training on instruction–response pairs to adapt or align a base model toward desired behaviors.
--**PPO (Proximal Policy Optimization)** A reinforcement learning algorithm using clipped policy updates; forms the basis of many preference-optimization approaches for LLMs.
--**GRPO / RLVR / DAPO (Verification-Based RL)** PPO-style RL methods that optimize rewards based on correctness, formatting, preference signals, and verifiable outputs without having a reward or value model.
--**LoRA (Low-Rank Adaptation)** A parameter-efficient fine-tuning technique patching addiational low-rank parameter addition to a model’s weight matrices, while keeping base weights mostly frozen.
--**Quantization (e.g., 8-bit, 4-bit)** Reducing numerical precision of model weights/activations to lower memory and compute cost, usually with minimal performance loss.
--**ICL (In-Context Learning)** Guiding the model via examples or demonstrations placed directly in the prompt, without updating model parameters.
--**CoT (Chain-of-Thought)** Explicit intermediate reasoning steps produced by the model to show its logical or mathematical process.
--**Reasoning-Language Alignment / Language-Consistency** Ensuring that the model’s full reasoning trace, not just the final answer, remains in the user’s language.
--**Reasoning Faithfulness** The degree to which intermediate steps causally contribute to the model's final answer, rather than being hallucinated or post-hoc rationalizations.
--**Model Merging** A post-hoc technique that combines parameters from separately trained models to blend capabilities without full retraining.
--**Linear Probe** A simple linear classifier trained on frozen representations (e.g., SAE features) to measure what information is encoded in the model’s internal states.
--**Pass@k** The probability that at least one out of *k* sampled solutions is correct; widely used in code generation and mathematical evaluation.
+- **SAE (Sparse Autoencoder)** A neural architecture that learns sparse, part-based representations from hidden states. Used for interpretability, feature decomposition, and downstream probing.
+- **RAG (Retrieval-Augmented Generation)** A framework that integrates a retriever with a generative model so outputs can condition on, cite, and reason over external context.
+- **SFT (Supervised Fine-Tuning)** Gradient-based (usually with cross-entropy) training on instruction–response pairs to adapt or align a base model toward desired behaviors.
+- **PPO (Proximal Policy Optimization)** A reinforcement learning algorithm using clipped policy updates; forms the basis of many preference-optimization approaches for LLMs.
+- **GRPO / RLVR / DAPO (Verification-Based RL)** PPO-style RL methods that optimize rewards based on correctness, formatting, preference signals, and verifiable outputs without having a reward or value model.
+- **LoRA (Low-Rank Adaptation)** A parameter-efficient fine-tuning technique patching addiational low-rank parameter addition to a model’s weight matrices, while keeping base weights mostly frozen.
+- **Quantization (e.g., 8-bit, 4-bit)** Reducing numerical precision of model weights/activations to lower memory and compute cost, usually with minimal performance loss.
+- **ICL (In-Context Learning)** Guiding the model via examples or demonstrations placed directly in the prompt, without updating model parameters.
+- **CoT (Chain-of-Thought)** Explicit intermediate reasoning steps produced by the model to show its logical or mathematical process.
+- **Reasoning-Language Alignment / Language-Consistency** Ensuring that the model’s full reasoning trace, not just the final answer, remains in the user’s language.
+- **Reasoning Faithfulness** The degree to which intermediate steps causally contribute to the model's final answer, rather than being hallucinated or post-hoc rationalizations.
+- **Model Merging** A post-hoc technique that combines parameters from separately trained models to blend capabilities without full retraining.
+- **Linear Probe** A simple linear classifier trained on frozen representations (e.g., SAE features) to measure what information is encoded in the model’s internal states.
+- **Pass@k** The probability that at least one out of *k* sampled solutions is correct; widely used in code generation and mathematical evaluation.
 - **PVI / In-Context PVI** Measures of “usable information” for a fixed model on a given instance; the in-context variant estimates PVI through prompting (useful for API-only settings).
--**Agentic System / AI Agent** An LLM-based system that coordinates multi-step reasoning, tool use, external retrieval, memory, and verification to autonomously complete complex tasks (e.g., the iRAE agent for adverse-event extraction).
--**Benchmark Contamination** The leakage of test/validation items into pre-training corpora, which inflates reported performance by allowing memorization instead of genuine reasoning.
--**Biomedical NLP** Natural language processing applied to medical or scientific text (clinical notes, literature, guidelines), supporting tasks such as information extraction, classification, and summarization.
--**CTCAE (Common Terminology Criteria for Adverse Events)** A standardized lexicon and grading system for identifying and scoring treatment toxicities, especially in oncology.
--**Electronic Health Records (EHR)** Digital patient records combining structured data and unstructured clinical notes; a primary source for many medical LLM applications.
--**Few-Shot / Zero-Shot Prompting** Techniques where models are guided with a few examples (few-shot) or only an instruction (zero-shot) to perform tasks without fine-tuning.
--**Guideline Concordance** The extent to which AI-generated recommendations align with clinical practice guidelines (e.g., NCCN), an important clinical safety metric.
--**Hallucination (Medical AI)** The generation of factually incorrect, unsafe, or non–evidence-based medical information, such as nonexistent treatments or incorrect diagnoses.
--**Immunotherapy-Related Adverse Events (irAE)** Toxicities stemming from immune checkpoint inhibitors; often require expert interpretation and can be extracted automatically using systems such as the iRAE agent.
--**Multi-Hop Reasoning** Combining information across multiple facts, documents, or reasoning steps to answer complex queries, as in tasks like MedBrowseComp.
--**Multimodal Evaluation** Assessment of models that jointly process text and other modalities (e.g., radiology images, pathology slides, PDFs).
--**Parameter-Efficient Fine-Tuning (PEFT)** A family of techniques including LoRA, QLoRA, and AdaLoRA, that update only a small subset of parameters to reduce compute and memory costs.
--**Patient Portal Messages** Secure communications between patients and clinicians. Increasingly used in studies of LLM-assisted triage, drafting, and workflow support.
--**Real-World Evidence (RWE)** Insight derived from routine clinical practice (EHR, claims) rather than controlled trials; LLMs enable large-scale structuring of unstructured RWE sources.
--**Representational Bias** Systematic distortions in model representations or outputs reflecting imbalances in pre-training data—for example, uneven demographic associations.
--**Robustness Testing** Evaluating model stability under perturbations such as demographic shifts, drug-name swaps, or adversarial edits to identify brittleness.
--**Silver-Labeled Data** Limited gold-standard annotations can be augmented using labels derived from various sources, such as heuristics, structured fields, or auxiliary models.
--**Social Determinants of Health (SDoH)** Non-clinical factors (housing, employment, transportation, social support) that influence outcomes; often extracted from clinical notes.
--**Sycophancy / Sycophantic Behavior** A model's inclination to prioritize perceived helpfulness over factual accuracy, often leading it to assent to user suggestions, even erroneous ones.
--**Synthetic Data Augmentation** Utilizing LLMs to create synthetic yet realistic training data for enhancing model performance, particularly in scenarios characterized by limited resources or data imbalance.
+- **Agentic System / AI Agent** An LLM-based system that coordinates multi-step reasoning, tool use, external retrieval, memory, and verification to autonomously complete complex tasks (e.g., the iRAE agent for adverse-event extraction).
+- **Benchmark Contamination** The leakage of test/validation items into pre-training corpora, which inflates reported performance by allowing memorization instead of genuine reasoning.
+- **Biomedical NLP** Natural language processing applied to medical or scientific text (clinical notes, literature, guidelines), supporting tasks such as information extraction, classification, and summarization.
+- **CTCAE (Common Terminology Criteria for Adverse Events)** A standardized lexicon and grading system for identifying and scoring treatment toxicities, especially in oncology.
+- **Electronic Health Records (EHR)** Digital patient records combining structured data and unstructured clinical notes; a primary source for many medical LLM applications.
+- **Few-Shot / Zero-Shot Prompting** Techniques where models are guided with a few examples (few-shot) or only an instruction (zero-shot) to perform tasks without fine-tuning.
+- **Guideline Concordance** The extent to which AI-generated recommendations align with clinical practice guidelines (e.g., NCCN), an important clinical safety metric.
+- **Hallucination (Medical AI)** The generation of factually incorrect, unsafe, or non–evidence-based medical information, such as nonexistent treatments or incorrect diagnoses.
+- **Immunotherapy-Related Adverse Events (irAE)** Toxicities stemming from immune checkpoint inhibitors; often require expert interpretation and can be extracted automatically using systems such as the iRAE agent.
+- **Multi-Hop Reasoning** Combining information across multiple facts, documents, or reasoning steps to answer complex queries, as in tasks like MedBrowseComp.
+- **Multimodal Evaluation** Assessment of models that jointly process text and other modalities (e.g., radiology images, pathology slides, PDFs).
+- **Parameter-Efficient Fine-Tuning (PEFT)** A family of techniques including LoRA, QLoRA, and AdaLoRA, that update only a small subset of parameters to reduce compute and memory costs.
+- **Patient Portal Messages** Secure communications between patients and clinicians. Increasingly used in studies of LLM-assisted triage, drafting, and workflow support.
+- **Real-World Evidence (RWE)** Insight derived from routine clinical practice (EHR, claims) rather than controlled trials; LLMs enable large-scale structuring of unstructured RWE sources.
+- **Representational Bias** Systematic distortions in model representations or outputs reflecting imbalances in pre-training data—for example, uneven demographic associations.
+- **Robustness Testing** Evaluating model stability under perturbations such as demographic shifts, drug-name swaps, or adversarial edits to identify brittleness.
+- **Silver-Labeled Data** Limited gold-standard annotations can be augmented using labels derived from various sources, such as heuristics, structured fields, or auxiliary models.
+- **Social Determinants of Health (SDoH)** Non-clinical factors (housing, employment, transportation, social support) that influence outcomes; often extracted from clinical notes.
+- **Sycophancy / Sycophantic Behavior** A model's inclination to prioritize perceived helpfulness over factual accuracy, often leading it to assent to user suggestions, even erroneous ones.
+- **Synthetic Data Augmentation** Utilizing LLMs to create synthetic yet realistic training data for enhancing model performance, particularly in scenarios characterized by limited resources or data imbalance.

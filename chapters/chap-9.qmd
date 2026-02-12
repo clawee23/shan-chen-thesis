@@ -1,7 +1,5 @@
 # Chapter 9
 
-# **<u>Chapter 9</u>**
-
 Language Models are Surprisingly Fragile to Drug Names in Biomedical Benchmarks
 
 ---***Shan Chen****, Jack Gallifant*, Pedro Moreira, Nikolaj Munch, Mingye Gao, Jackson Pond,
@@ -13,7 +11,7 @@ Findings of the Association for Computational Linguistics: EMNLP 2024
 **Summary**
 **Background** Medical knowledge is highly context-dependent and includes many semantically equivalent expressions—especially for drug names, where patients often use brand names (e.g., “Advil,” “Tylenol”) instead of generics. For large language models (LLMs) applied to biomedical tasks, this variation presents a hidden fragility.**Methods** We introduce a new robustness dataset,**RABBITS**, in which brand-name and generic drug names are swapped in biomedical benchmark datasets (MedQA and MedMCQA), using physician expert annotations. We evaluate both open-source and API-based LLMs on these modified datasets to measure performance drops and investigate whether pre-training data leaks/contamination contribute to the fragility.**Findings** When drug names are swapped, LLMs consistently show performance drops in the 1% – 10% range, indicating surprising sensitivity to synonymous drug-name substitutions. We further show that one possible reason is contamination of benchmark test data within widely used LLM pre-training corpora, so models may rely on memorized pairs rather than true reasoning.**Interpretation** Even state-of-the-art LLMs used in biomedical NLP are**fragile** to superficial lexical changes—such as switching brand and generic drug names—undermining their reliability and robustness. Our work highlights the need for more rigorous and robust testing of datasets in biomedical AI, particularly when such systems are used in clinical research or healthcare settings.
 
-#**INTRODUCTION**
+## Introduction
 
 Large Language Models (LLMs) are poised to transform medicine by providing data processing and decision support capabilities[1,2](https://paperpile.com/c/coPcdt/51Gy+e3VB). However, the medical deployment of LLMs demands high accuracy and reliability, as errors can result in severe health consequences[3–5](https://paperpile.com/c/coPcdt/uPo4+mWz4+7nb9). A key challenge is the synonymy and context-specific nature of medical language; for instance, patients might use brand names like Advil or Tylenol instead of pharmaceutically equivalent generic terms such as ibuprofen or acetaminophen. LLMs must, therefore, be able to provide consistent and accurate advice in the face of this variability. Fluctuations could lead to risks like medical misinformation, medication errors due to incorrect medication advice, and biases toward or against proprietary products. Our study investigates the effects of substituting drug names—from brand to generic and vice versa—on LLM performance.
 
@@ -29,23 +27,27 @@ Our research introduces a novel category of robustness evaluation centered on dr
 - Detect potential dataset contamination in biomedical benchmarks.
 - Highlight the importance of robustness to nomenclature variations in the healthcare domain.
 
-#**Related Work**
+## Related Work
 
-##**Lexical Substitution**
+## Lexical Substitution
 
 Lexical substitution plays a crucial role in natural language processing, especially in tasks like word sense disambiguation and synonym generation. Early work by Mcarthy[12](https://paperpile.com/c/coPcdt/muKP) laid the groundwork for substitution-based methods in word sense disambiguation, paving the way for subsequent advancements in the field. Recent studies by Arefyev[13](https://paperpile.com/c/coPcdt/k7P8) and Zhou[14](https://paperpile.com/c/coPcdt/WqC4) have further explored the capabilities of neural models such as BERT, RoBERTa, and XLNet in lexical substitution, showcasing significant improvements in generating contextually appropriate synonyms. In the medical domain, works by Riedl[15](https://paperpile.com/c/coPcdt/NiSK) and Wen[16](https://paperpile.com/c/coPcdt/GzNg) have developed medical abbreviation and acronym disambiguation datasets, highlighting the unique challenges in this area. Our work, RABBITS, is the first, to our knowledge, to demonstrate the use of this direct method in stress-testing the knowledge robustness of large language models.
 
-##**Dataset Contamination**
+## Dataset Contamination
 
 Dataset contamination in training data is a well-documented issue and can affect the performance and generalizability of LLMs. Many studies have aimed to detect benchmark questions within LLM training data[17–19](https://paperpile.com/c/coPcdt/VetX+eorr+ic2s). For instance, research by Recht illustrated that models trained on contaminated datasets often exhibit inflated performance metrics that do not generalize well to new, unseen data. This problem is particularly concerning for medical LLMs, where inaccurate information can harm patients[3,5](https://paperpile.com/c/coPcdt/uPo4+7nb9).
 
 Various strategies have been employed to mitigate dataset contamination. These include removing data with high n-gram overlap with benchmark datasets[20](https://paperpile.com/c/coPcdt/o7lT) and employing embedding similarity to filter out similar data[17](https://paperpile.com/c/coPcdt/VetX). More advanced approaches involve functional evaluations, such as generating new, unique problem instances for each evaluation[21](https://paperpile.com/c/coPcdt/i7v8). Addressing contamination is crucial for ensuring that LLMs provide reliable outputs, especially in sensitive domains like healthcare.
 
-##**Evaluating Model Robustness**
+## Evaluating Model Robustness
 
 LLMs gain broad capabilities from large-scale data ingestion, but this also introduces significant challenges[22](https://paperpile.com/c/coPcdt/7Z0s). While larger models often perform better, these improvements are not always consistent across domains[23](https://paperpile.com/c/coPcdt/UVGC). Moreover, recent research has questioned the actual reasoning abilities of LLMs, suggesting that their performance may be inflated by dataset contamination rather than genuine problem-solving skills[24](https://paperpile.com/c/coPcdt/Z1jA).
 
-Some works have looked into LLMs' robustness in terms of faithfulness and fairness under clinical settings[25–27](https://paperpile.com/c/coPcdt/SrkJ+X0L4+RImu). Medfuzz introduced a method to test LLMs' robustness in medical question answering by revealing vulnerabilities through modified benchmark questions[28](https://paperpile.com/c/coPcdt/TVaD). However, these studies do not specifically address the unique challenges associated with clinical drug terminology and the relationship between robustness and contamination. Hence, there is a significant gap in evaluating LLM robustness for medical applications, particularly in the context of brand and generic drug name interchangeability. This gap underscores the need for focused robustness evaluations tailored to the healthcare sector.**METHOD**![](../figures/image24.png)
+Some works have looked into LLMs' robustness in terms of faithfulness and fairness under clinical settings[25–27](https://paperpile.com/c/coPcdt/SrkJ+X0L4+RImu). Medfuzz introduced a method to test LLMs' robustness in medical question answering by revealing vulnerabilities through modified benchmark questions[28](https://paperpile.com/c/coPcdt/TVaD). However, these studies do not specifically address the unique challenges associated with clinical drug terminology and the relationship between robustness and contamination. Hence, there is a significant gap in evaluating LLM robustness for medical applications, particularly in the context of brand and generic drug name interchangeability. This gap underscores the need for focused robustness evaluations tailored to the healthcare sector.
+
+## Method
+
+![](../figures/image24.png)
 
 < *Figure 1: RABBITS dataset generation workflow.*
 
@@ -53,7 +55,7 @@ Some works have looked into LLMs' robustness in terms of faithfulness and fairne
 
 Figure 1 demonstrates the overall workflow of the study. Appendix A details the full data quality assurance and dataset curation process. To create the dataset of brand and generic drug name pairs, we used the RxNorm ontology, which links normalized drug names with many pharmaceutical vocabularies. We extracted combinations of brand and generic drug names using the "ingredient of" and "tradename of" relations, resulting in 2,271 generic drugs mapped to 6,961 brands. For each generic drug, there are often multiple associated brand names. Multiple rounds of expert annotation were performed to derive a final list of 1:1 mapped brand-generic pairs for use in the transformed datasets described below.
 
-##**Dataset Transformation**
+## Dataset Transformation
 
 We used regular expressions to identify and replace brand and generic drug names in the questions and answers of MedQA, MedMCQA, MMLU, PubMedQA, and USMLE. MMLU and PubMedQA had fewer than 100 instances of identified drug names in the test split and were excluded from further analysis. USMLE was excluded due to its overlap with MedQA. Thus, the two datasets included in the final RABBITS benchmark are**MedQA** and**MedMCQA**.
 
@@ -65,9 +67,9 @@ Our evaluation focuses on comparing the performance of base models (full list in
 
 All datasets and models used in accordance with owners' licenses.
 
-#**RESULTS & DISSCUSSION**
+## Results and Discussion
 
-##**Drug Swapping Results**
+## Drug Swapping Results
 
 Figure 2 presents the performance of each model on the original (no-swap) and transformed (g2b) datasets, alongside the average performance and the difference between the two. The line of robustness, with a gradient of 1, represents the ideal scenario where synonym swaps do not affect the selection of answers. The plot reveals that all open-source models from 7B and above fall below this line, indicating decreased performance when drug names are swapped. We also observe a larger drop among MedMCQA over MedQA across models. Refer to Appendix C for a detailed breakdown of individual results in Table 5 and Figure 4.
 
@@ -75,11 +77,11 @@ Figure 2 presents the performance of each model on the original (no-swap) and tr
 
 Table 5 shows that most models experience a decrease in accuracy when generic names are swapped with brand names across different datasets and model sizes. Among large open-source models, the Llama-3-70B model, despite being one of the larger and more accurate models on the original dataset (no-swap accuracy of 76.6%), decreases to 69.7% accuracy with generic-to-brand swaps. Overall, API models perform better than their open-source counterparts with higher accuracy and lower performance drop. While larger open-source series like Qwen2, Llama, and Mixtral are more accurate on original datasets, they exhibit greater sensitivity to g2b swaps. Furthermore, the performance of Medical LLMs was not robust to these swaps compared to their respective base model comparisons (Appendix E). These gaps persisted after providing brand name hints, which showed only marginal improvements in model performance (see Appendix F). This suggests limitations in true comprehension and reasoning abilities.
 
-## **Model Knowledge of Drug Pairs via Multi-Choice Questions**
+## Model Knowledge of Drug Pairs via Multi-Choice Questions
 
 We evaluate whether models are able to directly map brand-to-generic drug pairs and vice versa using multiple-choice questions for all drugs that were swapped in our final benchmark dataset. Overall, a clear "scaling law" is observed in Appendix B Figure 3, where larger models (active parameter size over 13B) consistently outperform smaller models on this task, with larger open-source and API models achieving accuracy over 97%.
 
-##**Generic and Brand Mentions in Benchmarks and Pre-training Datasets**
+## Generic and Brand Mentions in Benchmarks and Pre-training Datasets
 
 Table 1 shows our overall dataset swapping statistics where we observe benchmark questions overwhelmingly use generic terms. We also use Infini-gram[29](https://paperpile.com/c/coPcdt/x6hn) to screen the common open-sourced pre-training data, including Redpajama, C4 train, Pile train, and Dolma 1.6 for drugs identified in RxNorm, filtered for terms that overlap with common terms (Appendix A, Step 1). Generic names are more common than brand names in these pre-training datasets, as Appendix D table 6 shows.
 
@@ -87,7 +89,7 @@ Table 1 shows our overall dataset swapping statistics where we observe benchmark
 
 *Table 1 Dataset Statistics for RABBITS - 'Orig.' is the total questions in the original dataset. 'RABBITS' indicates the subset of questions with validated drug mentions. 'Drugs' shows the total unique drugs in RABBITS.*
 
-## **Contamination Source from Pre-training Dataset**
+## Contamination Source from Pre-training Dataset
 
 To investigate why we see larger performance drops in MedMCQA than MedQA, we use Infini-gram API to identify overlaps with the Dolma 1.6 dataset (3.1T tokens) using size 8 n-grams. Each question's n-grams are generated and queried through the Infini-gram API.
 
@@ -97,13 +99,15 @@ Dataset contamination are 99.21% and 34.13% in the MedQA and MedMCQA test datase
 
 *Table 2 Percentage of contamination of MedQA and MedMCQA benchmarks in Dolma dataset*
 
-# **CONCLUSION**
+## Conclusion
 
 We find decreased performance on common medical benchmarks when using different names for the same drug, despite LLMs' ability to match these names, and that these trends scale with LLM size. This suggests that LLM performance may be driven by memorization and not reasoning ability. RABBITS underscores the importance of dataset contamination and model robustness evaluations, particularly in the medical domain. Future research should refine strategies and explore new methods for robustness and fairness evaluation.
 
-#**Limitations**
+## Limitations
 
-Our evaluation is limited to biomedical datasets and focuses only on pharmaceuticals. Future work will extend this approach to other medical synonyms and the impact of these variations in the retrieval and in-context setting. Although the dataset is smaller, trained physicians have curated it multiple times, ensuring its validity and the accuracy of questions after replacement. Among the pre-training dataset contamination section, we acknowledge none of these models are trained specifically among the pile, C4, RedPajama, or Dolma. However, we use this as a reasonable proxy for estimating the internet distribution.**REFERENCES**
+Our evaluation is limited to biomedical datasets and focuses only on pharmaceuticals. Future work will extend this approach to other medical synonyms and the impact of these variations in the retrieval and in-context setting. Although the dataset is smaller, trained physicians have curated it multiple times, ensuring its validity and the accuracy of questions after replacement. Among the pre-training dataset contamination section, we acknowledge none of these models are trained specifically among the pile, C4, RedPajama, or Dolma. However, we use this as a reasonable proxy for estimating the internet distribution.
+
+## References
 
 1. [Jiang, L. Y.](http://paperpile.com/b/coPcdt/51Gy)[*et al.*](http://paperpile.com/b/coPcdt/51Gy)[Health system-scale language models are all-purpose prediction engines.](http://paperpile.com/b/coPcdt/51Gy)[*Nature*](http://paperpile.com/b/coPcdt/51Gy)[http://paperpile.com/b/coPcdt/51Gy](http://paperpile.com/b/coPcdt/51Gy)[**619**](http://paperpile.com/b/coPcdt/51Gy)[, 357–362 (2023).](http://paperpile.com/b/coPcdt/51Gy)
 

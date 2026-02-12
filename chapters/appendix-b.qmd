@@ -2,26 +2,47 @@
 
 *Available here: *[<u>https://aclanthology.org/2025.findings-emnlp.1103/</u>](https://aclanthology.org/2025.findings-emnlp.1103/)
 
-**Background** As with many recent works—and our own prior results—we see strong cross-lingual capabilities emerging in large language models. Test-time compute (longer sampling, multi-path CoT) is becoming mainstream for Large Reasoning Models (LRMs), yet the *language of the reasoning trace* itself remains underexplored outside English. For meaningful oversight and pedagogy, users need chains of thought in their own language. Our central question is whether enforcing in-language thinking traces improves transparency at a measurable cost in accuracy, and if so, how high that cost is across languages and model families.
+**Background**
 
-**Approach** We introduce XReasoning, a multilingual evaluation suite spanning 11 languages, and benchmark two leading LRM families. We measure: (i) how often models *actually* reason in the target language under ordinary prompting, (ii) how well they reason when we *explicitly push* them to keep the thinking trace in-language, and (iii) how various prompt interventions (e.g., stricter language constraints, formatting scaffolds) affect both language fidelity and task performance. To probe mitigations beyond prompting, we also run a small, targeted post-training (~500 examples) aimed at improving in-language reasoning without fully retraining the model.
+As with many recent works—and our own prior results—we see strong cross-lingual capabilities emerging in large language models. Test-time compute (longer sampling, multi-path CoT) is becoming mainstream for Large Reasoning Models (LRMs), yet the *language of the reasoning trace* itself remains underexplored outside English. For meaningful oversight and pedagogy, users need chains of thought in their own language. Our central question is whether enforcing in-language thinking traces improves transparency at a measurable cost in accuracy, and if so, how high that cost is across languages and model families.
+
+**Approach**
+
+We introduce XReasoning, a multilingual evaluation suite spanning 11 languages, and benchmark two leading LRM families. We measure: (i) how often models *actually* reason in the target language under ordinary prompting, (ii) how well they reason when we *explicitly push* them to keep the thinking trace in-language, and (iii) how various prompt interventions (e.g., stricter language constraints, formatting scaffolds) affect both language fidelity and task performance. To probe mitigations beyond prompting, we also run a small, targeted post-training (~500 examples) aimed at improving in-language reasoning without fully retraining the model.
 
 ![](../figures/image68.png)![](../figures/image8.png)
 
-**Results** In default conditions, SOTA LRMs frequently revert to English mid-reasoning or produce fragmented, mixed-language traces. When we force in-language CoT, readability and auditor access improve, but answer accuracy declines, revealing a persistent trade-off between language fidelity and task success. The small post-training top-up reduces (but does not eliminate) this gap, suggesting that lightweight tuning can reclaim part of the lost accuracy while keeping the reasoning trace aligned to the user’s language.**Implications **Practitioners should treat “reason in the user’s language” as a distinct alignment objective with a non-zero accuracy tax—one that can be partially offset with judicious prompting and small, targeted post-training. In workflows where oversight, pedagogy, or localization matter, enforcing in-language thinking may be worth the modest loss in raw accuracy. In our follow-up (A5), we show techniques that move further toward getting both: higher in-language fidelity and stronger end-task performance.
+**Results**
+
+In default conditions, SOTA LRMs frequently revert to English mid-reasoning or produce fragmented, mixed-language traces. When we force in-language CoT, readability and auditor access improve, but answer accuracy declines, revealing a persistent trade-off between language fidelity and task success. The small post-training top-up reduces (but does not eliminate) this gap, suggesting that lightweight tuning can reclaim part of the lost accuracy while keeping the reasoning trace aligned to the user’s language.
+
+**Implications**
+
+Practitioners should treat “reason in the user’s language” as a distinct alignment objective with a non-zero accuracy tax—one that can be partially offset with judicious prompting and small, targeted post-training. In workflows where oversight, pedagogy, or localization matter, enforcing in-language thinking may be worth the modest loss in raw accuracy. In our follow-up (A5), we show techniques that move further toward getting both: higher in-language fidelity and stronger end-task performance.
 
 # A5: Budget Alignment: Making Models Reason in the User’s Language
 
 *Available here: *[<u>https://huggingface.co/blog/shanchen/mcot-rl</u>](https://huggingface.co/blog/shanchen/mcot-rl)
 
-**Background**Building directly on A4, we study the gap between answer language and reasoning language: many LLMs reply in the user’s language yet “think” in English/Chinese. This hurts instruction-following, user trust, multilingual evaluation, and oversight. Our aim is to align the *reasoning trace itself* to the user’s language without paying an accuracy tax.
+**Background**
 
-**Approach**We use a two-step recipe on DeepSeek-R1-Distill-Qwen-7B. First, a small SFT on 817 curated multilingual chains (LiMO-style) teaches *in-language chains of thought*—a minimal “reprogramming” of inner monologue. Second, we apply Math500 training-only GRPO (RLVR/DAPO-like) with higher clip, rollout 24, LoRA r=8, lr=1e-5, and verifiable rewards that balance final-answer accuracy (1.0) with language-consistency (0.2) and format (0.2). We then evaluate JA/FR/ES on MMLU College Math, AIME’25, GPQA, and MMLU Pro Medicine, reporting pass@k (1/5/10, n=32) and language-consistency % (reasoning + final answer).
+Building directly on A4, we study the gap between answer language and reasoning language: many LLMs reply in the user’s language yet “think” in English/Chinese. This hurts instruction-following, user trust, multilingual evaluation, and oversight. Our aim is to align the *reasoning trace itself* to the user’s language without paying an accuracy tax.
+
+**Approach**
+
+We use a two-step recipe on DeepSeek-R1-Distill-Qwen-7B. First, a small SFT on 817 curated multilingual chains (LiMO-style) teaches *in-language chains of thought*—a minimal “reprogramming” of inner monologue. Second, we apply Math500 training-only GRPO (RLVR/DAPO-like) with higher clip, rollout 24, LoRA r=8, lr=1e-5, and verifiable rewards that balance final-answer accuracy (1.0) with language-consistency (0.2) and format (0.2). We then evaluate JA/FR/ES on MMLU College Math, AIME’25, GPQA, and MMLU Pro Medicine, reporting pass@k (1/5/10, n=32) and language-consistency % (reasoning + final answer).
 
 ![](../figures/image65.png)
 
-**Results**The SFT alone pushes language-consistency near ceiling in FR/ES and substantially lifts JA, with mixed or limited accuracy gains outside math. Adding GRPO after SFT typically Pareto-improves (higher accuracy *and* better in-language following) on AIME/GPQA, and in-domain SFT→GRPO largely closes the accuracy gap between English-reasoning and in-language reasoning. The main exception is medicine, where math-only rewards under-specify biomedical style/recall and can cause regressions. Starting GRPO from the base model often exhibits smaller medical regressions, likely due to a more neutral prior than the SFT-steered one.
+**Results**
 
-**Why it works / where it fails** Under task difficulty, an entrenched EN/ZH reasoning prior “wins” unless we intervene. The small multilingual SFT reliably locks the reasoning language, and GRPO then recovers or boosts accuracy. Failures trace to tokenization/numbering friction in JA, cue misalignment in ES, and especially reward misspecification for medicine—numeric correctness isn’t the same as calibrated clinical discourse.**Practical playbook **Use small multilingual SFT to secure the reasoning language, then GRPO to regain accuracy. When regressions appear, apply tokenizer-aware normalization, add tiny language-specific SFT top-ups, and switch to multi-objective GRPO that includes medical-style/lexicon rewards (and, when helpful, model merging).
+The SFT alone pushes language-consistency near ceiling in FR/ES and substantially lifts JA, with mixed or limited accuracy gains outside math. Adding GRPO after SFT typically Pareto-improves (higher accuracy *and* better in-language following) on AIME/GPQA, and in-domain SFT→GRPO largely closes the accuracy gap between English-reasoning and in-language reasoning. The main exception is medicine, where math-only rewards under-specify biomedical style/recall and can cause regressions. Starting GRPO from the base model often exhibits smaller medical regressions, likely due to a more neutral prior than the SFT-steered one.
+
+**Why it works / where it fails**
+Under task difficulty, an entrenched EN/ZH reasoning prior “wins” unless we intervene. The small multilingual SFT reliably locks the reasoning language, and GRPO then recovers or boosts accuracy. Failures trace to tokenization/numbering friction in JA, cue misalignment in ES, and especially reward misspecification for medicine—numeric correctness isn’t the same as calibrated clinical discourse.
+
+**Practical playbook**
+
+Use small multilingual SFT to secure the reasoning language, then GRPO to regain accuracy. When regressions appear, apply tokenizer-aware normalization, add tiny language-specific SFT top-ups, and switch to multi-objective GRPO that includes medical-style/lexicon rewards (and, when helpful, model merging).
 
 In short: *lock the language cheaply, then train back the performance—without reverting to English under pressure.*

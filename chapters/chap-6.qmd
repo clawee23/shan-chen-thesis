@@ -1,7 +1,5 @@
 # Chapter 6
 
-# **<u>Chapter 6</u>**
-
 An Agentic AI System Enhances Clinical Detection of Immunotherapy Toxicities: a multi-phase validation study
 
 ---
@@ -20,23 +18,25 @@ David E. Kozono, Guergana K. Savova, Danielle S. Bitterman
 
 Submitted to Nature Cancer
 
-#**Summary**
+## Summary
 
-##**Background**
+## Background
 
 Immune checkpoint inhibitors (ICIs) frequently cause immune-related adverse events (irAEs), yet structured EHR fields capture only a fraction of these toxicities. Most clinically relevant details—temporality, CTCAE grade, attribution, and certainty—appear exclusively in free-text notes, and existing NLP approaches are limited to binary detection or require large supervised datasets. Whether agentic large language models (LLMs), which decompose complex tasks into coordinated subtasks, can reliably extract these attributes or improve human chart review is unknown.
 
-##**Methods**
+## Methods
 
 We built an agentic LLM pipeline to extract six irAEs and four attributes from oncology notes of ICI-treated adults (2015–2024). Expert-annotated gold standards guided model development. The system used specialized agents, self-consistency across multiple runs, and extraction of supporting evidence snippets. We evaluated performance retrospectively, then prospectively in silent mode across real-time notes, followed by deployment in an annotation interface, and finally in a randomized crossover study comparing manual versus LLM-assisted review.
 
-##**Findings**
+## Findings
 
 Retrospectively (263 notes), the system achieved macro-averaged F1 of 0.92 for detection and 0.66 for multi-class severity grading; self-consistency improved F1 by 0.14. In prospective silent deployment over three months (884 notes), detection F1 was 0.72–0.79. In a randomized crossover study (17 participants, 316 observations), agentic assistance reduced annotation time by 40% (P < 0.001), increased complete-match accuracy (OR 1.45; 95% CI 1.01–2.09; P = 0.045), and improved inter-annotator agreement (Krippendorff's α from 0.22–0.51 to 0.82–0.85). These results demonstrate that agentic AI coupled with human verification enhances efficiency, accuracy, and consistency of adverse event curation from clinical documentation.
 
-##**Interpretation**
+## Interpretation
 
-A compact agentic LLM system can reliably extract clinically meaningful irAE attributes from routine oncology notes and measurably accelerate expert review. Its combination of accuracy, interpretability, and workflow benefit suggests strong potential for scalable, near-real-time irAE surveillance and more efficient pharmacovigilance.**INTRODUCTION**
+A compact agentic LLM system can reliably extract clinically meaningful irAE attributes from routine oncology notes and measurably accelerate expert review. Its combination of accuracy, interpretability, and workflow benefit suggests strong potential for scalable, near-real-time irAE surveillance and more efficient pharmacovigilance.
+
+## Introduction
 
 Accurate detection and reporting of treatment‑related adverse events (AEs) are foundational to cancer care, pharmacovigilance, and survivorship planning. In routine practice, however, many clinically important AEs are documented primarily in unstructured clinical narratives; structured electronic health record (EHR) fields (e.g., diagnosis codes) incompletely capture their occurrence, necessitating laborious manual chart review.
 
@@ -66,7 +66,7 @@ We assembled a retrospective cohort of patients treated with immune checkpoint i
 
 Inclusion criteria were: (1) age ≥18 years, (2) treatment with one or more FDA-approved ICIs (Tremelimumab, Relatlimab, Retifanlimab, Pembrolizumab (Keytruda), Nivolumab (Opdivo), Atezolizumab (Tecentriq), Durvalumab (Imfinzi), Avelumab (Bavencio), Cemiplimab (Libtayo), Toripalimab, Dostarlimab), and (3) presence of at least one progress note or visit note in the clinical system. Demographic information of included participants across phases are included in Appendix 1.
 
-####**Gold Standard Annotation Procedure**
+#### **Gold Standard Annotation Procedure**
 
 The creation of high-quality ground truth labels followed a strict protocol designed to capture both the presence of irAEs and their key clinical attributes (see Figure 2). We defined six irAE types of interest as a set of CTCAE terms as per their definitions, where multiple CTCAE terms map to a specific irAE header term to predict.
 
@@ -85,7 +85,7 @@ Pilot rounds of 10-20 notes were dual-annotated, and annotation guidelines were 
 
 Real-time clinical decision-making and time-sensitive research reporting require precise extraction of irAE attributes from individual clinical encounters. A total of 289 retrospective patient notes were annotated for retrospective evaluation. These notes were divided into a development set of 26 notes, all from pneumonitis-positive patients, and a test set of 263 notes, used to evaluate the final developed system. Notes were stratified to include all six target irAE types with adequate representation of each, spanning the full spectrum of documentation complexity from brief follow-up notes (approximately 300 words) to long consultation reports exceeding 3,000 words.
 
-####**Development of the Agentic LLM Architecture**
+#### **Development of the Agentic LLM Architecture**
 
 We leveraged our HIPAA-compliant Azure infrastructure, complete with business associate agreements, to access OpenAI API-based models. For evaluating local models, we utilized a dedicated server equipped with two NVIDIA RTX 6000 Ada GPUs.
 
@@ -95,7 +95,7 @@ Given the potential for variability in LLM outputs and hallucination risk, we al
 
 Finally, to aid human determination in the field study and real deployment setting, we included a crucial feature: the models were designed to extract "string-matched" snippets directly from the clinical notes. These snippets serve as supporting evidence for the determinations made at each agent stage. This functionality was then integrated into the user interface, providing a user-friendly summary that significantly aids human reviewers in their annotation tasks.
 
-####**Comparative Baseline Methods**
+#### **Comparative Baseline Methods**
 
 To contextualize the performance of our agentic system, we implemented several baseline approaches representing different points on the complexity-performance spectrum. These included rule-based extraction using regular expressions previously used in our institution to identify patients admitted for irAEs[20](https://paperpile.com/c/1dXwSL/7Eao); and zero-shot prompting. We compared open-source (Qwen/Qwen3-32B, deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) and proprietary OpenAI models (GPT-4.1-mini, GPT-4.1-nano, O4-mini) using our institutional HIPAA-secure OpenAI API endpoint.
 
@@ -127,7 +127,7 @@ The primary endpoint was annotation efficiency (a continuous measure). Secondary
 
 For Phase 1, sensitivity, specificity, and macro-averaged F1 scores were calculated overall and stratified by irAE type across all available classes for a given label. The cost and time per note were also calculated for all variants. For Phase 2, agreement between prospective model predictions and human determinations was quantified using agreement percentages and override rates for each label and across all labels. The Phase 3 Field study was evaluated using the time per note average compared to baselines of 10 minutes per note established in the creation of the gold standard labels in Phase 1, as well as model agreement percentages.
 
-## **RESULTS**
+## Results
 
 ### *Phase 1: Note-Level Attribute Extraction*
 
@@ -135,7 +135,7 @@ For Phase 1, sensitivity, specificity, and macro-averaged F1 scores were calcula
 
 Binary detection. On retrospective evaluation, the agentic system achieved macro F1 = 0.92 for current irAE detection across the six conditions (range 0.86–0.96), and performed similarly for past events (macro F1 = 0.91); see Table 1.
 
-####**CTCAE Grading Performance**
+#### **CTCAE Grading Performance**
 
 Exact grade assignment on the 6‑class CTCAE scale was more challenging, with macro F1 = 0.66 for the current grade overall. Performance varied by condition—highest for dermatitis (0.73) and thyroiditis (0.72), moderate for pneumonitis (0.67) and myocarditis (0.67), and lower for hepatitis (0.66) and colitis (0.51). Grade‑level analysis shows the expected pattern of strong performance at the extremes (Grade 0: 0.99; Grade 5: 1.00) and lower F1 for intermediate grades (Grade 1: 0.34; Grade 2: 0.43).**Attribution and Certainty Extraction**
 
@@ -143,7 +143,7 @@ The system reliably captured clinician‑stated causality, with binary F1 = 0.92
 
 A cross‑temporal analysis that treats a label as correct if predicted in either “current” or “past” shows only modest gains (binary F1 rises to 0.93 vs 0.92/0.91 by timepoint), suggesting most errors are detection‑, not temporality‑, related. For attribution and certainty, temporal assignment error rates were small in magnitude (|ΔF1| < 0.05 across conditions).
 
-####**Model Architecture Comparisons**
+#### **Model Architecture Comparisons**
 
 Among all configurations, the agentic GPT‑4.1‑mini (default) provided the best balance of accuracy and efficiency across tasks (top row in the across‑model summary), and we therefore adopt 4.1‑mini as the default model going forward. Relative to this configuration, 4.1‑nano (default) showed lower performance (Δ current detection F1 −0.14, 0.78 vs 0.92; Δ current grade multi‑class −0.14, 0.52 vs 0.66). 4o‑mini (default) also trailed (Δ detection −0.13, 0.79 vs 0.92; Δ grade multi‑class −0.19, 0.47 vs 0.66). Open‑source baselines were consistently weaker on grading (e.g., Qwen‑3 30B instruct (agent): 0.59, Δ −0.07; Qwen‑3 30B instruct (zeroshot): 0.51, Δ −0.15; Gemma‑3 27B (agent): 0.38, Δ −0.28) and on detection (e.g., 0.78–0.86 vs 0.92).
 
@@ -171,7 +171,7 @@ Participants’ perceptions mirrored these objective gains. The mean System Usab
 
 The present study shows that a carefully engineered, agentic large‑language‑model (LLM) system can extract clinically salient attributes of immune‑related adverse events (irAEs) from routine oncology documentation with performance that translates from retrospective benchmarking to prospective, real‑world use. Across six high‑priority irAEs, the system achieved high note‑level detection (macro F1 = 0.92 for current events; 0.91 for past), robust clinician‑stated attribution extraction (binary F1 = 0.92–0.94), and competitive multi‑class CTCAE grading (macro F1 = 0.66), with the expected degradation at intermediate grades. In a three‑month prospective silent deployment (884 notes; 31,824 label adjudications), agreement with human review remained high (overall binary accuracy 97.85%, F1 = 0.76). Embedded within an annotation interface, the tool accelerated expert curation approximately 3.7‑fold (161 s vs 600 s per note), with substantial CRC–CRC agreement on grading (Cohen’s κ = 0.80) and high CRC–model agreement (mean κ = 0.89). Together, these results suggest that agentic LLMs, coupled to human verification and evidence highlighting, can shift irAE ascertainment from labor‑intensive retrospective review to scalable, near‑real‑time surveillance.
 
-####**Advancing beyond binary detection**
+#### **Advancing beyond binary detection**
 
 Prior approaches emphasize patient‑ or visit‑level irAE classification, often retrospectively and without the fine‑grained attributes required for actionability (temporality, grade, and clinician‑stated attribution).[8,10,11,13](https://paperpile.com/c/1dXwSL/tqHf+FWQ9+lhYX+gJgz) By decomposing the task into specialized agents for temporality, grading, attribution, and certainty—with explicit extraction of supporting spans—our system overcomes known challenges in textual causality and nuance.[14,21](https://paperpile.com/c/1dXwSL/4PWZ+hZRx) Self‑consistency contributed materially (detection macro F1 +0.14 relative to a single‑stage variant), consistent with the value of ensembling and cross‑examination to reduce variance and error.[17,18](https://paperpile.com/c/1dXwSL/rO0R+2gx2) Temporal misassignment was small (|ΔF1| < 0.05 across conditions), and a cross‑temporal view yielded only modest gains (binary F1 = 0.93), indicating that residual errors are primarily detection‑ or grading‑related rather than due to incorrect timepoint assignment. Open‑source baselines and smaller closed‑source models trailed notably on grading, reinforcing the accuracy–efficiency balance of the GPT‑4.1‑mini agentic configuration.**Clinical and pharmacovigilance significance**
 
@@ -189,7 +189,9 @@ We focused on six irAEs—a clinically important subset of the broader CTCAE v5.
 
 Methodologically, agentic decomposition with self‑consistency and explicit evidence extraction yielded accurate, auditable outputs suitable for clinical workflows. Practically, staging validation from retrospective testing to silent prospective monitoring and embedded human collaboration provides a template for closing the “deployment gap” in clinical AI. Next steps include multi‑site external validation at Rhode-Island Hospital, integration of structured and imaging signals to strengthen intermediate‑grade discrimination, threshold‑optimized operating modes for triage and regulatory reporting, pre‑specified drift monitoring with periodic model refresh, and outcome‑oriented trials to test whether earlier detection reduces severe irAEs, hospitalizations, or informs safer rechallenge decisions. Given the expanding survivor population exposed to ICIs and diffusion of care into non‑oncology settings, scalable, auditable assistance for irAE detection is poised to become a core informatics capability for oncology services and pharmacovigilance programs.**CONCLUSIONS**
 
-In summary, an agentic LLM system, validated across retrospective, prospective, and embedded field settings, can extract the who/when/how‑bad/why of irAEs from free‑text notes with accuracy sufficient for workflow integration, while measurably accelerating expert review. The combination of high detection performance, actionable attribute extraction, and verifiable evidence moves irAE surveillance beyond binary classification toward a learning health‑system approach that is both technically rigorous and operationally feasible. With external validation and outcome‑focused trials, such systems could become integral to real‑time safety monitoring, trial curation, and high‑reliability oncology care.**REFERENCES**
+In summary, an agentic LLM system, validated across retrospective, prospective, and embedded field settings, can extract the who/when/how‑bad/why of irAEs from free‑text notes with accuracy sufficient for workflow integration, while measurably accelerating expert review. The combination of high detection performance, actionable attribute extraction, and verifiable evidence moves irAE surveillance beyond binary classification toward a learning health‑system approach that is both technically rigorous and operationally feasible. With external validation and outcome‑focused trials, such systems could become integral to real‑time safety monitoring, trial curation, and high‑reliability oncology care.
+
+## References
 
 1. [Postow, M. A., Sidlow, R. & Hellmann, M. D. Immune-related adverse events associated with immune checkpoint blockade.](http://paperpile.com/b/1dXwSL/b14r)[*N. Engl. J. Med.*](http://paperpile.com/b/1dXwSL/b14r)[http://paperpile.com/b/1dXwSL/b14r](http://paperpile.com/b/1dXwSL/b14r)[**378**](http://paperpile.com/b/1dXwSL/b14r)[, 158–168 (2018).](http://paperpile.com/b/1dXwSL/b14r)
 
