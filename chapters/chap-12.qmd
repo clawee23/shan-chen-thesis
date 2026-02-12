@@ -1,6 +1,4 @@
-# Chapter 12
-
-MedBrowseComp: Benchmarking Medical Deep Research and Computer Use
+# Chapter 12: MedBrowseComp: Benchmarking Medical Deep Research and Computer Use
 
 ---
 *Shan Chen\****, Pedro Moreira\*, Yuxin Xiao, Sam Schmidgall, Jeremy Warner, Hugo Aerts, Thomas Hartvigsen, Jack Gallifant, Danielle S Bitterman
@@ -37,7 +35,7 @@ The MedBrowseComp Dataset: A novel, curated collection of challenging medical fa
 Baseline Performance Analysis: An empirical evaluation of various state-of-the-art LLMs and agentic systems on MedBrowseComp, providing initial benchmarks and highlighting the specific difficulties encountered in medical information retrieval.
 
 Demonstration of Capability Gaps: Evidence showing the gap between the capabilities of general-purpose browsing agents (given frontier models already saturated general benchmark like SimpleQA) and specialized skills on complex medical information-seeking tasks.
-*Figure 1:** Example question constructions for MedBrowseComp.*
+**Figure 1 |** Example question constructions for MedBrowseComp.
 ![][image66]
 RELATED WORK
 One of the first comprehensive efforts to advance AI evaluation for general-purpose tool use and web browsing is GAIA[29](https://paperpile.com/c/Y40emr/lPSXk). GAIA is a carefully curated testbed for “General AI Assistants,” combining tasks that require multi-modal input, open-ended reasoning, and the ability to query external tools. It is simple for humans, but it was hard for AI systems at the time. Subsequent work began to highlight the importance of structured, multi-step web traversal. WebWalker introduced a dual-agent framework that separately handles horizontal browsing across different webpages and deep vertical navigation through website hierarchies[30,31](https://paperpile.com/c/Y40emr/pCcJ4+ipOAO). Its companion benchmark, WebWalkerQA, comprises realistic multi-hop questions from domains like education and organizational websites, emphasizing the challenge of distributing information across intricate hyperlink structures. Around the same time, FRAMES took a different angle by systematically evaluating Retrieval-Augmented Generation (RAG) systems for factual correctness, retrieval quality, and reasoning[32](https://paperpile.com/c/Y40emr/MmVUd).  While WebWalker and FRAMES address structured exploration and pipeline analysis, SimpleQA focuses more narrowly on short-answer factual correctness, specifically targeting LLM hallucinations[33](https://paperpile.com/c/Y40emr/JKUaV). SimpleQA’s adversarial question collection and stringent answer verification make it an effective tool for measuring whether models can reliably produce grounded, non-invented responses. Despite its value in exposing factual flaws, SimpleQA’s tasks remain relatively easy to solve with basic web searches, limiting its utility for deeper or more specialized queries.
@@ -166,7 +164,7 @@ Future Work
 * Study agents with a human-in-the-loop and in real-world settings: Compare agentic systems vs human performance on MedBrowseComp, and study top-performing systems in clinical settings.
 
 * Prevent contamination during test set: Because benchmark artifacts are public, use allow-lists to block the repo/demo and permit only vetted domains; maintain a private hold-out, deduplicate across splits, encode released test sets, and require grounded citations to flag leakage as shown in figure 3\.
-*Figure 3:** Latest computer use agent showing direct access to the Hugging Face repo containing gold labels, illustrating the risk of contamination. However, this system did not read directly into the labeled dataset.*
+**Figure 3 |** Latest computer use agent showing direct access to the Hugging Face repo containing gold labels, illustrating the risk of contamination. However, this system did not read directly into the labeled dataset.
 
 ![][image68]
 CONCLUSION

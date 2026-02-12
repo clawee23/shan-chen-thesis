@@ -1,6 +1,4 @@
-# Chapter 5
-
-Large Language Models to Identify Social Determinants of Health in Electronic Health Records
+# Chapter 5: Large Language Models to Identify Social Determinants of Health in Electronic Health Records
 
 ---
 *Shan Chen\****, Marco Guevara\*, Spencer Thomas, Tafadzwa L. Chaunzwa, Idalid Franco, Benjamin H. Kann, Shalini Moningi, Jack M. Qian, Madeleine Goldstein, Susan Harper,

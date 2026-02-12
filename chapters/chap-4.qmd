@@ -1,6 +1,4 @@
-# Chapter 4
-
-Natural Language Processing to Automatically Extract the Presence and Severity of Esophagitis in Notes of Patients Undergoing Radiotherapy
+# Chapter 4: Natural Language Processing to Automatically Extract the Presence and Severity of Esophagitis in Notes of Patients Undergoing Radiotherapy
 
 ---
 *Shan Chen***, Marco Guevara, Nicolas Ramirez, Arpi Murray, Jeremy L Warner, Hugo JWL Aerts, Timothy A Miller, Guergana K Savova, Raymond H Mak, Danielle S Bitterman

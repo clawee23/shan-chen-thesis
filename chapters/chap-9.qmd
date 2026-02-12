@@ -1,6 +1,4 @@
-# Chapter 9
-
-Language Models are Surprisingly Fragile to Drug Names in Biomedical Benchmarks
+# Chapter 9: Language Models Are Surprisingly Fragile to Drug Names in Biomedical Benchmarks
 
 ---
 *Shan Chen\****, Jack Gallifant\*, Pedro Moreira, Nikolaj Munch, Mingye Gao, Jackson Pond,
@@ -77,7 +75,7 @@ Figure 2 presents the performance of each model on the original (no-swap) and tr
 
 ![][image38]
 
-*Figure 2: Average performance of models on the filtered original datasets compared to the generic-to-brand versions of MedQA and MedMCA. The dashed diagonal line represents the ideal scenario where synonym swaps do not affect model performance.*
+**Figure 2 |** Average performance of models on the filtered original datasets compared to the generic-to-brand versions of MedQA and MedMCA. The dashed diagonal line represents the ideal scenario where synonym swaps do not affect model performance.
 
 Table 5 shows that most models experience a decrease in accuracy when generic names are swapped with brand names across different datasets and model sizes. Among large open-source models, the Llama-3-70B model, despite being one of the larger and more accurate models on the original dataset (no-swap accuracy of 76.6%), decreases to 69.7% accuracy with generic-to-brand swaps. Overall, API models perform better than their open-source counterparts with higher accuracy and lower performance drop. While larger open-source series like Qwen2, Llama, and Mixtral are more accurate on original datasets, they exhibit greater sensitivity to g2b swaps. Furthermore, the performance of Medical LLMs was not robust to these swaps compared to their respective base model comparisons (Appendix E). These gaps persisted after providing brand name hints, which showed only marginal improvements in model performance (see Appendix F). This suggests limitations in true comprehension and reasoning abilities.
 
@@ -100,10 +98,6 @@ To investigate why we see larger performance drops in MedMCQA than MedQA, we use
 Dataset contamination are 99.21% and 34.13% in the MedQA and MedMCQA test datasets, respectively, as Table 2 shows. We also benchmark OLMo-1.7-7B-hf, trained only on Dolma, which shows no drop in MedQA (31.22) scores compared to a 3% drop in MedMCQA (40.90 to 37.93). This likely explains the greater drop in performance in MedMCQA rather than MedQA across models (Appendix C Figure 4).
 
 *Table 2 Percentage of contamination of MedQA and MedMCQA benchmarks in Dolma dataset*
-
-#
-
-#
 
 ## CONCLUSION
 

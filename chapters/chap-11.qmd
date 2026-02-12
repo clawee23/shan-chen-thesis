@@ -1,6 +1,4 @@
-# Chapter 11
-
-WorldMedQA-V: a Multilingual, Multimodal Medical Examination Dataset for Multimodal Language Models Evaluation
+# Chapter 11: WorldMedQA-V: A Multilingual, Multimodal Medical Examination Dataset for Multimodal Language Models Evaluation
 
 ---
 *Shan Chen\****, João Matos\*, Siena Kathleen V. Placino, Yingya Li, Juan Carlos Climent Pardo, Daphna Idan, Takeshi Tohyama, David Restrepo, Luis Filipe Nakayama, José María Millet Pascual-Leone, Guergana K Savova, Hugo Aerts, Leo Anthony Celi, An-Kwok Ian Wong, Danielle Bitterman, Jack Gallifant
@@ -42,7 +40,7 @@ Recent benchmarks such as MMMU[21](https://paperpile.com/c/coPcdt/1Ajy), MMMU-pr
 Medical datasets from these regions highlight challenges in large language model (LLM) performance within healthcare. In Asia, notable datasets originate from China, Taiwan (MedQA), South Korea (KorMedMCQA), and India (MedMCQA). The MLEC-QA dataset from China, containing 136,236 multiple-choice questions, is the largest. Despite LLMs being pre-trained on vast corpora, performance in this domain is hindered by limited diversity and quality of training data—especially for two-step reasoning and biomedical concepts[26](https://paperpile.com/c/coPcdt/H5i7). Similar trends are observed in Taiwan and South Korea, where English-pretrained models underperform on local medical exams.
 In Europe, datasets from Spain, Sweden, and Poland (the latter not publicly available) underscore the difficulties LLMs face as question complexity increases[27](https://paperpile.com/c/coPcdt/aa1y). Recent progress shows that GPT-3.5-Turbo and GPT-4 passed the Swedish medical licensing exam[28](https://paperpile.com/c/coPcdt/tzW5), while GPT-4-Turbo slightly outperformed humans in Poland[29](https://paperpile.com/c/coPcdt/Re9L).
 
-*Figure 2\. Accuracy in local language and English across models and countries. The red-shaded area highlights each country's exam-passing threshold. Passing score is a proxy here since our dataset is a subset. Detailed results appear in Appendix.*
+**Figure 2 |** Accuracy in local language and English across models and countries. The red-shaded area highlights each country's exam-passing threshold. Passing score is a proxy here since our dataset is a subset. Detailed results appear in Appendix.
 
 ![][image59]
 METHODS

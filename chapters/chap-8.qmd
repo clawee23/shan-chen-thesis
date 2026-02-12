@@ -1,6 +1,4 @@
-# Chapter 8
-
-Cross-care: Assessing the Healthcare Implications of Pre-training Data on Language Model Bias
+# Chapter 8: Cross-Care: Assessing the Healthcare Implications of Pre-Training Data on Language Model Bias
 
 ---
 *Shan Chen\****, Jack Gallifant\*, Mingye Gao, Pedro Moreira, Nikolaj Munch, Ajay Muthukkumar, Arvind Rajan, Jaya Kolluri, Amelia Fiske, Janna Hastings, Hugo Aerts, Brian Anthony,
@@ -33,7 +31,7 @@ Specifically, our work makes the following key contributions:
 
 ![][image31]
 
-*Figure 1\. Overall workflow of Cross-Care.*
+**Figure 1 |** Overall workflow of Cross-Care.
 Related Work
 Language model biases arise from pretraining data
 The sheer breadth of data sources consumed by LLMs enables the emergence of impressive capabilities across a wide range of tasks[27](https://paperpile.com/c/coPcdt/nFS4). However, this expansive data consumption has its pitfalls, as while LLM performance generally improves as models are scaled, this improvement is not uniformly distributed across all domains[28](https://paperpile.com/c/coPcdt/UVGC). Furthermore, it can lead to the phenomenon of “bias exhaust”—the inadvertent propagation of biases present in the pretraining data. The propensity of LLMs to inherit and perpetuate societal biases observed in their training datasets is a well-documented concern in current LLM training methodologies[29–31](https://paperpile.com/c/coPcdt/K3wJ+kzHl+Eekj). Efforts to mitigate this issue through the careful selection of “clean” data have significantly reduced toxicity and biases[32,33](https://paperpile.com/c/coPcdt/5nHk+vl8a), underscoring the link between the choice of pretraining corpora and the resultant behaviors of the models. Furthermore, recent studies have elucidated the impact of pretraining data selection on the manifestation of political biases at the task level[34](https://paperpile.com/c/coPcdt/UzXQ).
@@ -135,7 +133,7 @@ For gender in The Pile, the male subgroup appears more frequently than the femal
 Figure 2 shows demographic subgroup ranks according to real-world prevalence, The Pile co-occurrence counts, and Llama3 logits for the 15 diseases with real-world prevalence available. This highlights both discrepancies and alignments between dataset co-occurrence representations and actual demographic prevalence. Raw counts and rankings (The Pile vs. NHIS) are detailed in Appendix A.3 from the original paper: [https://www.proceedings.com/079017-0749.html](https://www.proceedings.com/079017-0749.html)
 
 ![][image35]
-*Figure 2\. Overall comparison*
+**Figure 2 |** Overall comparison
 *Comparison of disease rankings between The Pile (Blue), Llama3’s logits (Green), and real-world data (Red). Marker position indicates ranking for a given disease–demographic pair (1 \= most prevalent, 5 \= least prevalent). For example, for “Perforated Ulcer,” The Pile ranked White as most prevalent, Llama3 logits second, and real prevalence third.*
 
 ## Models in the Controlled Group

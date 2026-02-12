@@ -1,4 +1,6 @@
-**A6: Measuring the Faithfulness of Thinking Drafts in Large Reasoning Models
+# Appendix C: Additional Research Contributions (A6-A7)
+
+## A6: Measuring the Faithfulness of Thinking Drafts in Large Reasoning Models
 *Available here:* [https://neurips.cc/virtual/2025/loc/san-diego/poster/120231](https://neurips.cc/virtual/2025/loc/san-diego/poster/120231)
 Background** Modern Large Reasoning Models (LRMs) often generate a *thinking draft*—multi-path chains of thought explored before the final answer. These drafts promise transparency and controllability, but only if they are **faithful**: intermediate steps should causally influence later ones, and the final answer should genuinely depend on the draft’s concluding logic. The paper argues that correctness alone is not enough; a model can get the right answer for the wrong reasons, undermining oversight and safety in high-stakes use.
 
@@ -7,7 +9,7 @@ We introduce a **systematic counterfactual intervention framework** to *measure*
 ![][image77]
 Results** Current LRMs display **selective step faithfulness**—some intermediate steps matter while others can be altered with little effect—and **frequent mismatches** between a draft’s final logic and the model’s final answer. In other words, models often *ignore or contradict their own draft conclusions*, highlighting a gap between visible reasoning and the causal process that produced the answer. This reinforces prior concerns that chain-of-thought style traces can be unfaithful unless explicitly tested, and shows that the problem persists even for recent LRMs.
 Implications** For practitioners, the takeaway is straightforward: monitoring should not stop at accuracy or surface-level coherence. You need **causal tests** that probe whether the model’s answer would change when the draft is perturbed in meaningful ways. The proposed interventions provide a practical blueprint for model evaluation suites, policy audits, and training-time regularizers that target faithfulness (complementing related work on counterfactual sensitivity and earlier CoT-faithfulness probes). The result is a more honest picture of when drafts can be trusted—and a path to improve them.
-A7: KScope: A Framework for Characterizing the Knowledge Status of Language Models
+## A7: KScope: A Framework for Characterizing the Knowledge Status of Language Models
 *Available here:* [https://neurips.cc/virtual/2025/loc/san-diego/poster/119139](https://neurips.cc/virtual/2025/loc/san-diego/poster/119139)
 Background** LLMs can answer a question in multiple, sometimes conflicting ways. Traditional accuracy alone can’t reveal whether the model is certain, conflicted, or simply guessing. KScope introduces a principled way to label an LLM’s *knowledge status* from its response distribution, enabling targeted diagnosis and context design.
 Approach** KScope samples an empirical distribution of model answers (stabilizing by \~100 samples using 20 paraphrases per question) and assigns one of five statuses using three axes: **consistency** (single vs. multi-mode beliefs), **correctness** (does any mode match gold), and **absent knowledge** (refusal, hallucination, or uniform guessing). The framework then studies how different **contexts** update status.

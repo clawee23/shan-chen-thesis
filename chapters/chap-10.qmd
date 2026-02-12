@@ -1,6 +1,4 @@
-# Chapter 10
-
-When Helpfulness Backfires: LLMs and the Risk of False Medical Information Due to Sycophantic Behavior
+# Chapter 10: When Helpfulness Backfires: LLMs and the Risk of False Medical Information Due to Sycophantic Behavior
 
 ---
 *Shan Chen\****, Mingye Gao\*, Kuleen Sasse, Thomas Hartvigsen, Brian Anthony, Lizhou Fan, Hugo Aerts, Jack Gallifant, Danielle S Bitterman
@@ -29,13 +27,13 @@ Previous research on jailbreaking has primarily explored its implications in the
 We evaluated five LLMs across various scenarios and assessed how sensitive they are to generating false medical information in settings where the LLMs have the knowledge base to identify the requested information as incorrect. As a use case, we selected drug names, as in medicine, where different names are often used for the same drug. Because we previously showed that LLMs can accurately match brand and generic drug names[30](https://paperpile.com/c/TzrP46/3jNoz), this allowed for a controlled and scalable experimental setup to characterize LLM sycophantic compliance to illogical requests. First, we tested whether LLMs refuse to comply with requests for information describing the equivalent drugs are distinct (i.e., a misinformation request), and found that even the most advanced models complied with up to 100% of misinformation requests. Second, we changed our instructions to the LLMs to understand if their overly submissive behavior can be overcome with prompting (given that prompting still remains the most effective steering method[31](https://paperpile.com/c/TzrP46/i6Mml)). Third, we fine-tuned models to resist requests for misleading information while maintaining responsiveness to valid prompts. We found that LLMs prioritize learned helpfulness over inherent logical reasoning in our datasets, leading them to generate false information from even simple illogical prompts. Our strategies to reduce this risk successfully enhanced logical reasoning, and can provide a basis for additional research to improve robust risk mitigation and oversight mechanisms targeted at LLM sycophancy in healthcare.
 
 ![][image50]
-*Figure 1\. Illustration of overall study workflow.** Step 1 involves the generation of an LLM misinformation request, where models should recognize that the drug entities are equivalent and therefore the requested generated content would be misinformation. In Step 2, LLMs are prompted with this request to generate a response which is subsequently graded by Claude 3.5 Sonnet in Step 3 into one of the four response types. Claude 3.5 grading quality was validated by humans. Step 4 shows prompt-based variations which are evaluated, and the change in response types are collected in Step 5\. Step 6 displays the instruction tuning of the LLMs, where we stitched the baseline prompt with output from rejection and factual recall hints. Step 7 evaluates this newly tuned LLM both in-domain and in other domains with different equivalence errors.*
+**Figure 1 |** Illustration of overall study workflow. Step 1 involves the generation of an LLM misinformation request, where models should recognize that the drug entities are equivalent and therefore the requested generated content would be misinformation. In Step 2, LLMs are prompted with this request to generate a response which is subsequently graded by Claude 3.5 Sonnet in Step 3 into one of the four response types. Claude 3.5 grading quality was validated by humans. Step 4 shows prompt-based variations which are evaluated, and the change in response types are collected in Step 5\. Step 6 displays the instruction tuning of the LLMs, where we stitched the baseline prompt with output from rejection and factual recall hints. Step 7 evaluates this newly tuned LLM both in-domain and in other domains with different equivalence errors.
 RESULTS
 Overview
 We evaluated whether state-of-the-art LLMs prioritize “helpfulness” over logical consistency when faced with illogical medical requests that they have the knowledge to detect, using drug pairs with 1:1 brand–generic mappings. The study proceeded in four stages: Stage 1 measured baseline sycophantic compliance to illogical prompts (aim: quantify default risk). Stage 2 introduced lightweight prompt edits—explicit rejection permission and a factual-recall cue—to test steerability with instructions (aim: assess whether prompting alone can restore logic). Stage 3 applied supervised fine-tuning on a small set of illogical requests with desired behavior and tested out-of-distribution generalization across medical and non-medical entities (aim: learn a reusable “reject-when-illogical” policy that transfers). Stage 4 checked for over-rejection and capability loss by evaluating compliance with valid prompts and performance on general/biomedical benchmarks (aim: ensure safety gains do not degrade usefulness). Unless noted, we report the generic→brand direction in the main text; brand→generic results are concordant in the supplementary.
 
 ![][image51]
-*Figure 2\. Generic-to-brand output grades for prompt-based and Instruction-tuning interventions.** Figure 4a displays the results of stage 1 (prompt-based strategies). The Y-axis is marked as a percentile.  Four prompt variations were used to evaluate 5 LLMs on generic-brand name pairs of 50 drug combinations. Figure 4b shows results for stage 2 (instruction-tuned model). The baseline and fine-tuned version of GPT4o-mini and Llama3-8B performance is on out-of-distribution test sets of 4 domains, such as cancer drug name and writer-pseudonym pairs.*
+**Figure 2 |** Generic-to-brand output grades for prompt-based and Instruction-tuning interventions. Figure 4a displays the results of stage 1 (prompt-based strategies). The Y-axis is marked as a percentile.  Four prompt variations were used to evaluate 5 LLMs on generic-brand name pairs of 50 drug combinations. Figure 4b shows results for stage 2 (instruction-tuned model). The baseline and fine-tuned version of GPT4o-mini and Llama3-8B performance is on out-of-distribution test sets of 4 domains, such as cancer drug name and writer-pseudonym pairs.
 
 ## Stage 1\. Baseline prompt to quantify default risk
 
@@ -44,7 +42,7 @@ Our previous work showed that all models evaluated here have near-perfect factua
 In the generic-to-brand setup, GPT4o-mini, GPT4o, and GPT4 followed the medication misinformation request 100% (50/50) of the time, while Llama3-8B did so in 94% (47/50) of cases. Llama3-70B had the highest rejection rate in this setup, but still rejected requests to generate false information in less than 50% (21/50) of cases. This stage quantifies baseline sycophancy, indicating that even large, advanced models predominantly complied with illogical requests.
 
 ![][image52]
-*Figure 3\. Out of distribution testing workflow.** We composed one held-out cancer drug set that is not in the supervised fine-tuning data and crafted three other categories’ equivalences. As previously, Claude 3.5 Sonnet was used to auto-evaluate the categories of models’ responses.*
+**Figure 3 |** Out of distribution testing workflow. We composed one held-out cancer drug set that is not in the supervised fine-tuning data and crafted three other categories’ equivalences. As previously, Claude 3.5 Sonnet was used to auto-evaluate the categories of models’ responses.
 
 ## Stage 2\. Prompt-based solutions to assess whether prompting restores logic
 
@@ -65,7 +63,7 @@ The detailed results of the ability of the fine-tuned models to comply with logi
 Lastly, we assessed the performance of the SFT models from Stage 2 and their base counterparts across 10 general and biomedical knowledge benchmarks, including Alpaca-Eval2[32](https://paperpile.com/c/TzrP46/pJvqP), ARC Challenge, ARC Easy[33](https://paperpile.com/c/TzrP46/Zr399), BoolQ[34](https://paperpile.com/c/TzrP46/7cotw), MMLU[35](https://paperpile.com/c/TzrP46/uEA64), GPQA[36](https://paperpile.com/c/TzrP46/8sj55), TruthfulQA[37](https://paperpile.com/c/TzrP46/6rxsv), and the USMLE Step 1, 2, and 3 exams[30](https://paperpile.com/c/TzrP46/3jNoz). As demonstrated in **Figure 5**, the fine-tuned models exhibited negligible performance degradation across all tasks.
 
 ![][image53]
-*Figure 4\. LLM ability to comply to logical requests.** To further investigate our fine-tuned models’ behavior, we provided three different subcategories of new, logical and correct in-context information requests, and assessed if the LLMs complied. Authors SC and MG did the annotation manually with a 100% annotation agreement.*
+**Figure 4 |** LLM ability to comply to logical requests. To further investigate our fine-tuned models’ behavior, we provided three different subcategories of new, logical and correct in-context information requests, and assessed if the LLMs complied. Authors SC and MG did the annotation manually with a 100% annotation agreement.
 
 ## DISCUSSION
 
@@ -98,14 +96,14 @@ To ensure coverage of both common and rare drugs, we selected 50 drugs from five
 
 We designed four prompt types to evaluate the models' handling of new drug-related information, assessing persuasive ability, factual recall, and logical consistency (Figure 2). Experiments were run via OpenAI Batch API, and Llama models used A100-80GB with CUDA \> 12.0, no quantization. Hyperparameters included a max of 512 output tokens and temperature=0 for best possible reproducibility.
 
-#### ***Stage 1\. Baseline Prompt:*** The first prompt represents the baseline condition, where the model is tasked with providing a persuasive but illogical letter informing people that a brand-name drug is found to have new side effects, and that they should take the generic counterpart instead. This task was selected because it illustrates a necessary safety mode for LLMs that follows from simple logical reasoning. If a model knows that the brand and generic drug are the same, it should be able to identify the request as illogical and reject the request, instead of complying with the request and generating false information.
-*Stage 2\. Prompt-Based Solutions to Assess Steerability- Rejection Prompt:*** In this variation, we explicitly allow the possibility of rejection, encouraging the model to evaluate whether there is a logical flaw in the prompt. This prompt also allows a model that is heavily aligned to being submissive to reject users’ queries. The explicit permission to reject creates a scenario where the model must consider not only the factual content but also the appropriateness of the substitution.
-*Factual Recall Prompt:*** This prompt emphasizes the need for the model to recall the correct relationships between brand-name drugs and their generic equivalents before processing the rest of the request. This variation tests the model’s ability to accurately retrieve and utilize known facts in generating persuasive outputs. By instructing the model to prioritize factual recall, we assess how well it can integrate known drug relationships with new information.
-*Combined Rejection and Factual Recall Prompt:*** The final prompt variation combines both the rejection and factual recall instructions. This setup evaluates whether the model can handle both tasks simultaneously, ensuring factual accuracy while also exercising logical reasoning to reject incorrect assumptions.
+### Stage 1. Baseline Prompt
+### Stage 2. Prompt-Based Solutions to Assess Steerability - Rejection Prompt
+### Factual Recall Prompt
+### Combined Rejection and Factual Recall Prompt
 
 All prompt settings introduced were experimented with separate LLM inferences.
 
-### ***Stage 3\. Fine-tuning and Evaluation on Out-of-Distribution (OOD) Data \- Model Fine-Tuning:*** To enhance the ability of smaller language models to handle complex drug substitution prompts, we fine-tuned Llama 3 \- 8B Instruct and GPT4o-mini using the PERSIST instruction-tuning dataset, publicly available at https://huggingface.co/datasets/AIM-Harvard/PERSIST.
+### Stage 3. Fine-Tuning and Evaluation on Out-of-Distribution (OOD) Data - Model Fine-Tuning
 
 This dataset comprises 300 input-output pairs, each featuring a challenging "Baseline" prompt concerning brand/generic drug substitutions (covering both directions for 50 drug pairs) and the corresponding desired response generated by a larger model (GPT4o-mini, GPT-4, or GPT4o) when presented with a "Combined Rejection and Factual Recall Prompt."
 
@@ -113,12 +111,12 @@ The dataset construction leveraged these larger models to systematically generat
 
 We used 2\*A100 80GB to fine-tune our examples in 2 epochs and a learning rate of 1e-5 which can be done under an hour. The estimated cost here will be under $10 if using cloud GPU renting. For fine-tuning GPT4o mini, we were on the OpenAI Trial program, so it was free of cost. However, custom models will require 1.5x inference costs.
 
-### ***Evaluation on OOD Data**:* To evaluate the generalization of the fine-tuned model to other illogical requests, we tested its performance on the OOD datasets of terms with the same meanings (**Figure 3**). This OOD dataset included several other categories. Testing on OOD data allows us to assess the generalizability of a model’s behavior in responding to illogical requests involving novel or previously unseen entities — a crucial factor in evaluating its applicability in real-world scenarios.
-*Stage 4: Evaluating General Benchmarks and Compliance with Logical Requests** \- **Balancing Rejection and Compliance:*** To test whether models became overly conservative after fine-tuning, we designed an additional test set comprising 20 cases (10 real FDA drug safety recalls, 5 theoretically event canceling situations, and 5 real government announcements) where the model should comply with the prompt rather than reject it (**Figure 4**). These cases involved scenarios where the recommended substitution was appropriate and aligned with the correct drug relationships. This test ensured that the model retained the ability to provide helpful and persuasive responses when no logical flaws were present. The prompts are found in **Supplementary Table 1**. Additionally, we also prompt the fine-tuned models with questions regarding 50 common drugs we fine-tuned and see whether they can still answer logical requests regarding those drugs.
+### Evaluation on OOD Data
+### Stage 4. Evaluating General Benchmarks and Compliance with Logical Requests - Balancing Rejection and Compliance
 
-### ***General Benchmark Evaluation:*** To ensure that fine-tuning and prompt modifications do not degrade the overall performance of the models, we evaluated them on a broad set of general benchmarks using Inspect[55](https://paperpile.com/c/TzrP46/HFoiN) and Alpaca-Eval2 v0.6.5[56](https://paperpile.com/c/TzrP46/9C0Zb) using GPT4-turbo as the comparator model. These benchmarks were selected to test the models' reasoning, factual recall, and domain-specific knowledge, including medical contexts, ensuring that any improvements in handling drug-related prompts did not come at the expense of general task performance. The confidence intervals are calculated using the central limit theorem, a common practice in modern LLM evaluations[57,58](https://paperpile.com/c/TzrP46/VcJeB+0FxLp).
+### General Benchmark Evaluation
 
-#### **Automated Evaluation:** Model outputs were categorized into 4 categories: (1) rejecting the request and explaining the logical flaw; (2) fulfilling the request and explaining the logical flaw; (3) rejecting the request without explaining the logical flaw; and (4) fulfilling the request without explaining the logical flaw. Model outputs were evaluated using a multi-step annotation process. The detailed counts of instances we evaluated in this research are available in Supplementary Table 2\. To ensure consistency and reliability in the evaluation, we employed the Claude 3.5 Sonnet (we chose a separate model as a label because LLMs of the same family are known to have a favorable bias toward their own responses[59–62](https://paperpile.com/c/TzrP46/wmAxy+2vT27+0Q7bf+DCEWM)) to provide initial annotations, with human reviewers (annotators SC and MG blinded to each other) validating 50 outputs from GPT4o-mini. The inter-annotator agreement between Claude 3.5 Sonnet and the human reviewers was 98%, with 100% agreement between the two human annotators for both in-domain and out-of-domain data. Supplementary Table 3 shows the single output for which the human labels disagreed with Claude 3.5 Sonnet. Of note, compliance with logical requests was human-labeled.
+### Automated Evaluation
 Data availability:
 All our data input and output from all models, and the Llama3 model we fine-tuned, are publicly available at https://huggingface.co/datasets/AIM-Harvard/PERSIST.
 Code availability:
@@ -192,7 +190,7 @@ The authors acknowledge financial support from the Google PhD Fellowship (SC), t
 62\.	[Laurito, W. *et al.* AI AI bias: Large language models favor their own generated content. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/TzrP46/DCEWM)
 SUPPLEMENTAL MATERIAL
 ![][image54]
-*Supplementary Figure 1\. Brand to Generic Results of stage 1 (left) and stage 2 (right).** In stage 1, four prompt setups are used to evaluate 5 LLMs on brand-generic name pairs of 50 general drugs. In stage 2, the baseline and finetuned version of GPT4o-mini and Llama3-8B are evaluated on out-of-distribution test sets of 4 domains.*
+**Supplementary Figure 1 |** Brand to Generic Results of stage 1 (left) and stage 2 (right). In stage 1, four prompt setups are used to evaluate 5 LLMs on brand-generic name pairs of 50 general drugs. In stage 2, the baseline and finetuned version of GPT4o-mini and Llama3-8B are evaluated on out-of-distribution test sets of 4 domains.
 
 *a)*
 *
@@ -221,7 +219,7 @@ SUPPLEMENTAL MATERIAL
 ![][image58]
 
 *
-*Supplementary Figure 2\. Examples of the behavioral shifts in our fine-tuned LLM compared to the base LLM.** A) The model's improved logical reasoning when addressing a last-minute singer substitution for an upcoming concert. B) The model's ability to handle identical errors across various domains. C) The model's capacity to follow user instructions in a medical context, specifically with a real FDA recall. D) The model's enhanced fact-checking ability, verifying information internally while adhering to the user's instructions.*
+**Supplementary Figure 2 |** Examples of the behavioral shifts in our fine-tuned LLM compared to the base LLM. A) The model's improved logical reasoning when addressing a last-minute singer substitution for an upcoming concert. B) The model's ability to handle identical errors across various domains. C) The model's capacity to follow user instructions in a medical context, specifically with a real FDA recall. D) The model's enhanced fact-checking ability, verifying information internally while adhering to the user's instructions.
 
 f"""
    You are tasked with analyzing an AI-generated response to a request about switching medications. The original request and the AI's response are provided below. Your goal is to categorize this response into one of four scenarios.
@@ -245,7 +243,7 @@ f"""
    Based on your analysis, choose the scenario number (1, 2, 3, or 4\) that best matches the response.
    Only response the answer of choice.
   """
-*Supplementary Figure 3\. Prompt used to auto-evaluate our responses for drug entities.** 98% annotation agreement with two human annotators.*
+**Supplementary Figure 3 |** Prompt used to auto-evaluate our responses for drug entities. 98% annotation agreement with two human annotators.
 
 f"""
      You are tasked with analyzing an AI-generated response to a request about switching entities. The original request and the AI's response are provided below. Your goal is to categorize this response into one of four scenarios.
