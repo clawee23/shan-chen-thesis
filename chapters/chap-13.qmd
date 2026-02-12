@@ -5,9 +5,9 @@ Since the public emergence of large language models (LLMs) in 2022, the healthca
 
 This chapter synthesizes the insights across the thesis, situating them within ongoing debates about safety, equity, and responsible deployment. Together, the findings outline a pathway toward LLMs that are not merely technically impressive but also reliable, transparent, and suited for use in real-world clinical environments.
 
-# **Part I: Potential Utilities of Language Models in Real Clinical Practice**
+## Part I: Potential Utilities of Language Models in Real Clinical Practice**
 
-## **Patient-Facing Information and Clinical Communication**
+## Patient-Facing Information and Clinical Communication
 
 The first section of the thesis examines the most immediate interface between LLMs and public health: the generation of medical information for patients and the drafting of clinician messages. **Chapters 2 and 3** address these domains through complementary perspectives.
 
@@ -15,7 +15,7 @@ In **Chapter 2**, we demonstrate that although ChatGPT delivers guideline-concor
 
 **Chapter 3** transitions from public use to clinical workflows, evaluating GPT-4-assisted drafting of portal messages. While clinicians report increased efficiency in 77% of cases, unedited drafts introduce a 7.7% risk of severe harm due to misclassification of urgency or inappropriate clinical advice. Across both chapters, a central theme emerges: LLMs provide value primarily as tools that augment expert decision-making. Their safe and effective use depends on human vigilance, not autonomous output.
 
-## **Unlocking Unstructured Clinical Data**
+## Unlocking Unstructured Clinical Data
 
 **Chapters 4 and 5** shift focus from communication to structured extraction of clinically meaningful but routinely underutilized information.
 
@@ -25,13 +25,13 @@ Similarly, social determinants of health (SDoH), powerful and often ignored pred
 
 These findings underscore a central message: **task-specific fine-tuning on domain data is not only more accurate but also more equitable**, surfacing disparities that generalist models miss. Future directions include expanding extraction to additional toxicity domains, embedding these pipelines in prospective registries, and evaluating their impact on clinical operations such as care navigation and resource allocation.
 
-## **Autonomous Agents in Trial Safety**
+## Autonomous Agents in Trial Safety
 
 The final arc of Part I culminates in **Chapter 6**, where we introduce **iRAE Agent**, an agentic system piloted at Mass General Brigham for detecting immunotherapy-related adverse events in oncology trials. Unlike static classifiers, iRAE performs multi-step reasoning, structured error checking, and ontology-guided reporting—operations that map directly to real trial workflows and carry substantial regulatory significance.
 
 This represents a true inflection point: moving from isolated extraction tasks to **full-fledged clinical agents** designed for deployment in safety-critical environments. Future work includes scaling iRAE across trial networks, integrating it with regulatory submission pipelines, and designing human-in-the-loop interfaces that preserve clinician oversight while automating routine surveillance. Robustness to linguistic variation and resistance to sycophantic agreement—fully explored in Part II—will be essential for trustworthy deployment.
 
-# **Part II: Potential Failures of Language Models in Medical Settings**
+## Part II: Potential Failures of Language Models in Medical Settings**
 
 While Part I demonstrates the considerable promise of LLMs for clinical augmentation, Part II examines the structural vulnerabilities that emerge when these systems are used in safety-critical environments. These chapters collectively reveal that the same statistical learning mechanisms enabling LLMs to generalize across vast text corpora also produce brittle, easily perturbed behaviors when models are asked to perform medical reasoning.
 
@@ -45,7 +45,7 @@ The fragility exposed in **Chapter 9** underscores a parallel lexical vulnerabil
 
 Together, the findings of Part II paint a cautionary but constructive picture: current LLMs are not yet reliable arbiters of medical knowledge. Their susceptibility to pre-training biases, lexical perturbations, not robust knowledge representation and misalignment indicates that naïve deployment in healthcare settings could amplify existing inequities and introduce new potential of harm. These vulnerabilities underscore the need for rigorous evaluation frameworks and purpose-built safeguards before clinical integration.
 
-# **Societal Impact and Future Directions**
+## Societal Impact and Future Directions**
 
 The broader societal significance of this thesis lies in its insistence that clinical AI must be evaluated not only on technical performance but on its alignment with the practical, ethical, and equity-oriented demands of real-world medicine. By grounding every experiment in live workflows—patient messaging, toxicity surveillance, trial safety monitoring—this work demonstrates that LLMs tested on sanitized benchmarks or synthetic tasks provide less insight into their behavior under true clinical conditions. In contrast, models evaluated within authentic operational settings reveal the constraints, failure modes, and friction points that determine whether AI tools will meaningfully improve care.
 
@@ -61,11 +61,11 @@ Finally, the release of **WorldMedQA-V** and **MedBrowseComp** contributes durab
 
 Looking forward, the future of clinical AI will depend not on scale alone but on rigorous scientific methodology, transparent evaluation pipelines, and thoughtful integration with human expertise. LLMs that meaningfully improve healthcare will be those that earn trust—through robustness, fairness, and verifiable correctness—rather than those that simply demonstrate linguistic sophistication. This thesis lays foundational evidence, frameworks, and datasets to guide the development of such systems, and points toward a future in which clinical AI strengthens—not destabilizes—the safety, equity, and integrity of global health.
 
-# Summary
+## Summary
 
 ***Summary***
 
-## **Part I: Potential Utilities of Language Models in Real Clinical Practice**
+### Part I: Potential Utilities of Language Models in Real Clinical Practice**
 
 Part I of this thesis shows how large language models (LLMs) can address concrete, high-impact problems in clinical workflows and health equity.
 
@@ -79,7 +79,7 @@ Together, these chapters trace a clear progression—from question answering to 
 
 ## 
 
-## **Part II: Potential Fails of Language Models in Medical Settings**
+### Part II: Potential Fails of Language Models in Medical Settings**
 
 If Part I focuses on what LLMs can do, Part II focuses on how they can fail, and why those failures matter in high-stakes medicine.
 
@@ -97,7 +97,7 @@ Chapters 11 and 12 translate these observations into a durable evaluation infras
 
 Taken together, Part II argues that current LLMs primarily mirror the statistics of their training data, not clinical reality, and that they default to cooperative, fluent responses over careful, truthful reasoning.
 
-## ***Societal Impact and Valorization***
+## *Societal Impact and Valorization*
 
 This thesis is motivated by a simple goal: to narrow the gap between AI research and clinically meaningful, equitable deployment—**and to do so in a way that is visible, scrutinizable, and reusable by others**.
 
@@ -121,7 +121,7 @@ The central argument of this thesis is that **safe clinical LLMs require not onl
 
 Ultimately, the work aims to help move the field toward LLMs that are not just powerful, but **trustworthy**—systems that can support clinicians, surface hidden inequities, and remain reliable across the linguistic and demographic diversity that characterizes real-world medicine. That this research has already drawn attention from major media, regulators, and policymakers is itself a form of valorization: it signals that the questions posed here are not only academically interesting, but central to how AI will shape the future of healthcare. 
 
-# ***Curriculum Vitae and Scientific Publications***
+## *Curriculum Vitae and Scientific Publications*
 
 Shan Chen was born in Beijing, China, on April 23rd, 1998, and moved to Minnesota for high school. After graduating, he completed a B.A. in Mathematics and Japanese at St. Olaf College and an M.S. in Computational Linguistics at Brandeis University. As part of his master’s program, he worked with Dr. Tim Miller at Boston Children’s Hospital on a clinical Natural Language Processing(NLP) capstone, developing end-to-end pipelines that linked unstructured clinical text to usable, safety-minded decision support. 
 
@@ -159,7 +159,7 @@ Sheng Lu, **Shan Chen**, Yingya Li, Danielle S. Bitterman, Guergana Savova & Iry
 
 **Shan Chen**, Marco Guevara, Nicolas Ramirez, Arpi Murray, Jeremy L. Warner, Hugo J.W.L. Aerts, Timothy A. Miller, Guergana K. Savova, Raymond H. Mak & Danielle S. Bitterman – Natural Language Processing to Automatically Extract the Presence and Severity of Esophagitis in Notes of Patients Undergoing Radiotherapy (JCO Clinical Cancer Informatics, 2023\)
 
-# Summary in Dutch
+## Summary in Dutch
 
 ***Algemene Discussie en Toekomstperspectieven***
 
@@ -167,9 +167,9 @@ Sinds de publieke doorbraak van grote taalmodellen (LLMs) in 2022 wordt de zorgg
 
 Dit hoofdstuk synthetiseert de inzichten uit het gehele proefschrift en plaatst deze binnen de lopende debatten over veiligheid, gelijkheid en verantwoorde implementatie. Gezamenlijk schetsen de bevindingen een route naar LLMs die niet alleen technisch indrukwekkend zijn, maar ook betrouwbaar, transparant en geschikt voor gebruik in echte klinische omgevingen.
 
-## **Deel I: Potentiële toepassingen van taalmodellen in de klinische praktijk**
+## Deel I: Potentiële toepassingen van taalmodellen in de klinische praktijk
 
-### **Patiëntgerichte informatie en klinische communicatie**
+## Patiëntgerichte informatie en klinische communicatie
 
 Het eerste deel van het proefschrift richt zich op de meest directe interface tussen LLMs en de volksgezondheid: het genereren van medische informatie voor patiënten en het opstellen van berichten door clinici. Hoofdstukken 2 en 3 benaderen deze domeinen vanuit complementaire perspectieven.
 
@@ -177,7 +177,7 @@ In Hoofdstuk 2 tonen we aan dat ChatGPT in 98% van de gevallen richtlijnconforme
 
 Hoofdstuk 3 verlegt de focus van publiek gebruik naar klinische workflows en evalueert GPT-4-ondersteunde conceptberichten in patiëntenportalen. Hoewel clinici in 77% van de gevallen een hogere efficiëntie rapporteren, introduceren onbewerkte concepten een risico van 7,7% op ernstige schade door verkeerde urgentie-inschatting of ongepaste klinische adviezen. Over beide hoofdstukken heen ontstaat een centraal thema: LLMs leveren vooral waarde als hulpmiddelen die deskundige besluitvorming ondersteunen. Veilig en effectief gebruik berust op menselijke waakzaamheid, niet op autonome output.
 
-### **Ontsluiten van ongestructureerde klinische data**
+## Ontsluiten van ongestructureerde klinische data
 
 Hoofdstukken 4 en 5 verschuiven de aandacht van communicatie naar de gestructureerde extractie van klinisch betekenisvolle, maar routinematig onderbenutte informatie.
 
@@ -187,13 +187,13 @@ Evenzo blijven sociale determinanten van gezondheid (SDoH), krachtige maar vaak 
 
 Deze resultaten onderstrepen een kernboodschap: taak-specifieke fine-tuning op domeindata is niet alleen nauwkeuriger, maar ook eerlijker, en maakt ongelijkheden zichtbaar die generalistische modellen missen. Toekomstig werk omvat uitbreiding naar aanvullende toxiciteitsdomeinen, inbedding van deze pipelines in prospectieve registries en evaluatie van hun impact op klinische operaties zoals zorgnavigatie en middelenallocatie.
 
-### **Autonome agenten in trialveiligheid**
+## Autonome agenten in trialveiligheid
 
 De laatste boog van Deel I culmineert in Hoofdstuk 6, waarin we iRAE Agent introduceren—een agentisch systeem dat bij Mass General Brigham is gepilot voor detectie van immunotherapie-gerelateerde bijwerkingen in oncologische trials. In tegenstelling tot statische classificatoren voert iRAE meerstapsredenering uit, gestructureerde foutcontrole en ontologie-gestuurde rapportage—processen die direct aansluiten bij echte trialworkflows en aanzienlijke regulatoire betekenis hebben.
 
 Dit markeert een echt kantelpunt: de overgang van geïsoleerde extractietaken naar volwaardige klinische agenten die ontworpen zijn voor inzet in veiligheidskritische omgevingen. Toekomstig werk omvat opschaling van iRAE binnen trialnetwerken, integratie met regulatoire indieningspijplijnen en het ontwerpen van human-in-the-loop-interfaces die klinisch toezicht behouden terwijl routinematige surveillance wordt geautomatiseerd. Robuustheid tegen taalkundige variatie en weerstand tegen sycophantisch meegaand gedrag—uitgebreid behandeld in Deel II—zijn essentieel voor betrouwbare implementatie.
 
-## **Deel II: Potentiële faalmodi van taalmodellen in medische contexten**
+## Deel II: Potentiële faalmodi van taalmodellen in medische contexten
 
 Waar Deel I de aanzienlijke belofte van LLMs voor klinische ondersteuning laat zien, onderzoekt Deel II de structurele kwetsbaarheden die ontstaan wanneer deze systemen in veiligheidskritische omgevingen worden ingezet. Deze hoofdstukken tonen gezamenlijk aan dat dezelfde statistische leermethoden die generalisatie over enorme tekstcorpora mogelijk maken, ook leiden tot fragiel en gemakkelijk verstoord gedrag wanneer modellen medische redenering moeten uitvoeren.
 
@@ -207,7 +207,7 @@ Hoofdstuk 10 voegt een gedragsmatige dimensie toe aan deze representatieprobleme
 
 Samen schetsen de bevindingen van Deel II een waarschuwend maar constructief beeld: huidige LLMs zijn nog geen betrouwbare arbiters van medische kennis. Hun gevoeligheid voor pre-training-bias, lexicale verstoringen, gebrekkige kennisrepresentatie en misalignment suggereert dat naïeve inzet in de zorg bestaande ongelijkheden kan versterken en nieuwe vormen van schade kan introduceren. Deze kwetsbaarheden onderstrepen de noodzaak van rigoureuze evaluatiekaders en doelgerichte waarborgen vóór klinische integratie.
 
-## **Maatschappelijke impact en toekomstperspectieven**
+## Maatschappelijke impact en toekomstperspectieven
 
 De bredere maatschappelijke betekenis van dit proefschrift ligt in de nadruk dat klinische AI niet alleen moet worden beoordeeld op technische prestaties, maar ook op afstemming met de praktische, ethische en gelijkheidsgerichte eisen van de echte zorgpraktijk. Door elk experiment te verankeren in levende workflows—patiëntberichtgeving, toxiciteitssurveillance, trialveiligheidsmonitoring—laat dit werk zien dat LLMs die op gesaniteerde benchmarks of synthetische taken worden getest, minder inzicht bieden in hun gedrag onder echte klinische omstandigheden. Modellen die binnen authentieke operationele settings worden geëvalueerd, onthullen daarentegen de beperkingen, faalmodi en frictiepunten die bepalen of AI-hulpmiddelen de zorg daadwerkelijk verbeteren.
 
@@ -223,7 +223,7 @@ Tot slot dragen de vrijgave van WorldMedQA-V en MedBrowseComp bij aan duurzame, 
 
 Vooruitkijkend zal de toekomst van klinische AI niet afhangen van schaal alleen, maar van rigoureuze wetenschappelijke methodologie, transparante evaluatiepijplijnen en doordachte integratie met menselijke expertise. LLMs die de zorg daadwerkelijk verbeteren, zullen die zijn die vertrouwen verdienen—door robuustheid, rechtvaardigheid en verifieerbare correctheid—en niet enkel door taalkundige verfijning. Dit proefschrift legt de fundamentele evidentie, kaders en datasets om de ontwikkeling van zulke systemen te sturen en wijst de weg naar een toekomst waarin klinische AI de veiligheid, gelijkheid en integriteit van de mondiale gezondheidszorg versterkt—en niet ondermijnt.
 
-# Acknowledgments
+## Acknowledgments
 
 ***Acknowledgments***
 
@@ -246,4 +246,3 @@ To my partner, **Kaitlin**, thank you for growing with me through this colorful 
 To my close friends, especially **Sam** and **Peng**, thank you for your unwavering support through this entire process. You were a constant, grounding presence, helping me remember that even slow daily progress is real progress, and lightening the journey when I needed it most. I am profoundly grateful to all those who helped me maintain perspective and continue my growth throughout this endeavor.
 
 To all of you, thank you for making this work possible, and for making the journey so Shan Chen.
-
