@@ -10,8 +10,10 @@ Background
 Large language models (LLMs) such as ChatGPT (GPT-3.5, GPT-4) demonstrate strong general question-answering ability but remain under-explored for specialized biomedical applications. Understanding their performance in structured biomedical tasks is essential before clinical or research deployment.
 Methods
 Using 11,122 samples, our study evaluated ChatGPT-family models on two core biomedical natural language processing tasks: **classification** of health advice in scientific literature (n \= 8676\) and **reasoning** via detection of causal relations (n \= 2446). Prompts were developed under zero-shot and few-shot settings, with and without chain-of-thought (CoT) reasoning. The best prompts from each configuration were compared against two baselines: a simple bag-of-words (BoW) logistic regression model and fine-tuned BioBERT models.
+
 Findings
 Fine-tuned BioBERT achieved the highest F1 scores for both classification (0.800–0.902) and reasoning (0.851). Among LLMs, few-shot CoT prompting produced the strongest results—classification F1 0.671–0.770 and reasoning F1 0.682—comparable to the BoW baseline (F1 0.602–0.753 and 0.675, respectively). However, achieving optimal LLM performance required **78 hours**, compared with only **0.078 hours** for BioBERT and **0.008 hours** for BoW.
+
 Interpretation
 Despite the popularity of ChatGPT, task-specific fine-tuning of domain-adapted models like BioBERT remains the most effective and efficient strategy for biomedical NLP. LLM prompting can approach—but not surpass—traditional methods, while requiring substantially more computational time and engineering effort.
 
@@ -52,6 +54,7 @@ To design a prompt, we follow the prompt structure applied in prior studies.[23]
 We use the OpenAI Application Programming Interface (API) to run the prediction and measure the performance of the models based on the averaged macro-F1 score on 4-fold cross validation on the test set. F1 score is a classic NLP metric representing the harmonic mean of recall/sensitivity and precision/positive predictive value. Macro F1 score is computed using the arithmetic mean of all per-class F1 scores. For comparison of model efficiency, we track the time and cost for running the inference using the API (Appendix Table A2-A4)
 2.3 Smaller LLMs
 The same settings (zero- and few-shot with and without CoT) were used to evaluate the performance of select smaller LLMs (less than 10B parameters) on the tasks, including GPT-J, GPT-JT, and Galactica[24](https://paperpile.com/c/FgFYMN/DU3ir). GPT-J, built on EleutherAI’s 6B parameter GPT-J-6B, is fine-tuned with 3.5 billion tokens. It performs very similarly to GPT-3 on various zero-shot downstream tasks. GPT-JT, a fork of GPT-J-6B, is fine-tuned on 3.53 billion tokens and has been shown to even outperform GPT-3 at some classification tasks. Galactica is trained on 48 million examples of scientific articles, websites, textbooks, lecture notes, and encyclopedias. Same evaluation procedure as for the GPT-family models is applied.
+
 2.4 Statistical Analysis
 Paired *t* tests are used to compare average macro-F1 score across tasks, and a two-sided *p*\<0.05 is considered statistically significant. Analyses are performed using python version 3.9.7 (Python Software Foundation).
 
@@ -61,6 +64,7 @@ A summary of our findings is in Table 1; Figs 2-4 present multiple comparative a
 **Figure 2 |** (A) Comparison of model performance on each dataset. Using fine-tuning BioBERT as a reference, average macro-F1 across all datasets was significantly better than all other models (p\<0.05 for all); there was no statistically significant difference in average performance between the other pair-wise model comparisons (Appendix Table A5). **(B)** Time (hours) required to obtain the best-performing results versus average performance across all datasets. BoW \= bag-of-words; CoT \= Chain of Thought.
 
 ![][image29]
+
 3.1 Effect of fine-tuning and prompt development on model performance, run time and time investment
 For the reasoning and classification tasks, fine-tuning BioBERT consistently outperforms the best GPT settings by a considerable margin (Δmacro F1 0.109 \- 0.169) (Fig 2(A) and Table 1). Averaging performance on all datasets, BioBERT's macro F1 scores are significantly better than the other models (*p*\<0.05 for all, Fig 2(A). There is no statistical difference between the average performance of the BoW, best-performing GPT-3.5s, and GPT-4 models (Appendix Table A3).
 **Figure 3 |** (A-D) Performance comparison of fine-tuned BioBERT (green bar) and BoW  (yellow bar) models with different proportions (20%, 50% or 100%) of development set data versus the best GPTs settings (few-shot CoT in red-line) among four tasks. **(A)** Comparison on advice in discussion sections, **(B)** comparison on advice in unstructured abstracts, **(C)** comparison on advice in structured abstracts, **(D)** comparison on causal relation detection. BoW \= bag-of-words; CoT \= Chain of Thought
@@ -77,6 +81,7 @@ Another observation from the one-shot experiments (both with and without CoT) am
 3.4 Error Analysis
 Of the investigated GPTs, GPT-4 with few-shot CoT settings yields the best performance for three of four datasets. Thus, we analyze GPT-4’s generated CoTs and identify common error patterns to better understand their strengths and limitations. To maintain consistency, we randomly select 100 prediction errors of GPT-4 with few-shot CoT setting from the test set of each dataset. The selection of the error examples follows the same error type ratio from the confusion matrices of the prediction result. Two common error patterns are identified. Pattern A is an incorrect reasoning step based on one specific keyword. For example, the model classifies an input text as a strong advice if the word “importance” appears in the text (Appendix Table A13, row 4). Pattern B is a false positive due to the model incorrectly determining that there is health advice or a relationship for the classification and reasoning tasks, respectively, when in fact there is none. For instance, Appendix Table A16, row 3 presents a pattern B error where GPT-4 misclassifies a relationship between extracted entities as a clinical relationship. Appendix Tables A13-A16 show examples of the error patterns.
 **Figure 4 |** Comparison of GPT-3.5s performance on each dataset with increasing exemplars without **(A)** and with **(B)** Chain of Thought (CoT). For both plots, random is shown as a baseline and is the uniform distribution across class labels. Here, one-shot uses the majority class exemplar for each task and few-shot uses one exemplar per class. Few-shot \= 3 exemplars for classification datasets and four exemplars for the reasoning dataset, reflecting the number of classes for each task.
+
 DISSCUSSION
 In this study, we found that, even with the best in-context learning approaches, fine-tuning BioBERT consistently out-performed LLM performance by macro F1 \>0.100 for all datasets. In fact, fine-tuning on just 20% of the development dataset outperformed the best GPT-4 and GPT-3.5 performance for all of the classification datasets, and outperformed the best GPT-3.5 performance for the reasoning dataset. Surprisingly, the simple BoW models out-performed all LLM in-context learning approaches without CoT, and performed similarly to the best performing GPT-4 approach for classification of structured abstracts (macro F1 \-0.017), and the reasoning task (macro F1 \-0.007).
 
@@ -107,43 +112,74 @@ The study was funded by R01GM114355 (Author YL), R01LM013486 (Authors HV, GS), a
 ## REFERENCES
 
 1\.	[Vaswani, A. *et al.* Attention is all you need. in *NeurIPS Proceedings* (2017).](http://paperpile.com/b/FgFYMN/OA2QZ)
+
 2\.	[Sutton, R. S. & Barto, A. G. *Reinforcement Learning: An Introduction, 2nd Edition*. (The MIT Press, Cambridge, MA, 2018).](http://paperpile.com/b/FgFYMN/EWdNo)
 3\.	[Ouyang, L. *et al.* Training language models to follow instructions with human feedback. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/yZqXo)
+
 4\.	[Ouyang, L. *et al.* Training language models to follow instructions with human feedback. in *NeurIPS Proceesings* (2022).](http://paperpile.com/b/FgFYMN/Ki4xv)
+
 5\.	[Lee, P., Bubeck, S. & Petro, J. Benefits, Limits, and Risks of GPT-4 as an AI Chatbot for Medicine. *N. Engl. J. Med.* **388**, 1233–1239 (2023).](http://paperpile.com/b/FgFYMN/bupsp)
+
 6\.	[Reardon, S. AI Chatbots Can Diagnose Medical Conditions at Home. How Good Are They? *Scientific American* (By Sara Reardon on March 31 2023).](http://paperpile.com/b/FgFYMN/nlsHV)
+
 7\.	[Gilson, A. *et al.* How Does ChatGPT Perform on the United States Medical Licensing Examination? The Implications of Large Language Models for Medical Education and Knowledge Assessment. *JMIR Med Educ* **9**, e45312 (2023).](http://paperpile.com/b/FgFYMN/6p9xd)
+
 8\.	[Liévin, V., Hother, C. E. & Winther, O. Can large language models reason about medical questions? *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/Kdn6v)
+
 9\.	[Zuccon, G. & Koopman, B. Dr ChatGPT, tell me what I want to hear: How prompt knowledge impacts health answer correctness. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/FgFYMN/HuOMB)
+
 10\.	[Chen, S. *et al.* Use of Artificial Intelligence Chatbots for Cancer Treatment Information. *JAMA Oncol* (2023) doi:](http://paperpile.com/b/FgFYMN/V4C6)[10.1001/jamaoncol.2023.2954](http://dx.doi.org/10.1001/jamaoncol.2023.2954)[.](http://paperpile.com/b/FgFYMN/V4C6)
+
 11\.	[Lyu, Q. *et al.* Translating Radiology Reports into Plain Language using ChatGPT and GPT-4 with Prompt Learning: Promising Results, Limitations, and Potential. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/FgFYMN/LOqlU)
+
 12\.	[Singhal, K. *et al.* Large Language Models Encode Clinical Knowledge. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/Ah0nd)
+
 13\.	[Lehman, E. *et al.* Do We Still Need Clinical Language Models? *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/FgFYMN/lDUlL)
+
 14\.	[Wang, J. *et al.* On the Robustness of ChatGPT: An Adversarial and Out-of-distribution Perspective. *arXiv \[cs.AI\]* (2023).](http://paperpile.com/b/FgFYMN/VfLjI)
+
 15\.	[Liao, K. P. *et al.* Development of phenotype algorithms using electronic medical records and incorporating natural language processing. *BMJ* **350**, h1885 (2015).](http://paperpile.com/b/FgFYMN/Q4Xhw)
+
 16\.	[Zhang, Y. *et al.* Comparison of Chest Radiograph Captions Based on Natural Language Processing vs Completed by Radiologists. *JAMA Netw Open* **6**, e2255113 (2023).](http://paperpile.com/b/FgFYMN/ECcXS)
+
 17\.	[Medori, J. & Fairon, C. Machine learning and features selection for semi-automatic ICD-9-CM encoding. in *Proceedings of the NAACL HLT 2010 Second Louhi Workshop on Text and Data Mining of Health Documents* 84–89 (Association for Computational Linguistics, Los Angeles, California, USA, 2010).](http://paperpile.com/b/FgFYMN/9Zs2K)
+
 18\.	[OpenAI API.](http://paperpile.com/b/FgFYMN/l2nGi) [http://platform.openai.com](http://platform.openai.com)[.](http://paperpile.com/b/FgFYMN/l2nGi)
 19\.	[Li, Y., Wang, J. & Yu, B. Detecting Health Advice in Medical Research Literature. in *Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing* 6018–6029 (Association for Computational Linguistics, Online and Punta Cana, Dominican Republic, 2021).](http://paperpile.com/b/FgFYMN/lfPHu)
+
 20\.	[Yu, B., Li, Y. & Wang, J. Detecting Causal Language Use in Science Findings. in *Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)* 4664–4674 (Association for Computational Linguistics, Hong Kong, China, 2019).](http://paperpile.com/b/FgFYMN/uPu1p)
+
 21\.	[Devlin, J., Chang, M.-W., Lee, K. & Toutanova, K. BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. *arXiv \[cs.CL\]* (2018).](http://paperpile.com/b/FgFYMN/nut9V)
+
 22\.	[Lee, J. *et al.* BioBERT: a pre-trained biomedical language representation model for biomedical text mining. *Bioinformatics* **36**, 1234–1240 (2020).](http://paperpile.com/b/FgFYMN/QLAXk)
+
 23\.	[Wei, J. *et al.* Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/bHjK3)
+
 24\.	[Taylor, R. *et al.* Galactica: A Large Language Model for Science. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/DU3ir)
+
 25\.	[Brown, T. B. *et al.* Language Models are Few-Shot Learners. *arXiv \[cs.CL\]* (2020).](http://paperpile.com/b/FgFYMN/Ua2Fh)
+
 26\.	[Wei, J. *et al.* Emergent Abilities of Large Language Models. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/95vn0)
+
 27\.	[Kojima, T., Gu, S. S., Reid, M., Matsuo, Y. & Iwasawa, Y. Large Language Models are Zero-Shot Reasoners. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/nrYzn)
+
 28\.	[Shi, F. *et al.* Large Language Models Can Be Easily Distracted by Irrelevant Context. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/FgFYMN/eKzvW)
+
 29\.	[Wang, X. *et al.* Self-Consistency Improves Chain of Thought Reasoning in Language Models. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/FgFYMN/ktchQ)
+
 30\.	[Savova, G. K. *et al.* Use of Natural Language Processing to Extract Clinical Cancer Phenotypes from Electronic Medical Records. *Cancer Res.* **79**, 5463–5470 (2019).](http://paperpile.com/b/FgFYMN/4UG7r)
+
 31\.	[Beam, K. *et al.* Performance of a Large Language Model on Practice Questions for the Neonatal Board Examination. *JAMA Pediatr.* **177**, 977–979 (2023).](http://paperpile.com/b/FgFYMN/tvjz)
+
 32\.	[Murk, W., Goralnick, E., Brownstein, J. S. & Landman, A. B. Quality of Layperson CPR Instructions From Artificial Intelligence Voice Assistants. *JAMA Netw Open* **6**, e2331205 (2023).](http://paperpile.com/b/FgFYMN/K2Wb)
 
 ## Appendix A:
+
 Table A1 Parameters and hyperparameters for fine-tuning BioBERT
 
 |  | Classification:  Advice in  discussion  sections | Classification:  Advice in unstructured abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
 | :---- | ----- | ----- | ----- | ----- |
+
 | random seed | 42 | 42 | 42 | 42 |
 | batch size (per\_device\_train) | 128 | 128 | 128 | 128 |
 | batch size (per\_device\_eval) | 512 | 512 | 512 | 512 |
@@ -160,6 +196,7 @@ Table A2 Time required for training and inferencing of each method
 
 | Model & Setting | Prompt creation time (seconds) | Inference time for  training on dev setc  (seconds) | Inference time  on test setc  (seconds) | Total (hours) | Performanced |
 | :---- | ----- | ----- | ----- | ----- | ----- |
+
 | GPT zero-shot | 2400.000a | 28296.000 | 11322.000 | 11.005 | 0.458 |
 | GPT few-shot CoT | 18000.000b | 94320.000 | 37740.000 | 36.683 | 0.709 |
 | BoW | 0 | 13.000 | 0.700 | 0.004 | 0.667 |
@@ -174,7 +211,9 @@ Table A3 Time required for training and inferencing of an Oracle prompter
 
 | Model & Setting | Oracle prompter | Assuming an Oracle prompt writer who creates only one prompt to achieve the best performance on the test set. Thus, no prompts needed for the validation set. |  |  |  |
 | :---- | ----- | ----- | ----- | ----- | ----- |
+
 |  | **Prompt  creation time (in seconds)a** | **Inference time for  training on dev set (in seconds)** | **Inference time  on test setb  (in seconds)** | **Total (in hours)** | **Performancec** |
+
 | GPT zero-shot | 120.000 | 0.000 | 11322.000 | 3.145 | 0.458 |
 | GPT few-shot CoT | 900.000 | 0.000 | 37740.000 | 10.483 | 0.709 |
 | BoW | 0.000 | 13.000 | 0.700 | 0.004 | 0.667 |
@@ -188,7 +227,9 @@ Table A4 Time required for training and inferencing of an Oracle prompter with m
 
 | Model & Setting | Oracle prompter | Batch mode: 512 |  |  |  |
 | :---- | ----- | ----- | ----- | ----- | ----- |
+
 |  | **Prompt  creation time (in seconds)a** | **Inference time for  training on dev set (in seconds)** | **Inference time  on test setb  (in seconds)** | **Total (in hours)** | **Performancec** |
+
 | GPT zero-shot | 120.000 | 0.000 | 22.113 | 0.006 | 0.458 |
 | GPT few-shot CoT | 900.000 | 0.000 | 73.711 | 0.020 | 0.709 |
 | BoW | 0.000 | 13.000 | 0.700 | 0.004 | 0.667 |
@@ -202,8 +243,11 @@ Table A5 *P*\-values for pairwise comparison of average model performance among 
 
 |  | GPT-3.5s | BoW | FT BioBERT |
 | :---- | ----- | ----- | ----- |
+
 | **GPT-4** | 0.4150 | 0.4228 | 0.0062\* |
+
 | **GPT-3.5s** | – | 0.7969 | 0.0008\* |
+
 | **BoW** | – | – | 0.0041\* |
 
 BoW \= bag-of-words; FT \= fine-tuning.
@@ -212,10 +256,15 @@ Table A6 Macro F1 scores for GPT-3.5-Davinci vs Turbo(ChatGPT) vs GPT-4 on the t
 
 |  | Classification:  Advice in  discussion  sections | Classification:  Advice in  unstructured  abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
 | :---- | ----- | ----- | ----- | ----- |
+
 | Zero-shot Davinci | 0.503 | 0.461 | **0.548** | 0.242 |
+
 | Zero-shot Turbo | 0.506 | **0.489** | 0.484 | 0.288 |
+
 | Zero-shot GPT-4 | **0.509** | 0.478 | 0.517 | **0.304** |
+
 | Few-shot CoT Davinci | **0.671** | 0.617 | 0.718 | 0.649 |
+
 | Few-shot CoT Turbo | 0.603 | 0.670 | 0.699 | 0.566 |
 | Few-shot CoT GPT-4 | 0.648 | **0.712** | **0.770** | **0.682** |
 
@@ -225,17 +274,29 @@ Table A7 Macro F1 scores for GPT-3.5-Davinci vs Turbo(ChatGPT) on the test set
 
 |  | Classification:  Advice in  discussion  sections | Classification:  Advice in  unstructured  abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
 | :---- | ----- | ----- | ----- | ----- |
+
 | Zero-shot Davinci | 0.503 | 0.461 | **0.548** | 0.242 |
+
 | Zero-shot Turbo | **0.506** | **0.489** | 0.484 | **0.288** |
+
 | One-shot Davinci | 0.513 | 0.501 | **0.593** | 0.210 |
+
 | One-shot Turbo | 0.513 | **0.554** | 0.470 | **0.396** |
+
 | Few-shot Davinci | 0.468 | **0.403** | **0.495** | **0.542** |
+
 | Few-shot Turbo | **0.475** | 0.243 | 0.436 | 0.513 |
+
 | Zero-CoT Davinci | **0.436** | 0.383 | **0.515** | 0.332 |
+
 | Zero-CoT Turbo | 0.418 | **0.424** | 0.486 | **0.345** |
+
 | One-CoT Davinci | 0.418 | **0.423** | 0.470 | 0.489 |
+
 | One-CoT Turbo | **0.430** | 0.410 | **0.552** | **0.553** |
+
 | Few-CoT Davinci | **0.671** | 0.617 | **0.718** | **0.649** |
+
 | Few-CoT Turbo | 0.603 | **0.670** | 0.699 | 0.566 |
 
 Best results are bolded.
@@ -246,9 +307,13 @@ Table A8 GPT-3.5-Davinci, one-shot CoT results on the test set
 
 | Class of Exemplar (Classification/Reasoning) | Classification:  Advice in  discussion  sections | Classification:  Advice in unstructured abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
 | :---- | ----- | ----- | ----- | ----- |
+
 | None/Nonea | 0.421 | **0.410** | **0.552** | 0.526 |
+
 | Weak/Correlational | **0.430** | 0.283 | 0.381 | 0.455 |
+
 | Strong/Conditional Causal | 0.343 | 0.319 | 0.447 | **0.553** |
+
 | Direct Causal | – | – | – | 0.386 |
 
 Best results are bolded.
@@ -257,7 +322,9 @@ Table A9 GPT-3.5-Davinci, one-shot results on the development set
 
 | Class of Exemplar (Classification/Reasoning) | Classification:  Advice in  discussion  sections | Classification:  Advice in unstructured abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
 | :---- | ----- | ----- | ----- | ----- |
+
 | None/Nonea | **0.462** | **0.510** | **0.552** | **0.521** |
+
 | Weak/Correlational | 0.460 | 0.333 | 0.391 | 0.495 |
 | Strong/Conditional Causal | 0.393 | 0.339 | 0.448 | 0.453 |
 | Direct Causal | – | – | – | 0.456 |
@@ -269,9 +336,12 @@ Bold indicates best performance
 
 | Class of Exemplar (Classification/Reasoning) | Classification:  Advice in  discussion  sections | Classification:  Advice in unstructured abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
 | :---- | ----- | ----- | ----- | ----- |
+
 | None/Nonea | **0.411** | 0.390 | **0.423** | 0.526 |
+
 | Weak/Correlational | 0.340 | 0.283 | 0.361 | 0.455 |
 | Strong/Conditional Causal | 0.343 | **0.430** | 0.350 | **0.553** |
+
 | Direct Causal | – | – | – | 0.456 |
 
 Best results are bolded.
@@ -280,11 +350,15 @@ Table A11 Performance of smaller GPT models (\< 10B parameters) on the test set
 
 |  | Classification:  Advice in  discussion  sections | Classification:  Advice in unstructured abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
 | :---- | ----- | ----- | ----- | ----- |
+
 | Zero-shot GPT-J | 0.248 | 0.230 | 0.302 | 0.211 |
 | Zero-shot GPT-JT | **0.272** | **0.262** | **0.321** | 0.226 |
+
 | Zero-shot Galactica | 0.234 | 0.218 | 0.294 | **0.252** |
+
 | Few-shot GPT-J | 0.157 | 0.142 | 0.292 | 0.191 |
 | Few-shot GPT-JT | **0.276** | **0.284** | **0.358** | 0.216 |
+
 | Few-shot Galactica | 0.246 | 0.205 | 0.293 | **0.244** |
 
 Best results are bolded.
@@ -292,12 +366,17 @@ Table A12 Performance of smaller GPT models (\< 10B parameters) on the dev set
 
 |  | Classification:  Advice in  discussion  sections | Classification:  Advice in unstructured abstracts | Classification:  Advice in  structured  abstracts | Reasoning:  Causal  relation  detection |
 | :---- | ----- | ----- | ----- | ----- |
+
 | Zero-shot GPT-J | 0.247 | 0.246 | 0.296 | 0.210 |
 | Zero-shot GPT-JT | **0.285** | **0.262** | **0.331** | 0.226 |
+
 | Zero-shot Galactica | 0.233 | 0.209 | 0.278 | **0.250** |
+
 | Few-shot GPT-J | 0.155 | 0.143 | 0.286 | 0.192 |
 | Few-shot GPT-JT | **0.284** | **0.282** | **0.348** | 0.217 |
+
 | Few-shot Galactica | 0.257 | 0.222 | 0.308 | **0.257** |
+
 | Few-CoT GPT-J | 0.211 | 0.200 | 0.323 | – |
 | Few-CoT GPT-JT | 0.172 | 0.129 | 0.269 | – |
 | Few-CoT Galactica | 0.241 | 0.195 | 0.368 | – |
@@ -308,6 +387,7 @@ Table A13 Sample of generated three-shot Chain-of-Thought from GPT-4 for advice 
 
 | Sentence |  | GPT–4 Answer |  |  | Gold | Pred |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+
 | Testing this hypothesis may represent a direction of future research. |  | 1\. The term "may represent" indicates that there is an advice in the context. 2\. "May represent" suggests a possibility, which is not a strong opinion. 3\. The answer is weak advice. |  |  | no  advice | weak  advice |
 | Future research should attempt to replicate these findings in a larger-scale trial using a more sophisticated, user-friendly program and additional measures of improvement in more diverse samples. |  | 1\. The term "should attempt" indicates that there is an advice in the context. 2\. "Should" indicates a directive opinion. 3\. The answer is strong advice. |  |  | no  advice | strong advice |
 | Our results suggest that pregnant women with an HbA1c of 5.4% (36\\u2005mmol/mol) should proceed with an OGTT. |  | 1\. The term "suggest" indicates that there is an advice in the context. 2\. "Suggest" indicates a directive opinion, but not as strong as a recommendation. 3\. The answer is weak advice. |  |  | strong advice | weak  advice |
@@ -322,6 +402,7 @@ Table A14 Sample of generated three-shot Chain-of-Thought from GPT-4 for advice 
 
 | Sentence |  | GPT–4 Answer |  |  | Gold | Pred |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+
 | Future research should seek to implement additional evidence-based actions to improve QoL in this population. |  | 1\. The term "should seek to implement" indicates that there is an advice in the context. 2\. "Should" indicates a strong opinion. 3\. The answer is strong advice. |  |  | no  advice | strong advice |
 | In conclusion, contrast-enhanced whole-heart CMRA at 3.0T can depict the normal and variant cardiac venous anatomy. |  | 1\. The context states a conclusion, which is not an advice. 2\. The answer is no advice. |  |  | weak  advice | no  advice |
 | However, because our analysis was based on a relatively small number of genes, a larger study will be needed to identify the best predictors of disease outcome overall. |  | 1\. The context mentions "a larger study will be needed," which indicates an advice. 2\. "Will be needed" suggests a strong opinion. 3\. The answer is strong advice. |  |  | no  advice | strong advice |
@@ -341,6 +422,7 @@ Table A15 Sample of generated three-shot Chain-of-Thought from GPT-4 for advice 
 
 | Sentence |  | GPT–4 Answer |  |  | Gold | Pred |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+
 | In this Saudi sample, the mean arch widths were narrower when compared to a Turkish sample,19 a North American sample, a South American sample, a Korean sample,20 and an Egyptian sample;21 on the other hand, it was close to a Malay sample.22 These ethnic groups’ differences in arch dimensions explain the need for specific orthodontic arch wire for each patient, based on the initial arch form. |  | 1\) The claim is discussing the differences in arch dimensions among various ethnic groups. 2\) The claim suggests the need for specific orthodontic arch wires for each patient based on their initial arch form. 3\) The claim does not use strong or hedged language, but it does imply an actionable suggestion for orthodontic treatment. 4\) Therefore, the claim has weak advice. Answer: (2) weak advice. |  |  | no  advice | weak  advice |
 | In comparison, Patient 3 demonstrated significant PR3-ANCA antibody production without evidence of peripheral B cell repopulation, which emphasizes the need to consider granulomata in GPA as B cell containing tertiary lymphoid structures pivotal to driving the relapsing disease course. |  | 1\) The claim is discussing the importance of considering granulomata in GPA as B cell containing tertiary lymphoid structures. 2\) The claim uses the phrase "emphasizes the need to consider," which indicates a suggestion or recommendation. 3\) However, the strength of the advice is not explicitly strong or weak, but it leans more towards a weak advice due to the use of the word "emphasizes." Answer: (2) weak advice. |  |  | strong advice | weak  advice |
 | Despite considerable challenges that face the interpretation of clinicoanatomical correlations in neurodegenerative diseases, the current results suggest that at least parts of the left anterior temporal neocortex should be inserted into the temporosylvian language network where they are likely to play critical roles in linking words to their object referents and in sharpening the taxonomic acuity of naming and word comprehension. |  | 1\) The claim has an actionable suggestion related to the insertion of parts of the left anterior temporal neocortex into the temporosylvian language network. 2\) When describing the suggestion, the authors used the phrase "suggest that" and "likely to play critical roles", which indicates the strength of the claim is not strong but weak. 3\) Therefore, the claim has weak advice. Answer: (2) weak advice. |  |  | strong advice | weak  advice |
@@ -358,26 +440,38 @@ Table A16 Sample of generated four-shot Chain-of-Thought from GPT-4 for reasonin
 
 | Sentence |  | GPT–4 Answer |  |  | Gold | Pred |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+
 | The present literature supports the idea that authoritative parenting may be protective against later overweight and obesity, although findings are mixed. |  | 1\) The sentence describes the relationship between "authoritative parenting" and "later overweight and obesity". 2\) The authors used the language cue "protective against", which suggests a relationship between the two entities. 3\) However, the authors also mentioned that "findings are mixed", which indicates that the relationship is not definitive or certain. 4\) Therefore, the sentence expresses a correlation, but with some uncertainty. Answer: 2 \- correlation |  |  | conditional causation | correlation |
+
 | The bidirectional association between AN diagnosis and CD warrants attention in the initial assessment and follow-up of these conditions because underdiagnosis and misdiagnosis of these disorders likely cause protracted and unnecessary morbidity. |  | 1\) The sentence describes the relationship between "AN diagnosis" and "CD". 2\) The authors used the phrase "bidirectional association", which suggests a correlation between the two conditions. 3\) Therefore, the sentence expresses correlation. Answer: 2 \- correlation |  |  | conditional causation | correlation |
+
 | This figure would be below accepted international thresholds to undertake screening mammography and raises radiation protection issues. |  | 1\) The sentence describes the relationship between "the figure being below accepted international thresholds" and "raising radiation protection issues". 2\) The authors used the verb "raises", which suggests that there is a direct effect between them. 3\) When describing the effect, the authors did not use any hedge words or modal verbs to tone down the certainty of the effect. 4\) Therefore, the sentence expresses direct causation. Answer: 4 \- causation |  |  | no relation | causation |
+
 | High-risk populations may accept CESM as a screening exam and may prefer it over screening MRI if ongoing trials demonstrate screening CESM to be clinically non-inferior MRI. |  | 1\) The sentence describes the relationship between "accepting CESM as a screening exam" and "ongoing trials demonstrating screening CESM to be clinically non-inferior MRI". 2\) The authors used the conditional language "may accept" and "if ongoing trials demonstrate", which suggests that there is a conditional effect between them. 3\) Therefore, the sentence expresses conditional causation. Answer: 3 \- conditional causation |  |  | no relation | conditional causation |
+
 | 3D MRI reconstruction after NAC could accurately detect the residual tumors after neoadjuvant chemotherapy, and contribute to select patients who received breast conserving therapy after NAC with tumor downstaging. |  | 1\) The sentence describes the relationship between "3D MRI reconstruction after NAC" and "accurately detecting residual tumors" and "contributing to selecting patients for breast conserving therapy after NAC with tumor downstaging". 2\) The authors used the verbs "could accurately detect" and "contribute to select", which suggest that there is a direct effect between them. 3\) When describing the effect, the authors also used a hedge word "could" to tone down the certainty of the effect. 4\) Therefore, the sentence expresses conditional causation only. Answer: 3 \- conditional causation |  |  | direct causation | conditional causation |
+
 | The results showed no effects of aromatherapy on QOL, sleep quality, and vital signs. |  | 1\) The sentence describes the relationship between "aromatherapy" and "QOL, sleep quality, and vital sign". 2\) The authors used the phrase "no effects", which suggests that there is no relationship between the two entities. 3\) Therefore, the sentence expresses no relationship. Answer: 1 \- no relationship |  |  | direct causation | no  relation |
+
 | The rs7903146 (C/T) polymorphism of the TCF7L2 gene might not be associated with obesity in the Cameroonian population. |  | 1\) The sentence describes the relationship between "rs7903146 (C/T) polymorphism of the TCF7L2 gene" and "obesity in the Cameroonian population". 2\) The authors used the language cue "might not be associated with" to describe the relationship, which suggests a lack of correlation. 3\) The use of "might not" indicates uncertainty, but the focus is still on the potential absence of a relationship. 4\) Therefore, the sentence expresses no relationship. Answer: 1 \- no relationship |  |  | correlation | no  relation |
+
 |  |  |  |  |  |  |  |
 |  |  |  |  |  |  |  |
 | This protocol will save money, time, and workload without compromising patients safety and future management. |  | 1\) The sentence describes the relationship between "this protocol" and "saving money, time, and workload" as well as "not compromising patient safety and future management". 2\) The authors used the verb "will save" and "without compromising", which suggests that there is a direct effect between the protocol and the outcomes mentioned. 3\) The certainty of the effect is strong and direct, as the authors used the word "will" to describe the effect. 4\) Therefore, the sentence expresses causation. Answer: 4 \- causation |  |  | no  relation | causation |
+
 | We should have major policy changes to increase future screening programs and health education programs which would have an overall positive impact on reducing the disease burden. |  | 1\) The sentence describes the relationship between "major policy changes" and "reducing the disease burden". 2\) The authors used the language cue "would have an overall positive impact on", which suggests that there is a direct effect between them. 3\) When describing the effect, the authors used a hedge word "would" to tone down the certainty of the effect. 4\) Therefore, the sentence expresses conditional causation only. Answer: 3 \- conditional causation |  |  | no  relation | conditional causation |
+
 | Pattern A     Incorrect reasoning step based on specific keywords Pattern B     Incorrect classification of reasoning relation |  |  |  |  |  |  |
 |  |  |  |  |  |  |  |
 |  |  |  |  |  |  |  |
 
 ## Appendix B:
+
 Table B1  HealthAdvice dataset distributions
 
 | Task | Label | Advice in discussion sections (n) | Advice in unstructured abstracts (n) | Advice in structured abstracts (n) |
 | :---- | :---- | ----- | ----- | ----- |
+
 | Classification: HealthAdvice | Weak advice | 162 | 28 | 1482 |
 |  | Strong advice | 135 | 16 | 925 |
 |  | No advice | 3635 | 890 | 3575 |
@@ -387,6 +481,7 @@ Table B2  CausalRelation dataset distributions
 
 | Task | Label | Count (n) |
 | :---- | :---- | ----- |
+
 | Reasoning: CausalRelation | Correlational | 998 |
 |  | Conditional causal | 213 |
 |  | Causal | 494 |
@@ -397,25 +492,33 @@ Table B3 Prompt templates for zero-shot, one-shot, few-shot, and zero-shot Chain
 
 | Prompt Template |  Settinga | IDb | Dataset |
 | ----- | ----- | ----- | ----- |
+
 | "Context: {context} \\n Question: is this a 2\) strong advice, 1\) weak advice 0\) no advice?" | Zero-shot | cs | HealthAdvice |
 | "Context: {context} \\n Question: does the context contain any medical advice? : 2: yes, 1: maybe 0: no" |  | cs | HealthAdvice |
 | Context: {context} \\n Question: Is it a (0) no advice, (1) strong advice, or (2) weak advice statement? |  | yy | HealthAdvice |
 | Context: {context} \\n Question: Does this claim have (1) strong advice, (2) weak advice, or there is (0) no advice? | One-shot | yy | HealthAdvice |
 | Context: {context} \\n Question: Is this (0) no advice, (1) strong advice, or (2) weak advice? | Few-shot | db | HealthAdvice |
 | Context: {context} \\n Question: What type of advice is this? Select only one from: 0 – no advice, 1 \- strong advice, or 2 \- weak advice. |  | db | HealthAdvice |
+
 | Context: {context} \\n Label the sentence as strong medical advice, weak medical advice or no medical advice | Zero-shot CoTc | gs | HealthAdvice |
 | Context: {context} \\n The strength of the medical advice if any in this sentence is .... |  | gs | HealthAdvice |
 | Context: {context} \-- Question: What type of relationship is this describing? Select only one from: 1\) no relationship, 2\) correlation, 3\) conditional causation, or 4\) direct causation. |  | hv | HealthAdvice |
+
 | Context: {context} \-- Question: Is the previous statement describing a (1) directly correlative relationship, (2) conditionally causative relationship, (3) causative relationship, or (0) no relationship. |  | hv | HealthAdvice |
+
 | Context: {context} \\n Question: choose from the following causal relationships: 0: None, 1: Correlational, 2: Conditional causal, 3: Direct causal? |  | cs | CausalRelation |
 | Context: {context} \\n Question: Is this a: 0\) None, 1\) Correlational, 2\) Conditional causal, 3\) Direct causal?" |  | cs | CausalRelation |
 | Context: {context} \\n Question: Does 1 \- correlation, 2 \- conditional causation, or 3 – direct causation expressed in the sentence, or it is a 0 \- no relationship sentence? |  Few-shot | yy | CausalRelation |
+
 | Context: {context} \\n Question: Is it 1 \- no relationship, 2 \- correlation, 3 \- conditional causation, or 4 – direct causation? | One-shot | yy | CausalRelation |
+
 | Context: {context} \\n Question: What type of relationship is this describing? Select only one from: 0 \- no relationship, 2 \- correlation, 3 \- conditional causation, or 4 – direct causation. | Zero-shot Zero-shot CoT | db | CausalRelation |
+
 | Context: {context} \\n Question: Is this describing a (1) directly correlative relationship, (2) conditionally causative relationship, (3) causative relationship, or (0) no relationship. |  | db | CausalRelation |
 | Context: {context} \\n Label the relation expressed in the sentence as one of correlation, conditional causation, causation or other |  | gs | CausalRelation |
 | Context: {context} \\n The relation in the sentence is of type... |  | gs | CausalRelation |
 | Context: {context} \-- Question: What type of relationship is this describing? Select only one from: 1\) no relationship, 2\) correlation, 3\) conditional causation, or 4\) direct causation. |  | hv | CausalRelation |
+
 | Context: {context} \-- Question: Is the previous statement describing a (1) directly correlative relationship, (2) conditionally causative relationship, (3) causative relationship, or (0) no relationship. |  | hv | CausalRelation |
 
 CoT \= Chain-of-Thought.
@@ -426,6 +529,7 @@ Table B4 Prompt templates for one- and few-shot Chain-of-Thought Used on the tes
 
 | Prompt Template | Dataset | Setting |
 | ----- | ----- | ----- |
+
 | "CONTEXT: Third, although our study have taken a large number of potential confounders into consideration, we could not completely rule out the possibility of unmeasured confounding. QUESTION: Does this claim have (1) strong advice, (2) weak advice, or there is (0) no advice? Let’s think step by step: 1\) The claim is talking about limitations of the current study. 2\) The claim does not have any actionable suggestions for health-related clinical or policy changes. 3\) Therefore, the claim does not have strong or weak advice. It is a no advice statement. Answer: (0) no advice. CONTEXT: Georgian public health specialists working in the HIV field should prioritize implementation of such interventions among HIV patients. QUESTION: Does this claim have (1) strong advice, (2) weak advice, or there is (0) no advice? Let’s think step by step: 1\) The claim has an actionable suggestion related to the implementation of an intervention. 2\) When describing the suggestion, the authors used modal word "should", which indicates the strength of the suggestion and it is strong. 3\) Therefore, the claim has strong advice. Answer: (1) strong advice. CONTEXT: Here we demonstrate that cancer recurrence after curative surgery was significantly lower in ANP-treated patients than in control patients, suggesting that ANP could potentially be used to prevent cancer recurrence after surgery. QUESTION: Does this claim have (1) strong advice, (2) weak advice, or there is (0) no advice? Let’s think step by step: 1\) The claim has an actionable suggestion for the use of ANP to prevent cancer recurrence after surgery. 2\) When describing the suggestion, the authors used a hedged phrase "could potentially be used to", which indicates the strength of the claim is not strong but weak. 3\) Therefore, the claim has weak advice. Answer: (2) weak advice. CONTEXT: {context} QUESTION: Does this claim have (1) strong advice, (2) weak advice, or there is (0) no advice? Let’s think step by step: | Classification:  Advice in  discussion  sections | Few-shot CoT |
 | CONTEXT: Correlation of serologic titers for Chlamydia trachomatis with other tests has been based on direct fluorescence antibody (DFA) testing and culture, but not on nucleic acid-based tests that are used for screening. QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. ANSWER: 1\. The context states a fact, which is not an advice. 2\. The answer is no advice. CONTEXT: These results suggest that the LOS test is an informative tool that should be included in any objective balance evaluations that screen TBI patients with balance complaints. QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. ANSWER: 1\. The term "should be included" indicate that there is an advice in the context. 2\. "Should be" indicates a strong opinion. 3\. The answer is strong advice. CONTEXT: Therefore, intraoperative antifibrinolysis may not be indicated in routine cardiac surgery when other blood-saving techniques are adopted. QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. ANSWER: 1\. The term "may not be indicated" indicates an advice in the context. 2\. "May not" indicates a weak opinion. 3\. The answer is weak advice. CONTEXT: {context} QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. | Classification:  Advice in  unstructured  abstracts | Few-shot CoT |
 | CONTEXT: Further mechanistic research in larger cohorts is necessary to reconcile the potential role of T2D in UF risk. QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. ANSWER: 1\. The context states the necessity of further research, which is not an advice. 2\. The answer is no advice. CONTEXT: Since blood pressure problems run a worse course in Blacks, we recommend encouragement of night-time intake in those preferring it and suggest that in those requiring two or more drugs one should be taken at night. QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. ANSWER: 1\. The terms "we recommend" and "suggest" indicate that there is an advice in the context. 2\. "Recommend" and "suggest" indicate a directive opinion. 3\. The answer is strong advice. CONTEXT: Therefore, this regimen would be a viable option for acne treatments either as monotherapy or as combination therapy. QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. ANSWER: 1\. The term "would be a viable option" indicates that there is an advice in the context. 2\. "Would be" indicates that the opinion is not strong. 3\. The answer is weak advice. CONTEXT: {context} QUESTION: Is this a (0) no advice, (1) weak advice, or (2) strong advice? Let's think step by step. | Classification:  Advice in  structured  abstracts | Few-shot CoT |

@@ -36,7 +36,9 @@ Baseline Performance Analysis: An empirical evaluation of various state-of-the-a
 
 Demonstration of Capability Gaps: Evidence showing the gap between the capabilities of general-purpose browsing agents (given frontier models already saturated general benchmark like SimpleQA) and specialized skills on complex medical information-seeking tasks.
 **Figure 1 |** Example question constructions for MedBrowseComp.
+
 ![][image66]
+
 RELATED WORK
 One of the first comprehensive efforts to advance AI evaluation for general-purpose tool use and web browsing is GAIA[29](https://paperpile.com/c/Y40emr/lPSXk). GAIA is a carefully curated testbed for “General AI Assistants,” combining tasks that require multi-modal input, open-ended reasoning, and the ability to query external tools. It is simple for humans, but it was hard for AI systems at the time. Subsequent work began to highlight the importance of structured, multi-step web traversal. WebWalker introduced a dual-agent framework that separately handles horizontal browsing across different webpages and deep vertical navigation through website hierarchies[30,31](https://paperpile.com/c/Y40emr/pCcJ4+ipOAO). Its companion benchmark, WebWalkerQA, comprises realistic multi-hop questions from domains like education and organizational websites, emphasizing the challenge of distributing information across intricate hyperlink structures. Around the same time, FRAMES took a different angle by systematically evaluating Retrieval-Augmented Generation (RAG) systems for factual correctness, retrieval quality, and reasoning[32](https://paperpile.com/c/Y40emr/MmVUd).  While WebWalker and FRAMES address structured exploration and pipeline analysis, SimpleQA focuses more narrowly on short-answer factual correctness, specifically targeting LLM hallucinations[33](https://paperpile.com/c/Y40emr/JKUaV). SimpleQA’s adversarial question collection and stringent answer verification make it an effective tool for measuring whether models can reliably produce grounded, non-invented responses. Despite its value in exposing factual flaws, SimpleQA’s tasks remain relatively easy to solve with basic web searches, limiting its utility for deeper or more specialized queries.
 
@@ -89,7 +91,7 @@ Lastly, we verified difficulty by running Gemini-2.0-Flash-001 zero-shot across 
 
 Table 1 summarizes accuracy on MedBrowseComp-50. Accuracy decays with hop count; deep research modes outperform single-shot search. Gains are most pronounced at 4–5 hops. System-wise, O3 deepresearch and Gemini-2.5-pro deepsearch trail only the ‘Best of 1’ upper bound (30/50). Cross-model sampling improves accuracy but increases cost, motivating more efficient unified agents.
 
-*Table 1| Notes: “Hop Pattern” shows per-depth correct counts (1-hop → 2-hop → 3-hop → 4-hop → 5-hop; 10 questions each). If fewer numbers are shown, omitted depths had 0\. Cost notes omitted in Word table; see LaTeX for details. ‘Best of 1’ selects the best single answer across systems per question.*
+**Table 1| Notes: “Hop Pattern” shows per-depth correct counts (1-hop → 2-hop → 3-hop → 4-hop → 5-hop; 10 questions each). If fewer numbers are shown, omitted depths had 0\. Cost notes omitted in Word table; see LaTeX for details. ‘Best of 1’ selects the best single answer across systems per question.**
 Deep Research Agent Results
 Table 1 summarizes accuracy on MedBrowseComp-50. Across all systems, performance decays monotonically with hop count, corroborating prior evidence that long-horizon web navigation remains an open challenge for frontier LLM agents. Nevertheless, deep research variants—agents that allow iterative browsing steps rather than a single query—had improved performance. For example, O3 deepresearch answers 25.5/50 questions correctly, a 34% relative gain over O3 search (19/50); Gemini-2.5-pro deepsearch shows 75% improvement over its single-shot analogue (24.5 vs. 14). These gains are most pronounced on the hardest 4- and 5-hop splits, where deep research agents more than double the baseline accuracy.
 
@@ -102,34 +104,48 @@ The agent performs best on finding the Second Author of the linked PubMed paper 
 As we take one step further beyond Hemonc, asking for the matching PMID results in weakest performance, despite appearing structurally simple since the model just need to located the PMID on the page. Interestingly, this is not due to common visual brittleness or interface failures. Instead, the agent often returns a valid PMID for a plausible but incorrect paper. This suggests semantic confusion rather than surface-level noise. You can see a detailed common error modes sorted with explanations in Appendix Table 9\.
 
 | Extraction Task | Accuracy (%) |
+|---|---|
 
 | :---- | :---- |
 
+|---|---|
+
 | Clinical Trial IDs | 33.88 |
+|---|---|
 
 | Start Date | 30.58 |
+|---|---|
 
 | Second Author | 36.36 |
+|---|---|
 
 | PMIDs | 11.57 |
+|---|---|
 
-*Table 2\. Anthropic Computer-Use performance on four HemOnc information-extraction tasks in the sandbox environment.*
+**Table 2\. Anthropic Computer-Use performance on four HemOnc information-extraction tasks in the sandbox environment.**
 
 To evaluate the impact of structured entrypoints on CUA performance (and to demonstrate defined workflow can lead to performance improvements), we re-ran the benchmark using the same Claude 3.7 Sonnet system but initialized each task from the HemOnc.org homepage. This strategy avoids ambiguity introduced by external search engines and leverages HemOnc.org's curated structure to simplify task execution.
 
 | Extraction Task | With HemOnc Start | No Defined Start |
+|---|---|---|
 
 | :---- | :---- | :---- |
 
+|---|---|---|
+
 | PMIDs | 42.98 | 11.57 |
+|---|---|---|
 
 | Second Author | 46.28 | 36.36 |
+|---|---|---|
 
 | NCT | 39.67 | 33.88 |
+|---|---|---|
 
 | Start Date | 31.40 | 30.58 |
+|---|---|---|
 
-*Table 3\. Accuracy (%) of Claude 3.7 Computer-Use Agent on structured extraction tasks, with and without initialization from HemOnc.org homepage.*
+**Table 3\. Accuracy (%) of Claude 3.7 Computer-Use Agent on structured extraction tasks, with and without initialization from HemOnc.org homepage.**
 
 Compared to the results reported in Table 2, these scores show notable improvement, particularly on PMID extraction, which increased from 11.57% to 42.98%. By starting from a high-quality structured resource, the agent appears less likely to encounter ambiguous links, irrelevant documents, or noisy intermediate pages.
 
@@ -153,6 +169,7 @@ Building the benchmark and running baselines is non‑trivial and our experiment
 Real‑world validation:
 Finally, we did not place answers in front of clinicians, and the questions in MedBrowseComp only cover a small portion of the enormous medical knowledge base used for real-world clinical decision-making. However, expert-curated, verifiable knowledge is not available for the entire medical domain. Our focused benchmark enables deeper study of deep research and computer use capabilities and still reveals important gaps and future directions to inform the field.
 Future Work
+
 * Broader task suite: Expand beyond single‑field extraction to multi‑paragraph justification, guideline concordance, and financial/regulatory trend analysis, all of which require deeper reasoning.
 
 * Tool‑augmented agents: Test whether lightweight adapters such as PDF parsers, table detectors, ClinicalTrials.gov wrappers boost agent performance.
@@ -167,44 +184,80 @@ Future Work
 **Figure 3 |** Latest computer use agent showing direct access to the Hugging Face repo containing gold labels, illustrating the risk of contamination. However, this system did not read directly into the labeled dataset.
 
 ![][image68]
+
 CONCLUSION
 We introduced MedBrowseComp, the largest verifiable benchmark that evaluates deep research and computer use agents in the medical field. The tasks are clinically meaningful rather than contrived for difficulty. Experiments reveal a clear capability gap: retrieval‑augmented text pipelines answer nearly half as many questions as their deep research counterparts, yet no system, including computer use agents, exceeds 40% accuracy among questions that require more than a single hop. GUI‑centric agents can control browsers and desktops end‑to‑end, but they tend to underperform compared to deep researchers driven by APIs on our benchmark, partly due to context bloat from screenshots. MedBrowseComp offers a realistic, challenging test bed for future systems and a focused subset that remains challenging for CUA.
 REFERENCES
 1\.	[Guha, N. *et al.* LegalBench: A collaboratively built benchmark for measuring legal reasoning in large language models. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/Y40emr/HNVqF)
+
 2\.	[Wang, Y. *et al.* MMLU-Pro: A more robust and challenging multi-task language understanding benchmark. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/Y40emr/hbXRy)
+
 3\.	[Singh, S. *et al.* Global MMLU: Understanding and addressing cultural and linguistic biases in multilingual evaluation. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/Y40emr/ouQfI)
+
 4\.	[Hendrycks, D. *et al.* Measuring massive multitask language understanding. *arXiv \[cs.CY\]* (2020).](http://paperpile.com/b/Y40emr/Caw8P)
+
 5\.	[Phan, L. Humanity’s Last Exam. *Research Square* (2025) doi:](http://paperpile.com/b/Y40emr/a7HKr)[10.21203/rs.3.rs-6615297/v1](http://dx.doi.org/10.21203/rs.3.rs-6615297/v1)[.](http://paperpile.com/b/Y40emr/a7HKr)
+
 6\.	[Dupplaw, D. P. *et al.* Information extraction from multimedia web documents: an open-source platform and testbed. *Int. J. Multimed. Inf. Retr.* **3**, 97–111 (2014).](http://paperpile.com/b/Y40emr/uMfMN)
+
 7\.	[Vu, T. *et al.* FreshLLMs: Refreshing large language models with search engine augmentation. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/Y40emr/qMmet)
+
 8\.	[Alzubi, S. *et al.* Open Deep Search: Democratizing search with open-source reasoning agents. *arXiv \[cs.LG\]* (2025).](http://paperpile.com/b/Y40emr/S5hSb)
+
 9\.	[Nakano, R. *et al.* WebGPT: Browser-assisted question-answering with human feedback. *arXiv \[cs.CL\]* (2021).](http://paperpile.com/b/Y40emr/ix5ju)
+
 10\.	[Kasai, J. *et al.* RealTime QA: What’s the answer right now? *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/Y40emr/4FuRc)
+
 11\.	[Wang, G. *et al.* Voyager: An open-ended embodied agent with large language models. *arXiv \[cs.AI\]* (2023).](http://paperpile.com/b/Y40emr/LVq9d)
+
 12\.	[Deng, X. *et al.* Mind2Web: Towards a generalist agent for the web. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/Y40emr/lHveh)
+
 13\.	[Xu, Y. *et al.* Aguvis: Unified Pure Vision Agents for Autonomous GUI Interaction. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/Y40emr/HbwVn)
+
 14\.	[Pahuja, V. *et al.* Explorer: Scaling exploration-driven web trajectory synthesis for multimodal web agents. *arXiv \[cs.AI\]* (2025).](http://paperpile.com/b/Y40emr/0ttzp)
+
 15\.	[Wornow, M., Thapa, R., Steinberg, E., Fries, J. A. & Shah, N. H. EHRSHOT: An EHR benchmark for few-shot evaluation of foundation models. *arXiv \[cs.LG\]* (2023).](http://paperpile.com/b/Y40emr/peTRl)
+
 16\.	[Chen, S. *et al.* Wait, but Tylenol is acetaminophen... Investigating and improving language models’ ability to resist requests for misinformation. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/Y40emr/46ikF)
+
 17\.	[Chen, S. *et al.* Use of artificial intelligence chatbots for cancer treatment information. *JAMA Oncol.* **9**, 1459–1462 (2023).](http://paperpile.com/b/Y40emr/Z4lyR)
+
 18\.	[Yu, H. *et al.* AIPatient: Simulating Patients with EHRs and LLM Powered Agentic Workflow. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/Y40emr/tMNnU)
+
 19\.	[Tu, T. *et al.* Towards Conversational Diagnostic AI. *arXiv \[cs.AI\]* (2024).](http://paperpile.com/b/Y40emr/BaqPg)
+
 20\.	[Li, X. *et al.* MedGUIDE: Benchmarking clinical decision-making in Large Language Models. *arXiv \[cs.CL\]* (2025).](http://paperpile.com/b/Y40emr/9E9ZT)
+
 21\.	[Kim, Y. *et al.* Medical hallucinations in foundation models and their impact on healthcare. *arXiv \[cs.CL\]* (2025).](http://paperpile.com/b/Y40emr/hZkYV)
+
 22\.	[Holmes, J. *et al.* RadOnc-GPT: An autonomous LLM agent for real-time patient outcomes labeling at scale. *arXiv \[cs.AI\]* (2025).](http://paperpile.com/b/Y40emr/FbPDH)
+
 23\.	[Gallifant, J. & Bitterman, D. S. Humanity’s next medical exam: Preparing to evaluate superhuman systems. *NEJM AI* **2**, (2025).](http://paperpile.com/b/Y40emr/ic5ew)
+
 24\.	[Xiao, Y. *et al.* KScope: A framework for characterizing the knowledge status of language models. *arXiv \[cs.CL\]* (2025) doi:](http://paperpile.com/b/Y40emr/uLbbZ)[10.48550/arXiv.2506.07458](http://dx.doi.org/10.48550/arXiv.2506.07458)[.](http://paperpile.com/b/Y40emr/uLbbZ)
+
 25\.	[Schmidgall, S. *et al.* AgentClinic: a multimodal agent benchmark to evaluate AI in simulated clinical environments. *arXiv \[cs.HC\]* (2024).](http://paperpile.com/b/Y40emr/XLtUM)
+
 26\.	[Gallifant, J. *et al.* Language models are surprisingly fragile to drug names in biomedical benchmarks. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/Y40emr/Ceu4a)
+
 27\.	[Matos, J. *et al.* WorldMedQA-V: a multilingual, multimodal medical examination dataset for multimodal language models evaluation. in *Findings of the Association for Computational Linguistics: NAACL 2025* (eds. Chiruzzo, L., Ritter, A. & Wang, L.) 7203–7216 (Association for Computational Linguistics, Stroudsburg, PA, USA, 2025).](http://paperpile.com/b/Y40emr/u0LHx)
+
 28\.	[Wei, J. *et al.* BrowseComp: A simple yet challenging benchmark for browsing agents. *arXiv \[cs.CL\]* (2025).](http://paperpile.com/b/Y40emr/aURUp)
+
 29\.	[Mialon, G. *et al.* GAIA: a benchmark for General AI Assistants. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/Y40emr/lPSXk)
+
 30\.	[Wu, J. *et al.* WebWalker: Benchmarking LLMs in Web Traversal. *arXiv \[cs.CL\]* (2025).](http://paperpile.com/b/Y40emr/pCcJ4)
+
 31\.	[Xie, T. *et al.* OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments. *arXiv \[cs.AI\]* (2024).](http://paperpile.com/b/Y40emr/ipOAO)
+
 32\.	[Akkiraju, R. *et al.* FACTS about building retrieval Augmented Generation-based chatbots. *arXiv \[cs.LG\]* (2024).](http://paperpile.com/b/Y40emr/MmVUd)
+
 33\.	[Wei, J. *et al.* Measuring short-form factuality in large language models. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/Y40emr/JKUaV)
+
 34\.	[Zhou, P. *et al.* BrowseComp-ZH: Benchmarking web browsing ability of large language models in Chinese. *arXiv \[cs.CL\]* (2025).](http://paperpile.com/b/Y40emr/p7K9A)
+
 35\.	[Chen, Z. *et al.* BrowseComp-Plus: A more fair and transparent evaluation benchmark of deep-research agent. *arXiv \[cs.CL\]* (2025).](http://paperpile.com/b/Y40emr/k66Ka)
+
 36\.	[Warner, J. L. *et al.* HemOnc: A new standard vocabulary for chemotherapy regimen representation in the OMOP common data model. *J. Biomed. Inform.* **96**, 103239 (2019).](http://paperpile.com/b/Y40emr/1CV59)
 
 ![][image69]

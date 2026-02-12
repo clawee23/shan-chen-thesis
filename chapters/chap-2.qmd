@@ -2,6 +2,7 @@
 
 ---
 *Shan Chen,*** Benjamin H. Kann, Michael B. Foote, Hugo JWL Aerts,
+
 Guergana K. Savova, Raymond H. Mak, Danielle S. Bitterman,
 
 JAMA Oncology
@@ -10,6 +11,7 @@ Background
 Large language models (LLMs) such as ChatGPT are increasingly being used for medical question-answering. However, their tendency to generate plausible but inaccurate text raises concerns about medical misinformation. Cancer patients, who frequently seek information online, may use ChatGPT for treatment advice. This study assessed the accuracy and robustness of ChatGPT’s cancer treatment recommendations for breast, prostate, and lung cancers compared to National Comprehensive Cancer Network (NCCN) guidelines.
 Methods
 We developed four zero-shot prompt templates to test ChatGPT’s responses across 26 distinct cancer diagnosis descriptions (e.g., cancer type and disease extent), resulting in 104 total prompts. Responses were generated using OpenAI’s *gpt-3.5-turbo-0301* model. Outputs were evaluated against NCCN 2021 guidelines by three board-certified oncologists, with a fourth adjudicating disagreements. Responses were scored for guideline concordance and categorized by accuracy, completeness, and hallucination frequency.
+
 Findings
 ChatGPT generated treatment recommendations for 102 of 104 prompts (98%), and every response contained at least one NCCN-concordant recommendation. However, 35 of these (34.3%) also included at least one partially or fully non-concordant treatment. Twelve and a half percent (13/104) of outputs hallucinated treatment modalities—most often recommending localized therapies for advanced disease or suggesting inappropriate targeted/immunotherapies. The correctness and completeness of responses varied depending on the phrasing of the prompt. Annotator agreement was 61.9%, underscoring interpretive ambiguity even among experts.
 Interpretation
@@ -28,10 +30,12 @@ We benchmarked against NCCN 2021 because ChatGPT was trained on data up to Septe
 ![][image2]
 
 **Figure 1 |** Experimental design. Underlined text indicates where each diagnosis description was input into the prompt template. Diagnosis descriptions consisted of cancer type (breast cancer, non-small cell lung cancer, small-cell lung cancer, and prostate cancer) with and without extents of disease relevant for each cancer type. A total of 26 disease descriptions were input into the prompt templates, for a total of 104 unique prompts.
+
 RESULTS
 Outputs of 104 unique prompts were scored on five criteria for a total of 520 individual scores. All three annotators agreed for 322 of 520 (61.9%) scores, with disagreements most commonly arising when the chatbot’s output was ambiguous or incomplete—for example, when it listed multiple treatment modalities without specifying whether they should be used in combination or as alternatives. Table 1 presents the agreement between the four prompt templates and the distribution of scores across cancer type and extent of disease. For nine of twenty-six (34.6%) diagnosis descriptions, the four prompts yielded identical scores for each of the five scoring criteria, indicating consistency in those cases. However, for the remainder, responses varied depending on the phrasing of the question, suggesting that ChatGPT’s recommendations were influenced by the linguistic structure of the query.
 
 ChatGPT provided at least one treatment recommendation for 102 of 104 (98%) prompts. All outputs that included a recommendation contained at least one treatment that was concordant with 2021 National Comprehensive Cancer Network (NCCN) guidelines. However, 35 of these 102 (34.3%) outputs also included one or more treatment recommendations that were at least partially non-concordant with NCCN guidelines. Non-concordant recommendations were observed across all cancer types but were most frequent in breast and prostate cancer queries and in descriptions of localized disease. Among cases in which some, but not all, recommendations were guideline-concordant, the proportion of fully correct recommendations varied substantially by disease type and prompt phrasing, as detailed in Table 1\.
+
 ![][image3]
 
 Responses were hallucinated—that is, contained modalities not recommended in any relevant NCCN guideline—in 13 of 104 (12.5%) outputs. These hallucinated treatments were primarily recommendations for localized treatment in cases describing advanced disease, as well as inappropriate suggestions of targeted therapy or immunotherapy. While a few of these modalities have since become accepted in newer NCCN versions, most were not appropriate for the disease stage or histology described.

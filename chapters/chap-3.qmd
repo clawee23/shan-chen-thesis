@@ -28,11 +28,13 @@ These critical questions remain unaddressed: Do these 'lower risk' administrativ
 This study seeks to bridge this knowledge gap, rigorously assessing the impact and safety of LLM-assisted patient messaging on healthcare delivery in an observational end-user study. We demonstrate that existing evaluations of LLM biomedical knowledge are insufficient to understand their clinical utility and risks because LLMs alter clinical decision-making in unexpected ways, and inappropriate LLM content arises largely from inadequate clinical acumen, not insufficient biomedical knowledgebase. This study serves as a call to action for a more measured approach to implementing LLMs within EHRs, including evaluations that reflect how they will actually be used in clinical settings and considerations of human factors.
 
 ## METHODS
+
 Overview of Study Design
 Figure 1 illustrates the overall study schema. We sought to understand how LLM assistance for electronic patient portal messaging as it is being implemented in EHRs, *i.e.* using an LLM to draft a response for a clinician to edit, impacts subjective efficiency, clinical recommendations, and potential harms. We therefore simulated how ChatGPT family models are being integrated into Epic systems for portal messaging. We simulated Epic’s GPT-4 implementation5 due to Epic’s prominence: Epic is the leading EHR vendor with the most hospital-years in the United States,22 and holds health records of more than 3% of people globally.23 Because clinicians, and potentially the LLM depending on prompting approaches, would always have access to the patient’s EHR records to provide context, we included background clinical information along with the question.
 
 Board-certified attending oncologists were first asked to respond to the patient messages as they normally would in clinical practice (“manual responses”), and then asked to edit GPT-4 responses (“LLM drafts”) so that they were a clinically acceptable response to send a patient (“LLM-assisted responses”). Surveys and content analysis of responses were used to evaluate the impact of LLM assistance on patient messaging. All datasets, including physician-written responses and evaluations, generated in this study are made publicly available. This study was approved by the Dana-Farber/Harvard Cancer Center IRB.
 **Figure 1 |** *Example of a scenario, patient message pair, and prompting methods used in this study. A) Prompt examples for creating scenario/message pairs.  B) Prompt examples for creating responses from GPT4.
+
 Simulating Patient Portal Messages
 Cancer patient scenario/message pairs were generated to mirror realistic EHR system inbox messages. The scenario provided background information about a patient that is standardly available in the EHR and relevant to responding to cancer patient messages: age, gender, cancer diagnosis, past medical history, prior and current cancer treatments, current medications, and a summary of the most recent oncology visit (Figure 2). As above, these scenarios were needed for responses reflective of the real clinical setting where physicians have access to clinical information beyond just the patient’s question. They also served to encourage more substantive responses. While these exact summaries of a patient’s clinical history are not available in EHR messaging systems, in practice a clinician would have access to that patient’s full EHR records. In addition, depending on prompting approaches which vary across institutions, clinical data could be provided in the prompt the LLM.
 
@@ -41,6 +43,7 @@ Clinical Evaluation
 As shown in Figure 2, using the dataset of scenario/question pairs, we carried out a 2-stage observational study to investigate the impact and utility of LLM assistance for answering patient questions. Six board-certified attending oncologists were recruited to participate, and informed consent was obtained. In both stages, each participant evaluated 26 scenario/message pairs, yielding 56 dual-annotated cases and 44 single-annotated cases. During both stages, each physician received a different group of patient scenarios, and each of the 26 partitions were separated evenly.
 
 ![][image4]
+
 **Figure 2 |** Schematic of study design. An oncologist generated and verified with GPT-4 assistance 100 patient clinical scenarios with paired patient questions in the format of portal messages. Participants manually wrote responses to scenarios in Stage I, and edited AI-assisted responses in Stage II. 56 scenario and message pairs were dual-annotated by 2 oncologists in both stages to assess inter-clinician variability.
 
 In Stage I, physicians responded to messages manually, each followed by a 2-question survey on the perceived difficulty in crafting the response and the medical severity of each scenario. In Stage II, physicians received GPT-4 generated draft responses and were instructed to edit in any way they would like to generate a final LLM-assisted response. Physicians were not informed of how the draft responses were generated. Participants completed a 7-question survey after each response. Questions addressed: perceived difficulty in crafting responses, medical severity, acceptability of drafts, the potential harm of drafts, and perceived efficiency. Table 1 shows the survey questions. Examples of how the scenarios and surveys were presented to participants, along with instructions and real responses, are included in Appendix A.
@@ -58,6 +61,7 @@ Manual responses were on average shorter than the LLM draft and LLM-assisted res
 Notably, 11/156 (7.1%) and 1/156 (0.6%) survey responses indicated that the LLM draft could lead to severe harm or death, respectively, if unedited. Appendix C shows these drafts, along with the error mode that led to the harmful content. The majority of harmful responses were due to incorrectly determining and/or conveying the acuity of the scenario and recommended actions. For example, in Appendix Example 12 where a patient describes new back pain and falls, the LLM does not identify that the provided information is sufficiently concerning for malignant spinal cord compression that requires urgent evaluation. In Example 7, where a patient describes new bloody diarrhea, the LLM appropriately recommends the patient reach out to their healthcare team. However, this recommendation appears at the end of a list of technically correct but lower priority, potentially distracting content, and the timing and specific details of who the patient should contact is vague. By contrast, the LLM-assisted response removes the extraneous content and recommends a phone or in-person visit to further assess. Other error modes included a lack of definiteness and clarity and incorrect diagnostic reasoning, largely arising from a failure to identify risks common in an oncology population but not a general population.
 
 ![][image5]
+
 **Figure 3 |** Distribution of content categories present in the manual, GPT-4 drafted, and AI-assisted responses to patient messages. Because 56/100 questions were dual-annotated, here we present results including one response from each of the dual-annotated scenarios. Results are similar when the other set of responses for dual-annotated scenarios are used (Supplemental Figure B2). Pairwise comparisons are done using Mann-Whitney U tests.
 
 Edit distances were increased when the scenario was considered more challenging, the LLM draft was viewed as unacceptable, the LLM draft was associated with higher harm, and the LLM draft provided lower efficiency gain, indicating more extensive revisions of the draft in these settings (Table 1). Edit distance was higher when the draft was thought to be written by AI compared to when it was thought to be written by a human.
@@ -90,7 +94,9 @@ Table 1\. Distribution of survey responses for Stage I and II of end-user study.
 
 |  Survey Question | Stage I |  | Stage II |  |
 | :---- | ----- | :---: | :---: | :---: |
+
 |  | **Count (N=156)** | **Percentage** | **Count (N=156)** | **Percentage** |
+
 | Q1: How challenging was it to respond to this message? |  |  |  |  |
 | Neutral | 85 | 54.5% | 82 | 52.6% |
 | Trivial/Very trivial | 46 | 29.5% | 39 | 25.0% |
@@ -186,6 +192,7 @@ REFERENCES
 29	Chen S, Li Y, Lu S, *et al.* Evaluation of ChatGPT Family of Models for Biomedical Reasoning and Classification. arXiv \[cs.CL\]. 2023; published online April 5\. http://arxiv.org/abs/2304.02496.
 
 30	Guevara M, Chen S, Thomas S, *et al.* Large Language Models to Identify Social Determinants of Health in Electronic Health Records. arXiv \[cs.CL\]. 2023; published online Aug 11\. [http://arxiv.org/abs/2308.06354](http://arxiv.org/abs/2308.06354).
+
 Appendix A: Supplemental Method
 Dataset Creation and Curation
 Cancer patient scenario/message pairs were generated to mirror realistic EHR system inbox messages. The scenario provided background information about a patient that is standardly available in the EHR and relevant to responding to cancer patient messages: age, gender, cancer diagnosis, past medical history, prior and current cancer treatments, current medications, and a summary of the most recent oncology visit (Figure 1).
@@ -200,9 +207,9 @@ Thank you again for participating in the development of OncQA\!
 
 You are now beginning Phase 2\. Please determine whether there is enough information to provide an initial response, and if not provide what additional information from the patient’s medical record is needed. Then, provide a response to the best of your ability, similarly to how you would respond to a patient’s electronic medical record inbox message. You should type your answers where indicated below each question. Each question will be followed by a 4-question survey.
 
-*It is important that you do not change the order of any of the samples in this document.*
+**It is important that you do not change the order of any of the samples in this document.**
 
-*Please do not discuss or show the samples to anyone, including other participants.*
+**Please do not discuss or show the samples to anyone, including other participants.**
 
 Please email us if you have any questions.
 
@@ -232,25 +239,28 @@ How challenging was it to respond to this message?
 
 | Very trivial | Trivial | Neutral | Challenging | Very challenging |
 | :---- | :---- | :---- | :---- | :---- |
+
 |  |  | X |  |  |
 
 Do you believe this patient is experiencing a severe medical event?
 
 | Strongly disagree | Disagree | Neither agree or disagree | Agree | Strongly agree |
 | :---- | :---- | :---- | :---- | :---- |
+
 |  | X |  |  |  |
 
 Sample Stage 2 Instructions, Example and Survey
 Thank you again for participating in the development of OncQA\!
 
 You are now beginning Phase 2\. Please determine whether there is enough information to provide an initial response, and if not provide what additional information from the patient’s medical record is needed. Then, **modify the provided response** to the best of your ability, similarly to how you would respond to a patient’s electronic medical record inbox message. **You should start modifying directly in the edit mode on the second copy of the given response**.
+
 Note that you do not have to edit the sentence of whether the given information is enough, it is covered by the survey.
 
 Each question will be followed by a 7-question survey.
 
-*It is important that you do not change the order of any of the samples in this document.*
+**It is important that you do not change the order of any of the samples in this document.**
 
-*Please do not discuss or show the samples to anyone, including other participants.*
+**Please do not discuss or show the samples to anyone, including other participants.**
 
 Please email us if you have any questions.
 
@@ -324,42 +334,49 @@ How challenging was it to respond to this message?
 
 | Very trivial | Trivial | Neutral | Challenging | Very challenging |
 | :---- | :---- | :---- | :---- | :---- |
+
 |  |  | X |  |  |
 
 Do you believe this patient is experiencing a severe medical event?
 
 | Strongly disagree | Disagree | Neither agree or disagree | Agree | Strongly agree |
 | :---- | :---- | :---- | :---- | :---- |
+
 |  | X |  |  |  |
 
 How would you rate the acceptability of the draft response?
 
 | Acceptable with no modifications | Acceptable with modifications | Unacceptable (Major modifications or rewrite required) |
 | :---- | :---- | :---- |
+
 |  | X |  |
 
 How likely is it that the unedited draft response could cause harm?
 
 | High | Medium | Low |
 | :---- | :---- | :---- |
+
 |  |  | X |
 
 If the unedited draft does cause harm, what would be the extent, or clinical impact on the patient?
 
 | No harm | Mild harm | Moderate harm | Severe harm | Death |
 | :---- | :---- | :---- | :---- | :---- |
+
 | X |  |  |  |  |
 
 Do you believe the provided unedited draft response improved your documentation efficiency?
 
 | Strongly disagree | Disagree | Neither agree or disagree | Agree | Strongly agree |
 | :---- | :---- | :---- | :---- | :---- |
+
 |  |  |  | X |  |
 
 Do you believe the provided draft response was written by an AI or by a human
 
 | AI | Human |
 | :---- | :---- |
+
 | X |  |
 
 Annotation guidelines for OncQA content categorization
@@ -368,6 +385,7 @@ These guidelines describe how to label replies to patient question for different
 Value set (same for all categories):
 
 - 1: Present
+
 - 0: Absent
 
 Note: In some cases, there will be ambiguity or different ways to interpret a reply. Use your best judgment and common sense, considering the most likely way a patient would interpret the response.
@@ -375,15 +393,25 @@ Note: In some cases, there will be ambiguity or different ways to interpret a re
 Hedging language such as “might”, “perhaps”, “could”, etc. should not be considered definitive recommendations.
 Content Categories
 Any Education (AnyEdu)** – Writer provides simple education about the patient’s condition/question, directly related to the patient’s question. For example, “hair loss is a doxorubicin side effect”. *AnyEdu and ExtentEdu are mutually exclusive (if AnyEdu \= 1, ExtentEdu \= 0).*
+
 Extensive Education (ExtentEdu)** – Writer provides extensive education about the patient’s condition/question. (e.g., “hair loss is a side effect of chemo because it causes damage to hair follicles”). *AnyEdu and ExtentEdu are mutually exclusive (If ExtentEdu \= 1, AnyEdu \= 0).*
+
 Manage** – Writer provides recommendations for the patient to self-manage at home. Statements that the writer will prescribe medication is Act, not Manage.
+
 Inform** – Writer instructs patient to inform/contact any provider. Note that instructions to be seen in person should be labeled as UrgentVisit or NonurgentVisit, not Inform. Calling an office to make an appointment is similarly UrgentVisit or NonurgentVisit, not Inform.
+
 UrgentVisit** – Writer recommends patients go to urgent care/ED *or* come into clinic with same-day urgency (e.g., an explicit recommendation to come to clinic the same day, “today”). Telling someone to come in if something gets worse should be labeled Contingency; it should not be labeled as Urgent or Nonurgent. *UrgentVisit and NonurgentVisit are mutually exclusive (if both are mentioned, UrgentVisit takes priority).*
+
 NonurgentVisit** – Writer recommends patient comes into clinic without urgency. Telling someone to come in if something gets worse should be labeled Contingency; it should not be labeled as Urgent or Nonurgent. *UrgentVisit and NonurgentVisit are mutually exclusive (if both are mentioned, UrgentVisit takes priority).* Visits referred to explicitly as “telephone consultations” count as NonurgentVisit. Telling patients that it can be discussed at an already scheduled visit but that a visit does not need to be scheduled particularly for this question is not NonurgentVisit, although sometimes this difference can be subtle. In these cases, use your best judgment and common sense on the most likely way a patient would interpret the response.
+
 Clarify** – Writer asks clarifying questions about the question or patient’s condition
+
 Delegate** – Writer will delegate an action to someone else (e.g., “someone from my team will call you”)
+
 Act** – Writer will take a clinical action other than seeing the patient for a visit (e.g., order a test, prescribe a medication, etc). Includes actions that the MD states will they take when the patient comes in for a recommended visit. Includes writer saying they will inform another clinician about the condition. Does not include contingency actions (e.g., “depending on your clinical exam, I will order an XR”). Taking a history, getting vitals, and doing a physical exam do not count as Act. If there is only vague reference to an unspecified action “we will provide information”, do not label as Act. Actions that may/might happen do not count.
+
 Contingency** – Writer provides a contingency plan describing actions the patient should take if something occurs (e.g., if X gets worse do Y, “If pain gets worse, go to the ED”, “if diarrhea gets worse tell your oncologist”). Stating that something may happen depending on additional assessments by a clinician and contingency plans describing actions the writer will take does not count (e.g., “depending on what you tell me/your nurse, you may be sent to the ED”). Telling someone to come in if something gets worse should be labeled Contingency; it should not be labeled as Urgent or Nonurgent. Generic statements such as “Please do not hesitate to reach out if you have any further questions or concerns” do not count as Contingency. “Monitor your symptoms and report changes” is only Contingency if it instructs the patient to take a definitive action in response to the changes (even if it is just contacting the writer).
+
 IAA for content categorization using Cohen Kappa
 Agreement among two physicians 10 categories content for 5\*10 annotated responses:
 'AnyEdu': 0.84,
@@ -406,69 +434,114 @@ Some key properties of this method are:
 
 3. Adherence to the triangle inequality: the distance traversing between two strings through an intermediary string is never less than the direct edit distance between the two original strings.
 Appendix B: Supplemental Results
+
 ![][image6]
+
 Figure B1.** Word counts and Flesch reading ease scores distribution box for manual responses, GPT-4 drafts, and AI-assisted responses.
 
 | Q1: How challenging was it to respond to this message? |  |  |  |
 | ----- | ----- | ----- | ----- |
+
 |  | **Challenging/Very Challenging** | **Trivial/Very Trivial** | **Neutral** |
+
 | **Stage 1** | 16.0% | 29.5% | 54.5% |
+
 | **Stage 2** | 22.4% | 25.0% | 52.6% |
+
 |  |  |  |  |
 | **Q2: Do you believe this Patient is experiencing a severe medical event?** |  |  |  |
+
 |  | **Agree/Strongly Agree** | **Disagree/Strongly disagree** | **Neither agree or disagree** |
+
 | **Stage 1** | 33.3% | 34.0% | 32.7% |
+
 | **Stage 2** | 21.8% | 39.1% | 39.1% |
 
 Table B1.** Survey responses for questions about the level of challenge for and medical severity of each scenario.
 
 | Cohen Kappa scores comparison among two groups of physician base on content scoring |  |  |
 | :---- | ----- | ----- |
+
 | **Grading Category** | **Manual Responses (kappa)** | **AI-assisted responses (kappa)** |
+
 | **AnyEdu** | 0.11 | 0.49 |
+
 | **ExtentEdu** | \-0.02 | 0.90 |
+
 | **Manage** | 0.31 | 0.69 |
+
 | **Inform** | \-0.02 | 0.42 |
+
 | **UrgentVisit** | 0.41 | 0.24 |
+
 | **NonurgentVisit** | 0.36 | 0.52 |
+
 | **Clarify** | 0.03 | 0.78 |
+
 | **Delegate** | 0.00 | NA |
+
 | **Act** | \-0.12 | \-0.02 |
+
 | **Contingency** | \-0.08 | 0.70 |
+
 | **Avg** | 0.10 | 0.52 |
 
 Table B2:** Cohen’s kappa scores among content categorical compassion between manual and AI-assisted responses. AI-assisted Cohen’s kappa \= NA (not applicable) for Delegate because there were responses with Delegate annotated.
 
 | Comparison including the 1st set of dual-annotated scenarios |  |  |  |
 | :---- | ----- | ----- | ----- |
+
 | **Grading Category** | **AI-assisted vs GPT-4 P-value** | **Manual vs AI-assisted P-value** | **Manual vs GPT-4 P-value** |
+
 | **AnyEdu** | 0.614 | 0.089 | **0.028** |
+
 | **ExtentEdu** | 0.812 | **0.005** | **0.010** |
+
 | **Manage** | 0.888 | **0.000** | **0.000** |
+
 | **Inform** | 0.254 | **0.000** | **0.000** |
+
 | **UrgentVisit** | 0.153 | **0.018** | **0.000** |
+
 | **NonurgentVisit** | 0.569 | 0.159 | **0.048** |
+
 | **Clarify** | 0.509 | 0.209 | 0.549 |
+
 | **Delegate** | 1.000 | **0.044** | **0.044** |
+
 | **Act** | 0.158 | **0.000** | **0.000** |
+
 | **Contingency** | 0.564 | **0.000** | **0.000** |
+
 | **Overall:** | 0.805 | **0.000** | **0.000** |
 
 Table B3:** Statistical significance across the three response sources for each content category for comparisons including the 1st set of dual-annotated scenarios. Comparisons are done using Mann-Whitney U tests. P-values \< 0.05 are bolded.
 
 | Comparison including the 2nd set of dual-annotated scenarios |  |  |  |
 | :---- | ----- | ----- | ----- |
+
 | **Grading Category** | **AI-assisted vs GPT-4 P-value** | **Manual vs AI-assisted P-value** | **Manual vs GPT-4 P-value** |
+
 | **AnyEdu** | 0.504 | **0.034** | **0.006** |
+
 | **ExtentEdu** | 1.000 | **0.031** | **0.031** |
+
 | **Manage** | 0.671 | **0.000** | **0.000** |
+
 | **Inform** | **0.043** | **0.000** | **0.000** |
+
 | **UrgentVisit** | 0.236 | 0.177 | **0.014** |
+
 | **NonurgentVisit** | 0.202 | 0.204 | **0.011** |
+
 | **Clarify** | 0.833 | 0.417 | 0.549 |
+
 | **Delegate** | 1.000 | **0.000** | **0.000** |
+
 | **Act** | 0.083 | **0.000** | **0.000** |
+
 | **Contingency** | 0.564 | **0.000** | **0.000** |
+
 | **Overall:** | 0.620 | **0.004** | **0.000** |
 
 Table B4:** Statistical significance across the three response sources for each content category for comparisons including the 2nd set of dual-annotated scenarios. Comparisons are done using Mann-Whitney U tests. P-values \< 0.05 are bolded.
@@ -480,22 +553,30 @@ A)
 B)
 
 ![][image8]
+
 Figure B2.** Distribution of content categories present in the manual, GPT-4 drafted, and AI-assisted responses to patient messages. Because 56/100 questions were dual-annotated, here we present results including the set of responses from each of the dual-annotated scenarios that were not used in Figure 3\. Pairwise comparisons are done using Mann-Whitney U tests.
 
 A)
+
 ![][image9]
 
 B)
+
 ![][image10]
 
 C)
+
 ![][image11]
+
 Figure B3.** Most frequent physician-edited responses on top of GPT-4 draft responses.
+
 A) Most frequently removed and added unigrams. B) Most frequently removed and added bigrams.
 C) Most frequently removed and added trigrams.
 
 ![][image12]
+
 Figure B4.** Inter-annotator agreement for Stage I and Stage II survey results for the 56 dual-annotated scenario/message pairs.
+
 Q1: 'How challenging was it to respond to this message?'
 Q2: 'Do you believe this patient is experiencing a severe medical event?'
 Appendix C: Supplemental Examples

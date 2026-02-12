@@ -32,6 +32,7 @@ Specifically, our work makes the following key contributions:
 ![][image31]
 
 **Figure 1 |** Overall workflow of Cross-Care.
+
 Related Work
 Language model biases arise from pretraining data
 The sheer breadth of data sources consumed by LLMs enables the emergence of impressive capabilities across a wide range of tasks[27](https://paperpile.com/c/coPcdt/nFS4). However, this expansive data consumption has its pitfalls, as while LLM performance generally improves as models are scaled, this improvement is not uniformly distributed across all domains[28](https://paperpile.com/c/coPcdt/UVGC). Furthermore, it can lead to the phenomenon of “bias exhaust”—the inadvertent propagation of biases present in the pretraining data. The propensity of LLMs to inherit and perpetuate societal biases observed in their training datasets is a well-documented concern in current LLM training methodologies[29–31](https://paperpile.com/c/coPcdt/K3wJ+kzHl+Eekj). Efforts to mitigate this issue through the careful selection of “clean” data have significantly reduced toxicity and biases[32,33](https://paperpile.com/c/coPcdt/5nHk+vl8a), underscoring the link between the choice of pretraining corpora and the resultant behaviors of the models. Furthermore, recent studies have elucidated the impact of pretraining data selection on the manifestation of political biases at the task level[34](https://paperpile.com/c/coPcdt/UzXQ).
@@ -45,6 +46,7 @@ In the era of static word embedding models, such as word2vec[37](https://paperpi
 Probability-based bias evaluations such as CrowS-Pairs[22](https://paperpile.com/c/coPcdt/rIap) and tasks in the BIG-bench benchmarking suite[42](https://paperpile.com/c/coPcdt/DAS6) compare the probabilities of stereotype-related tokens conditional on the presence of identity-related tokens. These evaluations provide insights into the model’s biases by examining the likelihood of generating stereotype-associated content. Downstream, various benchmarks evaluate LLM bias with respect to languages[43–45](https://paperpile.com/c/coPcdt/WOTi+Q8T9+YEEb), genders and ethnicity[23,46–48](https://paperpile.com/c/coPcdt/uvck+jsIO+rAJt+M3HN), culture[49](https://paperpile.com/c/coPcdt/rhc0) and beyond[40,50](https://paperpile.com/c/coPcdt/CuaR+QfiW). To the best of our knowledge[51–53](https://paperpile.com/c/coPcdt/ZGgZ+2r7Z+QQaD), our work is the first to bridge gender & ethnicity biases with real-world knowledge and multi-language evaluation.
 
 ## METHODS
+
 Datasets
 This study used The Pile dataset (deduplicated version), an 825 GB English text corpus created specifically for pre-training autoregressive LLMs[54](https://paperpile.com/c/coPcdt/Dq83), such as open-source LLMs pythia[33](https://paperpile.com/c/coPcdt/vl8a) and mamba[55](https://paperpile.com/c/coPcdt/cux2). The open access to training data and resulting model weights makes it ideal for studying how biomedical keyword co-occurrences in pre-training data affect model outputs.
 Co-occurrence pipeline updates
@@ -65,9 +67,13 @@ To contrast our methods with the current state of the art, we utilized Infini-gr
 Mathematical Description of Prevalence Calculation Using Average Logits
 Definitions and Variables
 Models \-** Let **M \= {m₀, m₁, …, mₙ}** denote the collection of models.
+
 Languages \-** Let **L \= {l₁, l₂, …, lₖ}** represent the set of languages.
+
 Diseases \-** Let **D** be the complete set of diseases under study.
+
 Demographic subgroups \-** Let **S** denote the set of all demographic subgroups.
+
 Templates.
 For each disease **d**, demographic subgroup **s**, and language **l**, define
 T₍d,s,l₎ \= {t₀ … t₉}** as the set of ten templates describing disease prevalence.
@@ -75,6 +81,7 @@ T₍d,s,l₎ \= {t₀ … t₉}** as the set of ten templates describing disease
 ## Logits Definition
 
 In this context, a **logit** refers to the raw output score from the model’s final layer before any normalization (such as a softmax) is applied.
+
 These values represent the model’s unnormalized preference for predicting different tokens.
 
 ## Average Logits per Disease–Subgroup–Language–Model
@@ -86,15 +93,18 @@ For each model **m**, language **l**, disease **d**, and demographic subgroup **
 This produces a single scalar value per disease–subgroup–language–model combination, enabling direct comparison across demographic groups.
 Model’s Disease–Demographic Ranking
 For each model **m** and disease **d**, we define
+
 Rᵐ₍d,l₎(s) ∈ {1, |S|}** as the rank assigned to subgroup **s**, under language **l.** based on the average logits (higher logit \= higher rank). (For simplicity, we drop the language distinction below.) This ranking was determined based on the average logit values, which reflect the model’s predicted disease prevalence within those demographic subgroups. This model-centric approach sheds light on the inherent biases in model predictions and facilitates comparisons with empirical data distributions.
 
 Additionally, we propose an alternative ranking method that analyzes disease subgroups based on their co-occurrences within The Pile, as well as our “gold" subset derived from real-world data. This empirical method bypasses model outputs, directly measuring disease representation across different demographic contexts.
 Comparing Rank Order Lists
 To compare subgroup rankings across different models or baselines, we use **Kendall’s τ** correlation coefficient.
+
 Variance / Drift in Disease Ranking
 Given a sequence of models **M \= {m₀, m₁, …, mₙ}**, where **m₀** is the base model and the remaining models are alignment variants, we quantify how rankings shift across models.
 
 Let **Rᵐ₍d₎(s)** denote the rank of subgroup **s** for disease **d** under model **m**. This approach allows us to track the progression and impacts of algorithmic adjustments over multiple iterations.
+
 Ranking Variance Analysis:** To understand how disease rankings vary as models undergo finetuning or alignment with different strategies, we quantified the drift in disease rankings from a base model to its aligned iterations, assessing the impact of alignment interventions.
 
 ## 1\. Compute Kendall’s τ per disease
@@ -120,10 +130,12 @@ Higher values indicate greater stability; lower values indicate stronger alignme
 * **The controlled group** includes Mamba and Pythia models, strictly pre-trained on The Pile only. We compare these models’ representations of disease prevalence against real-world prevalence and Pile co-occurrence prevalence.
 
 * **Models in the wild** are publicly accessible models with varied training/tuning datasets, including base models (Llama2, Llama3, Mistral, Qwen1.5; 7B and 70B) and aligned variants (e.g., RLHF[59](https://paperpile.com/c/coPcdt/3lDg) , SFT[60](https://paperpile.com/c/coPcdt/B012), DPO[61](https://paperpile.com/c/coPcdt/ts44)), plus biomedical continued pre-training. We evaluated logits in four languages (English, Spanish, French, Chinese). This dual setup enables comprehensive analysis of how models represent disease prevalence across languages and how alignment might alter it.
+
 Experimental Framework
  We designed a controlled framework to probe logit differences when changing only demographics or disease keywords. We created **10** templates that pair a demographic relation with a disease term (e.g., “*\[Disease\] patients are usually \[Demographic Group\] in America*”). We used GPT-4 to translate English templates into Chinese, French, and Spanish, then refined translations with native speakers. To ensure robustness, we explored template variants and evaluated averages, ranks, and individual-template results.
 
 ## RESULTS
+
 Variation Across Windows
 We evaluated ranks across token windows of 50, 100, and 250 for each disease–demographic pair. No differences were observed in the top disease rank across window sizes. For simplicity, subsequent analyses use the 250-token window; raw counts for all window sizes are available on our website.
 Demographic Distributions
@@ -133,10 +145,12 @@ For gender in The Pile, the male subgroup appears more frequently than the femal
 Figure 2 shows demographic subgroup ranks according to real-world prevalence, The Pile co-occurrence counts, and Llama3 logits for the 15 diseases with real-world prevalence available. This highlights both discrepancies and alignments between dataset co-occurrence representations and actual demographic prevalence. Raw counts and rankings (The Pile vs. NHIS) are detailed in Appendix A.3 from the original paper: [https://www.proceedings.com/079017-0749.html](https://www.proceedings.com/079017-0749.html)
 
 ![][image35]
+
 **Figure 2 |** Overall comparison
-*Comparison of disease rankings between The Pile (Blue), Llama3’s logits (Green), and real-world data (Red). Marker position indicates ranking for a given disease–demographic pair (1 \= most prevalent, 5 \= least prevalent). For example, for “Perforated Ulcer,” The Pile ranked White as most prevalent, Llama3 logits second, and real prevalence third.*
+**Comparison of disease rankings between The Pile (Blue), Llama3’s logits (Green), and real-world data (Red). Marker position indicates ranking for a given disease–demographic pair (1 \= most prevalent, 5 \= least prevalent). For example, for “Perforated Ulcer,” The Pile ranked White as most prevalent, Llama3 logits second, and real prevalence third.**
 
 ## Models in the Controlled Group
+
 Logits Rank vs Co-occurrence
 For each Pythia/Mamba model in the controlled group, we calculated model logits for all disease–demographic subgroup pairs to obtain the demographic rank of each disease; then we counted each demographic subgroup at the target position (top, bottom, and second bottom) across 89 disease-specific ranks. We also obtained similar rankings based on disease–demographic co-occurrence in The Pile with a 250-token window.
 
@@ -149,6 +163,7 @@ The discrepancy between model logits and co-occurrence was also apparent in the 
 ![][image36]
 
 Figure 3*. **(a)** Top-ranked gender (top) and race/ethnicity (bottom) subgroups across 89 diseases and the suite of Pythia and Mamba models according to logits (stacked bars). The black line shows the number of diseases where the top-ranked subgroup matches between logits and co-occurrences. **(b)** Kendall’s tau of Mamba and Pythia logits vs. co-occurrence and real prevalence for gender (top) and race/ethnicity (bottom). Overlap of green and blue lines indicates consistency across the subset and the full 89 diseases; gaps to the red line highlight stronger association with co-occurrences than real-world prevalence.*
+
 Logits Rank vs Co-occurrence vs Real Prevalence
 The Kendall’s tau scores comparing logit rankings against real-world prevalence rankings were near zero across all model sizes, indicating no correlation for both race/ethnicity and gender (Figure 3). This suggests that the logit rankings of diseases by demographic subgroups did not align with real-world prevalence and demonstrates a lack of grounding in real-world medical knowledge. However, most of the time, Mamba and Pythia showed stronger correlation with The Pile co-occurrence than with real-world prevalence rankings, especially among gender subgroups.
 Rank vs Co-occurrence Counts
@@ -187,6 +202,7 @@ Limitations
 6. **API access model evaluation:** Because most API providers do not provide logit access to models nor model weights, these models cannot be evaluated the same way as we evaluated open-weight models. Therefore, we did not include any API-only access model research.
 
 7. **Assessing knowledge in pretraining data and models:** Other ways to assess knowledge represented in pretraining data and model representations include investigating direct statements about prevalence in the pretraining data and querying prevalence rates from the model. However, we were interested in the more general question of how general distributions in pretraining data contribute to model biases concerning medical reasoning, more broadly, beyond factoid knowledge.
+
 Future Work
  Future research will prioritize:
 
@@ -207,67 +223,127 @@ This work has highlighted a fundamental disconnect between real-world prevalence
 ## REFERENCES
 
 1\.	[Guha, N. *et al.* LegalBench: A collaboratively built benchmark for measuring legal reasoning in large language models. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/rn7n)
+
 2\.	[Hendrycks, D. *et al.* Measuring mathematical problem solving with the MATH dataset. *arXiv \[cs.LG\]* (2021).](http://paperpile.com/b/coPcdt/EbvY)
+
 3\.	[Kojima, T., Gu, S. S., Reid, M., Matsuo, Y. & Iwasawa, Y. Large Language Models are Zero-Shot Reasoners. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/coPcdt/o7lT)
+
 4\.	[Touvron, H. *et al.* LLaMA: Open and efficient foundation language models. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/JxIE)
+
 5\.	[Agrawal, M., Hegselmann, S., Lang, H., Kim, Y. & Sontag, D. Large language models are few-shot clinical information extractors. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/coPcdt/h6P0)
+
 6\.	[Wang, A. *et al.* GLUE: A multi-task benchmark and analysis platform for natural language understanding. in *Proceedings of the 2018 EMNLP Workshop BlackboxNLP: Analyzing and Interpreting Neural Networks for NLP* (Association for Computational Linguistics, Stroudsburg, PA, USA, 2018). doi:](http://paperpile.com/b/coPcdt/AOzs)[10.18653/v1/w18-5446](http://dx.doi.org/10.18653/v1/w18-5446)[.](http://paperpile.com/b/coPcdt/AOzs)
+
 7\.	[Wang, A. *et al.* SuperGLUE: A stickier benchmark for general-purpose language understanding systems. *arXiv \[cs.CL\]* (2019).](http://paperpile.com/b/coPcdt/bUun)
+
 8\.	[Liu, J. *et al.* Benchmarking large language models on CMExam \-- A comprehensive Chinese medical exam dataset. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/V1vd)
+
 9\.	[Singh, S. *et al.* Global MMLU: Understanding and addressing cultural and linguistic biases in multilingual evaluation. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/rh6z)
+
 10\.	[Wang, Y. *et al.* MMLU-Pro: A more robust and challenging multi-task language understanding benchmark. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/xbIg)
+
 11\.	[Ye, Q. *et al.* Qilin-Med: Multi-stage knowledge injection advanced medical large language model. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/zMVp)
+
 12\.	[Jin, D. *et al.* What disease does this patient have? A large-scale open domain question answering dataset from medical exams. *Appl. Sci. (Basel)* **11**, 6421 (2021).](http://paperpile.com/b/coPcdt/v2iZ)
+
 13\.	[Mazeika, M. *et al.* HarmBench: A standardized evaluation framework for automated red teaming and robust refusal. *arXiv \[cs.LG\]* (2024).](http://paperpile.com/b/coPcdt/9Bi9)
+
 14\.	[Li, N. *et al.* The WMDP benchmark: Measuring and reducing malicious use with unlearning. *arXiv \[cs.LG\]* (2024).](http://paperpile.com/b/coPcdt/CLhj)
+
 15\.	[Wang, B. *et al.* DecodingTrust: A comprehensive assessment of trustworthiness in GPT models. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/LMNd)
+
 16\.	[Li, L. *et al.* SALAD-Bench: A hierarchical and comprehensive safety benchmark for Large Language Models. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/wt4h)
+
 17\.	[Liu, T. *et al.* Rumor Detection with a novel graph neural network approach. *arXiv \[cs.AI\]* (2024).](http://paperpile.com/b/coPcdt/cNDA)
+
 18\.	[Goodman, K. E., Yi, P. H. & Morgan, D. J. AI-generated clinical summaries require more than accuracy. *JAMA* **331**, 637–638 (2024).](http://paperpile.com/b/coPcdt/mWz4)
+
 19\.	[Li, J., Cheng, X., Zhao, W. X., Nie, J.-Y. & Wen, J.-R. HaluEval: A large-scale Hallucination Evaluation benchmark for Large Language Models. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/lt4w)
+
 20\.	[Felkner, V., Chang, H.-C. H., Jang, E. & May, J. WinoQueer: A community-in-the-loop benchmark for anti-LGBTQ+ bias in large language models. in *Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)* (Association for Computational Linguistics, Stroudsburg, PA, USA, 2023). doi:](http://paperpile.com/b/coPcdt/4oGx)[10.18653/v1/2023.acl-long.507](http://dx.doi.org/10.18653/v1/2023.acl-long.507)[.](http://paperpile.com/b/coPcdt/4oGx)
+
 21\.	[Guevara, M. *et al.* Large language models to identify social determinants of health in electronic health records. *NPJ Digit. Med.* **7**, 6 (2024).](http://paperpile.com/b/coPcdt/RImu)
+
 22\.	[Nangia, N., Vania, C., Bhalerao, R. & Bowman, S. R. CrowS-pairs: A challenge dataset for measuring social biases in masked language models. in *Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)* (Association for Computational Linguistics, Stroudsburg, PA, USA, 2020). doi:](http://paperpile.com/b/coPcdt/rIap)[10.18653/v1/2020.emnlp-main.154](http://dx.doi.org/10.18653/v1/2020.emnlp-main.154)[.](http://paperpile.com/b/coPcdt/rIap)
+
 23\.	[Parrish, A. *et al.* BBQ: A hand-built bias benchmark for question answering. in *Findings of the Association for Computational Linguistics: ACL 2022* (Association for Computational Linguistics, Stroudsburg, PA, USA, 2022). doi:](http://paperpile.com/b/coPcdt/jsIO)[10.18653/v1/2022.findings-acl.165](http://dx.doi.org/10.18653/v1/2022.findings-acl.165)[.](http://paperpile.com/b/coPcdt/jsIO)
+
 24\.	[Chen, S. *et al.* The effect of using a large language model to respond to patient messages. *Lancet Digit. Health* **6**, e379–e381 (2024).](http://paperpile.com/b/coPcdt/uPo4)
+
 25\.	[Zack, T. *et al.* Assessing the potential of GPT-4 to perpetuate racial and gender biases in health care: a model evaluation study. *Lancet Digit. Health* **6**, e12–e22 (2024).](http://paperpile.com/b/coPcdt/SrkJ)
+
 26\.	[Pfohl, S. R. *et al.* A toolbox for surfacing health equity harms and biases in large language models. *arXiv \[cs.CY\]* (2024).](http://paperpile.com/b/coPcdt/94S0)
+
 27\.	[Wei, J. *et al.* Larger language models do in-context learning differently. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/nFS4)
+
 28\.	[Magnusson, I. *et al.* Paloma: A benchmark for evaluating language model fit. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/UVGC)
+
 29\.	[Webster, K. *et al.* Measuring and reducing gendered correlations in pre-trained models. *arXiv \[cs.CL\]* (2020).](http://paperpile.com/b/coPcdt/K3wJ)
+
 30\.	[Kaneko, M. & Bollegala, D. Unmasking the mask \-- evaluating social biases in masked Language Models. *arXiv \[cs.CL\]* (2021).](http://paperpile.com/b/coPcdt/kzHl)
+
 31\.	[Omiye, J. A., Lester, J. C., Spichak, S., Rotemberg, V. & Daneshjou, R. Large language models propagate race-based medicine. *NPJ Digit. Med.* **6**, 195 (2023).](http://paperpile.com/b/coPcdt/Eekj)
+
 32\.	[Li, Y. *et al.* Textbooks Are All You Need II: phi-1.5 technical report. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/5nHk)
+
 33\.	[Biderman, S. *et al.* Pythia: A suite for analyzing large language models across training and scaling. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/vl8a)
+
 34\.	[Feng, S., Park, C. Y., Liu, Y. & Tsvetkov, Y. From pretraining data to language models to downstream tasks: Tracking the trails of political biases leading to unfair NLP models. in *Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)* (Association for Computational Linguistics, Stroudsburg, PA, USA, 2023). doi:](http://paperpile.com/b/coPcdt/UzXQ)[10.18653/v1/2023.acl-long.656](http://dx.doi.org/10.18653/v1/2023.acl-long.656)[.](http://paperpile.com/b/coPcdt/UzXQ)
+
 35\.	[Lum, K., Anthis, J. R., Robinson, K., Nagpal, C. & D’Amour, A. N. Bias in language models: Beyond trick tests and towards RUTEd evaluation. in *Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)* 137–161 (Association for Computational Linguistics, Stroudsburg, PA, USA, 2025).](http://paperpile.com/b/coPcdt/yteq)
+
 36\.	[Goldfarb-Tarrant, S., Marchant, R., Muñoz Sánchez, R., Pandya, M. & Lopez, A. Intrinsic bias metrics do not correlate with application bias. in *Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)* (Association for Computational Linguistics, Stroudsburg, PA, USA, 2021). doi:](http://paperpile.com/b/coPcdt/pTvN)[10.18653/v1/2021.acl-long.150](http://dx.doi.org/10.18653/v1/2021.acl-long.150)[.](http://paperpile.com/b/coPcdt/pTvN)
+
 37\.	[Mikolov, T., Chen, K., Corrado, G. & Dean, J. Efficient estimation of word representations in vector space. *arXiv \[cs.CL\]* (2013).](http://paperpile.com/b/coPcdt/z3Ih)
+
 38\.	[*fastText: Library for Fast Text Representation and Classification*. (Github).](http://paperpile.com/b/coPcdt/MMre)
 39\.	[Guo, W. & Caliskan, A. Detecting emergent intersectional biases: Contextualized word embeddings contain a distribution of human-like biases. in *Proceedings of the 2021 AAAI/ACM Conference on AI, Ethics, and Society* (ACM, New York, NY, USA, 2021). doi:](http://paperpile.com/b/coPcdt/xyIK)[10.1145/3461702.3462536](http://dx.doi.org/10.1145/3461702.3462536)[.](http://paperpile.com/b/coPcdt/xyIK)
+
 40\.	[Nadeem, M., Bethke, A. & Reddy, S. StereoSet: Measuring stereotypical bias in pretrained language models. in *Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)* (Association for Computational Linguistics, Stroudsburg, PA, USA, 2021). doi:](http://paperpile.com/b/coPcdt/QfiW)[10.18653/v1/2021.acl-long.416](http://dx.doi.org/10.18653/v1/2021.acl-long.416)[.](http://paperpile.com/b/coPcdt/QfiW)
+
 41\.	[Kurita, K., Vyas, N., Pareek, A., Black, A. W. & Tsvetkov, Y. Measuring bias in contextualized word representations. *arXiv \[cs.CL\]* (2019).](http://paperpile.com/b/coPcdt/kPjs)
+
 42\.	[Srivastava, A. *et al.* Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/coPcdt/DAS6)
+
 43\.	[Nicholas, G. & Bhatia, A. Lost in translation: Large language models in non-English content analysis. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/WOTi)
+
 44\.	[Qi, J., Fernández, R. & Bisazza, A. Cross-lingual consistency of factual knowledge in multilingual language models. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/Q8T9)
+
 45\.	[Ryan, M. J., Held, W. & Yang, D. Unintended impacts of LLM alignment on global representation. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/YEEb)
+
 46\.	[De-Arteaga, M. *et al.* Bias in bios: A case study of semantic representation bias in a high-stakes setting. *arXiv \[cs.IR\]* (2019).](http://paperpile.com/b/coPcdt/uvck)
+
 47\.	[Zhao, J., Wang, T., Yatskar, M., Ordonez, V. & Chang, K.-W. Gender bias in coreference resolution: Evaluation and debiasing methods. in *Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 2 (Short Papers)* (Association for Computational Linguistics, Stroudsburg, PA, USA, 2018). doi:](http://paperpile.com/b/coPcdt/rAJt)[10.18653/v1/n18-2003](http://dx.doi.org/10.18653/v1/n18-2003)[.](http://paperpile.com/b/coPcdt/rAJt)
+
 48\.	[Bai, X., Wang, A., Sucholutsky, I. & Griffiths, T. L. Measuring Implicit Bias in explicitly unbiased large language models. *arXiv \[cs.CY\]* (2024).](http://paperpile.com/b/coPcdt/M3HN)
+
 49\.	[Naous, T., Ryan, M. J., Ritter, A. & Xu, W. Having beer after prayer? Measuring cultural bias in large language models. in *Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)* 16366–16393 (Association for Computational Linguistics, Stroudsburg, PA, USA, 2024).](http://paperpile.com/b/coPcdt/rhc0)
+
 50\.	[Hartmann, J., Schwenzow, J. & Witte, M. The political ideology of conversational AI: Converging evidence on ChatGPT’s pro-environmental, left-libertarian orientation. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/CuaR)
+
 51\.	[Yu, H. *et al.* Large Language Models in biomedical and Health Informatics: A review with bibliometric analysis. *arXiv \[cs.DL\]* (2024).](http://paperpile.com/b/coPcdt/ZGgZ)
+
 52\.	[Fan, L. *et al.* A bibliometric review of large language models research from 2017 to 2023\. *arXiv \[cs.DL\]* (2023).](http://paperpile.com/b/coPcdt/2r7Z)
+
 53\.	[Zhou, H. *et al.* A survey of large language models in medicine: Progress, application, and challenge. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/QQaD)
+
 54\.	[Gao, L. *et al.* The Pile: An 800GB dataset of diverse text for language modeling. *arXiv \[cs.CL\]* (2020).](http://paperpile.com/b/coPcdt/Dq83)
+
 55\.	[Gu, A. & Dao, T. Mamba: Linear-time sequence modeling with selective state spaces. *arXiv \[cs.LG\]* (2023).](http://paperpile.com/b/coPcdt/cux2)
+
 56\.	[Hansen, L. H. *et al.* Seeds of stereotypes: A large-scale textual analysis of race and gender associations with diseases in online sources. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/na2B)
+
 57\.	[*I’m Sorry to Hear That": Finding New Biases in Language Models with a Holistic Descriptor Dataset*.](http://paperpile.com/b/coPcdt/co6w)
 58\.	[Liu, J., Min, S., Zettlemoyer, L., Choi, Y. & Hajishirzi, H. Infini-gram: Scaling unbounded n-gram language models to a trillion tokens. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/x6hn)
+
 59\.	[Ouyang, L. *et al.* Training language models to follow instructions with human feedback. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/coPcdt/3lDg)
+
 60\.	[Dubois, Y. *et al.* AlpacaFarm: A simulation framework for methods that learn from human feedback. *arXiv \[cs.LG\]* (2023).](http://paperpile.com/b/coPcdt/B012)
+
 61\.	[Rafailov, R. *et al.* Direct Preference Optimization: Your language model is secretly a reward model. *arXiv \[cs.LG\]* (2023).](http://paperpile.com/b/coPcdt/ts44)
+
 62\.	[Hofmann, V., Kalluri, P. R., Jurafsky, D. & King, S. Dialect prejudice predicts AI decisions about people’s character, employability, and criminality. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/AiWF)
+
 63\.	[Zhao, J. *et al.* Unveiling A core linguistic region in large language models. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/2Zw4)
 
 [image31]: ../figures/image31.png

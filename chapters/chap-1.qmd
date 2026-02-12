@@ -1,4 +1,5 @@
 # Chapter 1: General Introduction, Outline and Glossary
+
 Recent advances in artificial intelligence are reshaping healthcare, driven by the rapid emergence of large language models (LLMs) that exhibit unprecedented fluency, reasoning, and adaptability. Early generative models such as GPT-2 and GPT-3 demonstrated that scale and unsupervised pre-training could unlock broad generalization capabilities previously unattainable in clinical NLP systems[1,2](https://paperpile.com/c/coPcdt/Lqak+5MlW). These breakthroughs were enabled by decoder-only transformer architectures[3](https://paperpile.com/c/coPcdt/yTOb) and further refined through instruction-following and reinforcement learning from human feedback[4](https://paperpile.com/c/coPcdt/3lDg), which significantly improved model controllability and task alignment. More recently, frontier systems such as GPT-4 continue to expand the scope of clinical tasks LLMs can perform, from summarization to reasoning over complex medical content[5](https://paperpile.com/c/coPcdt/UlT6).
 
 Simultaneously, medicine itself has become increasingly digitized. Electronic health records, clinical trial documents, biomedical literature, and patient-generated data now form vast corpora on which these models are trained and in which they are deployed. As a result, LLMs have transitioned rapidly from research prototypes to operational tools embedded in real clinical workflows. They are already assisting with patient-provider communication[6](https://paperpile.com/c/coPcdt/uPo4), generating and summarizing clinical notes[7–9](https://paperpile.com/c/coPcdt/BsvC+knyy+rVYo), extracting structured information from unstructured data[10](https://paperpile.com/c/coPcdt/83yK), and even encoding substantial clinical knowledge comparable to domain-trained models[11,12](https://paperpile.com/c/coPcdt/DkR2+7xsh). This shift marks a profound change in the epistemic infrastructure of medicine: for the first time, clinicians routinely interact with probabilistic generative systems capable of producing medical text at scale.
@@ -13,7 +14,9 @@ These developments make clear that the healthcare community faces a dual imperat
 **Part II** interrogates the foundational limitations that emerge when LLMs confront clinically related tasks. Building on recent evidence of bias, misalignment, and brittleness, these chapters reveal how pre-training distributions, lexical fragility, and conversational alignment pressures can systematically distort medical predictions. They also show that even state-of-the-art models remain vulnerable to hallucination and sycophantic compliance, posing risks for clinical deployment.
 
 Together, these investigations argue that LLMs should not be deployed as black-box oracles but rather as **transparent, auditable, and domain-aligned clinical instruments**. Achieving this vision requires interdisciplinary collaboration, last-mile alignment grounded in local data and workflows, and rigorous, open evaluation frameworks such as HealthBench[21](https://paperpile.com/c/coPcdt/ESmj) and model-specific benchmarks for medical tasks[7,22,23](https://paperpile.com/c/coPcdt/BsvC+9dPU+Scnx). By synthesizing both the promise and the pitfalls of clinical LLMs, this thesis outlines a principled path toward AI systems that strengthen the safety, equity, and integrity of global healthcare.
+
 ## Part I: Potential Utilities of Language Models in Real Clinical Practice
+
 The first part of this thesis investigates how LLMs can be harnessed to solve practical, high-impact problems across the clinical ecosystem: from direct patient communication to surfacing hidden determinants of health.
 
 We begin at the patient interface. **Chapter 2** examines the urgent problem of medical misinformation: cancer patients increasingly turn to general-purpose chatbots like ChatGPT for treatment advice, yet these systems lack clinical grounding. We systematically evaluated ChatGPT’s ability to generate guideline-concordant recommendations across 104 oncologic scenarios, finding that while the model always produced at least one correct suggestion, over one-third of responses included potentially harmful errors and 12% hallucinated entire treatment modalities. This study establishes a baseline risk profile for patient-facing LLMs and underscores why unfiltered deployment in consumer health contexts is dangerous without rigorous validation and safeguards.
@@ -23,7 +26,9 @@ Moving to the provider workflow, **Chapter 3** investigates LLMs as clinical scr
 Shifting from communication to data extraction, **Chapter 4** and **Chapter 5** demonstrate how LLMs can unlock information trapped in unstructured clinical notes. Radiotherapy-induced esophagitis is a debilitating toxicity that is routinely documented in free text but rarely captured for research. We developed NLP models that automatically grade esophagitis severity with high fidelity, enabling large-scale real-world evidence generation on treatment complications. Similarly, social determinants of health (SDoH)—powerful predictors of outcomes—are notoriously absent from structured data. In **Chapter 5**, we show that fine-tuned LLMs can extract SDoH from clinical narratives far more accurately than billing codes, identifying nearly 94% of patients with adverse social circumstances versus 2% via traditional methods. Critically, these models exhibit less demographic bias than generalist LLMs, offering a path toward more equitable data-driven care.
 
 These extraction capabilities culminate in **Chapter 6**, which introduces iRAE Agent(AEGIS), an agentic system piloted live at Mass General Brigham for immunotherapy-related adverse event detection in oncology clinical trials. Unlike passive classification, iRAE orchestrates multi-step reasoning, error checking, and ontology-guided reporting within live hospital workflows—addressing a labor-intensive process that directly impacts trial safety and cost. This pilot represents the frontier of clinical LLM deployment: moving from isolated tasks to integrated, autonomous agents that solve real, resource-constrained problems in cancer care.
+
 ## Part II: Potential Fails of Language Models in Medical Settings
+
 If Part I demonstrates what LLMs can do, Part II investigates what can go wrong—exposing latent vulnerabilities that become dangerous when models are deployed in high-stakes medical environments.
 **Chapter 7** establishes a performance ceiling by comparing generalist LLMs against traditional biomedical NLP methods. On structured tasks like health advice classification and causal reasoning, few-shot prompting of ChatGPT approached but never exceeded the accuracy of fine-tuned, domain-specific models like BioBERT \- while requiring a thousandfold more computational time. This finding is pivotal: it demonstrates that for many clinical NLP tasks, the “generalist advantage” is a myth. Locally tuned models are not only more accurate but also cheaper, faster to deploy, and easier to integrate into existing workflows, making them the pragmatic choice for most biomedical applications.
 
@@ -37,32 +42,55 @@ The next three chapters peel back layers of hidden fragility rooted in pre-train
 Together, this thesis provides an empirically grounded, dual-narrative examination of LLMs in medicine: celebrating their potential to transform cancer care while unflinchingly exposing the vulnerabilities that must be resolved before they can be trusted at scale.
 REFERENCE
 1\.	[Radford, A. *et al.* Language Models are Unsupervised Multitask Learners. (2019).](http://paperpile.com/b/coPcdt/Lqak)
+
 2\.	[Brown, T. B. *et al.* Language Models are Few-Shot Learners. *arXiv \[cs.CL\]* (2020).](http://paperpile.com/b/coPcdt/5MlW)
+
 3\.	[Vaswani, A. *et al.* Attention is all you need. (2025) doi:](http://paperpile.com/b/coPcdt/yTOb)[10.65215/mdcm8z23](http://dx.doi.org/10.65215/mdcm8z23)[.](http://paperpile.com/b/coPcdt/yTOb)
+
 4\.	[Ouyang, L. *et al.* Training language models to follow instructions with human feedback. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/coPcdt/3lDg)
+
 5\.	[OpenAI *et al.* GPT-4 Technical Report. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/UlT6)
+
 6\.	[Chen, S. *et al.* The effect of using a large language model to respond to patient messages. *Lancet Digit. Health* 6, e379–e381 (2024).](http://paperpile.com/b/coPcdt/uPo4)
+
 7\.	[Gao, Y. *et al.* DR.BENCH: Diagnostic reasoning benchmark for clinical natural language processing. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/coPcdt/BsvC)
+
 8\.	[Bednarczyk, L. *et al.* Scientific evidence for clinical text summarization using large language models: Scoping review. *J. Med. Internet Res.* 27, e68998 (2025).](http://paperpile.com/b/coPcdt/knyy)
+
 9\.	[Oliveira, J. D. *et al.* Development and evaluation of a clinical note summarization system using large language models. *Commun. Med. (Lond.)* 5, 376 (2025).](http://paperpile.com/b/coPcdt/rVYo)
+
 10\.	[Goodman, K. E. *et al.* Identification of long-term care facility residence from admission notes using large language models. *JAMA Netw. Open* 8, e2512032 (2025).](http://paperpile.com/b/coPcdt/83yK)
+
 11\.	[Singhal, K. *et al.* Large language models encode clinical knowledge. *Nature* 620, 172–180 (2023).](http://paperpile.com/b/coPcdt/DkR2)
+
 12\.	[Nori, H., King, N., McKinney, S. M., Carignan, D. & Horvitz, E. Capabilities of GPT-4 on Medical Challenge Problems. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/7xsh)
+
 13\.	[Zack, T. *et al.* Assessing the potential of GPT-4 to perpetuate racial and gender biases in health care: a model evaluation study. *Lancet Digit. Health* 6, e12–e22 (2024).](http://paperpile.com/b/coPcdt/SrkJ)
+
 14\.	[Chen, S. *et al.* Cross-Care: Assessing the healthcare implications of pre-training data on language model bias. *Neural Inf Process Syst* abs/2405.05506, 23756–23795 (2024).](http://paperpile.com/b/coPcdt/X0L4)
+
 15\.	[Hager, P. *et al.* Evaluation and mitigation of the limitations of large language models in clinical decision-making. *Nat. Med.* 30, 2613–2622 (2024).](http://paperpile.com/b/coPcdt/IXst)
+
 16\.	[McCoy, L. G., Manrai, A. K. & Rodman, A. Large language models and the degradation of the medical record. *N. Engl. J. Med.* 391, 1561–1564 (2024).](http://paperpile.com/b/coPcdt/d6qh)
+
 17\.	[Goetz, L., Seedat, N., Vandersluis, R. & van der Schaar, M. Generalization-a key challenge for responsible AI in patient-facing clinical applications. *NPJ Digit. Med.* 7, 126 (2024).](http://paperpile.com/b/coPcdt/RJ2T)
+
 18\.	[Armitage, R. C. Implications of large language models for clinical practice: Ethical analysis through the principlism framework. *J. Eval. Clin. Pract.* 31, e14250 (2025).](http://paperpile.com/b/coPcdt/k02J)
+
 19\.	[Chen, S. *et al.* When helpfulness backfires: LLMs and the risk of false medical information due to sycophantic behavior. *NPJ Digit. Med.* 8, 605 (2025).](http://paperpile.com/b/coPcdt/rgaJ)
+
 20\.	[Williams, C. Y. K., Miao, B. Y., Kornblith, A. E. & Butte, A. J. Evaluating the use of large language models to provide clinical recommendations in the Emergency Department. *Nat. Commun.* 15, 8236 (2024).](http://paperpile.com/b/coPcdt/kiiZ)
+
 21\.	[Arora, R. K. *et al.* HealthBench: Evaluating large language models towards improved human health.](http://paperpile.com/b/coPcdt/ESmj) [https://cdn.openai.com/pdf/bd7a39d5-9e9f-47b3-903c-8b847ca650c7/healthbench\_paper.pdf](https://cdn.openai.com/pdf/bd7a39d5-9e9f-47b3-903c-8b847ca650c7/healthbench_paper.pdf?utm_source=chatgpt.com)[.](http://paperpile.com/b/coPcdt/ESmj)
+
 22\.	[Yan, L. K. Q. *et al.* Large language model benchmarks in medical tasks. *ArXiv* abs/2410.21348, (2024).](http://paperpile.com/b/coPcdt/9dPU)
+
 23\.	[Wang, D. & Zhang, S. Large language models in medical and healthcare fields: applications, advances, and challenges. *Artif. Intell. Rev.* 57, (2024).](http://paperpile.com/b/coPcdt/Scnx)
 
 ## Proposition
 
 ### Proposition:
+
 1. It is time for the second half of the AI development, evaluations, and experiences.
    		\- paraphrase from Richard S. Sutton and Shunyu Yao
 
@@ -84,6 +112,7 @@ REFERENCE
    		\- inspired by Neel Nanda
 
 ## Glossary
+
 * **SAE (Sparse Autoencoder)
   A neural architecture that learns sparse, part-based representations from hidden states. Used for interpretability, feature decomposition, and downstream probing.
 

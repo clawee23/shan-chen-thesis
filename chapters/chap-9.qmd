@@ -89,7 +89,7 @@ Table 1 shows our overall dataset swapping statistics where we observe benchmark
 
 ![][image39]
 
-*Table 1 Dataset Statistics for RABBITS \- 'Orig.' is the total questions in the original dataset. 'RABBITS' indicates the subset of questions with validated drug mentions. 'Drugs' shows the total unique drugs in RABBITS.*
+**Table 1 Dataset Statistics for RABBITS \- 'Orig.' is the total questions in the original dataset. 'RABBITS' indicates the subset of questions with validated drug mentions. 'Drugs' shows the total unique drugs in RABBITS.**
 
 ## Contamination Source from Pre-training Dataset
 
@@ -97,7 +97,7 @@ To investigate why we see larger performance drops in MedMCQA than MedQA, we use
 
 Dataset contamination are 99.21% and 34.13% in the MedQA and MedMCQA test datasets, respectively, as Table 2 shows. We also benchmark OLMo-1.7-7B-hf, trained only on Dolma, which shows no drop in MedQA (31.22) scores compared to a 3% drop in MedMCQA (40.90 to 37.93). This likely explains the greater drop in performance in MedMCQA rather than MedQA across models (Appendix C Figure 4).
 
-*Table 2 Percentage of contamination of MedQA and MedMCQA benchmarks in Dolma dataset*
+**Table 2 Percentage of contamination of MedQA and MedMCQA benchmarks in Dolma dataset**
 
 ## CONCLUSION
 
@@ -110,33 +110,61 @@ Our evaluation is limited to biomedical datasets and focuses only on pharmaceuti
 ## REFERENCES
 
 1\.	[Jiang, L. Y. *et al.* Health system-scale language models are all-purpose prediction engines. *Nature* **619**, 357–362 (2023).](http://paperpile.com/b/coPcdt/51Gy)
+
 2\.	[Clusmann, J. *et al.* The future landscape of large language models in medicine. *Commun. Med. (Lond.)* **3**, 141 (2023).](http://paperpile.com/b/coPcdt/e3VB)
+
 3\.	[Chen, S. *et al.* The effect of using a large language model to respond to patient messages. *Lancet Digit. Health* **6**, e379–e381 (2024).](http://paperpile.com/b/coPcdt/uPo4)
+
 4\.	[Goodman, K. E., Yi, P. H. & Morgan, D. J. AI-generated clinical summaries require more than accuracy. *JAMA* **331**, 637–638 (2024).](http://paperpile.com/b/coPcdt/mWz4)
+
 5\.	[Yan, Q., He, X., Yue, X. & Wang, X. E. Worse than random? An embarrassingly simple probing evaluation of large multimodal models in medical VQA. in *Findings of the Association for Computational Linguistics: ACL 2025* 19188–19205 (Association for Computational Linguistics, Stroudsburg, PA, USA, 2025).](http://paperpile.com/b/coPcdt/7nb9)
+
 6\.	[Jin, Q., Dhingra, B., Liu, Z., Cohen, W. & Lu, X. PubMedQA: A Dataset for Biomedical Research Question Answering. in *Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)* (Association for Computational Linguistics, Stroudsburg, PA, USA, 2019). doi:](http://paperpile.com/b/coPcdt/LZ8I)[10.18653/v1/d19-1259](http://dx.doi.org/10.18653/v1/d19-1259)[.](http://paperpile.com/b/coPcdt/LZ8I)
+
 7\.	[Hendrycks, D. *et al.* Measuring massive multitask language understanding. *arXiv \[cs.CY\]* (2020).](http://paperpile.com/b/coPcdt/ejcu)
+
 8\.	[Jin, D. *et al.* What disease does this patient have? A large-scale open domain question answering dataset from medical exams. *Appl. Sci. (Basel)* **11**, 6421 (2021).](http://paperpile.com/b/coPcdt/v2iZ)
+
 9\.	[Liu, J. *et al.* Benchmarking large language models on CMExam \-- A comprehensive Chinese medical exam dataset. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/V1vd)
+
 10\.	[Colgan, S. *et al.* Perceptions of generic medication in the general population, doctors and pharmacists: a systematic review. *BMJ Open* **5**, e008915 (2015).](http://paperpile.com/b/coPcdt/CouF)
+
 11\.	[Sewell, K., Andreae, S., Luke, E. & Safford, M. M. Perceptions of and barriers to use of generic medications in a rural African American population, Alabama, 2011\. *Prev. Chronic Dis.* **9**, E142 (2012).](http://paperpile.com/b/coPcdt/DWJc)
+
 12\.	[McCarthy, D. Lexical substitution as a task for WSD evaluation. in *Proceedings of the ACL-02 workshop on Word sense disambiguation recent successes and future directions \-* (Association for Computational Linguistics, Morristown, NJ, USA, 2002). doi:](http://paperpile.com/b/coPcdt/muKP)[10.3115/1118675.1118691](http://dx.doi.org/10.3115/1118675.1118691)[.](http://paperpile.com/b/coPcdt/muKP)
+
 13\.	[Arefyev, N., Sheludko, B., Podolskiy, A. & Panchenko, A. Always keep your target in mind: Studying semantics and improving performance of neural lexical substitution. in *Proceedings of the 28th International Conference on Computational Linguistics* (International Committee on Computational Linguistics, Stroudsburg, PA, USA, 2020). doi:](http://paperpile.com/b/coPcdt/k7P8)[10.18653/v1/2020.coling-main.107](http://dx.doi.org/10.18653/v1/2020.coling-main.107)[.](http://paperpile.com/b/coPcdt/k7P8)
+
 14\.	[Zhou, W., Ge, T., Xu, K., Wei, F. & Zhou, M. BERT-based Lexical Substitution. in *Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics* (eds Korhonen, A., Traum, D. & Màrquez, L.) 3368–3373 (Association for Computational Linguistics, Stroudsburg, PA, USA, 2019).](http://paperpile.com/b/coPcdt/WqC4)
+
 15\.	[Riedl, M., Glass, M. & Gliozzo, A. Lexical substitution for the medical domain. in *Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP)* (Association for Computational Linguistics, Stroudsburg, PA, USA, 2014). doi:](http://paperpile.com/b/coPcdt/NiSK)[10.3115/v1/d14-1066](http://dx.doi.org/10.3115/v1/d14-1066)[.](http://paperpile.com/b/coPcdt/NiSK)
+
 16\.	[Wen, Z., Lu, X. H. & Reddy, S. MeDAL: Medical abbreviation disambiguation dataset for natural language understanding pretraining. in *Proceedings of the 3rd Clinical Natural Language Processing Workshop* (Association for Computational Linguistics, Stroudsburg, PA, USA, 2020). doi:](http://paperpile.com/b/coPcdt/GzNg)[10.18653/v1/2020.clinicalnlp-1.15](http://dx.doi.org/10.18653/v1/2020.clinicalnlp-1.15)[.](http://paperpile.com/b/coPcdt/GzNg)
+
 17\.	[Shi, W. *et al.* Detecting pretraining data from large language models. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/VetX)
+
 18\.	[Xu, R., Wang, Z., Fan, R.-Z. & Liu, P. Benchmarking benchmark leakage in Large Language Models. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/eorr)
+
 19\.	[Zhou, K. *et al.* Don’t make your LLM an evaluation benchmark cheater. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/ic2s)
+
 20\.	[Kojima, T., Gu, S. S., Reid, M., Matsuo, Y. & Iwasawa, Y. Large Language Models are Zero-Shot Reasoners. *arXiv \[cs.CL\]* (2022).](http://paperpile.com/b/coPcdt/o7lT)
+
 21\.	[Srivastava, S. *et al.* Functional benchmarks for robust evaluation of reasoning performance, and the reasoning gap. *arXiv \[cs.AI\]* (2024).](http://paperpile.com/b/coPcdt/i7v8)
+
 22\.	[Lu, S., Bigoulaeva, I., Sachdeva, R., Tayyar Madabushi, H. & Gurevych, I. Are emergent abilities in large language models just in-context learning? in *Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)* 5098–5139 (Association for Computational Linguistics, Stroudsburg, PA, USA, 2024).](http://paperpile.com/b/coPcdt/7Z0s)
+
 23\.	[Magnusson, I. *et al.* Paloma: A benchmark for evaluating language model fit. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/UVGC)
+
 24\.	[Zhang, H. *et al.* A careful examination of large language model performance on grade school arithmetic. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/Z1jA)
+
 25\.	[Zack, T. *et al.* Assessing the potential of GPT-4 to perpetuate racial and gender biases in health care: a model evaluation study. *Lancet Digit. Health* **6**, e12–e22 (2024).](http://paperpile.com/b/coPcdt/SrkJ)
+
 26\.	[Chen, S. *et al.* Cross-Care: Assessing the healthcare implications of pre-training data on language model bias. *Neural Inf Process Syst* **abs/2405.05506**, 23756–23795 (2024).](http://paperpile.com/b/coPcdt/X0L4)
+
 27\.	[Guevara, M. *et al.* Large language models to identify social determinants of health in electronic health records. *NPJ Digit. Med.* **7**, 6 (2024).](http://paperpile.com/b/coPcdt/RImu)
+
 28\.	[Ness, R. O. *et al.* MedFuzz: Exploring the robustness of large language models in medical question answering. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/TVaD)
+
 29\.	[Liu, J., Min, S., Zettlemoyer, L., Choi, Y. & Hajishirzi, H. Infini-gram: Scaling unbounded n-gram language models to a trillion tokens. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/x6hn)
 
 ![][image40]

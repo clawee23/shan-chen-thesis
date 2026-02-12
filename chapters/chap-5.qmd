@@ -13,6 +13,7 @@ Methods
 We evaluated LLMs to extract six SDoH from notes (employment, housing, transportation, parental status, relationship, social support), testing fine-tuned Flan-T5 variants, synthetic-data augmentation, and zero-/few-shot ChatGPT-family baselines, plus a simple bias probe with injected demographics.
 Findings
 Best models: Flan-T5 **XL** for any SDoH (macro-F1 **0.71**) and Flan-T5 **XXL** for adverse SDoH (macro-F1 **0.70**). Synthetic data helped smaller Flan-T5 models (**ΔF1 \+0.12–+0.23**). Fine-tuned models beat ChatGPT-family zero-/few-shot, except **GPT-4 (10-shot)** on adverse SDoH. Fine-tuned models changed predictions less than ChatGPT when race/ethnicity or gender was injected (**p\<0.05**), indicating less algorithmic bias. At the patient level, models identified **93.8%** with adverse SDoH vs **2.0%** using ICD-10 Z-codes.
+
 Interpretation
 Fine-tuned LLMs—augmented with synthetic text—can reliably surface SDoH from EHR notes, outperform general chat models and structured codes, and show lower bias, enabling better real-world evidence and targeted resource support.
 
@@ -27,19 +28,25 @@ Natural language processing (NLP) could address these challenges by automating t
 Here, we characterize optimal methods, including the role of synthetic clinical text, for SDoH extraction using large language models. Specifically, we develop models to extract six key SDoH: employment status, housing issues, transportation issues, parental status, and social support. We investigate the value of incorporating large LM-generated synthetic SDoH data during the fine-tuning stage. We assess the performance of large LMs, including GPT3.5 and GPT4, in zero- and few-shot settings for identifying SDoH, and we explore the potential for algorithmic bias in LM predictions. Our methods could yield real-world evidence on SDoH, assist in identifying patients who could benefit from resource and social work support, and draw attention to the under-documented impact of social factors in health outcomes.
 
 ![][image19]
-*Fig. 1: Ablation studies:** Performance in Macro-F1 of Flan-T5 XL models fine-tuned using gold data only (orange line) and gold and synthetic data (green line), as gold-labeled sentences are gradually reduced by undersample value from the training dataset for **a)** adverse social determinant of health (SDoH) mention task and **b)** any SDoH mention task. The full gold-labeled training set is comprised of 29,869 sentences, augmented with 1800 synthetic SDoH sentences, and tested on the in-domain radiotherapy(RT) test dataset.*
+
+**Fig. 1: Ablation studies:** Performance in Macro-F1 of Flan-T5 XL models fine-tuned using gold data only (orange line) and gold and synthetic data (green line), as gold-labeled sentences are gradually reduced by undersample value from the training dataset for **a)** adverse social determinant of health (SDoH) mention task and **b)** any SDoH mention task. The full gold-labeled training set is comprised of 29,869 sentences, augmented with 1800 synthetic SDoH sentences, and tested on the in-domain radiotherapy(RT) test dataset.**
+
 RESULTS
 Model performance
 *Table 3* shows the performance of fine-tuned models for both SDoH tasks on the radiotherapy test set. The best-performing model for any SDoH mention task was Flan-T5 XXL (3 out of 6 categories) using synthetic data (Macro-F1 0.71). The best-performing model for the adverse SDoH mention task was Flan-T5 XL without synthetic data (macro-F1 0.70). In general, the Flan-T5 models outperformed BERT, and model performance scaled with size. However, although the Flan-T5 XL and XXL models were the largest models evaluated in terms of total parameters, because LoRA was used for their fine-tuning, the fewest parameters were tuned for these models: 9.5M and 18M for Flan-TX XL and XXL, respectively compared to 110M for BERT. The negative class generally had the best performance overall, followed by Relationship and Employment. Performance varied quite a bit across the models for the other classes.
+
 ![][image20]
-*Fig. 2: Fine-tuned LLMs versus ChatGPT-family models:** Comparison of model performance between our fine-tuned Flan-T5 models against zero- and 10-shot GPT. Macro-F1 was measured using our manually validated synthetic dataset. The GPT-turbo-0613 version of GPT3.5 and the GPT4–0613 version of GPT4 were used. Error bars indicate the 95% confidence intervals. LLM large language model.*
+
+**Fig. 2: Fine-tuned LLMs versus ChatGPT-family models:** Comparison of model performance between our fine-tuned Flan-T5 models against zero- and 10-shot GPT. Macro-F1 was measured using our manually validated synthetic dataset. The GPT-turbo-0613 version of GPT3.5 and the GPT4–0613 version of GPT4 were used. Error bars indicate the 95% confidence intervals. LLM large language model.**
 
 For both tasks, the best-performing models with synthetic data augmentation used sentences from both rounds of GPT3.5 prompting. Synthetic data augmentation tended to lead to the largest performance improvements for classes with few instances in the training dataset and for which the model trained on gold-only data had very low performance (Housing, Parent, and Transportation).
 
 The performance of the best-performing models for each task on the immunotherapy and MIMIC-III datasets are shown in *Table 4**.*** Performance was similar in the immunotherapy dataset, which represents a separate but similar patient population treated at the same hospital system. We observed a performance decrement on the MIMIC-III dataset, representing a more dissimilar patient population from a different hospital system. Performance was similar between models developed with and without synthetic data.
 
 ![][image21]
-*Fig. 3: LLM bias evaluation:** The proportion of synthetic sentence pairs with and without demographics injected led to a classification mismatch, meaning that the model predicted a different SDoH label for each sentence in the pair. Results are shown across race/ethnicity and gender for a any SDoH mention task and b adverse SDoH mention task. Asterisks indicate statistical significance (P ≤ 0.05) chi-squared tests for multi-class comparisons and 2-proportion z tests for binary comparisons. LLM large language model, SDoH Social determinants of health.*
+
+**Fig. 3: LLM bias evaluation:** The proportion of synthetic sentence pairs with and without demographics injected led to a classification mismatch, meaning that the model predicted a different SDoH label for each sentence in the pair. Results are shown across race/ethnicity and gender for a any SDoH mention task and b adverse SDoH mention task. Asterisks indicate statistical significance (P ≤ 0.05) chi-squared tests for multi-class comparisons and 2-proportion z tests for binary comparisons. LLM large language model, SDoH Social determinants of health.**
+
 Ablation studies
 The ablation studies showed a consistent deterioration in model performance across all SDoH tasks and categories as the volume of real gold SDoH sentences progressively decreased, although models that included synthetic data maintained performance at higher levels throughout and were less sensitive to decreases in gold data (*Figure 2, Supplementary Table 5*). When synthetic data were included in training, performance was maintained until approximately 50% of gold data were removed from the train set. Conversely, without synthetic data, performance dropped after about 10-20% of the gold data were removed from the train set mimicking a true low-resource setting.
 Error analysis
@@ -72,6 +79,7 @@ Our study has limitations. First, our training and out-of-domain datasets come f
 Our findings highlight the potential of large LMs to improve real-world data collection and identification of SDoH from the EHR. In addition, synthetic clinical text generated by large LMs may enable better identification of rare events documented in the EHR, although more work is needed to optimize generation methods. Our fine-tuned models were less prone to bias than ChatGPT-family models and out-performed for most SDoH classes, especially any SDoH mentions, despite being orders of magnitude smaller. In the future, these models could improve our understanding of drivers of health disparities by improving real-world evidence, and could directly support patient care by flagging patients who may benefit most from proactive resource and social work referral.
 
 ## METHODS
+
 Data
 Table 1 describes the patient populations of the datasets used in this study. Gender and race/ethnicity data and descriptors were collected from the EHR. These are generally collected either directly from the patient at registration, or by a provider, but the mode of collection for each data point was not available. Our primary dataset consisted of a corpus of 800 clinic notes from 770 patients with cancer who received radiotherapy (RT) at the Department of Radiation Oncology at Brigham and Women’s Hospital/Dana-Farber Cancer Institute in Boston, Massachusetts from 2015-2022. We also created two out-of-domain test datasets. First, we collected 200 clinic notes from 170 patients with cancer treated with immunotherapy at Dana-Farber Cancer, and not present in the RT dataset. Second, we collected 200 notes from 183 patients in the MIMIC (Medical Information Mart for Intensive Care)-III database[53,54](https://paperpile.com/c/yjfVx4/43rQc+l1GSM), which includes data associated with patients admitted to the critical care units at Beth Israel Deaconess Medical Center in Boston, Massachusetts from 2001-2008. This study was approved by the Mass General Brigham institutional review board, and consent was waived as this was deemed exempt human subjects research.
 
@@ -88,6 +96,7 @@ We defined two multilabel sentence-level classification tasks:
 1. Any SDoH mentions: The presence of language describing an SDoH category as defined above, regardless of the attribute.
 
 2. Adverse SDoH mentions: The presence or absence of language describing an SDoH category with an attribute that could create an additional social work or resource support need for patients:
+
    * **Employment status**: *unemployed, underemployed, disability*
 
    * **Housing issue**: *financial status, undomiciled, other*
@@ -95,6 +104,7 @@ We defined two multilabel sentence-level classification tasks:
    * **Transportation issue**: *distance, resources, other*
 
    * **Parental status**: *having a child under 18 years old*
+
    * **Relationship**: *widowed, divorced, single*
 
    * **Social support**: *absence of social support*
@@ -104,6 +114,7 @@ After finalizing the annotation guidelines, two annotators manually annotated th
 The annotation/adjudication team was composed of one board-certified radiation oncologist who completed a postdoctoral fellowship in clinical natural language processing, a Master’s-level computational linguist with a Bachelor’s degree in linguistics and one year prior experience working specifically with clinical text, and a Master’s student in computational linguistics with a Bachelor’s degree in linguistics. The radiation oncologist and Master’s level computational linguist led the development of the annotation guidelines, and trained the Master’s student in SDoH annotation over a period of 1 month via review of the annotation guidelines and iterative review of pilot annotations. During adjudication, if there was still ambiguity, we discussed with the two Resource Specialists on the research team to provide input in adjudication.
 Data augmentation
 We employed synthetic data generation methods to assess the impact of data augmentation for the positive class, and also to enable an exploratory evaluation of proprietary large LMs that could not be downloaded locally thus cannot be used with protected health information. In round 1, GPT-turbo-0301(ChatGPT) version of GPT3.5 via the OpenAI[59](https://paperpile.com/c/yjfVx4/aC6KA) API was prompted to generate new sentences for each SDoH category, using sentences from the annotation guidelines as references. In round 2, in order to generate more linguistic diversity, the sample synthetic sentences output from round 1 were taken as references to again generate another set of synthetic sentences. One hundred sentences per category were generated in each round. *Supplementary Table 3* shows the prompts for each sentence label type.
+
 Synthetic test set generation
 Iteration 1 for generating SDoH sentences involved prompting the 538 synthetic sentences to be manually validated to evaluate ChatGPT, which cannot be used with protected health information. Of these, after human review only 480 were found to have any SDoH mention, and 289 to have an adverse SDoH mention (Table 2). For all synthetic data generation methods, no real patient data were used in prompt development or fine-tuning.
 Model development
@@ -147,23 +158,28 @@ In order to test for bias in our best-performing models and in large LMs pre-tra
 
 These sentences were then manually validated; 419 had any SDoH mention, and 253 had an adverse SDoH mention.
 
-*Comparison with structured EHR data*
+**Comparison with structured EHR data**
 
 To assess the completeness of SDoH documentation in structured versus unstructured EHR data, we collected Z-codes for all patients in our test set. Z-codes are SDoH-related ICD-10-CM diagnostic codes, mapped most closely with our SDoH categories present as structured data for the radiotherapy dataset (*Supplementary Table 4*). Text-extracted patient-level SDoH information was defined as the presence of one or more labels in any note. We compared these patient-level labels to structured Z-codes entered in the EHR during the same time frame.
 Statistical analysis
 Macro-F1 performance for each model type was compared when developed with or without synthetic data and for the ChatGPT-family model comparisons using the Mann-Whitney U-test. The rate of discrepant SDoH classifications with and without the injection of demographic information were compared between the best-performing fine-tuned models and ChatGPT using chi-squared tests for multi-class comparisons and 2-proportion z-tests for binary comparisons. A 2-sided P ≤ 0.05 was considered statistically significant. Statistical analyses were carried out using the statistical Python package in scipy (Scipy.org). Python version 3.9.16 (Python Software Foundation) was used to carry out this work.
 Data availability statement:** The RT and immunotherapy datasets cannot be shared for the privacy of the individuals whose data were used in this study.  All synthetic datasets used in this study are available at: https://github.com/AIM-Harvard/SDoH. The annotated MIMIC-III dataset is available after completion of a data use agreement at https://physionet.org/content/annotation-dataset-sdoh/1.0.1/.
+
 Code availability statement:** The final annotation guidelines and all synthetic datasets used in this study are available at: [https://github.com/AIM-Harvard/SDoH](https://github.com/AIM-Harvard/SDoH).
+
 Table 1\. Patient demographics across datasets
 
 | Patients | Radiotherapy (in-domain) Dataset |  |  |  | Out-of-Domain Validation |  |  |  |
 | :---- | ----- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+
 |  | Total (n=770) | Train Set (n= 462\) | Development Set (n= 154\) | Test Set (n= 154\) | Immunotherapy (n=170) | MIMIC-III (n=183) | Synthetic Validated (n=480) | Synthetic Demo (n=419) |
 | **Gender** |  |  |  |  |  |  |  |  |
+
 | Male | 344  (44.7%) | 210 (45.5%) | 70  (45.5%) | 64 (41.6%) | 75 (44.1%) | 101  (55.2%) | N/A | 168 (40.1%) |
 | Female | 426  (55.3%) | 252 (54.5%) | 84  (54.5%) | 90 (58.4%) | 95 (55.9%) | 82  (44.8%) | N/A | 177 (42.2%) |
 | Not specified | 0 | 0 | 0 | 0 | 0 | 0 | N/A | 74 (17.7%) |
 | **Race** |  |  |  |  |  |  |  |  |
+
 | White | 664  (86.2%) | 396 (85.7%) | 134  (87.0%) | 134 (87.0%) | 137 (80.6%) | 132  (72.1%) | N/A | 113  (26.9%) |
 | Asian | 21  (2.7%) | 11  (2.4%) | 6  (3.9%) | 4  (2.6%) | 9 (5.3%) | 5  (2.7%) | N/A | 106 (21.6%) |
 | Black | 37  (4.8%) | 24  (5.2%) | 5  (3.2%) | 8  (5.2%) | 11 (6.5%) | 16  (8.7%) | N/A | 84  (25.7%) |
@@ -171,7 +187,9 @@ Table 1\. Patient demographics across datasets
 | Others | 25  (3.2%) | 17  (3.7%) | 5  (3.2%) | 3  (1.9%) | 10 (5.9%) | 1  (0.6%) | N/A | 97  (23.2%) |
 | Unknown | 20  (2.6%) | 12  (2.6%) | 4  (2.6%) | 4 (2.6%) | 3 (1.8%) | 25  (13.7%) | N/A | 19  (4.5%) |
 | **Ethnicity** |  |  |  |  |  |  |  |  |
+
 | Non- Hispanic | 682  (88.6%) | 420 (90.9%) | 130  (84.4%) | 132 (85.7%) | 160 (94.1%) | 158  (86.3%) | N/A | 322 (76.8%) |
+
 | Hispanic | 11  (1.4%) | 8  (1.7%) | 2  (1.3%) | 1  (0.6%) | 20 (5.9%) | 11  (6.0%) | N/A | 97  (23.2%) |
 | Unknown | 77  (10.0%) | 34  (7.4%) | 22  (14.3%) | 21 (13.6%) | 0 | 14  (7.7%) | N/A | 0 |
 
@@ -180,10 +198,12 @@ Table 2\. Distribution of documents and sentence labels in each dataset
 
 | Number of Documents |  |  |  |  |  |  |  |
 | ----- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+
 |  | Radiotherapy |  |  | Immunotherapy | MIMIC-III | Synthetic Validated | Synthetic Demo |
 |  | Train Set | Development Set | Test Set |  |  |  |  |
 | Documents | 481 | 160 | 159 | 200 | 200 | N/A | N/A |
 | Number of Sentences \- Any SDoH Mentions |  |  |  |  |  |  |  |
+
 |  | Radiotherapy |  |  | Immunotherapy (n=14,761) | MIMIC-III (n=5,328) | Synthetic Validated (n=480) | Synthetic Demo (n=419) |
 | Label | Train Set (n=29,869) | Development Set (n=10,712) | Test Set (n=10,860) |  |  |  |  |
 | No SDoH | 28992 (97.1%) | 10429 (97.4%) | 10582 (97.4%) | 14319  (97.0%) | 4968 (93.2%) | N/A | N/A |
@@ -194,6 +214,7 @@ Table 2\. Distribution of documents and sentence labels in each dataset
 | Social Support | 234 (0.8%) | 51 (0.5%) | 61 (0.6%) | 86 (0.6%) | 122 (2.3%) | 102 (21.3%) | 90 (21.5%) |
 | Transportation | 41 (0.1%) | 13 (0.1%) | 6 (0.1%) | 25 (0.2%) | 3 (0.1%) | 61 (12.7%) | 58 (13.8%) |
 | Number of Sentences \- Adverse SDoH Mentions |  |  |  |  |  |  |  |
+
 |  | Radiotherapy |  |  | Immunotherapy (n=14,761) | MIMIC-III (n=5,328) | Synthetic Validated (n=289) | Synthetic Demo (n=253) |
 | Label | Train Set (n=29,869) | Development Set (n=10,712) | Test Set (n=10,860) |  |  |  |  |
 | No Adverse SDoH | 29550 (98.9%) | 10615  (99.1%) | 10761 (99.1%) | 14621  (99.1%) | 5213 (97.8%) | N/A | N/A |
@@ -209,40 +230,66 @@ Table 3\. Model performance on the in-domain RT test dataset
 
 | Any Social Determinant of Health (SDoH) |  |  |  |  |  |  |  |  |  |  |  |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+
 | Model | Parameters (Total/Tuned) | Macro-F1 |  |  | No SDoH | Employment | Housing | Parent | Relationship | Social Support | Transportation |
 |  |  | Mean  (95% CI)a | Delta F1b | P-value |  |  |  |  |  |  |  |
 | **BERT-base** | 110M/110M |  |  |  |  |  |  |  |  |  |  |
+
 | Gold data only |  | 0.53 (0.46-0.59) | \-0.06 | \<0.01 | 1.00 | 0.72 | 0.00 | 0.00 | **0.96** | 0.59 | 0.50 |
+
 | Gold \+ synthetic data |  | 0.47 (0.44-0.52) |  |  | 1.00 | 0.62 | 0.00 | 0.29 | 0.93 | 0.49 | 0.00 |
+
 | **Flan-T5-base** | 250M/250M |  |  |  |  |  |  |  |  |  |  |
+
 | Gold data only |  | 0.36 (0.34-0.39) | \+0.13 | \<0.01 | 0.99 | 0.34 | 0.00 | 0.00 | 0.83 | 0.38 | 0.00 |
 | Gold \+ synthetic data |  | 0.49 (0.40-0.60) |  |  | 1.00 | 0.67 | 0.37 | 0.00 | 0.93 | 0.28 | 0.25 |
+
 | **Flan-T5-large** | 780M/780M |  |  |  |  |  |  |  |  |  |  |
+
 | Gold data only |  | 0.42 (0.40-0.45) | \+0.18 | \<0.01 | 1.00 | 0.72 | 0.00 | 0.00 | 0.93 | 0.31 | 0.00 |
 | Gold \+ synthetic data |  | 0.60 (0.50-0.68) |  |  | 1.00 | 0.76 | 0.67 | 0.24 | 0.91 | 0.48 | 0.18 |
+
 | **Flan-T5 XL** | 3B/9.5M |  |  |  |  |  |  |  |  |  |  |
+
 | Gold data only |  | 0.65  (0.54-0.73) | \+0.03 | \<0.01 | 0.99 | 0.71 | 0.57 | 0.55 | 0.92 | 0.50 | 0.31 |
 | Gold \+ synthetic data |  | 0.68  (0.59-0.76) |  |  | 1.00 | 0.73 | 0.55 | 0.56 | 0.94 | 0.52 | **0.53** |
+
 | **Flan-T5 XXL** | 11B/18M |  |  |  |  |  |  |  |  |  |  |
+
 | Gold data only |  | 0.65  (0.56-0.75) | \+0.05 | \<0.01 | 1.00 | 0.76 | 0.33 | **0.65** | 0.95 | 0.51 | 0.44 |
+
 | Gold \+ synthetic data |  | **0.70  (0.60-0.77)** |  |  | 1.00 | **0.80** | **0.67** | 0.47 | 0.93 | **0.60** | 0.47 |
+
 |  Adverse Social Determinants of Health (SDoH) |  |  |  |  |  |  |  |  |  |  |  |
 | Model | Parameters (Total/Tuned) | Macro-F1 |  |  | No SDoH | Employment | Housing | Parent | Relationship | Social Support | Transportation |
 |  |  | Mean  (95% CI) | Delta F1 | P-value |  |  |  |  |  |  |  |
 | **BERT-base** | 110M/110M |  |  |  |  |  |  |  |  |  |  |
+
 | Gold data only |  | 0.64 (0.55-0.73) | \-0.09 | \<0.01 | 1.00 | 0.68 | 0.67 | 0.31 | 0.90 | 0.37 | **0.60** |
+
 | Gold \+ synthetic data |  | 0.55 (0.45-0.67) |  |  | 1.00 | **0.75** | 0.37 | 0.36 | 0.78 | 0.38 | 0.4  |
+
 | **Flan-T5-base** | 250M/250M |  |  |  |  |  |  |  |  |  |  |
+
 | Gold data only |  | 0.24  (0.18 \- 0.31) | \+0.11 | \<0.01 | 1.00 | 0.00 | 0.00 | 0.00 | 0.43 | 0.00 | 0.25 |
+
 | Gold \+ synthetic data |  | 0.35 (0.26 \- 0.45) |  |  | 1.00 | 0.30 | 0.33 | 0.00 | 0.56 | 0.00 | 0.25 |
+
 | **Flan-T5-large** | 780M/780M |  |  |  |  |  |  |  |  |  |  |
+
 | Gold data only |  | 0.27  (0.23-0.31) | \+0.22 | \<0.01 | 0.99 | 0.46 | 0.00 | 0.00 | 0.47 | 0.00 | 0.00 |
 | Gold \+ synthetic data |  | 0.49 (0.40-0.59) |  |  | 1.00 | 0.58 | 0.54 | 0.33 | 0.66 | 0.22 | 0.17 |
+
 | **Flan-T5 XL** | 3B/9.5M |  |  |  |  |  |  |  |  |  |  |
+
 | Gold data only |  | **0.69 (0.57-0.78)** | 0.00 | 0.53 | 1.00 | 0.76 | 0.57 | 0.52 | **0.93** | 0.44 | 0.67 |
+
 | Gold \+ synthetic data |  | **0.69 (0.57-0.77)** |  |  | 1.00 | 0.72 | **0.67** | 0.49 | 0.87 | **0.56** | 0.57 |
+
 | **Flan-T5 XXL** | 11B/18M |  |  |  |  |  |  |  |  |  |  |
+
 | Gold data only |  | 0.63 (0.52-0.72) | \+0.03 | \<0.01 | 1.00 | 0.67 | 0.50 | **0.60** | 0.91 | 0.31 | 0.45 |
+
 | Gold \+ synthetic data |  | 0.66 (0.55-0.74) |  |  | 1.00 | 0.62 | 0.60 | 0.55 | 0.89 | 0.53 | 0.46 |
 
 The 95% CI for macro F1 is calculated by bootstrapping 3400 times (to achieve bootstrap SE \< 0.01) with replacement. The SE of the 95% confidence interval limits is 0.0091, ascertained by performing bootstrapping 3,400 times on three distinct samples. Delta F1 score is the change in Macro-F1 when synthetic data is added to the fine-tuning data. Bolded text indicates the best performance with and without synthetic data augmentation. p-values are computed with Mann-Whitney U-test. CI \= confidence interval; SE \= standard error.
@@ -250,19 +297,27 @@ Table 4\. Results of the best-performing models on the out-of-domain test datase
 
 | Any Social Determinant of Health (SDoH) |  |  |  |  |  |  |  |  |  |  |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+
 | Dataset | Macro-F1 |  |  | No SDoH | Employment | Housing | Parent | Relationship | Social Support | Transportation |
 | **Immunotherapy** | Mean  (95% CI) | Delta F1 | P-value |  |  |  |  |  |  |  |
+
 | FlanXXL: Gold data only | 0.70 (0.63-0.76) | \+0.01 | \<0.01 | 0.99 | 0.83 | 0.55 | 0.69 | 0.93 | 0.46 | 0.46 |
 | FlanXXL: Gold \+ synthetic data | 0.71 (0.64-0.76) |  |  | 0.99 | 0.79 | 0.55 | 0.68 | 0.91 | 0.63 | 0.40 |
+
 | **MIMIC-III** |  |  |  |  |  |  |  |  |  |  |
+
 | FlanXXL: Gold data only | 0.57 (0.49-0.63) | \-0.02 | \<0.01 | 0.98 | 0.65 | 0.00 | 0.63 | 0.91 | 0.32 | 0.50 |
 | FlanXXL: Gold \+ synthetic data | 0.55 (0.49-0.61) |  |  | 0.98 | 0.69 | 0.24 | 0.44 | 0.91 | 0.33 | 0.24 |
+
 | Adverse Social Determinants of Health (SDoH) |  |  |  |  |  |  |  |  |  |  |
 | Dataset | Macro-F1 |  |  | No SDoH | Employment | Housing | Parent | Relationship | Social Support | Transportation |
 | **Immunotherapy** | Mean  (95% CI)a | Delta F1b | P-value |  |  |  |  |  |  |  |
+
 | FlanXL: Gold data only |  0.63 (0.54-0.72) | \+0.03 | \<0.01 | 1.00 | 0.56 | 0.46 | 0.68 | 0.81 | 0.50 | 0.46 |
 | FlanXL: Gold \+ synthetic data | 0.66 (0.58-0.72) |  |  | 1.00 | 0.60 | 0.63 | 0.60 | 0.81 | 0.59 | 0.40 |
+
 | **MIMIC-III** |  |  |  |  |  |  |  |  |  |  |
+
 | FLANXL: Gold data only | 0.53 (0.47-0.60) | \-0.02 | \<0.01 | 0.99 | 0.51 | 0.50 | 0.53 | 0.65 | 0.22 | 0.20 |
 | FLANXL: Gold \+ synthetic data | 0.51 (0.43-0.59) |  |  | 0.99 | 0.55 | 0.35 | 0.54 | 0.68 | 0.43 | 0.20 |
 
@@ -271,22 +326,32 @@ Table 5\. Model performance on synthetic test data
 
 | Any Social Determinant of Health (SDoH) |  |  |  |  |  |  |  |  |
 | ----- | :---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+
 |  Model Parameters |  | Mean macro F1 (95% CI) | Employment | Housing | Parent | Relationship | Social Support | Transportation |
 | **FT Flan-T5 XXL** | 11B | **0.92 (0.62-0.95)** | **0.92** | **0.91** | 0.63 | **0.95** | **0.77** | **0.93** |
+
 | **GPT-3.5** | 175B |  |  |  |  |  |  |  |
+
 | Zero-shot |  | 0.84 (0.48-0.95) | 0.94 | 0.87 | 0.85 | 0.82 | 0.49 | 0.84 |
 | 10-shot |  | 0.82 (0.60-0.90) | 0.89 | 0.89 | 0.76 | 0.79 | 0.61 | 0.85 |
 | **GPT-4** | Unknown |  |  |  |  |  |  |  |
+
 | Zero-shot |  | 0.85 (0.48-0.94) | 0.94 | 0.83 | 0.72 | 0.88 | 0.49 | 0.86 |
 | 10-shot |  | 0.88 (0.58-0.93) | 0.91 | 0.90 | **0.96** | 0.82 | 0.59 | 0.91 |
+
 | Adverse Social Determinants of Health (SDoH) |  |  |  |  |  |  |  |  |
 |  Model Parameters |  | Mean macro F1 (95% CI)a | Employment | Housing | Parent | Relationship | Social Support | Transportation |
 | **FT Flan-T5 XL** | 3B | 0.86 (0.65-0.98) | 0.86 | 0.86 | 0.65 | **0.98** | **0.84** | 0.86 |
+
 | **GPT-3.5** | 175B |  |  |  |  |  |  |  |
+
 | Zero-shot |  | 0.82 (0.51-0.95) | 0.77 | 0.93 | 0.87 | 0.72 | 0.52 | 0.94 |
 | 10-shot |  | 0.81 (0.50-0.94) | **0.93** | 0.83 | 0.78 | 0.70 | 0.50 | 0.93 |
+
 | **GPT-4** | Unknown |  |  |  |  |  |  |  |
+
 | Zero-shot |  | 0.84 (0.52-0.94) | 0.79 | **0.94** | **0.94** | 0.78 | 0.53 | 0.89 |
+
 | 10-shot |  | **0.90 (0.71-0.96)** | 0.92 | 0.91 | 0.90 | 0.73 | 0.73 | **0.96** |
 
 The 95% CI (Confidence interval) for macro F1 is calculated by bootstrapping 10000 times (to achieve bootstrap SE \< 0.01) with replacement. The SE of the 95% confidence interval limits is 0.0038, ascertained by performing bootstrapping 10,000 times on three distinct samples. Bolded text indicates the best performance. FT \= fine-tuned. CI \= confidence interval. SE \= standard error.
@@ -294,75 +359,130 @@ The 95% CI (Confidence interval) for macro F1 is calculated by bootstrapping 100
 ## REFERENCES
 
 1\.	[Lavizzo-Mourey, R. J., Besser, R. E. & Williams, D. R. Understanding and Mitigating Health Inequities \- Past, Current, and Future Directions. *N. Engl. J. Med.* **384**, 1681–1684 (2021).](http://paperpile.com/b/yjfVx4/j1dN)
+
 2\.	[Chetty, R. *et al.* The Association Between Income and Life Expectancy in the United States, 2001-2014. *JAMA* **315**, 1750–1766 (2016).](http://paperpile.com/b/yjfVx4/8yTi)
+
 3\.	[Caraballo, C. *et al.* Excess Mortality and Years of Potential Life Lost Among the Black Population in the US, 1999-2020. *JAMA* **329**, 1662–1670 (2023).](http://paperpile.com/b/yjfVx4/Zp8L)
+
 4\.	[Social determinants of health.](http://paperpile.com/b/yjfVx4/9pBzf) [http://www.who.int/social\_determinants/sdh\_definition/en/](http://www.who.int/social_determinants/sdh_definition/en/)[.](http://paperpile.com/b/yjfVx4/9pBzf)
 5\.	[Franke, H. A. Toxic Stress: Effects, Prevention and Treatment. *Children* **1**, 390–402 (2014).](http://paperpile.com/b/yjfVx4/HoSYw)
+
 6\.	[Nelson, C. A. *et al.* Adversity in childhood is linked to mental and physical health throughout life. *BMJ* **371**, m3048 (2020).](http://paperpile.com/b/yjfVx4/VXeKa)
+
 7\.	[Shonkoff, J. P., Garner, A. S., Committee on Psychosocial Aspects of Child and Family Health, Committee on Early Childhood, Adoption, and Dependent Care & Section on Developmental and Behavioral Pediatrics. The lifelong effects of early childhood adversity and toxic stress. *Pediatrics* **129**, e232–46 (2012).](http://paperpile.com/b/yjfVx4/dQla1)
+
 8\.	[Turner-Cobb, J. M., Sephton, S. E., Koopman, C., Blake-Mortimer, J. & Spiegel, D. Social support and salivary cortisol in women with metastatic breast cancer. *Psychosom. Med.* **62**, 337–345 (2000).](http://paperpile.com/b/yjfVx4/zvwv7)
+
 9\.	[Hood, C. M., Gennuso, K. P., Swain, G. R. & Catlin, B. B. County Health Rankings: Relationships Between Determinant Factors and Health Outcomes. *Am. J. Prev. Med.* **50**, 129–135 (2016).](http://paperpile.com/b/yjfVx4/QlpcC)
+
 10\.	[Truong, H. P. *et al.* Utilization of Social Determinants of Health ICD-10 Z-Codes Among Hospitalized Patients in the United States, 2016-2017. *Med. Care* **58**, 1037–1043 (2020).](http://paperpile.com/b/yjfVx4/NfPNB)
+
 11\.	[Heidari, E., Zalmai, R., Richards, K., Sakthisivabalan, L. & Brown, C. Z-code documentation to identify social determinants of health among Medicaid beneficiaries. *Res. Social Adm. Pharm.* **19**, 180–183 (2023).](http://paperpile.com/b/yjfVx4/HNP8d)
+
 12\.	[Wang, M., Pantell, M. S., Gottlieb, L. M. & Adler-Milstein, J. Documentation and review of social determinants of health data in the EHR: measures and associated insights. *J. Am. Med. Inform. Assoc.* **28**, 2608–2616 (2021).](http://paperpile.com/b/yjfVx4/xuWCW)
+
 13\.	[Conway, M. *et al.* Moonstone: a novel natural language processing system for inferring social risk from clinical narratives. *J. Biomed. Semantics* **10**, 1–10 (2019).](http://paperpile.com/b/yjfVx4/dwSP)
+
 14\.	[Bejan, C. A. *et al.* Mining 100 million notes to find homelessness and adverse childhood experiences: 2 case studies of rare and severe social determinants of health in electronic health records. *J. Am. Med. Inform. Assoc.* **25**, 61–71 (2017).](http://paperpile.com/b/yjfVx4/QKOo)
+
 15\.	[Topaz, M., Murga, L., Bar-Bachar, O., Cato, K. & Collins, S. Extracting Alcohol and Substance Abuse Status from Clinical Notes: The Added Value of Nursing Data. *Stud. Health Technol. Inform.* **264**, 1056–1060 (2019).](http://paperpile.com/b/yjfVx4/3Z4R)
+
 16\.	[Gundlapalli, A. V. *et al.* Using natural language processing on the free text of clinical documents to screen for evidence of homelessness among US veterans. *AMIA Annu. Symp. Proc.* **2013**, 537–546 (2013).](http://paperpile.com/b/yjfVx4/tPmm)
+
 17\.	[Hammond, K. W., Ben-Ari, A. Y., Laundry, R. J., Boyko, E. J. & Samore, M. H. The Feasibility of Using Large-Scale Text Mining to Detect Adverse Childhood Experiences in a VA-Treated Population. *J. Trauma. Stress* **28**, 505–514 (2015).](http://paperpile.com/b/yjfVx4/EfrS)
+
 18\.	[Han, S. *et al.* Classifying social determinants of health from unstructured electronic health records using deep learning-based natural language processing. *J. Biomed. Inform.* **127**, 103984 (2022).](http://paperpile.com/b/yjfVx4/v7vl)
+
 19\.	[Rouillard, C. J., Nasser, M. A., Hu, H. & Roblin, D. W. Evaluation of a Natural Language Processing Approach to Identify Social Determinants of Health in Electronic Health Records in a Diverse Community Cohort. *Med. Care* **60**, 248–255 (2022).](http://paperpile.com/b/yjfVx4/C5qx)
+
 20\.	[Feller, D. J. *et al.* Detecting Social and Behavioral Determinants of Health with Structured and Free-Text Clinical Data. *Appl. Clin. Inform.* **11**, 172–181 (2020).](http://paperpile.com/b/yjfVx4/ywEU)
+
 21\.	[Yu, Z. *et al.* A Study of Social and Behavioral Determinants of Health in Lung Cancer Patients Using Transformers-based Natural Language Processing Models. *AMIA Annu. Symp. Proc.* **2021**, 1225–1233 (2021).](http://paperpile.com/b/yjfVx4/1P2G)
+
 22\.	[Lybarger, K. *et al.* Leveraging natural language processing to augment structured social determinants of health data in the electronic health record. *J. Am. Med. Inform. Assoc.* (2023) doi:](http://paperpile.com/b/yjfVx4/XEymp)[10.1093/jamia/ocad073](http://dx.doi.org/10.1093/jamia/ocad073)[.](http://paperpile.com/b/yjfVx4/XEymp)
+
 23\.	[Patra, B. G. *et al.* Extracting social determinants of health from electronic health records using natural language processing: a systematic review. *J. Am. Med. Inform. Assoc.* **28**, 2716–2727 (2021).](http://paperpile.com/b/yjfVx4/M3kyq)
+
 24\.	[Xu, D., Chen, S. & Miller, T. BCH-NLP at BioCreative VII Track 3: medications detection in tweets using transformer networks and multi-task learning. Preprint at](http://paperpile.com/b/yjfVx4/OqrO) https://arxiv.org/abs/2111.13726 [(2021).](http://paperpile.com/b/yjfVx4/OqrO)
 25\.	[Chen, S. *et al.* Natural Language Processing to Automatically Extract the Presence and Severity of Esophagitis in Notes of Patients Undergoing Radiotherapy. *JCO Clin Cancer Inform* **7**, e2300048 (2023).](http://paperpile.com/b/yjfVx4/59gr)
+
 26\.	Tan, R.S.Y.C. *et al.* Inferring cancer disease response fromradiology reports using large language models with data augmentation and prompting. *J Am Med Inform Assoc* **30**(10):1657-1664 (2023).
+
 27\.	[Jung, J. *et al.* Impossible Distillation: from Low-Quality Model to High-Quality Dataset & Model for Summarization and Paraphrasing. Preprint at](http://paperpile.com/b/yjfVx4/PbaK) https://arxiv.org/pdf/2305.16635.pdf (2023).
+
 28\.	[Lett, E. & La Cava, W. G. Translating intersectionality to fair machine learning in health sciences. *Nature Machine Intelligence* **5**, 476–479 (2023).](http://paperpile.com/b/yjfVx4/RBOwB)
+
 29\.	[Li, J. *et al.* Are synthetic clinical notes useful for real natural language processing tasks: A case study on clinical entity recognition. *J. Am. Med. Inform. Assoc.* **28**, 2193–2201 (2021).](http://paperpile.com/b/yjfVx4/IXYR)
+
 30\.	[Chen, R. J., Lu, M. Y., Chen, T. Y., Williamson, D. F. K. & Mahmood, F. Synthetic data in machine learning for medicine and healthcare. *Nat Biomed Eng* **5**, 493–497 (2021).](http://paperpile.com/b/yjfVx4/2e9c)
+
 31\.	[Jacobs, F. *et al.* Opportunities and Challenges of Synthetic Data Generation in Oncology. *JCO Clin Cancer Inform* **7**, e2300045 (2023).](http://paperpile.com/b/yjfVx4/dSIb)
+
 32\.	[Chen, S. *et al.* Evaluation of ChatGPT Family of Models for Biomedical Reasoning and Classification. Preprint at](http://paperpile.com/b/yjfVx4/B8iK) https://arxiv.org/abs/2304.02496 [(2023).](http://paperpile.com/b/yjfVx4/B8iK)
+
 33\.	[Lehman, E. *et al.* Do We Still Need Clinical Language Models? *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/yjfVx4/mOrJ)
+
 34\.	[Ramachandran, G. K. *et al.* Prompt-based Extraction of Social Determinants of Health Using Few-shot Learning. in *Proceedings of the 5th Clinical Natural Language Processing Workshop* 385–393 (Association for Computational Linguistics, 2023).](http://paperpile.com/b/yjfVx4/sWuc)
+
 35\.	[Feng, S., Park, C. Y., Liu, Y. & Tsvetkov, Y. From Pretraining Data to Language Models to Downstream Tasks: Tracking the Trails of Political Biases Leading to Unfair NLP Models. in *Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)* 11737–11762 (Association for Computational Linguistics, 2023).](http://paperpile.com/b/yjfVx4/erUz)
+
 36\.	[Zhao, J., Wang, T., Yatskar, M., Ordonez, V. & Chang, K.-W. Men Also Like Shopping: Reducing Gender Bias Amplification using Corpus-level Constraints. in *Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing* 2979–2989 (Association for Computational Linguistics, 2017).](http://paperpile.com/b/yjfVx4/nFAs)
+
 37\.	[Caliskan, A., Bryson, J. J. & Narayanan, A. Semantics derived automatically from language corpora contain human-like biases. *Science* **356**, 183–186 (2017).](http://paperpile.com/b/yjfVx4/OckR)
+
 38\.	[Davidson, T., Warmsley, D., Macy, M. & Weber, I. Automated Hate Speech Detection and the Problem of Offensive Language. Preprint at https://arxiv.org/pdf/1703.04009.pdf (2017).](http://paperpile.com/b/yjfVx4/kgzx)
 39\.	[Kharrazi, H. *et al.* The Value of Unstructured Electronic Health Record Data in Geriatric Syndrome Case Identification. *J. Am. Geriatr. Soc.* **66**, 1499–1507 (2018).](http://paperpile.com/b/yjfVx4/24iW)
+
 40\.	[Derton, A. *et al.* Natural Language Processing Methods to Empirically Explore Social Contexts and Needs in Cancer Patient Notes. *JCO Clin Cancer Inform* **7**, e2200196 (2023).](http://paperpile.com/b/yjfVx4/cN0M)
+
 41\.	[Lybarger, K., Yetisgen, M. & Uzuner, Ö. The 2022 n2c2/UW shared task on extracting social determinants of health. *J. Am. Med. Inform. Assoc.* **30**, 1367–1378 (2023).](http://paperpile.com/b/yjfVx4/fCVG)
+
 42\.	[Romanowski, B., Ben Abacha, A. & Fan, Y. Extracting social determinants of health from clinical note text with classification and sequence-to-sequence approaches. *J. Am. Med. Inform. Assoc.* **30**, 1448–1455 (2023).](http://paperpile.com/b/yjfVx4/CpfF)
+
 43\.	[Hatef, E. *et al.* Assessing the Availability of Data on Social and Behavioral Determinants in Structured and Unstructured Electronic Health Records: A Retrospective Analysis of a Multilevel Health Care System. *JMIR Med Inform* **7**, e13802 (2019).](http://paperpile.com/b/yjfVx4/uwVf)
+
 44\.	[Greenwald, J. L., Cronin, P. R., Carballo, V., Danaei, G. & Choy, G. A Novel Model for Predicting Rehospitalization Risk Incorporating Physical Function, Cognitive Status, and Psychosocial Support Using Natural Language Processing. *Med. Care* **55**, 261–266 (2017).](http://paperpile.com/b/yjfVx4/iwLA)
+
 45\.	[Blosnich, J. R. *et al.* Social Determinants and Military Veterans’ Suicide Ideation and Attempt: a Cross-sectional Analysis of Electronic Health Record Data. *J. Gen. Intern. Med.* **35**, 1759–1767 (2020).](http://paperpile.com/b/yjfVx4/YnfS)
+
 46\.	[Wray, C. M. *et al.* Examining the Interfacility Variation of Social Determinants of Health in the Veterans Health Administration. *Fed. Pract.* **38**, 15–19 (2021).](http://paperpile.com/b/yjfVx4/cq7p)
+
 47\.	[Wang, L. *et al.* Disease Trajectories and End-of-Life Care for Dementias: Latent Topic Modeling and Trend Analysis Using Clinical Notes. *AMIA Annu. Symp. Proc.* **2018**, 1056–1065 (2018).](http://paperpile.com/b/yjfVx4/eLSX)
+
 48\.	[Navathe, A. S. *et al.* Hospital Readmission and Social Risk Factors Identified from Physician Notes. *Health Serv. Res.* **53**, 1110–1136 (2018).](http://paperpile.com/b/yjfVx4/NszP)
+
 49\.	[Kroenke, C. H., Kubzansky, L. D., Schernhammer, E. S., Holmes, M. D. & Kawachi, I. Social networks, social support, and survival after breast cancer diagnosis. *J. Clin. Oncol.* **24**, 1105–1111 (2006).](http://paperpile.com/b/yjfVx4/qacn)
+
 50\.	[Maunsell, E., Brisson, J. & Deschênes, L. Social support and survival among women with breast cancer. *Cancer* **76**, 631–637 (1995).](http://paperpile.com/b/yjfVx4/izwc)
+
 51\.	[Schulz, R. & Beach, S. R. Caregiving as a risk factor for mortality: the Caregiver Health Effects Study. *JAMA* **282**, 2215–2219 (1999).](http://paperpile.com/b/yjfVx4/BTQg)
+
 52\.	[Hovy, D. & Prabhumoye, S. Five sources of bias in natural language processing. *Lang. Linguist. Compass* **15**, e12432 (2021).](http://paperpile.com/b/yjfVx4/vnxY)
+
 53\.	[Johnson, A., Pollard, T. & Mark, R. MIMIC-III clinical database. (2023) doi:](http://paperpile.com/b/yjfVx4/43rQc)[10.13026/C2XW26](http://dx.doi.org/10.13026/C2XW26)[.](http://paperpile.com/b/yjfVx4/43rQc)
 54\.	[Johnson, A. E. W. *et al.* MIMIC-III, a freely accessible critical care database. *Sci Data* **3**, 160035 (2016).](http://paperpile.com/b/yjfVx4/l1GSM)
+
 55\.	[Eyre, H. *et al.* Launching into clinical space with medspaCy: a new clinical text processing toolkit in Python. *AMIA Annu. Symp. Proc.* **2021**, 438–447 (2021).](http://paperpile.com/b/yjfVx4/nDjDz)
+
 56\.	[MedspaCy . spaCy universe. *medspaCy*](http://paperpile.com/b/yjfVx4/W72ul) [https://spacy.io/universe/project/medspacy](https://spacy.io/universe/project/medspacy)[.](http://paperpile.com/b/yjfVx4/W72ul)
 57\.	[Leitner, F. *syntok: Text tokenization and sentence segmentation (segtok v2)*. (Github).](http://paperpile.com/b/yjfVx4/Gjq4k)
 58\.	[Multi-document annotation environment. *MAE*](http://paperpile.com/b/yjfVx4/P9XW) [https://keighrim.github.io/mae-annotation/](https://keighrim.github.io/mae-annotation/)[.](http://paperpile.com/b/yjfVx4/P9XW)
 59\.	[OpenAI API.](http://paperpile.com/b/yjfVx4/aC6KA) [http://platform.openai.com](http://platform.openai.com)[.](http://paperpile.com/b/yjfVx4/aC6KA)
 60\.	[Devlin, J., Chang, M.-W., Lee, K. & Toutanova, K. BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. in *Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)* 4171–4186 (Association for Computational Linguistics, 2019).](http://paperpile.com/b/yjfVx4/ABnp)
+
 61\.	[Chung, H. W. *et al.* Scaling Instruction-Finetuned Language Models. Preprint at](http://paperpile.com/b/yjfVx4/X5d6) https://arxiv.org/abs/2210.11416 [(2022).](http://paperpile.com/b/yjfVx4/X5d6)
+
 62\.	[Longpre, S. *et al.* The Flan Collection: Designing Data and Methods for Effective Instruction Tuning. *arXiv \[cs.AI\]* (2023).](http://paperpile.com/b/yjfVx4/eb93)
+
 63\.	[Hu, E. J. *et al.* LoRA: Low-Rank Adaptation of Large Language Models. Preprint at https://arxiv.org/abs/2106.09685 (2021).](http://paperpile.com/b/yjfVx4/xoIw)
+
 64\.	[Kondrashchenko, I. *scikit-llm: Seamlessly integrate powerful language models like ChatGPT into scikit-learn for enhanced text analysis tasks*. (Github).](http://paperpile.com/b/yjfVx4/yYPKc)
 Supplementary Methods
-*Annotation Details*
+**Annotation Details**
 
 The most common type of disagreement between annotators involved one annotator labeling a sentence with a common tag (Support, Employment, and Relationship) and the other annotator not giving that sentence any label. For Employment and Relationship tags, this was most often due to  simple annotation errors that get resolved through the adjudication process without much discussion. There were some instances for Employment where the language was vague as to whether the patient was on a break from work due to their job or whether they were no longer employed, which was a source of disagreements. The Support tag was a more  conceptually complex tag resulting in disagreement. For example, there were disagreements based on whether a patient reporting feeling better because they had individuals visit their house, without details of the visit, consisted of support. Although it was still among the most prevalent of annotation disagreements, we believe the support tag’s complexity was minimized through pilot annotation rounds and guideline revisions. The disagreement types with \>5 instances are listed below:
 
-*Disagreement type					Count*
+**Disagreement type					Count**
 
 NO\_SDOH, SUPPORT\_plus				27
 NO\_SDOH, EMPLOYMENT\_employed		16
@@ -370,7 +490,7 @@ NO\_SDOH, RELATIONSHIP\_married		15
 NO\_SDOH, PARENT					  8
 NO\_SDOH SUPPORT\_minus			  6
 
-*Hyper-parameters for model training*
+**Hyper-parameters for model training**
 
 During the model development, the fine-tuning process of the best-performing models follows specific hyper-parameters using two *Nvidia RTX 3090 GPUs*. A per-device training batch size of 32 is used along with a learning rate of 1e-3. The model is trained for a total of 3 epochs. Additionally, the LoRA configuration is employed with a rank 'r' of 16 and a 'lora\_alpha' value of 32\. This configuration targets the "q" and "v" modules in the transformer layers and incorporates a dropout rate of 0.05.
 
@@ -386,7 +506,7 @@ During the model development, the fine-tuning process of the best-performing mod
         task\_type=TaskType.SEQ\_2\_SEQ\_LM
     )
 
-*Label resolution examples for sequence-to-sequence models*
+**Label resolution examples for sequence-to-sequence models**
 
 	*Example 1:*
 
@@ -404,7 +524,7 @@ Source: “summarize: The patient’s wife drives him to treatment every day.”
 	Output from model: “RELAT,SUPPORT”
 	Post-processed Output: \[“RELATIONSHIP”, “SUPPORT”\]
 
-*Bootstrap Sampling Calculations Example*
+**Bootstrap Sampling Calculations Example**
 
 1\. Set our desired precision level for standard error (SE) for the performance metric of macro-F1 to be \+/- 0.01
 
@@ -419,7 +539,9 @@ Source: “summarize: The patient’s wife drives him to treatment every day.”
 3\. Use the following formula to solve for n: SE \= σ/√n
 
 * For example, say σ was estimated to be 0.03:
+
   * 0.01 \= 0.03/√n
+
   * n \= 9 \*100
 
 * In practice, n varied from 2 to 34 across models, therefore we picked the largest (n=3400) for all comparison pairs.
@@ -438,6 +560,7 @@ Table 1\.** Inter-annotator agreement for granular SDoH levels
 
 | Granular SDoH Label | Class-wise Krippendorff's (α) |
 | :---- | :---: |
+
 | TRANSPORTATION\_distance | 0.00 |
 | TRANSPORTATION\_resource | 0.67 |
 | TRANSPORTATION\_other | 0.00 |
@@ -464,6 +587,7 @@ Table 2\.** Inter-annotator agreement for higher-level SDoH mention labels
 
 | Any SDoH Mention Label | Class-wise Krippendorff's (α) |
 | :---- | :---: |
+
 | SUPPORT | 0.77 |
 | EMPLOYMENT | 0.89 |
 | HOUSING | 0.71 |
@@ -476,6 +600,7 @@ Table 3\.** Prompts used to generate synthetic SDoH sentences using GPT3.5
 
 | Output Sentence Labela | Prompt |
 | :---- | :---- |
+
 | Housing-Adverse |             {"role": "system", "content": "You are a physician."},             {"role": "user", "content": "Examples of housing issues for patients: 1\. Pt came from Assisted Living Corp. and complained about rent increase.\\n2. “Pt came from Assisted Living Corp. and complained about rent increase.\\n3. He says he is worried about making his mortgage payments.\\n4. Pt is staying with a friend and does not have a mailing address.\\n5. Pt currently staying at Barbara McInnis shelter.\\n5. Pt is staying at the Motel for the time being, while on the waitlist for the Hope Lodge."},             {"role": "assistant", "content": "Ok I will remember that."},             {"role": "user", "content": "Imagine you are a physician. Please give me 100 sentences from your clinic notes about various patient's housing issues similar to the examples."} |
 | Transportation-Adverse |             {"role": "system", "content": "You are a physician."},             {"role": "user", "content": "Examples of transportation issues for patients: 1\. Pt lives 30mi away from hospital and complains about needing to transfer three times each way.\\n2. Pt missed appointment because her sister couldn't drive her today.\\n3. Pt is worried about making appointments because the metro is under construction this month.\\n4. Pt is worried about the two hour drive.\\n5. She is having trouble lying flat for treatment, she thinks it is because her back hurts after the two hour car ride into clinic.\\n6. Pt felt that coming to Los Angeles was hard for them and asked to be referred to Santa Cruz.\\n7. He is having trouble getting to and from the hospital."},             {"role": "assistant", "content": "Ok I will remember that."},             {"role": "user", "content": "Imagine you are a physician. Please give me 100 sentences from your clinic notes about various patient's transportation issues similar to the examples."} |
 | Relationship-Adverse |             {"role": "system", "content": "You are a physician."},             {"role": "user", "content": "Examples of divorced, widowed, single, separated issues for patients: 1\. Pt is meeting ex-wife at appointment.\\n2. Pt is married but separated.\\n3. Pt spouse passed away in October of last year.\\n4. Pt is single.\\n5. Pt arrived with his girlfriend, and his ex-wife will attend with him at next week’s session.\\n6. Pt has 3 kids from former marriage"},             {"role": "assistant", "content": "Ok I will remember that."},             {"role": "user", "content": "Imagine you are a physician. Please give me 100 sentences from your clinic notes about various patients being divorced, widowed, single, or separated issues similar to the examples."} |
@@ -491,6 +616,7 @@ Table A4.** Z-Code to SDoH label mappings
 
 | Z-Code | SDoH label mapping |
 | :---- | :---- |
+
 | Z55: Education and literacy | EDUCATION\_none |
 | Z56: Employment and unemployment | EMPLOYMENT\_unemployed, EMPLOYMENT\_underemployed, EMPLOYMENT\_employed (with adverse work environment) |
 | Z59: Housing and economic circumstances | HOUSING, SUPPORT\_minus, EMPLOYMENT\_un(der)employed |
@@ -504,54 +630,73 @@ Table 5\.** Ablation studies of removing gold-labeled sentences in training
 
 | Any SDoH |  |  |  |  |  |  |  |  |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+
 | **Percent undersampleda** | **Macro-F1** | **No SDoH** | **Employment** | **Housing** | **Parent** | **Relationship** | **Social Support** | **Transportation** |
+
 | 10% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.586 | 0.996 | 0.745 | 0.333 | 0.000 | 0.947 | 0.484 | 0.600 |
 | Gold \+ synthetic data | 0.654 | 0.996 | 0.809 | 0.600 | 0.452 | 0.919 | 0.566 | 0.235 |
+
 | 25% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.638 | 0.997 | 0.750 | 0.571 | 0.160 | 0.969 | 0.516 | 0.500 |
 | Gold \+ synthetic data | **0.659** | 0.996 | 0.822 | 0.545 | 0.452 | 0.938 | 0.571 | 0.286 |
+
 | 40% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.534 | 0.995 | 0.719 | 0.000 | 0.087 | 0.932 | 0.604 | 0.400 |
 | Gold \+ synthetic data | 0.638 | 0.996 | 0.810 | 0.667 | 0.400 | 0.956 | 0.455 | 0.182 |
+
 | 50% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.500 | 0.995 | 0.683 | 0.000 | 0.083 | 0.957 | 0.559 | 0.222 |
 | Gold \+ synthetic data | 0.686 | 0.996 | 0.824 | 0.750 | 0.465 | 0.935 | 0.629 | 0.200 |
+
 | 70% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.449 | 0.995 | 0.657 | 0.000 | 0.167 | 0.900 | 0.425 | 0.000 |
 | Gold \+ synthetic data | 0.607 | 0.994 | 0.720 | 0.545 | 0.400 | 0.825 | 0.429 | 0.333 |
+
 | 75% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.493 | 0.996 | 0.746 | 0.000 | 0.240 | 0.933 | 0.533 | 0.000 |
 | Gold \+ synthetic data | 0.596 | 0.995 | 0.782 | 0.500 | 0.074 | 0.886 | 0.537 | 0.400 |
+
 | 90% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.183 | 0.988 | 0.000 | 0.000 | 0.000 | 0.259 | 0.031 | 0.000 |
 | Gold \+ synthetic data | 0.505 | 0.994 | 0.733 | 0.400 | 0.143 | 0.849 | 0.108 | 0.308 |
+
 | 100% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
 | Gold \+ synthetic data | 0.063 | 0.000 | 0.047 | 0.017 | 0.228 | 0.036 | 0.095 | 0.015 |
+
 | **Adverse SDoH** |  |  |  |  |  |  |  |  |
+
 | **Percent undersampleda** | **Macro-F1** | **No SDoH** | **Employment** | **Housing** | **Parent** | **Relationship** | **Social Support** | **Transportation** |
+
 | 10% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.535 | 0.997 | 0.746 | 0.400 | 0.083 | 0.933 | 0.143 | 0.444 |
 | Gold \+ synthetic data | **0.671** | 0.997 | 0.719 | 0.750 | 0.474 | 0.921 | 0.375 | 0.462 |
+
 | 25% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.548 | 0.997 | 0.643 | 0.571 | 0.000 | 0.881 | 0.143 | 0.600 |
 | Gold \+ synthetic data | 0.646 | 0.997 | 0.716 | 0.667 | 0.378 | 0.879 | 0.353 | 0.533 |
+
 | 40% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.565 | 0.998 | 0.730 | 0.000 | 0.410 | 0.933 | 0.286 | 0.600 |
 | Gold \+ synthetic data | 0.578 | 0.997 | 0.635 | 0.545 | 0.400 | 0.903 | 0.300 | 0.267 |
+
 | 50% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.471 | 0.997 | 0.688 | 0.571 | 0.000 | 0.755 | 0.000 | 0.286 |
 | Gold \+ synthetic data | 0.641 | 0.997 | 0.690 | 0.667 | 0.313 | 0.921 | 0.400 | 0.500 |
+
 | 70% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.408 | 0.997 | 0.500 | 0.000 | 0.160 | 0.808 | 0.143 | 0.250 |
 | Gold \+ synthetic data | 0.566 | 0.997 | 0.646 | 0.600 | 0.389 | 0.929 | 0.154 | 0.250 |
+
 | 75% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.309 | 0.996 | 0.256 | 0.000 | 0.000 | 0.410 | 0.000 | 0.500 |
 | Gold \+ synthetic data | 0.534 | 0.996 | 0.480 | 0.545 | 0.294 | 0.866 | 0.273 | 0.286 |
+
 | 90% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.142 | 0.995 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 |
 | Gold \+ synthetic data | 0.426 | 0.996 | 0.311 | 0.462 | 0.160 | 0.747 | 0.143 | 0.167 |
+
 | 100% |  |  |  |  |  |  |  |  |
 | Gold data only | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
 | Gold \+ synthetic data | 0.040 | 0.000 | 0.009 | 0.007 | 0.227 | 0.011 | 0.015 | 0.011 |
@@ -563,10 +708,13 @@ Table 6\.** Most common discrepancies between ground-truth and best-performing m
 
 | Task | Ground Truth | Model Prediction | Count |
 | :---- | :---- | :---- | :---- |
+
 | **Any SDoH Mention** | No SDoH | Support | 24 |
+
 |  | No SDoH | Employment | 16 |
 |  | Support | No SDoH | 10 |
 | **Adverse SDoH Mention** | No SDoH | Employment | 12 |
+
 |  | Parent | No SDoH | 10 |
 |  | Employment | No SDoH | 6 |
 
@@ -575,8 +723,10 @@ Table 7\.** Confusion matrix for any SDoH mention gold label versus best-perform
 
 |   |   | Gold Label |  |
 | ----- | :---- | :---: | :---: |
+
 |   |   | Positive | Negative |
 | **Any SDoH Model Prediction** | Positive |  89 |  3 |
+
 |  | Negative |  4 |  58 |
 
 SDoH \= social determinants of health.
@@ -584,8 +734,10 @@ Table 8\.** Confusion matrix for adverse SDoH mention gold label versus best-per
 
 |   |   | Gold Label |  |
 | ----- | :---- | :---: | :---: |
+
 |   |   | Positive | Negative |
 | **Adverse SDoH Model Prediction** | Positive |  45 |  13 |
+
 |  | Negative |  3 |  93 |
 
 SDoH \= social determinants of health.
@@ -593,15 +745,21 @@ Table 9\.** Confusion matrix for adverse SDoH gold label versus mapped Z-codes
 
 |   |   | Gold Label |  |
 | ----- | :---- | :---: | :---: |
+
 |   |   | Positive | Negative |
 | **Mapped Z-codes** | Positive | 1 |  5 |
+
 |  | Negative |  47 |  101 |
 
 SDoH \= social determinants of health.
 Supplementary Figures
+
 ![][image22]
+
 Figure 1\.** Class-wise and Macro-F1 scores of our best-performing model against mapped Z-Codes at the patient level (on test set and dev set).
+
 ![][image23]
+
 Figure 2\.** Class-wise and Macro-F1 scores of our best-performing model against mapped Z-Codes at the patient level (on test set only).
 
 [image19]: ../figures/image19.png

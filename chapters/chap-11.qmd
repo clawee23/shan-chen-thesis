@@ -20,7 +20,7 @@ Generative artificial-intelligence (AI) models are increasingly being adopted in
 
 One of the key evaluation tasks in Natural Language Processing (NLP) is Question Answering (QA)[5,6](https://paperpile.com/c/coPcdt/2r7Z+ZGgZ), which involves building systems that can automatically respond to human queries in natural language by combining language understanding with information retrieval[7](https://paperpile.com/c/coPcdt/v2iZ). Multiple-choice QA benchmarks have become essential not only for evaluating large language models (LLMs) but also for assessing vision–language models (VLMs) in medicine[8](https://paperpile.com/c/coPcdt/s70K).
 
-*\< Figure 1\. WorldMedQA-V dataset generation and evaluation workflows.*
+**\< Figure 1\. WorldMedQA-V dataset generation and evaluation workflows.**
 
 Recent research has explored the performance of LLMs in medical exams, with ChatGPT being the first AI system to pass the USMLE[9](https://paperpile.com/c/coPcdt/S2t1), prompting further studies[8,10,11](https://paperpile.com/c/coPcdt/2H7i+Mv3A+s70K). A recent review identified 45 studies on ChatGPT’s performance in medical exams[8](https://paperpile.com/c/coPcdt/s70K), but VLMs remain under-explored in medical tasks[12,13](https://paperpile.com/c/coPcdt/I2wK+WsIY). Despite progress, current models face limitations such as context fragility, biases, and inconsistent multilingual performance[14–16](https://paperpile.com/c/coPcdt/54Vq+SrkJ+X0L4). There is also a need for more diverse datasets to ensure equitable AI evaluation in healthcare[17](https://paperpile.com/c/coPcdt/4YMq).
 Key gaps include:
@@ -43,6 +43,7 @@ In Europe, datasets from Spain, Sweden, and Poland (the latter not publicly avai
 **Figure 2 |** Accuracy in local language and English across models and countries. The red-shaded area highlights each country's exam-passing threshold. Passing score is a proxy here since our dataset is a subset. Detailed results appear in Appendix.
 
 ![][image59]
+
 METHODS
 See Figure 1 shows the overall workflow of the study.
 Data Collection
@@ -56,6 +57,7 @@ Experiments: The VLMEvalKit evaluation framework was utilized to conduct experim
 RESULTS & DISSCUSSIONS
 Dataset
 The complete WorldMedQA-V contains 726 question–answer pairs and 850 images across four countries: Brazil, Israel, Japan, and Spain. Every QA is paired with at least one image (some images are reused). After removing items with multiple images or multiple correct options, the final evaluation subset comprises 568 QAs, each with a single image and a single correct answer. Table 1 (Appendix) gives the country- and language-level breakdown; Box 1 (Appendix) shows a Brazilian example.
+
 VLM performance
 Figure 2 summarises model accuracy on each dataset in the local language and in English. All models score well below the \~90 % USMLE figure previously reported for GPT-4. GPT-4o is the strongest model overall; it fails to reach the 70 % pass mark only on the Hebrew-language Israel set (58 %), yet passes the English translation of the same set (63 %). The other non-Roman script in the benchmark is Japanese, where GPT-4o attains 88 %—above threshold—possibly because Japanese is better represented in pre-training corpora and shares characters with Chinese.
 Models generally score higher on the English translations, especially for Israel and Spain; the English Israel set still trails the others, suggesting data-level differences beyond language. In Brazil, GPT-4o scores 75 % in Portuguese and 67 % in English; in Japan, GPT-4o, GPT-4o-mini, Gemini-Flash-1.5 and Gemini-Pro-1.5 all do better in Japanese than in English, indicating strong Japanese support. The LLaVA-NeXT family produces the lowest accuracies; on the Israel dataset several variants perform near-random (24–46 %) in both Hebrew and English.
@@ -85,33 +87,61 @@ Lastly, we set the underlying assumption that each question had only one correct
 ## REFERENCES
 
 1\.	[Thirunavukarasu, A. J. *et al.* Large language models in medicine. *Nat. Med.* **29**, 1930–1940 (2023).](http://paperpile.com/b/coPcdt/CaJ8)
+
 2\.	[Clusmann, J. *et al.* The future landscape of large language models in medicine. *Commun. Med. (Lond.)* **3**, 141 (2023).](http://paperpile.com/b/coPcdt/e3VB)
+
 3\.	[Abbasian, M. *et al.* Foundation metrics for evaluating effectiveness of healthcare conversations powered by generative AI. *NPJ Digit. Med.* **7**, 82 (2024).](http://paperpile.com/b/coPcdt/yuJy)
+
 4\.	[Wiggers, K. Hugging Face releases a benchmark for testing generative AI on health tasks. *TechCrunch* (2024).](http://paperpile.com/b/coPcdt/Za8R)
+
 5\.	[Fan, L. *et al.* A bibliometric review of large language models research from 2017 to 2023\. *arXiv \[cs.DL\]* (2023).](http://paperpile.com/b/coPcdt/2r7Z)
+
 6\.	[Yu, H. *et al.* Large Language Models in biomedical and Health Informatics: A review with bibliometric analysis. *arXiv \[cs.DL\]* (2024).](http://paperpile.com/b/coPcdt/ZGgZ)
+
 7\.	[Jin, D. *et al.* What disease does this patient have? A large-scale open domain question answering dataset from medical exams. *Appl. Sci. (Basel)* **11**, 6421 (2021).](http://paperpile.com/b/coPcdt/v2iZ)
+
 8\.	[Liu, M. *et al.* Performance of ChatGPT across different versions in medical licensing examinations worldwide: Systematic review and meta-analysis. *J. Med. Internet Res.* **26**, e60807 (2024).](http://paperpile.com/b/coPcdt/s70K)
+
 9\.	[Kung, T. H. *et al.* Performance of ChatGPT on USMLE: Potential for AI-assisted medical education using large language models. *PLOS Digit Health* **2**, e0000198 (2023).](http://paperpile.com/b/coPcdt/S2t1)
+
 10\.	[Rodrigues Alessi, M. *et al.* Comparative performance of medical students, ChatGPT-3.5 and ChatGPT-4.0 in answering questions from a Brazilian national medical exam: Cross-sectional questionnaire study. *JMIR AI* **4**, e66552 (2025).](http://paperpile.com/b/coPcdt/2H7i)
+
 11\.	[Chen, S. *et al.* Evaluating the ChatGPT family of models for biomedical reasoning and classification. *J. Am. Med. Inform. Assoc.* **31**, 940–948 (2024).](http://paperpile.com/b/coPcdt/Mv3A)
+
 12\.	[Yan, Z. *et al.* Multimodal ChatGPT for Medical Applications: an Experimental Study of GPT-4V. *arXiv \[cs.CV\]* (2023).](http://paperpile.com/b/coPcdt/I2wK)
+
 13\.	[Wu, C. *et al.* Can GPT-4V(ision) Serve Medical Applications? Case Studies on GPT-4V for Multimodal Medical Diagnosis. *arXiv \[cs.CV\]* (2023).](http://paperpile.com/b/coPcdt/WsIY)
+
 14\.	[Gallifant, J. *et al.* Language models are surprisingly fragile to drug names in biomedical benchmarks. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/54Vq)
+
 15\.	[Zack, T. *et al.* Assessing the potential of GPT-4 to perpetuate racial and gender biases in health care: a model evaluation study. *Lancet Digit. Health* **6**, e12–e22 (2024).](http://paperpile.com/b/coPcdt/SrkJ)
+
 16\.	[Chen, S. *et al.* Cross-Care: Assessing the healthcare implications of pre-training data on language model bias. *Neural Inf Process Syst* **abs/2405.05506**, 23756–23795 (2024).](http://paperpile.com/b/coPcdt/X0L4)
+
 17\.	[Restrepo, D. *et al.* Analyzing Diversity in Healthcare LLM Research: A Scientometric Perspective. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/4YMq)
+
 18\.	[Saab, K. *et al.* Capabilities of Gemini models in medicine. *arXiv \[cs.AI\]* (2024).](http://paperpile.com/b/coPcdt/7JuZ)
+
 19\.	[Zhang, A. K. *et al.* Language model developers should report train-test overlap. *arXiv \[cs.LG\]* (2025).](http://paperpile.com/b/coPcdt/xt4L)
+
 20\.	[Zhang, H. *et al.* A careful examination of large language model performance on grade school arithmetic. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/Z1jA)
+
 21\.	[Yue, X. *et al.* MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI. *arXiv \[cs.CL\]* (2023).](http://paperpile.com/b/coPcdt/1Ajy)
+
 22\.	[Yue, X. *et al.* MMMU-Pro: A More Robust Multi-discipline Multimodal Understanding Benchmark. in *Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)* 15134–15186 (Association for Computational Linguistics, Stroudsburg, PA, USA, 2025).](http://paperpile.com/b/coPcdt/AR7u)
+
 23\.	[Das, R. J. *et al.* EXAMS-V: A multi-discipline multilingual multimodal exam benchmark for evaluating vision language models. *arXiv \[cs.CL\]* (2024).](http://paperpile.com/b/coPcdt/C99w)
+
 24\.	[Alfarano, A., Venturoli, L. & del Castillo, D. N. VQArt-Bench: A semantically rich VQA Benchmark for Art and Cultural Heritage. *arXiv \[cs.CV\]* (2025) doi:](http://paperpile.com/b/coPcdt/NqcC)[10.48550/arXiv.2510.12750](http://dx.doi.org/10.48550/arXiv.2510.12750)[.](http://paperpile.com/b/coPcdt/NqcC)
+
 25\.	[Weidinger, L. *et al.* Ethical and social risks of harm from Language Models. *arXiv \[cs.CL\]* (2021).](http://paperpile.com/b/coPcdt/BOpQ)
+
 26\.	[Li, J., Zhong, S. & Chen, K. MLEC-QA: A Chinese Multi-Choice Biomedical Question Answering Dataset. in *Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing* (Association for Computational Linguistics, Stroudsburg, PA, USA, 2021). doi:](http://paperpile.com/b/coPcdt/H5i7)[10.18653/v1/2021.emnlp-main.698](http://dx.doi.org/10.18653/v1/2021.emnlp-main.698)[.](http://paperpile.com/b/coPcdt/H5i7)
+
 27\.	[Vilares, D. & Gómez-Rodríguez, C. HEAD-QA: A Healthcare Dataset for Complex Reasoning. *arXiv \[cs.CL\]* (2019).](http://paperpile.com/b/coPcdt/aa1y)
+
 28\.	[Hertzberg, N. & Lokrantz, A. MedQA-SWE \- a Clinical Question & Answer Dataset for Swedish. *LREC* 11178–11186 (2024).](http://paperpile.com/b/coPcdt/tzW5)
+
 29\.	[Bean, A. M., Korgul, K., Krones, F., McCraith, R. & Mahdi, A. Exploring the landscape of large language models in medical question answering. *arXiv*.](http://paperpile.com/b/coPcdt/Re9L)
 
 ![][image60]
