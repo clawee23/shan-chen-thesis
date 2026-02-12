@@ -38,14 +38,14 @@ book:
   chapters:
     - index.qmd
     - chapters/chap-1.qmd
-    - part: "Part I: Potential Utilities of Language Models in Real Clinical Practice"
+    - part: "Part I: Potential Utilities of Language Models"
       chapters:
         - chapters/chap-2.qmd
         - chapters/chap-3.qmd
         - chapters/chap-4.qmd
         - chapters/chap-5.qmd
         - chapters/chap-6.qmd
-    - part: "Part II: Potential Fails of Language Models in Medical Settings"
+    - part: "Part II: Potential Fails of Language Models"
       chapters:
         - chapters/chap-7.qmd
         - chapters/chap-8.qmd
@@ -53,7 +53,9 @@ book:
         - chapters/chap-10.qmd
         - chapters/chap-11.qmd
         - chapters/chap-12.qmd
-    - chapters/chap-13.qmd
+    - part: "Conclusion"
+      chapters:
+        - chapters/chap-13.qmd
     - chapters/references.qmd
   appendices:
     - chapters/appendix-a.qmd
