@@ -30,3 +30,12 @@ book:
     - chapters/appendix-a.qmd
     - chapters/appendix-b.qmd
     - chapters/appendix-c.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true
+  pdf:
+    documentclass: report
+    number-sections: true
